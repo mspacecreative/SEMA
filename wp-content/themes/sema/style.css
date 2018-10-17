@@ -271,6 +271,20 @@ html, body {
 		float: left;
 		width: 50%;
 	}
+	.specialty-list {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	#diligence-report {
+		padding: 50px 0!important;
+	}
+	.et_pb_gutters1.et_pb_row .et_pb_column.mobile-margin-bottom {
+	    margin-bottom: 25px!important;
+	}
+	#products div.et_pb_column:last-child .et_pb_module {
+		max-width: 90%;
+		margin: auto;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -323,6 +337,12 @@ html, body {
 		float: none;
 		width: 100%;
 	}
+	#products div.et_pb_column:last-child .et_pb_module {
+		max-width: none;
+	}
+	.entry-content h2 {
+		font-size: 30px;
+	} 
 }
 
 @media (max-width: 1024px) {
