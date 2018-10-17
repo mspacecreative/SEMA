@@ -8,6 +8,10 @@
  Version:      1.0
 */
 
+html, body {
+	overflow-x: hidden;
+}
+
 .hero {
 	max-height: 768px;
 	background-attachment: fixed;
