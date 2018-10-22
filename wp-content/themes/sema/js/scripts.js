@@ -8,6 +8,11 @@
 			$('.footer-below').css('height', $(window).height() - $('body').height());
 		}
 		
+		function shadowCoverWidth() {
+			$('.shadow-cover').css('width', $('.entry-title').outerWidth() + 30);
+			$('.entry-title').after('<div class="shadow-cover"></div>');
+		}
+		
 		function heroHeight() {
 			$('.hero').height($(window).height());
 		}
@@ -15,6 +20,7 @@
 		$(document).ready(function () {
 			heroHeight();
 			footerHeight();
+			shadowCoverWidth();
 			
 			$('span.sub-toggle').click(function (){
 			  $(this).next().toggleClass('show');
@@ -25,6 +31,7 @@
 		$(window).resize(function () {
 			heroHeight();
 			footerHeight();
+			shadowCoverWidth();
 		});
 		
 		$(window).scroll(function() {

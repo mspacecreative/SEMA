@@ -427,6 +427,7 @@
 
 .member-name p {
 	line-height: 1.5em;
+	font-size: 14px;
 }
 
 .team-member:hover > .hover-overlay {
@@ -486,20 +487,18 @@ span.sub-toggle {
 }
 
 .et_pb_title_container .entry-title, .entry-content .et_pb_section:nth-child(2) {
-	box-shadow: 0px -5px 15px -5px #777;
-	    -webkit-box-shadow: 0px -5px 15px -5px #777;
-	    -moz-box-shadow: 0px -5px 15px -5px #777;
+	box-shadow: 0px 0 15px #666;
 }
 
-/*.et_pb_title_container .entry-title:after {
+.et_pb_title_container .entry-title .shadow-cover {
 	top: 100%;
 	position: absolute;
 	height: 20px;
-	width: 110%;
 	content: '';
 	background: #fff;
 	left: -15px;
-}*/
+	filter: none;
+}
 
 @media (max-width: 812px) {
 	.hero h1 {
@@ -542,7 +541,7 @@ span.sub-toggle {
 		float: left;
 		width: 49.5%;
 	}
-	.team-member:nth-child(3n) {
+	.team-member:nth-child(4n) {
 		margin-right: 1%;
 	}
 	.team-member:nth-child(2n) {
@@ -611,9 +610,9 @@ span.sub-toggle {
 @media (min-width: 981px) {
 	.team-member {
 		float: left;
-		width: 32.66%;
+		width: 24.25%;
 	}
-	.team-member:nth-child(3n) {
+	.team-member:nth-child(4n) {
 		margin-right: 0;
 	}
 	span.sub-toggle {
