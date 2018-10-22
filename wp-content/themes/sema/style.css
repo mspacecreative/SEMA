@@ -479,7 +479,7 @@ span.sub-toggle {
 .et_pb_title_container .entry-title:after {
 	top: 100%;
 	position: absolute;
-	height: 10px;
+	height: 20px;
 	width: 110%;
 	content: '';
 	background: #fff;
