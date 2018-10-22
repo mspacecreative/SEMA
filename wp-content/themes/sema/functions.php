@@ -1,5 +1,19 @@
 <?php
 
+// THUMBNAIL SIZING
+if (function_exists('add_theme_support'))
+{
+    // Add Thumbnail Theme Support
+    add_theme_support('post-thumbnails');
+    add_image_size( 'headshot', 353, 359, array( 'center', 'center' ) );
+}
+ 
+function my_custom_sizes( $sizes ) {
+    return array_merge( $sizes, array(
+        'headshot' => __( 'Head Shot' ),
+    ) );
+}
+
 /* MAIN STYLESHEET */
 function my_theme_enqueue_styles() {
 
@@ -35,6 +49,7 @@ if( function_exists('acf_add_options_sub_page') ) {
 
 	acf_add_options_sub_page('Footer');
 	acf_add_options_sub_page('Call-out Box');
+	acf_add_options_sub_page('Team Page');
 	
 }
 
@@ -79,3 +94,6 @@ add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 
 // SHORTCODES
 //add_shortcode('content_block', 'content_blocks');
+
+// CUSTOM THUMBNAIL IN BACKEND
+add_filter( 'image_size_names_choose', 'my_custom_sizes' );

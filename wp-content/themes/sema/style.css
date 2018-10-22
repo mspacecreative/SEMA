@@ -464,6 +464,19 @@ span.sub-toggle {
   font-size: 20px;
 }
 
+.team-container img {
+	min-width: 100%;
+	height: auto;
+}
+
+.team-container:first-of-type {
+	margin-bottom: 50px;
+}
+
+#our-team h1 {
+	margin-bottom: 20px;
+}
+
 .child-title {
 	font-size: 25px;
 }
