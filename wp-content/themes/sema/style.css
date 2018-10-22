@@ -78,6 +78,10 @@
 	line-height: 1.5em;
 }
 
+.entry-content .specialty-list li  {
+	text-indent: -27px;
+}
+
 .entry-content li:last-of-type {
 	margin-bottom: 0;
 }
@@ -166,6 +170,7 @@
 .vertical-align-center {
 	display: flex;
 	align-items: center;
+	height: 100%;
 }
 
 .footer-below {
