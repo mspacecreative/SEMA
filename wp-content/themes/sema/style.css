@@ -486,10 +486,12 @@ span.sub-toggle {
 }
 
 .et_pb_title_container .entry-title, .entry-content .et_pb_section:nth-child(2) {
-	box-shadow: 0 0 15px #777;
+	box-shadow: 0px -5px 15px -5px #777;
+	    -webkit-box-shadow: 0px -5px 15px -5px #777;
+	    -moz-box-shadow: 0px -5px 15px -5px #777;
 }
 
-.et_pb_title_container .entry-title:after {
+/*.et_pb_title_container .entry-title:after {
 	top: 100%;
 	position: absolute;
 	height: 20px;
@@ -497,7 +499,7 @@ span.sub-toggle {
 	content: '';
 	background: #fff;
 	left: -15px;
-}
+}*/
 
 @media (max-width: 812px) {
 	.hero h1 {
