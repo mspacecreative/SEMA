@@ -649,7 +649,11 @@ span.sub-toggle {
 	}
 	.entry-content h2 {
 		font-size: 30px;
-	} 
+	}
+	
+	.child-title {
+		display: block;
+	}
 }
 
 @media (max-width: 1024px) {
