@@ -651,7 +651,7 @@ span.sub-toggle {
 		font-size: 30px;
 	}
 	
-	.child-title {
+	.et_pb_title_container h1 .child-title {
 		display: block;
 	}
 }
