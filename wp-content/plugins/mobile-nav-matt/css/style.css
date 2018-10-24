@@ -127,7 +127,6 @@ button.hamburger:hover {
 
 #page-container {
 	transition: 0.5s ease-in-out;
-	box-shadow: 3px 0 15px #c9c9c9;
 }
 
 .mobile-nav .sub-menu {

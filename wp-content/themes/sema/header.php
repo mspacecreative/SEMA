@@ -222,6 +222,7 @@
 	<?php endif; // true ==== $et_slide_header ?>
 
 	<?php ob_start(); ?>
+	<div class="header-gradient"></div>
 		<header id="main-header" data-height-onload="<?php echo esc_attr( et_get_option( 'menu_height', '66' ) ); ?>">
 			<div class="container clearfix et_menu_container">
 			<?php

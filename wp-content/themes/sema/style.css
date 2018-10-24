@@ -29,18 +29,11 @@ body.home {
 	color: #999;
 }
 
-.page-id-1070 .entry-content h2 {
-	font-size: 25px;
-	font-weight: normal;
+.entry-content .cta-row h3 {
+	font-size: 27px;
+	font-weight: bold;
 	line-height: 1.5em;
 	color: #000;
-}
-
-.page-id-1070 .entry-content h3 {
-	font-size: 18px;
-	font-weight: normal;
-	line-height: 1.5em;
-	color: #777;
 }
 
 .hero h1 {
@@ -51,9 +44,9 @@ body.home {
 	font-weight: bold;
 }
 
-.entry-content h3 {
+/*.entry-content h3 {
 	font-weight: bold;
-}
+}*/
 
 .bg-img-offset-right {
 	background-size: 60%!important;
@@ -85,6 +78,10 @@ body.home {
 	font-size: 16px;
 }
 
+.entry-content ul ul {
+	padding-left: 30px;
+}
+
 .entry-content li {
 	list-style: none;
 	text-indent: -15px;
@@ -107,7 +104,42 @@ body.home {
 	color: #cc9900;
 	border: none;
 	top: 1px;
+	margin-right: 10px;
 }
+
+.entry-content li li:before {
+	font-family: fontAwesome;
+	content: '\f00c';
+	color: #cc9900;
+	border: none;
+	font-size: 12px;
+}
+
+.centered-quote, .centered-quote h2 {
+	text-align: center;
+}
+
+.centered-quote .et_pb_row {
+	max-width: 800px;
+}
+
+.centered-quote h2:before, .centered-quote h2:after  {
+	width: 100px;
+	height: 5px;
+	background-color: rgb(204, 153, 1);
+	content: '';
+	position: absolute;
+	left: 50%;
+	margin-left: -50px;
+}
+
+.centered-quote h2:before {
+	top: -35px;
+}
+
+.centered-quote h2:after {
+	bottom: -35px;
+}*/
 
 .entry-content li:before {
 	margin-right: 10px;
@@ -125,11 +157,11 @@ body.home {
 	width: 100%;
 	height: 100%;
 	opacity: 0.5;
-	background-size: 40%;
-	z-index: 10;
+	background-size: 50%;
+	z-index: 9;
 }
 
-.home .entry-content:before {
+.home .connectivity-graphic {
 	display: none;
 }
 
@@ -171,7 +203,7 @@ body.home {
 	font-size: 36px;
 	padding: 0;
 	margin: 0 0 20px;
-	line-height: 1.15em;
+	line-height: 1.25em;
 	letter-spacing: -0.02em;
 }
 
@@ -224,9 +256,30 @@ body.home {
 	padding-top: 0!important;
 }
 
+.home.alt-row-layout #main-header {
+	background: none;
+}
+
 #main-header {
 	background-color: rgba(255, 255, 255, .75);
 	box-shadow: none;
+}
+
+.home .header-gradient {
+	width: 100%;
+	height: 200px;
+	background-image: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,1));
+	position: absolute;
+	z-index: 10;
+	display: block;
+}
+
+.header-gradient {
+	display: none;
+}
+
+.home.alt-row-layout #main-header.et-fixed-header, .alt-row-layout #main-header {
+	background-color: rgba(227, 244, 250, .75);
 }
 
 .vertical-align-center div {
@@ -348,10 +401,11 @@ body.home {
 	padding: 30% 30px;
 }
 
-.specialty-list ul {
+.entry-content .specialty-list ul {
 	list-style: none;
 	font-size: 17px;
 	text-indent: -26px;
+	margin-top: 0;
 }
 
 .specialty-list li {
@@ -372,13 +426,23 @@ body.home {
 	color: #cc9900;
 }
 
-#diligence-report:after {
+#diligence-report:after, .blue-overlay:after {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background: rgba(0, 120, 200, .5);
+	content: '';
+}
+
+.blue-overlay-light:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 120, 200, .25);
 	content: '';
 }
 
@@ -427,6 +491,33 @@ body.home {
 	transition: 0.5s ease-in-out;
 }
 
+.alt-row-layout .et_pb_row {
+	max-width: none;
+	width: 100%;
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+.alt-row-layout .et_pb_row.disable-side-padding {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.alt-row-layout #main-header .container {
+	max-width: none;
+	width: 100%;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.alt-row-layout .centered-quote .et_pb_row.allow-max-width {
+	max-width: 850px;
+}
+
+.alt-row-layout .centered-quote .et_pb_row.allow-max-width.wider {
+	max-width: 980px;
+}
+
 .team-member .fa-linkedin {
 	font-size: 20px;
 }
@@ -445,6 +536,21 @@ body.home {
 	color: #000!important;
 	font-weight: bold;
 	font-size: 35px;
+}
+
+.et_pb_title_container .entry-title.version-2 {
+	padding: 0 0 0 5%;
+	border-bottom: 2px solid #e9e9e9;
+}
+
+.et_pb_title_container .entry-title.version-2:after {
+	position: absolute;
+	width: 100%;
+	left: -9999px;
+	height: 2px;
+	background: #e9e9e9;
+	bottom: 0;
+	content: '';
 }
 
 .member-name p {
@@ -512,7 +618,11 @@ span.sub-toggle {
 	box-shadow: 0px 0 15px #666;
 }
 
-.entry-content .et_pb_section:nth-child(2):after {
+.et_pb_title_container .entry-title.version-2 {
+	box-shadow: none;
+}
+
+/*.entry-content .et_pb_section:nth-child(2):after {
 	content: '';
 	background: url(img/backgrounds/bottom-shadow.png) repeat-x;
 	position: absolute;
@@ -521,7 +631,7 @@ span.sub-toggle {
 	width: 100%;
 	z-index: 0;
 	height: 15px;
-}
+}*/
 
 .et_pb_title_container .entry-title .shadow-cover {
 	top: 100%;
@@ -541,6 +651,16 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	width: 90%;
 }
 
+.large-list-items ul {
+	font-size: 22px;
+	padding-left: 20px;
+}
+
+.large-list-items ul li li {
+	margin-bottom: 0;
+	text-indent: -22px;
+}
+
 @media (max-width: 812px) and (orientation: landscape) {
 	.hero .et_pb_column {
 		max-width: 60%;
@@ -554,9 +674,14 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.et_fixed_nav #main-header, .et_fixed_nav #top-header, .et_non_fixed_nav.et_transparent_nav #main-header, .et_non_fixed_nav.et_transparent_nav #top-header {
 		position: fixed;
 	}
+	.no-bottom-margin {
+		margin-bottom: 0;
+	}
 	.entry-content h2 {
-		font-size: 22px;
-		line-height: 1.35em;
+		font-size: 24px;
+	}
+	.entry-content h3 {
+		font-size: 18px;
 	}
 	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg .et_pb_row {
 		padding-top: 0;
@@ -588,9 +713,6 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.specialty-list {
 		padding-top: 30px;
 		padding-bottom: 30px;
-	}
-	#diligence-report div {
-		padding: 50px 0;
 	}
 	.et_pb_gutters1.et_pb_row .et_pb_column.mobile-margin-bottom {
 	    margin-bottom: 25px!important;
@@ -695,6 +817,10 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 		margin-bottom: 3%;
 	}
 	
+	.large-list-items ul li li {
+		margin-bottom: 10px;
+	}
+	
 	.title-spacer {
 		display: none;
 	}
@@ -729,6 +855,17 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 @media (min-width: 1280px) {
 	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 		background-size: contain;
+	}
+	.alt-row-layout .et_pb_row {
+		padding-right: 10%;
+		padding-left: 10%;
+	}
+	.et_pb_title_container .entry-title.version-2 {
+		padding-left: 10%;
+	}
+	.alt-row-layout #main-header .container {
+		padding-right: 10%;
+		padding-left: 10%;
 	}
 }
 

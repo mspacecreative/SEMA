@@ -5,16 +5,15 @@
 		'use strict';
 		
 		function connectivityTop() {
-			$('.connectivity-graphic').css('top', $('.et_pb_section_0').outerHeight());
+			$('.alt-row-layout .connectivity-graphic').css('top', - $('header').height());
 		}
 		
 		function footerHeight() {
-			$('.footer-below').css('height', $(window).height() - $('body').height());
+			$('.footer-below').css('height', $(window).height() - $('#page-container').outerHeight());
 		}
 		
 		function shadowCoverWidth() {
 			$('.shadow-cover').css('width', $('.entry-title').outerWidth() + 30);
-			$('.entry-title').after('<div class="shadow-cover"></div>');
 		}
 		
 		function heroHeight() {
@@ -31,6 +30,14 @@
 			  $(this).next().toggleClass('show');
 			  $(this).children().toggleClass('fa-angle-down fa-angle-up');
 			});
+			
+			if($('.entry-title, .hero').hasClass('version-2')) {
+				$('body').addClass('alt-row-layout');
+			}
+		});
+		
+		$(window).load(function () {
+			connectivityTop();
 		});
 		
 		$(window).resize(function () {
