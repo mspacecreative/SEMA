@@ -8,7 +8,7 @@
  Version:      1.0
 */
 
-#main-content {
+body.home {
 	overflow-x: hidden;
 }
 
@@ -82,6 +82,7 @@
 	padding-left: 1.35em;
 	margin-top: 10px;
 	padding-bottom: 0;
+	font-size: 16px;
 }
 
 .entry-content li {
@@ -112,9 +113,12 @@
 	margin-right: 10px;
 }
 
-.connectivity-right-corner:before {
+.entry-content {
+	position: relative;
+}
+
+.connectivity-graphic {
 	position: absolute;
-	top: 0;
 	right: 0;
 	content: '';
 	background: url(img/backgrounds/connectivity-right.png) no-repeat right top;
@@ -123,6 +127,10 @@
 	opacity: 0.5;
 	background-size: 40%;
 	z-index: 10;
+}
+
+.home .entry-content:before {
+	display: none;
 }
 
  #top-menu li li, #top-menu li li a {
@@ -323,15 +331,15 @@
 	opacity: .25;
 }
 
-#our-team:after {
+#our-team:before {
 	position: absolute;
 	right: 0;
 	top: 0;
 	background: url(img/backgrounds/connectivity-right.png) no-repeat top right;
-	width: 60%;
-	height: 60%;
+	width: 100%;
+	height: 100%;
 	content: '';
-	background-size: contain;
+	background-size: 40%;
 	opacity: .25;
 }
 
@@ -500,8 +508,19 @@ span.sub-toggle {
 	line-height: 1.5em;
 }
 
-.et_pb_title_container .entry-title, .entry-content .et_pb_section:nth-child(2) {
+.et_pb_title_container .entry-title {
 	box-shadow: 0px 0 15px #666;
+}
+
+.entry-content .et_pb_section:nth-child(2):after {
+	content: '';
+	background: url(img/backgrounds/bottom-shadow.png) repeat-x;
+	position: absolute;
+	left: 0;
+	top: -15px;
+	width: 100%;
+	z-index: 0;
+	height: 15px;
 }
 
 .et_pb_title_container .entry-title .shadow-cover {
@@ -514,20 +533,12 @@ span.sub-toggle {
 	filter: none;
 }
 
-@media (max-width: 812px) {
-	.hero h1 {
-		font-size: 36px;
-		letter-spacing: -0.03em;
-	}
-	
-	.parent-title {
-		display: inline-block;
-	}
-	.et_pb_title_container h1 .child-title {
-		line-height: 1.15em;
-		display: inline-block;
-		padding-bottom: 15px;
-	}
+div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+	background-size: 50%;
+}
+
+.et_pb_row {
+	width: 90%;
 }
 
 @media (max-width: 812px) and (orientation: landscape) {
@@ -542,6 +553,19 @@ span.sub-toggle {
 @media (max-width: 980px) {
 	.et_fixed_nav #main-header, .et_fixed_nav #top-header, .et_non_fixed_nav.et_transparent_nav #main-header, .et_non_fixed_nav.et_transparent_nav #top-header {
 		position: fixed;
+	}
+	.entry-content h2 {
+		font-size: 22px;
+		line-height: 1.35em;
+	}
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg .et_pb_row {
+		padding-top: 0;
+	}
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+		padding-top: 25px;
+	}
+	.et_header_style_left #logo {
+		max-width: 100px;
 	}
 	.bg-img-offset-right {
 		background-size: 0%!important;
@@ -583,6 +607,25 @@ span.sub-toggle {
 	}
 }
 
+@media (max-width: 812px) {
+	.hero h1 {
+		font-size: 36px;
+		letter-spacing: -0.03em;
+	}
+	
+	.parent-title {
+		display: inline-block;
+	}
+	.et_pb_title_container h1 .child-title {
+		line-height: 1.15em;
+		display: inline-block;
+		padding-bottom: 15px;
+	}
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+		padding-top: 0;
+	}
+}
+
 @media (min-width: 1024px) {
 	.right-col {
 		position: relative;
@@ -619,6 +662,17 @@ span.sub-toggle {
 	#products .et_pb_row {
 		width: 80%;
 	}
+	.entry-content h1 {
+		font-size: 30px;
+	}
+	.two-thirds-one-third-w-bg img {
+		position: relative;
+		left: -5%;
+		max-width: 75%;
+	}
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+		background-size: 0%;
+	}
 }
 
 @media (min-width: 981px) {
@@ -647,10 +701,6 @@ span.sub-toggle {
 	#products div.et_pb_column:last-child .et_pb_module {
 		max-width: none;
 	}
-	.entry-content h2 {
-		font-size: 30px;
-	}
-	
 	.et_pb_title_container h1 .child-title {
 		display: block;
 	}
@@ -659,6 +709,26 @@ span.sub-toggle {
 @media (max-width: 1024px) {
 	.hero {
 		background-attachment: scroll;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 980px) {
+	.et_pb_column.one-third {
+		width: 33%;
+		margin-right: 2%;
+	}
+	.et_pb_column.two-thirds {
+		width: 65%;
+	}
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+		background-size: 35%;
+		background-position: top 50px left;
+	}
+}
+
+@media (min-width: 1280px) {
+	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
+		background-size: contain;
 	}
 }
 
