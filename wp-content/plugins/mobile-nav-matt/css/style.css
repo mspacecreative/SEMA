@@ -53,6 +53,7 @@ button.hamburger:hover {
 	-webkit-overflow-scrolling: touch;
 	visibility: hidden;
 	background: url(../img/dust_scratches.png) left top;
+	z-index: 99;
 }
 
 .sub-toggle .fa {
@@ -60,7 +61,6 @@ button.hamburger:hover {
 }
 
 .mobile-nav a {
-	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 16px;
 }
@@ -136,7 +136,7 @@ button.hamburger:hover {
 body .hamburger {
 	position: fixed;
 	top: 40px;
-	right: 25px;
+	right: 10%;
 	padding: 0 0 0 10px;
 	display: table;
 	z-index: 999999;

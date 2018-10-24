@@ -20,9 +20,9 @@ $('.body-overlay').click(function() {
 });
 
 // CLOSE PANEL UPON LINK CLICK
-$('.mobile-nav li > a').click(function() {
-	$('.hamburger, body, #page-container').toggleClass('is-active');
-});
+//$('.mobile-nav li > a').click(function() {
+//	$('.hamburger, body, #page-container').toggleClass('is-active');
+//});
 
 // HAMBURGER VERTICAL ALIGN
 function hamburgerIcon() {

@@ -5,6 +5,7 @@
 		'use strict';
 		
 		function connectivityTop() {
+			//$('.connectivity-graphic').css('top', $('.et_pb_section_1').outerHeight());
 			$('.alt-row-layout .connectivity-graphic').css('top', - $('header').height());
 		}
 		
