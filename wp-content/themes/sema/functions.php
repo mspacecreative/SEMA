@@ -88,6 +88,13 @@ function pageTitle2() {
 	return ob_get_clean();
 }
 
+// CAREERS LOOP SHORTCODE
+function careersLoop() {
+	ob_start();
+		get_template_part('includes/careers_loop');
+	return ob_get_clean();
+}
+
 // ACTIONS, OPTIONS AND FILTERS
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 add_action('init', 'footer_scripts');
@@ -95,6 +102,7 @@ add_option( 'my_default_pic', get_stylesheet_directory_uri() . '/img/wood-frame-
 add_shortcode( 'team_members', 'teamLoop' );
 add_shortcode( 'page_title', 'pageTitle' );
 add_shortcode( 'page_title_2', 'pageTitle2' );
+add_shortcode( 'careers_list', 'careersLoop' );
 add_action( 'widgets_init', 'posts_sidebar' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 
