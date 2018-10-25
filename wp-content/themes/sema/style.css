@@ -810,6 +810,10 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	#products .et_pb_row {
 		width: 80%;
 	}
+	.disable-side-padding.enable-mobile-side-padding {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
 	.entry-content h1 {
 		font-size: 30px;
 	}
@@ -826,6 +830,23 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.team-member {
 		float: left;
 		width: 24.25%;
+	}
+	.lokaksema .et_pb_module {
+		display: table;
+		height: 100%;
+	}
+	.lokaksema .et_pb_text_inner {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.lokaksema h2:before {
+		top: -12%;
+	}
+	.lokaksema h3:last-of-type {
+		margin-bottom: 0;
+	}
+	.lokaksema h2:after {
+		bottom: -12%;
 	}
 	.left-col {
 		top: 100px;
@@ -936,5 +957,18 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	}
 	body .hamburger {
 		right: 7.5%;
+	}
+}
+
+.youtube div, .youtube div div, .youtube div div div {
+	height: 100%;
+}
+
+@media (min-width: 1440px) {
+	.lokaksema h2:before {
+		top: -15px;
+	}
+	.lokaksema h2:after {
+		bottom: -15px;
 	}
 }
