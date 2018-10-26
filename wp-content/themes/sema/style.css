@@ -450,7 +450,19 @@ body.home {
 	z-index: 1;
 }
 
-#products:after {
+#health-check:after {
+	position: absolute;
+	right: 0;
+	top: 0;
+	background: url(img/backgrounds/connectivity-right.png) no-repeat right;
+	width: 60%;
+	height: 60%;
+	content: '';
+	background-size: contain;
+	opacity: .25;
+}
+
+#maintenance-platform:after {
 	position: absolute;
 	left: 0;
 	top: 0;
