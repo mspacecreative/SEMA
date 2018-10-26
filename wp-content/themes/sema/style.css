@@ -294,8 +294,8 @@ body.home {
 
 .header-gradient {
 	width: 100%;
-	height: 200px;
-	background-image: linear-gradient(0deg, rgba(255,255,255,0), rgba(255,255,255,.85)60%);
+	height: 250px;
+	background-image: linear-gradient(0deg, rgba(255,255,255,0)5%, rgba(255,255,255,1));
 	position: absolute;
 	z-index: 11;
 	/*display: block;*/
@@ -424,7 +424,7 @@ body.home {
 	width: 90%;
 }
 
-.hero:after {
+/*.hero:after {
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -433,13 +433,13 @@ body.home {
 	height: 100%;
 	content: '';
 	opacity: .25;
-}
+}*/
 
 .hero:before {
 	background-image:
 	radial-gradient(
 	ellipse at bottom left, 
-	rgba(0, 120, 200, .75),
+	rgba(0, 120, 200, 1),
 	rgba(0, 120, 200, 0) 65%);
 	content: '';
 	position: absolute;
