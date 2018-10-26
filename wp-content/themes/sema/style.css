@@ -313,13 +313,13 @@ body.home {
 
 .floating-icon {
 	float: left;
-	margin-right: 2%;
+	margin-right: 4%;
 	width: 15%;
 }
 
 .floating-icon ~ div {
 	float: right;
-	width: 83%;
+	width: 81%;
 }
 
 .floating-icon ~ div h3 {
