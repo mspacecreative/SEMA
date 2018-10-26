@@ -4,6 +4,21 @@
 		
 		'use strict';
 		
+		// MAIN NAV HASH TAG FIX
+		$('#et-top-navigation a').each( function() {
+			var nav = $(this); 
+			if( nav.length > 0 ) {
+				if( nav.attr('href') == '#' ) {
+					//console.log(nav);
+					$(this).click(
+						function(e) {
+							e.preventDefault();
+						}
+					);
+				}
+			}
+		});
+		
 		function connectivityTop() {
 			//$('.connectivity-graphic').css('top', $('.et_pb_section_1').outerHeight());
 			$('.alt-row-layout .connectivity-graphic, .single .connectivity-graphic').css('top', - $('header').height());
