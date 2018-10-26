@@ -12,6 +12,10 @@ body.home {
 	overflow-x: hidden;
 }
 
+body {
+	display: none;
+}
+
 .hero {
 	max-height: 768px;
 	background-attachment: fixed;

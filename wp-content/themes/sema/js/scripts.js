@@ -4,6 +4,23 @@
 		
 		'use strict';
 		
+		// BODY FADE IN/OUT ON NAV CLICK
+		$('a').click( function() {
+			var nav = $(this); 
+			if( nav.length > 0 ) {
+				if( nav.attr('href') == '#' ) {
+					//console.log(nav);
+					$(this).click(
+						function(e) {
+							e.preventDefault();
+						}
+					);
+				}
+			} else {
+				$('body').fadeOut('slow');
+			}
+		});
+		
 		// MAIN NAV HASH TAG FIX
 		$('#et-top-navigation a').each( function() {
 			var nav = $(this); 
@@ -41,6 +58,8 @@
 			footerHeight();
 			shadowCoverWidth();
 			connectivityTop();
+			
+			$('body').fadeIn('slow');
 			
 			$('span.sub-toggle').click(function (){
 			  $(this).next().toggleClass('show');
