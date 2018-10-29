@@ -14,7 +14,7 @@ if( $the_query->have_posts() ): ?>
 	<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 	
 	<?php endwhile; else : ?>
-	<p style="font-style: italic;"><?php _e('There are currently no career opportunities.'); ?></p>
+	<p style="font-style: italic;"><?php _e('There are no open positions at this time.'); ?></p>
 </ul>
 <?php endif; ?>
 <?php wp_reset_query(); ?>
