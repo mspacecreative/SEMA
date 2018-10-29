@@ -107,7 +107,7 @@
 		    $('.hero .et_pb_column').css("opacity", 1 - $(window).scrollTop() / 500);
 		    var offsetTop = $('.hero .et_pb_column').offset().top;
 		    $('.hero .et_pb_column').css("opacity", 1 - ($(window).scrollTop() - offsetTop + 250) / 500);
-			if($('.animated').hasClass('go')) {
+			if($('#health-check .animated').hasClass('go')) {
 				$('body').css('overflow-x', 'inherit');
 			}
 		});
