@@ -4,6 +4,18 @@
 		
 		'use strict';
 		
+		/*function checkSize() {
+			if($('#main-header .container').css('padding-left') == '0') {
+				$(this).children().wrap('<div class="wide-header-container"></div>');
+			}
+		}*/
+		
+		function checkSize() {
+		    if (window.matchMedia('(min-width: 1600px)').matches) {
+		        $('#main-header .container').wrap('<div class="wide-header-container"></div>');
+		    }
+		}
+		
 		// BODY FADE IN/OUT ON NAV CLICK
 		$('a').click( function() {
 			var nav = $(this); 
@@ -58,6 +70,7 @@
 			footerHeight();
 			shadowCoverWidth();
 			connectivityTop();
+			checkSize();
 			
 			$('body').fadeIn('slow');
 			

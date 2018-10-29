@@ -22,6 +22,14 @@ body {
 	min-height: 450px;
 }
 
+p, ol, ul {
+	color: #000;
+}
+
+.et_pb_bg_layout_dark p, .et_pb_bg_layout_dark ol, .et_pb_bg_layout_dark ul, .et_pb_bg_layout_dark h1, .et_pb_bg_layout_dark h2, .et_pb_bg_layout_dark h3, .et_pb_bg_layout_dark h4, .et_pb_bg_layout_dark h5, .et_pb_bg_layout_dark h6 {
+	color: #fff;
+}
+
 #main-header .container {
 	width: 90%;
 }
@@ -96,6 +104,10 @@ body {
 	margin-bottom: 15px;
 	letter-spacing: -0.02em;
 	line-height: 1.5em;
+}
+
+.entry-content li li {
+	text-indent: -22px;
 }
 
 .entry-content .specialty-list li  {
@@ -630,7 +642,7 @@ body {
 	color: #fff;
 	font-size: 20px;
 	padding-bottom: 0;
-	margin: 0 0 5px;
+	margin: 0;
 }
 
 .et_pb_title_container .entry-title {
@@ -651,6 +663,7 @@ body {
 .member-name p {
 	line-height: 1.5em;
 	font-size: 14px;
+	margin: 5px 0 0;
 }
 
 .team-member:hover > .hover-overlay {
@@ -739,7 +752,7 @@ span.sub-toggle {
 }
 
 div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
-	background-size: 50%;
+	background-size: 47.5%;
 }
 
 .et_pb_row {
@@ -756,6 +769,16 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	text-indent: -22px;
 }
 
+.nav li.menu-item-1494 ul.sub-menu {
+	width: 120px;
+}
+
+.entry-content .icon-row h3 {
+	margin-bottom: 0;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
 @media (max-width: 812px) and (orientation: landscape) {
 	.hero .et_pb_column {
 		max-width: 60%;
@@ -768,6 +791,12 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 @media (max-width: 980px) {
 	.et_fixed_nav #main-header, .et_fixed_nav #top-header, .et_non_fixed_nav.et_transparent_nav #main-header, .et_non_fixed_nav.et_transparent_nav #top-header {
 		position: fixed;
+	}
+	.et_pb_row_5col>.et_pb_column.et_pb_column_1_5.last-icon-col {
+		width: 100%;
+	}
+	.icon-row .et_pb_column {
+		margin-bottom: 45px;
 	}
 	.no-bottom-margin {
 		margin-bottom: 0;
@@ -846,8 +875,11 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	}
 }
 
-@media (min-width: 1081px) {
-	
+@media (min-width: 981px) and (max-width: 1150px) {
+	.disable-side-padding.white-gradient-bg {
+		padding-top: 25px!important;
+		padding-bottom: 25px!important;
+	}
 }
 
 @media (min-width: 981px) and (max-width: 1280px) {
@@ -871,7 +903,7 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.right-col {
 		right: 8%;
 		width: 100%!important;
-		top: -40px;
+		top: -20px;
 	}
 	.left-col {
 		left: 8%;
@@ -879,13 +911,30 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	}
 }
 
+@media (min-width: 813px) {
+	.white-gradient-bg {
+		background-image: linear-gradient(
+		-90deg,rgba(255,255,255,0)40%,
+		rgba(255,255,255,1));
+	}
+}
+
 @media (max-width: 768px) {
 	#products .et_pb_row {
 		width: 80%;
 	}
-	.disable-side-padding.enable-mobile-side-padding {
+	.alt-row-layout .et_pb_row.disable-side-padding.enable-mobile-side-padding {
 		padding-left: 10%;
 		padding-right: 10%;
+	}
+	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg {
+		background-image: linear-gradient(
+		0deg,rgba(255,255,255,0)30%,
+		rgba(255,255,255,1));
+		width: 80%;
+	}
+	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg .et_pb_column:first-child {
+		padding: 0 10%;
 	}
 	.entry-content h1 {
 		font-size: 30px;
@@ -903,6 +952,13 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.team-member {
 		float: left;
 		width: 24.25%;
+	}
+	.icon-description-max-width {
+		max-width: 140px;
+		margin: auto;
+	}
+	.dzsparallaxer h2 {
+		margin-top: -8px;
 	}
 	.lokaksema .et_pb_module {
 		display: table;
@@ -922,7 +978,7 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 		bottom: -12%;
 	}
 	.left-col {
-		top: 100px;
+		top: 60px;
 	}
 	.team-member:nth-child(4n) {
 		margin-right: 0;
@@ -933,12 +989,14 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 }
 
 @media (min-width: 1101px) {
-	.left-col {
-		top: 80px;
-	}
-	
 	.single #left-area {
 		max-width: 60%;
+	}
+	.left-col {
+		top: 40px;
+	}
+	.right-col {
+		top: 0;
 	}
 }
 
@@ -963,9 +1021,6 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 }
 
 @media (min-width: 1280px) {
-	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
-		background-size: contain;
-	}
 	.alt-row-layout .et_pb_row {
 		padding-right: 10%;
 		padding-left: 10%;
@@ -1048,4 +1103,16 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 	.lokaksema h2:after {
 		bottom: -15px;
 	}
+}
+
+/*@media (min-width: 1600px) {
+	.alt-row-layout #main-header .container {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}*/
+
+.wide-header-container {
+	max-width: 1600px;
+	margin: auto;
 }
