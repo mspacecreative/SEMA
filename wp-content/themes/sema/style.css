@@ -208,7 +208,7 @@ p, ol, ul {
  }
  
  .nav li ul {
- 	width: 200px;
+ 	width: 275px;
  }
 
 #top-menu li li a {
@@ -770,7 +770,8 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 }
 
 .nav li.menu-item-1494 ul.sub-menu {
-	width: 120px;
+	width: 150px;
+	right: 0;
 }
 
 .entry-content .icon-row h3 {
@@ -820,6 +821,15 @@ img.alignright.half-width-img {
 
 .hbspt-form fieldset label {
 	font-family: inherit!important;
+}
+
+.nav .sub-menu {
+	right: 22px;
+	left: auto;
+}
+
+.nav .sub-menu li {
+	text-align: right;
 }
 
 
