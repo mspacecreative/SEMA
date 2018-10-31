@@ -195,16 +195,28 @@ p, ol, ul {
  
  .et_pb_gutters3.et_pb_footer_columns4 .footer-widget:first-of-type {
  	width: 20%;
+ 	margin-right: 5%;
  }
  
- .et_pb_gutters3.et_pb_footer_columns4 .footer-widget {
- 	width: 15%;
+ .et_pb_gutters3.et_pb_footer_columns4 .footer-widget:nth-child(2) {
+ 	width: 10%;
+ 	margin-right: 5%;
+ }
+ 
+ .et_pb_gutters3.et_pb_footer_columns4 .footer-widget:nth-child(3) {
+ 	width: 20%;
  	margin-right: 5%;
  }
  
  .et_pb_gutters3.et_pb_footer_columns4 .footer-widget:last-of-type {
  	width: 35%;
  	margin-right: 0;
+ }
+ 
+ #main-footer .container {
+ 	width: 100%;
+ 	max-width: none;
+ 	padding: 0 10%;
  }
  
  .nav li ul {
@@ -272,6 +284,7 @@ p, ol, ul {
 #main-footer {
 	background: #e9e9e9;
 	position: relative;
+	background-image: radial-gradient(circle at center,#f9f9f9 0%,#efefef 100%);
 }
 
 #footer-bottom {
@@ -788,9 +801,51 @@ img.alignright.half-width-img {
 	margin-left: 30px;
 }
 
+.email-optin {
+	padding: 20px 20px 5px;
+	background: #f9f9f9;
+	border: 1px solid #e9e9e9;
+	border-radius: 3px;
+}
+
 /* HUBSPOT STYLES */
 .hbspt-form {
 	margin-top: 50px;
+}
+
+.hbspt-form .hs-button {
+	background: #cc9901!important;
+	border: none!important;
+	font-size: 16px!important;
+	font-family: inherit!important;
+	padding: 10px 15px!important;
+	text-shadow: none!important;
+	line-height: 20px!important;
+	font-weight: normal!important;
+	box-shadow: none!important;
+	border-radius: 3px!important;
+}
+
+footer .hbspt-form, .page-id-1585 .hbspt-form {
+	margin-top: 0;
+}
+
+footer .hbspt-form input[type=email], .page-id-1585 .hbspt-form input[type=email] {
+	width: 100%!important;
+	border: 1px solid #e9e9e9!important;
+	border-radius: none!important;
+	box-shadow: none!important;
+	padding: 10px!important;
+	box-sizing: border-box!important;
+	height: auto!important;
+	line-height: inherit!important;
+	font-family: inherit!important;
+	font-size: 14px!important;
+}
+
+footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
+	margin: 0!important;
+	padding: 0!important;
 }
 
 .hbspt-form .hs-richtext {
