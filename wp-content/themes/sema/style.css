@@ -909,6 +909,23 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 	.et_fixed_nav #main-header, .et_fixed_nav #top-header, .et_non_fixed_nav.et_transparent_nav #main-header, .et_non_fixed_nav.et_transparent_nav #top-header {
 		position: fixed;
 	}
+	.et_pb_row_3.et_pb_row.white-gradient-bg {
+		padding-top: 8%!important;
+	}
+	
+	.alt-row-layout .et_pb_row.disable-side-padding.enable-mobile-side-padding {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg .et_pb_column:first-child {
+		padding: 0 10%;
+	}
+	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg {
+		background-image: linear-gradient(
+		0deg,rgba(255,255,255,0)30%,
+		rgba(255,255,255,1));
+		width: 80%;
+	}
 	.et_pb_row_5col>.et_pb_column.et_pb_column_1_5.last-icon-col {
 		width: 100%;
 	}
@@ -1045,19 +1062,6 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 		margin: 0 0 25px;
 		display: block;
 		float: none;
-	}
-	.alt-row-layout .et_pb_row.disable-side-padding.enable-mobile-side-padding {
-		padding-left: 10%;
-		padding-right: 10%;
-	}
-	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg {
-		background-image: linear-gradient(
-		0deg,rgba(255,255,255,0)30%,
-		rgba(255,255,255,1));
-		width: 80%;
-	}
-	.alt-row-layout .et_pb_row.disable-side-padding.white-gradient-bg .et_pb_column:first-child {
-		padding: 0 10%;
 	}
 	.entry-content h1 {
 		font-size: 30px;
