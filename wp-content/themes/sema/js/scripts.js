@@ -4,11 +4,9 @@
 		
 		'use strict';
 		
-		/*function checkSize() {
-			if($('#main-header .container').css('padding-left') == '0') {
-				$(this).children().wrap('<div class="wide-header-container"></div>');
-			}
-		}*/
+		function googleMapHeight() {
+			$('.google-map iframe').height($('.email-optin').outerHeight());
+		}
 		
 		function checkSize() {
 		    if (window.matchMedia('(min-width: 1600px)').matches) {
@@ -86,6 +84,7 @@
 		
 		$(window).load(function () {
 			connectivityTop();
+			googleMapHeight();
 		});
 		
 		$(window).resize(function () {
@@ -93,6 +92,7 @@
 			footerHeight();
 			shadowCoverWidth();
 			connectivityTop();
+			googleMapHeight();
 		});
 		
 		$(window).scroll(function() {

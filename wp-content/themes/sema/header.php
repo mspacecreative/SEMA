@@ -27,6 +27,9 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<!--GOOGLE TAG MANAGER-->
+<?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
+<!--/GOOGLE TAG MANAGER-->
 
 <?php
 	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {

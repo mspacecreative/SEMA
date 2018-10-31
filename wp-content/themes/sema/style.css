@@ -808,6 +808,11 @@ img.alignright.half-width-img {
 	border-radius: 3px;
 }
 
+.email-optin h4 {
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 /* HUBSPOT STYLES */
 .hbspt-form {
 	margin-top: 50px;
