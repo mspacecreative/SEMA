@@ -25,6 +25,23 @@
 	</script>
 
 	<?php wp_head(); ?>
+	
+	<!-- Global site tag (gtag.js) - Google AdWords: 833065001 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-833065001"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	
+	  gtag('config', 'AW-833065001');
+	</script>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-833065001"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
 </head>
 <body <?php body_class(); ?>>
 <!--GOOGLE TAG MANAGER-->
