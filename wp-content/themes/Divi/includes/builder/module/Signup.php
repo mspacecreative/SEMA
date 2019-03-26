@@ -114,7 +114,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 					'label'      => esc_html__( 'Button', 'et_builder' ),
 					'css'        => array(
 						'main' => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
-						'plugin_main' => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
+						'limited_main' => "{$this->main_css_element} .et_pb_newsletter_button.et_pb_button",
 					),
 					'box_shadow' => array(
 						'css' => array(
@@ -277,8 +277,13 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 	}
 
 	protected static function _get_account_fields( $provider_slug ) {
+		et_core_nonce_verified_previously();
+
 		$fields  = self::providers()->account_fields( $provider_slug );
-		$is_VB   = isset( $_REQUEST['action'] ) && 'et_fb_retrieve_builder_data' === $_REQUEST['action'];
+		$is_VB   = ( et_core_is_fb_enabled() && ! et_fb_dynamic_asset_exists( 'definitions' ) ) || ( isset( $_REQUEST['action'] ) && in_array( $_REQUEST['action'], array(
+			'et_fb_update_builder_assets',
+			'et_fb_retrieve_builder_data'
+		) ) );
 		$show_if = $is_VB ? 'add_new_account' : 'manage|add_new_account';
 
 		$account_name_key = $provider_slug . '_account_name';
@@ -326,15 +331,21 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 		foreach ( $fields as $field_id => $field_info ) {
 			$field_id = "{$provider_slug}_{$field_id}";
 
+			$show_if_conditions = array(
+				$list_key => $show_if,
+			);
+
+			if ( isset( $field_info['show_if'] ) ) {
+				$show_if_conditions = array_merge( $show_if_conditions, $field_info['show_if']);
+			}
+
 			$account_fields[ $field_id ] = array(
 				'name'            => $field_id,
-				'label'           => et_esc_previously( $field_info['label'] ),
+				'label'           => et_core_esc_previously( $field_info['label'] ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
 				'description'     => sprintf( '<a target="_blank" href="https://www.elegantthemes.com/documentation/bloom/accounts#%1$s">%2$s</a>', $provider_slug, $description_text ),
-				'show_if'         => array(
-					$list_key => $show_if,
-				),
+				'show_if'         => $show_if_conditions,
 				'class'           => 'et_pb_email_' . $field_id,
 				'toggle_slug'     => 'provider',
 			);
@@ -404,7 +415,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 				),
 			);
 
-			$account_fields = is_admin() ? self::_get_account_fields( $provider_slug ) : array();
+			$account_fields = is_admin() || ( et_core_is_fb_enabled() && ! et_fb_dynamic_asset_exists( 'definitions' ) ) ? self::_get_account_fields( $provider_slug ) : array();
 			$fields         = array_merge( $fields, $account_fields );
 		}
 
@@ -664,11 +675,11 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 					'type'            => 'multiple_checkboxes',
 					'option_category' => 'configuration',
 					'options'         => array(
-						'name'       => esc_html__( 'Name' ),
-						'last_name'  => esc_html__( 'Last Name' ),
-						'email'      => esc_html__( 'Email' ),
-						'ip_address' => esc_html__( 'IP Address' ),
-						'css_id'     => esc_html__( 'CSS ID' ),
+						'name'       => esc_html__( 'Name', 'et_builder' ),
+						'last_name'  => esc_html__( 'Last Name', 'et_builder' ),
+						'email'      => esc_html__( 'Email', 'et_builder' ),
+						'ip_address' => esc_html__( 'IP Address', 'et_builder' ),
+						'css_id'     => esc_html__( 'CSS ID', 'et_builder' ),
 					),
 					'show_if'         => array(
 						'success_action' => 'redirect',
@@ -989,7 +1000,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 				'declaration' => sprintf(
 					'background-color: %1$s%2$s;',
 					esc_html( $focus_background_color ),
-					et_is_builder_plugin_active() ? ' !important' : ''
+					et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : ''
 				),
 			) );
 		}
@@ -1036,7 +1047,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 				'declaration' => sprintf(
 					'background-color: %1$s%2$s;',
 					esc_html( $form_field_background_color ),
-					et_is_builder_plugin_active() ? ' !important' : ''
+					et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : ''
 				),
 			) );
 		}
@@ -1137,11 +1148,12 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 			}
 
 			$footer_content = $this->props['footer_content'];
-			$footer_content = str_replace( '<br />', '', $footer_content );
-			$footer_content = html_entity_decode( $footer_content, ENT_COMPAT, 'UTF-8' );
+
+			$footer_content = preg_replace( '/^[\w]?<\/p>/smi', '', $footer_content );
+			$footer_content = preg_replace( '/<p>$/smi', '', $footer_content );
 
 			if ( $footer_content ) {
-				$footer_content = sprintf('<div class="et_pb_newsletter_footer">%1$s</div>', et_esc_previously( $footer_content ) );
+				$footer_content = sprintf('<div class="et_pb_newsletter_footer">%1$s</div>', et_core_esc_previously( $footer_content ) );
 			}
 
 			$form = sprintf( '
@@ -1211,8 +1223,9 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 		) );
 
 		$description = $this->props['description'];
-		$description = str_replace( '&gt;<br />', '&gt;', $description );
-		$description = html_entity_decode( $description, ENT_COMPAT, 'UTF-8' );
+
+		$description = preg_replace( '/^[\w]?<\/p>/smi', '', $description );
+		$description = preg_replace( '/<p>$/smi', '', $description );
 
 		$output = sprintf(
 			'<div%6$s class="%4$s"%5$s%9$s%10$s%11$s%12$s>
@@ -1224,7 +1237,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 				</div>
 				%3$s
 			</div>',
-			( '' !== $title ? sprintf( '<%1$s class="et_pb_module_header">%2$s</%1$s>', et_pb_process_header_level( $header_level, 'h2' ), et_esc_previously( $title ) ) : '' ),
+			( '' !== $title ? sprintf( '<%1$s class="et_pb_module_header">%2$s</%1$s>', et_pb_process_header_level( $header_level, 'h2' ), et_core_esc_previously( $title ) ) : '' ),
 			$description,
 			$form,
 			$this->module_classname( $render_slug ),
@@ -1234,8 +1247,8 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 			$parallax_image_background,
 			$success_redirect_url,
 			$success_redirect_query, // #10
-			et_esc_previously( $data_background_layout ),
-			et_esc_previously( $data_background_layout_hover )
+			et_core_esc_previously( $data_background_layout ),
+			et_core_esc_previously( $data_background_layout_hover )
 		);
 
 		return $output;

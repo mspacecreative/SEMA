@@ -1,14 +1,14 @@
 /*
- Theme Name:   SEMA Custom WordPress Theme
+ Theme Name:   Sema Lab Theme
  Theme URI:    http://semalab.com
- Description:  SEMA custom theme
- Author:       Matt
+ Description:  Sema Lab custom theme
+ Author:       Matt Cyr
  Author URI:   http://mspacecreative.com
  Template:     Divi
  Version:      1.0
 */
 
-body.home {
+html,body {
 	overflow-x: hidden;
 }
 
@@ -20,6 +20,10 @@ body {
 	max-height: 768px;
 	background-attachment: fixed;
 	min-height: 450px;
+}
+
+.no_hover:hover {
+	background: #cc9900;
 }
 
 p, ol, ul {
@@ -60,9 +64,16 @@ p, ol, ul {
 	font-weight: bold;
 }
 
-/*.entry-content h3 {
-	font-weight: bold;
-}*/
+h4 {
+    line-height: 1.5em;
+    color: #000;
+    padding: 0;
+    margin: 0 0 20px;
+}
+
+.footer-widget h4 {
+    margin-bottom: 10px;
+}
 
 .bg-img-offset-right {
 	background-size: 60%!important;
@@ -163,7 +174,7 @@ p, ol, ul {
 
 .centered-quote h2:after {
 	bottom: -35px;
-}*/
+}
 
 .entry-content li:before {
 	margin-right: 10px;
@@ -171,6 +182,7 @@ p, ol, ul {
 
 .entry-content {
 	position: relative;
+	background: #fff;
 }
 
 .connectivity-graphic {
@@ -370,7 +382,7 @@ p, ol, ul {
 	display: none;
 }*/
 
-.alt-row-layout #main-header.et-fixed-header {
+.alt-row-layout #main-header.et-fixed-header, .single #main-header.et-fixed-header {
 	background-color: rgba(227, 244, 250, .75);
 }
 
@@ -483,7 +495,7 @@ p, ol, ul {
 	position: absolute;
 	right: 0;
 	top: 0;
-	background: url(img/backgrounds/connectivity-right.png) no-repeat right;
+	background: url(img/backgrounds/connectivity-right.png) no-repeat right top;
 	width: 60%;
 	height: 60%;
 	content: '';
@@ -495,25 +507,13 @@ p, ol, ul {
 	position: absolute;
 	left: 0;
 	top: 0;
-	background: url(img/backgrounds/connectivity-left.png) no-repeat left;
+	background: url(img/backgrounds/connectivity-left.png) no-repeat left top;
 	width: 60%;
 	height: 60%;
 	content: '';
 	background-size: contain;
 	opacity: .25;
 }
-
-/*#our-team:before {
-	position: absolute;
-	right: 0;
-	top: 0;
-	background: url(img/backgrounds/connectivity-right.png) no-repeat top right;
-	width: 100%;
-	height: 100%;
-	content: '';
-	background-size: 40%;
-	opacity: .25;
-}*/
 
 .specialty-list {
 	background: rgba(255,255,255,.5);
@@ -553,6 +553,7 @@ p, ol, ul {
 	height: 100%;
 	background: rgba(0, 120, 200, .5);
 	content: '';
+	z-index: 5;
 }
 
 .blue-overlay-light:after {
@@ -563,6 +564,7 @@ p, ol, ul {
 	height: 100%;
 	background: rgba(0, 120, 200, .25);
 	content: '';
+	z-index: 5;
 }
 
 .blue-overlay-darker:after {
@@ -573,6 +575,17 @@ p, ol, ul {
 	height: 100%;
 	background: rgba(0, 120, 200, .75);
 	content: '';
+	z-index: 5;
+}
+
+.dzsparallaxer.blue-overlay-offset .blue-overlay-offset-row {
+   background: rgba(0, 120, 200, .5);
+   z-index: 9;
+}
+
+.dzsparallaxer.blue-overlay-darker-offset .blue-overlay-darker-offset-row {
+    background: rgba(0, 120, 200, .75);
+   z-index: 9;
 }
 
 .team-member {
@@ -988,10 +1001,6 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 }
 
 @media (max-width: 812px) {
-	.hero h1 {
-		font-size: 36px;
-		letter-spacing: -0.03em;
-	}
 	.connectivity-graphic {
 		background-size: 75%;
 	}
@@ -1006,6 +1015,12 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 	}
 	div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 		padding-top: 0;
+	}
+}
+
+@media (max-width: 767px) {
+    .entry-content h1 {
+		font-size: 30px;
 	}
 }
 
@@ -1062,9 +1077,6 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 		margin: 0 0 25px;
 		display: block;
 		float: none;
-	}
-	.entry-content h1 {
-		font-size: 30px;
 	}
 	.two-thirds-one-third-w-bg img {
 		position: relative;
@@ -1242,4 +1254,32 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 .wide-header-container {
 	max-width: 1600px;
 	margin: auto;
+}
+
+@media (max-width: 650px) {
+    .hero h1 {
+		font-size: 36px;
+		letter-spacing: -0.03em;
+	}
+}
+
+@media (max-width: 812px) and (orientation: landscape) {
+    .hero h1 {
+		font-size: 36px;
+		letter-spacing: -0.03em;
+	}
+}
+
+.single.et_right_sidebar #main-content .container:before {
+    display: none;
+}
+
+.single #content-area {
+    background: none;
+    position: relative;
+    z-index: 99;
+}
+
+.single .entry-content {
+    background: none;
 }

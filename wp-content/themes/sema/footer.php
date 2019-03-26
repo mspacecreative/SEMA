@@ -15,7 +15,7 @@ if ( 'on' == et_get_option( 'divi_back_to_top', 'false' ) ) : ?>
 if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 
 			<footer id="main-footer">
-				<div class="footer-below"></div>
+				<!--<div class="footer-below"></div>-->
 				<?php get_sidebar( 'footer' ); ?>
 
 
