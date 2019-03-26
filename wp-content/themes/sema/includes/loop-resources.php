@@ -9,7 +9,9 @@
 			<div class="grid-item">
 				<div class="grid-inner">
 					<?php if ( has_post_thumbnail() ) { ?>
-					    <?php echo the_post_thumbnail(); ?>
+					<a href="<?php the_permalink(); ?>">
+						<?php echo the_post_thumbnail(); ?>
+					</a>
 					<?php } ?>
 						<div class="card-content">
 							<h3><?php the_title(); ?></h3>
