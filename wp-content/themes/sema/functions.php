@@ -55,13 +55,19 @@ function footer_scripts() {
 	
 	wp_register_script('para-script', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.js', array('jquery'), null, true);
 	wp_enqueue_script('para-script');
+	
+	wp_register_script('cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array('jquery'), null, true);
+	wp_enqueue_script('cookie');
+	
+	wp_register_script('drawer', get_stylesheet_directory_uri() . '/js/drawer.js', array('jquery'), null, true);
+	wp_enqueue_script('drawer');
 }
 
 /* ACF OPTIONS PAGE */
 if( function_exists('acf_add_options_sub_page') ) {
 
 	//acf_add_options_sub_page('Footer');
-	//acf_add_options_sub_page('Call-out Box');
+	acf_add_options_sub_page('Draw Content');
 	acf_add_options_sub_page('Team Page');
 	
 }
