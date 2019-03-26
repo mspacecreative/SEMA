@@ -9,7 +9,7 @@ $(document).ready(function() {
 	 
 	  $('.drawer-close').click(function(e) {
 	    e.preventDefault();
-	    $.cookie('notice','closed');
+	    $.cookie('notice','closed', { path: '/' });
 	    $(this).parent().fadeOut();
 	  });
 	    // Simple close link to hide the notice until cookies are cleared
