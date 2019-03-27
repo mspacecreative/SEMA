@@ -10,8 +10,7 @@
  
  function drawerstyles() {
  	wp_enqueue_style( 'drawer-css', plugin_dir_url( __FILE__ ) . 'css/drawer.css', array(), null );
- 	wp_enqueue_script( 'cookie', plugin_dir_url( __FILE__ ) . 'js/cookie.js', array(), null );
- 	wp_enqueue_script( 'drawer', plugin_dir_url( __FILE__ ) . 'js/drawer.js', array(), null );
+ 	wp_enqueue_script( 'jquery-cookie', plugin_dir_url( __FILE__ ) . 'js/jquery.cookie.js', array( 'jquery' ), '1.0', true );
  }
  
  function sema_Drawer() {
