@@ -2,12 +2,14 @@
   background: #e9e9e9;
   position: fixed;
   bottom: 0;
-  left: 0;
+  right: 0;
   width: 100%;
   z-index: 999999;
   visibility: visible;
   opacity: 1;
   transition: 0.25s ease-in-out;
+  max-width: 600px;
+  box-shadow: 0 0 10px #999;
 }
 
 #drawer.hidden {
@@ -16,16 +18,49 @@
 	transition: 0.25s ease-in-out;
 }
 
-.drawer-close {
+.fa.drawer-close {
 	position: absolute;
-	right: 20px;
-	top: 20px;
+	right: 10px;
+	top: 10px;
 	cursor: pointer;
+	font-size: 25px;
 }
 
 .drawer-inner {
-	padding: 20px;
+	padding: 20px 50px 20px 20px;
 	width: 100%;
 	max-width: 1080px;
 	margin: auto;
+}
+
+#drawer a {
+	background-color: #cc9900;
+	color: #fff;
+	display: inline-block;
+	padding: 10px 15px;
+	margin-top: 15px;
+	border-radius: 4px;
+	transition: 0.25s ease-in-out;
+}
+
+#drawer a:hover {
+	transition: 0.25s ease-in-out;
+	background-color: #999;
+}
+
+#drawer img {
+	box-shadow: 0px 0px 10px #999;
+}
+
+#drawer .one-half-col {
+	float: left;
+}
+
+#drawer .one-half-col:first-of-type {
+	margin-right: 4%;
+	width: 30%;
+}
+
+#drawer .one-half-col:last-of-type {
+	width: 66%;
 }

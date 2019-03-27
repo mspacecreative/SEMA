@@ -19,13 +19,20 @@
  				<i class="fa fa-close drawer-close"></i>
  				<div class="drawer-inner clearfix">
  					<div class="one-half-col">
- 						<?php if ( get_field('drawer_content', 'options') ) :
- 							the_field('drawer_content', 'options');
- 						endif; ?>
+ 						<?php 
+ 						$image = get_field('drawer_image', 'options');
+ 						$size = 'medium';
+						if( $image ) {
+							echo wp_get_attachment_image( $image, $size );
+						}
+						?>
  					</div>
  					<div class="one-half-col">
- 						<?php if ( get_field('drawer_link', 'options') ) : ?>
- 						<a href="<?php the_field('drawer_link', 'options'); ?>"><span style="text-transform: uppercase;"><?php esc_html_e('learn more'); ?></span></a>
+ 						<?php if ( get_field('drawer_content', 'options') ) :
+ 						the_field('drawer_content', 'options');
+ 						endif;
+ 						if ( get_field('drawer_link', 'options') ) : ?>
+ 						<a class="cta-button" href="<?php the_field('drawer_link', 'options'); ?>"><span style="text-transform: uppercase;"><?php esc_html_e('learn more'); ?></span></a>
  						<?php endif; ?>
  					</div>
  				</div>

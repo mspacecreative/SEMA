@@ -134,6 +134,11 @@ $('.drawer-close').click(function(e) {
 	$(this).parent().fadeOut();
 });
 
+$('.cta-button').click(function() {
+	$.cookie('notice','closed', { path: '/' });
+	$(this).parent().parent().parent().fadeOut();
+});
+
 /*Opener link to show the notice again
 $('a.open').click(function(e) {
   e.preventDefault();
