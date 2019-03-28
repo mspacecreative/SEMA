@@ -67,7 +67,7 @@ function footer_scripts() {
 if( function_exists('acf_add_options_sub_page') ) {
 
 	//acf_add_options_sub_page('Footer');
-	acf_add_options_sub_page('Draw Content');
+	acf_add_options_sub_page('Drawer Content');
 	acf_add_options_sub_page('Team Page');
 	
 }
