@@ -31,9 +31,17 @@
  						<?php if ( get_field('drawer_content', 'options') ) :
  						the_field('drawer_content', 'options');
  						endif;
- 						if ( get_field('drawer_link', 'options') ) : ?>
- 						<a class="cta-button" href="<?php the_field('drawer_link', 'options'); ?>"><span style="text-transform: uppercase;"><?php esc_html_e('learn more'); ?></span></a>
- 						<?php endif; ?>
+ 						if( have_rows('drawer_button', 'options') ): 
+ 							while( have_rows('drawer_button', 'options') ): the_row();
+ 							$label = get_sub_field('button_label', 'options');
+ 							$link = get_sub_field('button_link', 'options'); ?>
+	 						<a class="cta-button" href="<?php echo $link; ?>">
+	 							<span style="text-transform: uppercase;">
+	 							<?php echo $label; ?>
+	 							</span>
+	 						</a>
+ 						<?php endwhile;
+ 						endif; ?>
  					</div>
  				</div>
  			</div>
