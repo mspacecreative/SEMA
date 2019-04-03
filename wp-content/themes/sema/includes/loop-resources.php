@@ -15,14 +15,10 @@
 					<?php } ?>
 						<div class="card-content">
 							<?php 
-							$term = get_term_by('name', 'categories');
-							if ( $term ) {
-							    echo '<p>';
-							    echo esc_html_e('Category: ');
-							    echo $term;
-							    echo '</p>';
-							}
-							?>
+							$terms = wp_get_post_terms( $query->post->ID, array( 'categories' ) );
+							 foreach ( $terms as $term ) : ?>
+								<p><?php echo $term->taxonomy; ?>: <?php echo $term->name; ?></p>
+							<?php endforeach; ?>
 							<h3><?php the_title(); ?></h3>
 							<?php
 							if( has_excerpt() ) { 
