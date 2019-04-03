@@ -14,8 +14,8 @@
 					</a>
 					<?php } ?>
 						<div class="card-content">
-							<?php if ( get_taxonomies() ): ?>
-								<p><?php echo esc_html_e('Category: '); ?><?php the_taxonomies(); ?></p>
+							<?php if ( has_term( '', 'categories' ) ): ?>
+								<p><?php echo esc_html_e('Category: '); ?><?php the_term(); ?></p>
 							<?php endif; ?>
 							<h3><?php the_title(); ?></h3>
 							<?php
