@@ -14,9 +14,17 @@
 					</a>
 					<?php } ?>
 						<div class="card-content">
-							<?php if ( has_term( '', 'categories' ) ): ?>
-								<p><?php echo esc_html_e('Category: '); ?><?php the_term(); ?></p>
-							<?php endif; ?>
+							<?php 
+							$terms = get_terms( 'categories' );
+							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+							    echo '<p>';
+							    echo esc_html_e('Category: ');
+							    foreach ( $terms as $term ) {
+							        echo $term->name;
+							    }
+							    echo '</p>';
+							}
+							?>
 							<h3><?php the_title(); ?></h3>
 							<?php
 							if( has_excerpt() ) { 
