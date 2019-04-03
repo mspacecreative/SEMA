@@ -15,13 +15,11 @@
 					<?php } ?>
 						<div class="card-content">
 							<?php 
-							$terms = get_terms( 'categories', $post->ID );
-							if ( ! empty( $terms ) && ! is_wp_error( $terms ) ){
+							$term = get_term_by('name', 'categories');
+							if ( $term ) {
 							    echo '<p>';
 							    echo esc_html_e('Category: ');
-							    foreach ( $terms as $term ) {
-							        echo $term->name;
-							    }
+							    echo $term;
 							    echo '</p>';
 							}
 							?>
