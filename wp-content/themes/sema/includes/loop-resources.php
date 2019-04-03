@@ -14,6 +14,7 @@
 					</a>
 					<?php } ?>
 						<div class="card-content">
+							<p><?php echo esc_html_e('Category: '); ?><?php the_taxonomies(); ?></p>
 							<h3><?php the_title(); ?></h3>
 							<?php
 							if( has_excerpt() ) { 
