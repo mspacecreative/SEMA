@@ -29,8 +29,8 @@
 								the_content();
 							}
 							?>
-							<div class="cta-buttons">
-								<a href="<?php the_permalink(); ?>"><?php _e(' More...'); ?></a>
+							<div>
+								<a style="color: #ffffff; padding-left: 0.7em; padding-right: 2em; background-color: #cc9901; transition: 0.25s ease-in-out;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
 							</div>
 						</div>
 				</div>
