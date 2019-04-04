@@ -18,7 +18,7 @@
 							$terms = get_the_terms( $post->ID, 'categories' );
 							if ( $terms ) {
 								foreach ( $terms as $term ) {
-									echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a>';
+									echo '<p>' . esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a></p>';
 								}
 							} ?>
 							<h3><?php the_title(); ?></h3>
