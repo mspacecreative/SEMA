@@ -14,13 +14,15 @@
 					</a>
 					<?php } ?>
 						<div class="card-content">
+							<p style="padding: 0; margin-bottom: 25px;">
 							<?php 
-							$terms = get_the_terms( $post->ID, 'categories' );
-							if ( $terms ) {
-								foreach ( $terms as $term ) {
-									echo '<p>' . _e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a></p>';
-								}
-							} ?>
+								$terms = get_the_terms( $post->ID, 'categories' );
+								if ( $terms ) {
+									foreach ( $terms as $term ) {
+										echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a>';
+									}
+								} ?>
+							</p>
 							<h3><?php the_title(); ?></h3>
 							<?php
 							if( has_excerpt() ) { 
