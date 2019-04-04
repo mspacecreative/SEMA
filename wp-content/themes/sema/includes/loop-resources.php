@@ -30,7 +30,7 @@
 							}
 							?>
 							<div>
-								<a class="et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .07em; background-color: #cc9901; transition: 0.25s ease-in-out;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
+								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
 							</div>
 						</div>
 				</div>
