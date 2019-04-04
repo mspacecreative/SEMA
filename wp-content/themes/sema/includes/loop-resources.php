@@ -10,11 +10,12 @@
 				<div class="grid-inner">
 					<?php if ( has_post_thumbnail() ) { ?>
 					<a href="<?php the_permalink(); ?>">
-						<?php echo the_post_thumbnail(); ?>
+						<?php echo the_post_thumbnail('resource'); ?>
 					</a>
 					<?php } ?>
 						<div class="card-content">
-							<?php $terms = get_the_terms( $post->ID, 'categories' );
+							<?php 
+							$terms = get_the_terms( $post->ID, 'categories' );
 							if ( $terms ) { ?>
 							<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
 							<?php 
