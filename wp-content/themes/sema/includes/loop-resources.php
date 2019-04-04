@@ -10,7 +10,7 @@
 				<div class="grid-inner">
 					<?php if ( has_post_thumbnail() ) { ?>
 					<a href="<?php the_permalink(); ?>">
-						<?php echo the_post_thumbnail('thumbnail'); ?>
+						<?php echo the_post_thumbnail('resource-thumb'); ?>
 					</a>
 					<?php } ?>
 						<div class="card-content">

@@ -19,13 +19,13 @@ if (function_exists('add_theme_support'))
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
     add_image_size( 'headshot', 353, 359, array( 'center', 'center' ) );
-    add_image_size( 'resource', 250, 250, array( 'top', 'center' ) );
+    add_image_size( 'resource-thumb', 400, 400, array( 'center', 'top' ) );
 }
  
 function my_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'headshot' => __( 'Head Shot' ),
-        'resource' => __( 'Resource Thumb' ),
+        'resource-thumb' => __( 'Resource Thumb' ),
     ) );
 }
 
