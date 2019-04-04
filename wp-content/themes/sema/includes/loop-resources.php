@@ -32,9 +32,19 @@
 								the_content();
 							}
 							?>
+							<?php if ( get_field('anchor_link') ): ?>
+							<div>
+								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px; display: inline-block;" href="/sema/solutions-2/#<?php the_field('anchor_link'); ?>"><?php _e('Learn More'); ?></a>
+							</div>
+							<?php elseif ( get_field('external_link') ): ?>
+							<div>
+								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px; display: inline-block;" href="<?php the_field('external_link'); ?>" target="_blank"><?php _e('Learn More'); ?></a>
+							</div>
+							<?php else : ?>
 							<div>
 								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px; display: inline-block;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
 							</div>
+							<?php endif; ?>
 						</div>
 				</div>
 			</div>
