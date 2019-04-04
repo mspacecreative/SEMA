@@ -14,7 +14,7 @@
 					</a>
 					<?php } ?>
 						<div class="card-content">
-							<p style="padding: 0; margin-bottom: 25px;">
+							<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
 							<?php 
 								$terms = get_the_terms( $post->ID, 'categories' );
 								if ( $terms ) {
