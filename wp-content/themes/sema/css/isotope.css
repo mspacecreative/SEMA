@@ -12,3 +12,8 @@
 button {
 	cursor: pointer;
 }
+
+.button-group {
+	text-align: center;
+	margin: 0 auto 50px;
+}
