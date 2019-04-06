@@ -42,7 +42,8 @@
 		    }
 		    buttonGroup.querySelector(".is-checked").classList.remove("is-checked");
 		    event.target.classList.add("is-checked");
-		  })
+		  });
+		}
 	});
 	
 })(jQuery, this);
