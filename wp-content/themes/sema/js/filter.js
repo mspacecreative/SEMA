@@ -1,0 +1,21 @@
+jQuery(function($){
+		$('#filter').submit(function(){
+			var filter = $('#filter');
+			$.ajax({
+				url:filter.attr('action'),
+				data:filter.serialize(), // form data
+				type:filter.attr('method'), // POST
+				beforeSend:function(xhr){
+					filter.find('button').text('Processing...'); // changing the button label
+					$('#response').css('opacity', '.25');
+					$('.product-loading').addClass('visible');
+				},
+				success:function(data){
+					filter.find('button').text('Apply filter'); // changing the button label back
+					$('#response').html(data).css('opacity', '1'); // insert data
+					$('.product-loading').removeClass('visible');
+				}
+			});
+			return false;
+		});
+	});
