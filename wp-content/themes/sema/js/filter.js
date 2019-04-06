@@ -1,4 +1,4 @@
-jQuery(function($){
+/*jQuery(function($){
 		$('#filter').submit(function(){
 			var filter = $('#filter');
 			$.ajax({
@@ -17,5 +17,17 @@ jQuery(function($){
 				}
 			});
 			return false;
+		});
+	});*/
+	
+	var $mainContent = $('#et-main-area'),
+	$cat_links = $('ul#menu-resources-filter-menu li a');
+	$cat_links.on('click', function (e) {
+		e.preventDefault();
+		$el = $(this);
+		var value = $el.attr("href");
+		$mainContent.animate({opacity: "0.5"});
+		$mainContent.load(value + " #main-content", function () {
+			$mainContent.animate({opacity: "1"});
 		});
 	});
