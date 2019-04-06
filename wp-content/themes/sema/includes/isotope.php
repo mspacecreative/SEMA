@@ -11,7 +11,7 @@
 	        $terms = get_the_terms( $post->ID, 'categories' );
 			if ( $terms ) {
 				foreach ( $terms as $term ) { ?>
-				<div class="resource-item <?php echo $term->name ?>">
+				<div class="resource-item <?php echo $term->slug ?>">
 				<?php } ?>
 			<?php } ?>
 					<div class="grid-inner">
