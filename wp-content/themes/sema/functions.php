@@ -55,12 +55,6 @@ function footer_scripts() {
 	wp_register_script('animate', get_stylesheet_directory_uri() . '/js/css3-animate-it.js', array('jquery'), null, true);
 	wp_enqueue_script('animate');
 	
-	wp_register_script('isotope-library', 'https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js', array('jquery'), null, true);
-	wp_enqueue_script('isotope-library');
-	
-	wp_register_script('isotope-script', get_stylesheet_directory_uri() . '/js/isotope.js', array('jquery'), null, true);
-	wp_enqueue_script('isotope-script');
-	
 	wp_register_script('fontawesome', 'https://use.fontawesome.com/6ccd600e51.js', array('jquery'), null, true);
 	wp_enqueue_script('fontawesome');
 	
