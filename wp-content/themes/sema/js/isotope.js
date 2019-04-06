@@ -26,7 +26,7 @@ $(window).load(function () {
 	var filtersElem = document.querySelector(".filters-button-group");
 	filtersElem.addEventListener("click", function(event) {
 	  // only work with buttons
-	  if (!matchesSelector(event.target, "button")) {
+	  if (!matchesSelector(event.target, ".button")) {
 	    return;
 	  }
 	  var filterValue = event.target.getAttribute("data-filter");
@@ -45,7 +45,7 @@ $(window).load(function () {
 	function radioButtonGroup(buttonGroup) {
 	  buttonGroup.addEventListener("click", function(event) {
 	    // only work with buttons
-	    if (!matchesSelector(event.target, "button")) {
+	    if (!matchesSelector(event.target, ".button")) {
 	      return;
 	    }
 	    buttonGroup.querySelector(".is-checked").classList.remove("is-checked");
