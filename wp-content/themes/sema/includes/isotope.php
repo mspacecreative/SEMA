@@ -3,7 +3,7 @@ if ( $loop->have_posts() ) : ?>
 <div class="button-group filters-button-group">
 	<button class="button is-checked">All Types</button>
 	<?php
-	$terms = get_the_terms( $post->ID, 'categories' ); 
+	$terms = get_the_terms( 'resources', 'categories' ); 
 	if ( $terms ) { ?>
 		<?php foreach ( $terms as $term ) { ?>
 		<button class="button" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></li>
