@@ -1249,7 +1249,7 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 	}
 }
 
-.single.et_right_sidebar #main-content .container:before {
+.single.et_right_sidebar #main-content .container:before, .tax-categories #main-content .container:before {
     display: none;
 }
 
