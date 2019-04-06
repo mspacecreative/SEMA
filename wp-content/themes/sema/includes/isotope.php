@@ -1,7 +1,12 @@
 <div class="button-group filters-button-group">
 	<button class="button is-checked">All Types</button>
-	<button class="button" data-filter=".ebook">eBooks</li>
-	<button class="button" data-filter=".data-sheet">Data Sheets</li>
+	<?php
+	$terms = get_the_terms( $post->ID, 'categories' ); 
+	if ( $terms ) { ?>
+		<?php foreach ( $terms as $term ) { ?>
+		<button class="button" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></li>
+		<?php } ?>
+	<?php } ?>
 </div>
 
 <div class="grid">
