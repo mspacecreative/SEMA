@@ -1,4 +1,4 @@
-#instafeed img {
+#instafeed img, .grid img {
 	width: 250px;
 	height: auto;
 	display: block;
