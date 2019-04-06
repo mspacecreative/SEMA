@@ -1,6 +1,5 @@
 <?php $loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
-if ( $loop->have_posts() ) :
-while ( $loop->have_posts() ) : $loop->the_post(); ?>
+if ( $loop->have_posts() ) : ?>
 <div class="button-group filters-button-group">
 	<button class="button is-checked">All Types</button>
 	<?php
@@ -16,7 +15,8 @@ while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
 	<?php 
-	$terms = get_the_terms( $post->ID, 'categories' );
+	while ( $loop->have_posts() ) : $loop->the_post();
+	        $terms = get_the_terms( $post->ID, 'categories' );
 			if ( $terms ) {
 				foreach ( $terms as $term ) { ?>
 				<div class="resource-item <?php echo $term->slug ?>">
@@ -63,8 +63,6 @@ while ( $loop->have_posts() ) : $loop->the_post(); ?>
 							</div>
 					</div>
 				</div>
-			
+			<?php endwhile; ?>
 </div>
-<?php endwhile; 
-	endif; wp_reset_postdata();
-?>
+<?php endif; wp_reset_postdata(); ?>
