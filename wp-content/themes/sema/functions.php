@@ -42,9 +42,6 @@ function my_theme_enqueue_styles() {
 	
 	wp_register_style('animations', get_stylesheet_directory_uri() . '/css/animations.css', array(), '1.0', 'all');
 	wp_enqueue_style('animations');
-	
-	wp_register_style('filter', get_stylesheet_directory_uri() . '/css/filter.css', array(), '1.0', 'all');
-	wp_enqueue_style('filter');
 }
 
 function footer_scripts() {
@@ -55,20 +52,11 @@ function footer_scripts() {
 	wp_register_script('animate', get_stylesheet_directory_uri() . '/js/css3-animate-it.js', array('jquery'), null, true);
 	wp_enqueue_script('animate');
 	
-	wp_register_script('filter-js', get_stylesheet_directory_uri() . '/js/filter.js', array('jquery'), null, true);
-	wp_enqueue_script('filter-js');
-	
 	wp_register_script('fontawesome', 'https://use.fontawesome.com/6ccd600e51.js', array('jquery'), null, true);
 	wp_enqueue_script('fontawesome');
 	
 	wp_register_script('para-script', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.js', array('jquery'), null, true);
 	wp_enqueue_script('para-script');
-	
-	//wp_register_script('cookie', get_stylesheet_directory_uri() . '/js/jquery.cookie.js', array('jquery'), null, true);
-	//wp_enqueue_script('cookie');
-	
-	//wp_register_script('drawer', get_stylesheet_directory_uri() . '/js/drawer.js', array('jquery'), null, true);
-	//wp_enqueue_script('drawer');
 }
 
 /* ACF OPTIONS PAGE */
@@ -86,17 +74,6 @@ function teamLoop() {
 		get_template_part('includes/loop-team');
 	return ob_get_clean();
 }
-
-/*function posts_sidebar() {
-	register_sidebar( array(
-		'name' => esc_html__( 'Blog Sidebar', 'ahbrsc' ),
-		'id' => 'blog-sidebar',
-		'before_widget' => '<div id="%1$s" class="et_pb_widget %2$s">',
-		'after_widget' => '</div> <!-- end .et_pb_widget -->',
-		'before_title' => '<h3 class="widgettitle">',
-		'after_title' => '</h3>',
-	) );
-}*/
 
 function remove_FooterArea6() {
 	unregister_sidebar('sidebar-6');
@@ -148,9 +125,6 @@ add_shortcode( 'resources_loop', 'resourcesLoop' );
 add_shortcode( 'filtered_resources_loop', 'filteredResourcesLoop' );
 add_action( 'widgets_init', 'posts_sidebar' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
-
-// SHORTCODES
-//add_shortcode('content_block', 'content_blocks');
 
 // CUSTOM THUMBNAIL IN BACKEND
 add_filter( 'image_size_names_choose', 'my_custom_sizes' );
