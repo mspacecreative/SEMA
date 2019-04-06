@@ -1,4 +1,4 @@
-<div id="instafeed">
+<div class="grid">
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
 	

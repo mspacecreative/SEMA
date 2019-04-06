@@ -8,11 +8,11 @@
  * Author URI: http://mspacecreative.com
  */
 
-function masonry_css() {
-	wp_enqueue_style( 'masonry', plugin_dir_url( __FILE__ ) . 'css/masonry.css', array(), null );
-	wp_enqueue_script( 'masonry-cdn', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_script( 'masonry-script', plugin_dir_url( __FILE__ ) . 'js/masonry.js', array( 'jquery' ), '1.0', true );
-}
+/*function masonry_css() {
+	//wp_enqueue_style( 'masonry', plugin_dir_url( __FILE__ ) . 'css/masonry.css', array(), null );
+	//wp_enqueue_script( 'masonry-cdn', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array( 'jquery' ), '1.0', true );
+	//wp_enqueue_script( 'masonry-script', plugin_dir_url( __FILE__ ) . 'js/masonry.js', array( 'jquery' ), '1.0', true );
+}*/
 
 function masonry() {
     ob_start();
@@ -20,4 +20,4 @@ function masonry() {
     return ob_get_clean();
 } 
 add_shortcode( 'masonry', 'masonry' );
-add_action( 'wp_enqueue_scripts', 'masonry_css' );
+//add_action( 'wp_enqueue_scripts', 'masonry_css' );
