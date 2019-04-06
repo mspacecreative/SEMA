@@ -1,6 +1,6 @@
 var iso = new Isotope(".grid", {
   itemSelector: ".resource-item",
-  layoutMode: "fitRows"
+  layoutMode: "fitRows",
 });
 
 // filter functions
