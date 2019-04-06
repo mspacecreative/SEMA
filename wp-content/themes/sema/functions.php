@@ -42,9 +42,6 @@ function my_theme_enqueue_styles() {
 	
 	wp_register_style('animations', get_stylesheet_directory_uri() . '/css/animations.css', array(), '1.0', 'all');
 	wp_enqueue_style('animations');
-	
-	wp_register_style('isotope-css', get_stylesheet_directory_uri() . '/css/isotope.css', array(), '1.0', 'all');
-	wp_enqueue_style('isotope-css');
 }
 
 function footer_scripts() {
