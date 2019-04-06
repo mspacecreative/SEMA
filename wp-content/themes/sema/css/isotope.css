@@ -13,9 +13,8 @@
   margin: 5px;
   padding: 10px;
   color: #262524;
-  width: 33.333%;
 }
 
-.button {
+button {
 	cursor: pointer;
 }

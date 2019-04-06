@@ -4,7 +4,8 @@ $(window).load(function () {
 	  percentPosition: true,
 	  masonry: {
 	      // use element for option
-	      columnWidth: '.grid-sizer'
+	      columnWidth: '.grid-sizer',
+	      gutter: '.gutter-sizer',
 	    }
 	});
 	
