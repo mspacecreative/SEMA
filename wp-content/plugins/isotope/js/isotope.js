@@ -1,6 +1,6 @@
 $(window).load(function () {
 	var iso = new Isotope(".grid", {
-	  itemSelector: ".grid-item, .resource-item",
+	  itemSelector: ".resource-item",
 	  percentPosition: true,
 	  masonry: {
 	      // use element for option
