@@ -42,6 +42,9 @@ function my_theme_enqueue_styles() {
 	
 	wp_register_style('animations', get_stylesheet_directory_uri() . '/css/animations.css', array(), '1.0', 'all');
 	wp_enqueue_style('animations');
+	
+	wp_register_style('isotope-css', get_stylesheet_directory_uri() . '/css/isotope.css', array(), '1.0', 'all');
+	wp_enqueue_style('isotope-css');
 }
 
 function footer_scripts() {
@@ -51,6 +54,12 @@ function footer_scripts() {
 	
 	wp_register_script('animate', get_stylesheet_directory_uri() . '/js/css3-animate-it.js', array('jquery'), null, true);
 	wp_enqueue_script('animate');
+	
+	wp_register_script('isotope-library', 'https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js', array('jquery'), null, true);
+	wp_enqueue_script('isotope-library');
+	
+	wp_register_script('isotope-script', get_stylesheet_directory_uri() . '/js/isotope.js', array('jquery'), null, true);
+	wp_enqueue_script('isotope-script');
 	
 	wp_register_script('fontawesome', 'https://use.fontawesome.com/6ccd600e51.js', array('jquery'), null, true);
 	wp_enqueue_script('fontawesome');
@@ -109,7 +118,7 @@ function resourcesLoop() {
 // FILTERED RESOURCES LOOP SHORTCODE
 function filteredResourcesLoop() {
 	ob_start();
-		get_template_part('includes/filtered-resources');
+		get_template_part('includes/isotope');
 	return ob_get_clean();
 }
 
