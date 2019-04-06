@@ -3,7 +3,7 @@
 <div id="main-content">
 	<div class="container">
 		<div id="content-area" class="clearfix">
-			<?php get_template_part('includes/loop-taxonomy-categories-ebook'); ?>
+			<?php get_template_part('includes/loop-taxonomy-categories-data-sheet'); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 </div> <!-- #main-content -->
