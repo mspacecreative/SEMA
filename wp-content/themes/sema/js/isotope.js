@@ -1,6 +1,10 @@
 var iso = new Isotope(".grid", {
   itemSelector: ".resource-item",
-  layoutMode: "fitRows",
+  percentPosition: true,
+  masonry: {
+      // use element for option
+      columnWidth: '.grid-sizer'
+    }
 });
 
 // filter functions

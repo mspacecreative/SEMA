@@ -1,9 +1,10 @@
-<ul>
+<ul class="button-group filters-button-group">
 	<li class="button" data-filter=".ebook">eBooks</li>
 	<li class="button" data-filter=".datasheet">Data Sheets</li>
 </ul>
 
 <div class="grid">
+	<div class="grid-sizer"></div>
 	<?php 
 	$loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
 	    if ( $loop->have_posts() ) :
