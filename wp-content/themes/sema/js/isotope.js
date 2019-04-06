@@ -1,4 +1,4 @@
-$(document).ready(function () {
+jQuery(function ($) {
 	var iso = new Isotope(".grid", {
 	  itemSelector: ".resource-item",
 	  percentPosition: true,
