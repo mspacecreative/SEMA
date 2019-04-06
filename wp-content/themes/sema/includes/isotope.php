@@ -1,21 +1,16 @@
-<?php $loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
-if ( $loop->have_posts() ) : ?>
 <div class="button-group filters-button-group">
 	<button class="button is-checked">All Types</button>
-	<?php
-	$terms = get_the_terms( 'resources', 'categories' ); 
-	if ( $terms ) { ?>
-		<?php foreach ( $terms as $term ) { ?>
-		<button class="button" data-filter=".<?php echo $term->slug ?>"><?php echo $term->name ?></li>
-		<?php } ?>
-	<?php } ?>
+	<button class="button" data-filter=".ebook">eBooks</li>
+	<button class="button" data-filter=".data-sheet">Data Sheets</li>
 </div>
 
 <div class="grid">
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
 	<?php 
-	while ( $loop->have_posts() ) : $loop->the_post();
+	$loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
+	    if ( $loop->have_posts() ) :
+	        while ( $loop->have_posts() ) : $loop->the_post();
 	        $terms = get_the_terms( $post->ID, 'categories' );
 			if ( $terms ) {
 				foreach ( $terms as $term ) { ?>
@@ -63,6 +58,7 @@ if ( $loop->have_posts() ) : ?>
 							</div>
 					</div>
 				</div>
-			<?php endwhile; ?>
+			<?php endwhile; 
+		endif; wp_reset_postdata();
+	?>
 </div>
-<?php endif; wp_reset_postdata(); ?>
