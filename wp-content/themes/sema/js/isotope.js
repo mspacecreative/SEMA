@@ -2,11 +2,8 @@ $(window).load(function () {
 	var iso = new Isotope(".grid", {
 	  itemSelector: ".resource-item",
 	  percentPosition: true,
-	  masonry: {
-	      // use element for option
-	      columnWidth: '.grid-sizer',
-	      gutter: '.gutter-sizer',
-	    }
+	  columnWidth: '.grid-sizer',
+	  gutter: '.gutter-sizer',
 	});
 	
 	// filter functions
