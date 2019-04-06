@@ -42,16 +42,6 @@
 								</a>
 								<?php } ?>
 								<div class="card-content">
-									<?php 
-									$termscat = get_the_terms( $post->ID, 'categories' );
-									if ( $termscat ) { ?>
-									<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
-									<?php 
-									foreach ( $termscat as $termcat ) {
-									echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($termscat).'">' . $termscat->name . '</a>';
-									} ?>
-									</p>
-									<?php } ?>
 									<h3><?php the_title(); ?></h3>
 									<?php
 									if( has_excerpt() ) { 
