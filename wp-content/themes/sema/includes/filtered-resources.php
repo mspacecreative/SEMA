@@ -43,12 +43,12 @@
 								<?php } ?>
 								<div class="card-content">
 									<?php 
-									$terms = get_the_terms( $post->ID, 'categories' );
-									if ( $terms ) { ?>
+									$termscat = get_the_terms( $post->ID, 'categories' );
+									if ( $termscat ) { ?>
 									<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
 									<?php 
-									foreach ( $terms as $term ) {
-									echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a>';
+									foreach ( $termscat as $termcat ) {
+									echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($termscat).'">' . $termscat->name . '</a>';
 									} ?>
 									</p>
 									<?php } ?>
