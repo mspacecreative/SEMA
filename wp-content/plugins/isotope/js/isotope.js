@@ -1,4 +1,4 @@
-jQuery(document).ready(function ($) {
+(function ($) {
 	$(window).load(function () {
 		var iso = new Isotope(".grid", {
 		  itemSelector: ".resource-item",
@@ -56,4 +56,4 @@ jQuery(document).ready(function ($) {
 		}
 		
 	});
-}):
+})(jQuery):
