@@ -99,12 +99,12 @@ function careersLoop() {
 	return ob_get_clean();
 }
 
-/*// RESOURCES LOOP SHORTCODE
+// RESOURCES LOOP SHORTCODE
 function resourcesLoop() {
 	ob_start();
 		get_template_part('includes/loop-resources');
 	return ob_get_clean();
-}*/
+}
 
 // ACTIONS, OPTIONS AND FILTERS
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
@@ -114,7 +114,7 @@ add_shortcode( 'team_members', 'teamLoop' );
 add_shortcode( 'page_title', 'pageTitle' );
 add_shortcode( 'page_title_2', 'pageTitle2' );
 add_shortcode( 'careers_list', 'careersLoop' );
-//add_shortcode( 'resources_loop', 'resourcesLoop' );
+add_shortcode( 'resources_loop', 'resourcesLoop' );
 add_action( 'widgets_init', 'posts_sidebar' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 
