@@ -1,6 +1,6 @@
 var $j = jQuery.noConflict();
 
-$j(function () {} {
+$j(function () {
 	$(window).load(function () {
 		var iso = new Isotope(".grid", {
 		  itemSelector: ".resource-item",
