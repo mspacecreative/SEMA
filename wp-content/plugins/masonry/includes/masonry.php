@@ -17,7 +17,7 @@
 				<?php } ?>
 			<?php else: ?>
 				<?php if ( has_post_thumbnail() ) { ?>
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
+					<?php the_post_thumbnail(); ?>
 				<?php } ?>
 			<?php endif; ?>
 				<div class="card-content">
