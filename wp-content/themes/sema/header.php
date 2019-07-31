@@ -260,63 +260,73 @@
 				 */
 				echo apply_filters( 'et_html_logo_container', $logo_container );
 			?>
+			<div class="clearfix">
 				<div id="et-top-navigation" data-height="<?php echo esc_attr( et_get_option( 'menu_height', '66' ) ); ?>" data-fixed-height="<?php echo esc_attr( et_get_option( 'minimized_menu_height', '40' ) ); ?>">
-					<?php if ( ! $et_slide_header || is_customize_preview() ) : ?>
-						<nav id="top-menu-nav">
-						<?php
-							$menuClass = 'nav';
-							if ( 'on' == et_get_option( 'divi_disable_toptier' ) ) $menuClass .= ' et_disable_top_tier';
-							$primaryNav = '';
-
-							$primaryNav = wp_nav_menu( array( 'theme_location' => 'primary-menu', 'container' => '', 'fallback_cb' => '', 'menu_class' => $menuClass, 'menu_id' => 'top-menu', 'echo' => false ) );
-
-							if ( '' == $primaryNav ) :
-						?>
-							<ul id="top-menu" class="<?php echo esc_attr( $menuClass ); ?>">
-								<?php if ( 'on' == et_get_option( 'divi_home_link' ) ) { ?>
-									<li <?php if ( is_home() ) echo( 'class="current_page_item"' ); ?>><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'Divi' ); ?></a></li>
-								<?php }; ?>
-
-								<?php show_page_menu( $menuClass, false, false ); ?>
-								<?php show_categories_menu( $menuClass, false ); ?>
-							</ul>
-						<?php
-							else :
-								echo( $primaryNav );
-							endif;
-						?>
-						</nav>
-					<?php endif; ?>
-
-					<?php
-					if ( ! $et_top_info_defined && ( ! $et_slide_header || is_customize_preview() ) ) {
-						et_show_cart_total( array(
-							'no_text' => true,
-						) );
-					}
-					?>
-
-					<?php if ( $et_slide_header || is_customize_preview() ) : ?>
-						<span class="mobile_menu_bar et_pb_header_toggle et_toggle_<?php echo esc_attr( et_get_option( 'header_style', 'left' ) ); ?>_menu"></span>
-					<?php endif; ?>
-
-					<?php if ( ( false !== et_get_option( 'show_search_icon', true ) && ! $et_slide_header ) || is_customize_preview() ) : ?>
-					<div id="et_top_search">
-						<span id="et_search_icon"></span>
-					</div>
-					<?php endif; // true === et_get_option( 'show_search_icon', false ) ?>
-
-					<?php
-
-					/**
-					 * Fires at the end of the 'et-top-navigation' element, just before its closing tag.
-					 *
-					 * @since 1.0
-					 */
-					do_action( 'et_header_top' );
-
-					?>
-				</div> <!-- #et-top-navigation -->
+									<?php if ( ! $et_slide_header || is_customize_preview() ) : ?>
+										<nav id="top-menu-nav">
+										<?php
+											$menuClass = 'nav';
+											if ( 'on' == et_get_option( 'divi_disable_toptier' ) ) $menuClass .= ' et_disable_top_tier';
+											$primaryNav = '';
+				
+											$primaryNav = wp_nav_menu( array( 'theme_location' => 'primary-menu', 'container' => '', 'fallback_cb' => '', 'menu_class' => $menuClass, 'menu_id' => 'top-menu', 'echo' => false ) );
+				
+											if ( '' == $primaryNav ) :
+										?>
+											<ul id="top-menu" class="<?php echo esc_attr( $menuClass ); ?>">
+												<?php if ( 'on' == et_get_option( 'divi_home_link' ) ) { ?>
+													<li <?php if ( is_home() ) echo( 'class="current_page_item"' ); ?>><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'Divi' ); ?></a></li>
+												<?php }; ?>
+				
+												<?php show_page_menu( $menuClass, false, false ); ?>
+												<?php show_categories_menu( $menuClass, false ); ?>
+											</ul>
+										<?php
+											else :
+												echo( $primaryNav );
+											endif;
+										?>
+										</nav>
+									<?php endif; ?>
+				
+									<?php
+									if ( ! $et_top_info_defined && ( ! $et_slide_header || is_customize_preview() ) ) {
+										et_show_cart_total( array(
+											'no_text' => true,
+										) );
+									}
+									?>
+				
+									<?php if ( $et_slide_header || is_customize_preview() ) : ?>
+										<span class="mobile_menu_bar et_pb_header_toggle et_toggle_<?php echo esc_attr( et_get_option( 'header_style', 'left' ) ); ?>_menu"></span>
+									<?php endif; ?>
+				
+									<?php if ( ( false !== et_get_option( 'show_search_icon', true ) && ! $et_slide_header ) || is_customize_preview() ) : ?>
+									<div id="et_top_search">
+										<span id="et_search_icon"></span>
+									</div>
+									<?php endif; // true === et_get_option( 'show_search_icon', false ) ?>
+				
+									<?php
+				
+									/**
+									 * Fires at the end of the 'et-top-navigation' element, just before its closing tag.
+									 *
+									 * @since 1.0
+									 */
+									do_action( 'et_header_top' );
+				
+									?>
+								</div> <!-- #et-top-navigation -->
+								
+								<div class="header-nav-right">
+									<ul>
+										<li><a href="https://smp.semasoftware.io/" target="_blank">Sign In</a></li>
+										<li><a href="<?php echo home_url('get-a-demo'); ?>">Get a Demo</a></li>
+									</ul>
+								</div>
+			</div>
+				
 			</div> <!-- .container -->
 			<div class="et_search_outer">
 				<div class="container et_search_form_container">

@@ -1,0 +1,53 @@
+#et-top-navigation {
+	float: left;
+}
+
+.header-nav-right {
+	float: right;
+	padding-top: 38px;
+	position: relative;
+	transition: all .4s ease-in-out;
+}
+
+.header-nav-right li {
+	display: inline-block;
+	line-height: 1em;
+	vertical-align: top;
+}
+
+.header-nav-right li a {
+	color: rgba(0,0,0,.6);
+	font-size: 15px;
+	font-weight: bold;
+	transition: all .4s ease-in-out;
+}
+
+.header-nav-right li:last-child a {
+	background-color: #00a3d6;
+	padding: 10px 15px;
+	color: #fff;
+	margin-left: 25px;
+}
+
+.et-fixed-header .header-nav-right {
+	padding-top: 15px;
+	transition: all .4s ease-in-out;
+}
+
+.et-fixed-header .header-nav-right li a {
+	font-size: 14px;
+	transition: all .4s ease-in-out;
+}
+
+body .nav .sub-menu li {
+	text-align: left;
+}
+
+body .nav .sub-menu {
+	right: auto;
+	left: inherit;
+}
+
+body .nav li.menu-item-1494 ul.sub-menu {
+	right: auto;
+}

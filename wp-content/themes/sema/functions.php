@@ -37,6 +37,9 @@ function my_theme_enqueue_styles() {
 	wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'child-style', get_stylesheet_directory_uri() . '/style.css', array( $parent_style ));
 	
+	wp_enqueue_style( 'custom-css', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0', 'all');
+	wp_enqueue_style( 'custom-css');
+	
 	wp_register_style('para-styles', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.css', array(), '1.0', 'all');
 	wp_enqueue_style('para-styles');
 	
