@@ -120,28 +120,32 @@
       FUNCTIONS FOR PROMO POPUP WINDOW
 -------------------------------------------*/
 
-// Show or hide on load depending on cookie
-if ($.cookie('notice') == 'closed') {
-	$('.hide-on-click').hide();
-} else {
-    $('.hide-on-click').show();
-}
- 
-// Simple close link to hide the notice until cookies are cleared
-$('.drawer-close').click(function(e) {
-	e.preventDefault();
-	$.cookie('notice','closed', { path: '/' });
-	$(this).parent().fadeOut();
+jQuery(document).ready(function($) {
+    
+    // Show or hide on load depending on cookie
+    if ($.cookie('notice') == 'closed') {
+    	$('.hide-on-click').hide();
+    } else {
+        $('.hide-on-click').show();
+    }
+     
+    // Simple close link to hide the notice until cookies are cleared
+    $('.drawer-close').click(function(e) {
+    	e.preventDefault();
+    	$.cookie('notice','closed', { path: '/' });
+    	$(this).parent().fadeOut();
+    });
+    
+    $('.cta-button').click(function() {
+    	$.cookie('notice','closed', { path: '/' });
+    	$(this).parent().parent().parent().fadeOut();
+    });
+    
+    /*Opener link to show the notice again
+    $('a.open').click(function(e) {
+      e.preventDefault();
+      $.cookie('notice','open');
+      $('.notice').show();
+    });*/
+    
 });
-
-$('.cta-button').click(function() {
-	$.cookie('notice','closed', { path: '/' });
-	$(this).parent().parent().parent().fadeOut();
-});
-
-/*Opener link to show the notice again
-$('a.open').click(function(e) {
-  e.preventDefault();
-  $.cookie('notice','open');
-  $('.notice').show();
-});*/

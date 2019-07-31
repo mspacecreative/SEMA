@@ -10,7 +10,7 @@
  * I also utilise the jQuery.doTimeout plugin for the data-sequence functionality so here is a link back to them.
  * http://benalman.com/projects/jquery-dotimeout-plugin/
  */
-(function($) {
+jQuery(document).ready(function($) {
   var selectors = [];
 
   var check_binded = false;
@@ -97,11 +97,11 @@
       if (check_binded) {
         process();
         return true;
-      };
+      }
       return false;
     }
   });
-})(jQuery);
+});
 
 
 
@@ -157,7 +157,7 @@
 // 0.4 - (7/15/2009) Made the "id" argument optional, some other minor tweaks
 // 0.3 - (6/25/2009) Initial release
 
-(function($){
+jQuery(document).ready(function($){
   '$:nomunge'; // Used by YUI compressor.
   
   var cache = {},
@@ -340,12 +340,12 @@
       } else if ( id ) {
         delete cache[ id ];
       }
-    };
+    }
     
     // Yes, there actually is a setTimeout call in here!
     function actually_setTimeout() {
       data.id = setTimeout( function(){ data.fn(); }, delay );
-    };
+    }
     
     if ( callback ) {
       // A callback (and delay) were specified. Store the callback reference for
@@ -387,14 +387,15 @@
       cleanup();
     }
     
-  };
+  }
   
-})(jQuery);
+});
 
 
 
 
 //CSS3 Animate-it
+jQuery(document).ready(function($) {
 $('.animatedParent').appear();
 $('.animatedClick').click(function(){
   var target = $(this).attr('data-target');
@@ -443,7 +444,9 @@ $('.animatedClick').click(function(){
     }
   } 
 });
+});
 
+jQuery(document).ready(function($) {
 $(document.body).on('appear', '.animatedParent', function(e, $affected){
   var ele = $(this).find('.animated');
   var parent = $(this);
@@ -469,7 +472,9 @@ $(document.body).on('appear', '.animatedParent', function(e, $affected){
   }
   
 });
+});
 
+jQuery(document).ready(function($) {
  $(document.body).on('disappear', '.animatedParent', function(e, $affected) {
   if(!$(this).hasClass('animateOnce')){
     $(this).find('.animated').removeClass('go');
@@ -479,3 +484,4 @@ $(document.body).on('appear', '.animatedParent', function(e, $affected){
  $(window).load(function(){
   $.force_appear();
  });
+});

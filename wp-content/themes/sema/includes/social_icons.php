@@ -8,7 +8,7 @@
 	</li>
 <?php endif; ?>
 	<li class="et-social-icon et-social-linkedin">
-		<a href="https://www.linkedin.com/company/semalab/" class="icon" target="_blank">
+		<a href="https://www.linkedin.com/company/semasoftware" class="icon" target="_blank">
 			<span><?php esc_html_e( 'LinkedIn', 'Divi' ); ?></span>
 		</a>
 	</li>

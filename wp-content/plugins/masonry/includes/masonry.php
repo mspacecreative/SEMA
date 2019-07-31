@@ -1,4 +1,4 @@
-<div class="grid">
+<div id="instafeed">
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
 	
@@ -17,7 +17,7 @@
 				<?php } ?>
 			<?php else: ?>
 				<?php if ( has_post_thumbnail() ) { ?>
-					<?php the_post_thumbnail(); ?>
+				    <?php the_post_thumbnail(); ?>
 				<?php } ?>
 			<?php endif; ?>
 				<div class="card-content">

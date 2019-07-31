@@ -62,5 +62,9 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4143673.js"></script>
 	<!-- End of HubSpot Embed Code -->
 	
+	<!-- LINKEDIN TAG -->
+	<?php get_template_part('includes/linkedin-tag'); ?>
+	<!-- / LINKEDIN TAG -->
+	
 </body>
 </html>

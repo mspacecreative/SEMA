@@ -35,7 +35,7 @@
  							while( have_rows('drawer_button', 'options') ): the_row();
  							$label = get_sub_field('button_label', 'options');
  							$link = get_sub_field('button_link', 'options'); ?>
-	 						<a class="cta-button" href="<?php echo $link; ?>">
+	 						<a class="cta-button" href="<?php echo $link; ?>" target="_blank">
 	 							<span style="text-transform: uppercase;">
 	 							<?php echo $label; ?>
 	 							</span>

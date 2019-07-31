@@ -1,4 +1,4 @@
-#instafeed img, .grid img {
+#instafeed img {
 	width: 250px;
 	height: auto;
 	display: block;
@@ -8,6 +8,14 @@
 	transform: rotate(-5deg);
 	position: relative;
 	top: 40px;
+}
+
+#instafeed .normal-image img {
+    width: 100%;
+    padding: 25px;
+    transform: none;
+    top: auto;
+    box-shadow: none;
 }
 
 #instafeed {
@@ -111,12 +119,13 @@
 	position: relative;
 }
 
-.entry-content .card-content h3 {
+.entry-content .card-content h3, .tax-categories .card-content h3 {
 	font-weight: 900;
 	font-size: 24px;
 	padding-bottom: 3px;
 	margin: 0;
 	color: #000;
+	line-height: 1.25em;
 }
 
 .entry-content h4.card_subtitle {
@@ -135,38 +144,48 @@
 @media (min-width: 800px) {
 
 .grid-sizer,
-.grid-item, 
-.resource-item {
+.grid-item {
   width: 31.333%;
 }
 }
 
 @media (max-width: 540px) {
-.grid-sizer, 
-.grid-item, 
-.resource-item {
+.grid-sizer, .grid-item {
 	width: 100%;
 }
-.grid-item, .resource-item {
+.grid-item {
  margin-bottom: 5%;
 }
 }
 
 @media (min-width: 540px) and (max-width: 800px) {
-.grid-sizer, 
-.grid-item, 
-.resource-item {
+.grid-sizer, .grid-item {
 	width: 48.5%;
 }
-.grid-item, 
-.resource-item {
+.grid-item {
  margin-bottom: 3%;
 }
 }
 
 @media (min-width: 541px) {
-.grid-item, 
-.resource-item {
+.grid-item {
  margin-bottom: 3%;
 }
+}
+
+/*@media (min-width: 1080px) {
+
+.grid-sizer,
+.grid-item {
+  width: 22.75%;
+}
+}*/
+
+#sidebar .grid-sizer, #sidebar .grid-item, .sidebar-cards .grid-sizer, .sidebar-cards .grid-item {
+	width: 100%;
+}
+
+#sidebar .grid-item, .sidebar-cards .grid-item {
+	margin-bottom: 20px;
+	border: 1px solid #f5f5f5;
 }

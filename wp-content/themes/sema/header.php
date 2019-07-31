@@ -28,9 +28,15 @@
 	
 </head>
 <body <?php body_class(); ?>>
-<!--GOOGLE TAG MANAGER-->
-<?php if ( function_exists( 'gtm4wp_the_gtm_tag' ) ) { gtm4wp_the_gtm_tag(); } ?>
-<!--/GOOGLE TAG MANAGER-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-135611911-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-135611911-1');
+</script>
 
 <?php
 	if ( $product_tour_enabled || is_page_template( 'page-template-blank.php' ) ) {

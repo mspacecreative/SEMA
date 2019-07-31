@@ -1,0 +1,38 @@
+.header-dropdown {
+	background-color: #f5f5f5;
+	width: 100%;
+	text-align: center;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999999;
+}
+.header-dropdown p {
+	margin: 0;
+	line-height: 30px;
+	font-size: 17px;
+}
+.dropdown_inner {
+	max-width: 650px;
+	margin: auto;
+	width: 100%;
+	padding: 20px;
+}
+.dropdown_close {
+	position: absolute;
+	top: 10px;
+	right: 25px;
+	cursor: pointer;
+}
+
+.dropdown_close .fa-close {
+	font-size: 25px;
+}
+
+@media (max-width: 450px) {
+    .dropdown_close {
+        top: auto;
+        bottom: 15px;
+    }
+}

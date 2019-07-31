@@ -3,6 +3,12 @@
 // Register assets that need to be fired at head
 function et_fb_enqueue_assets_head() {
 	// Setup WP media.
+	// Around 5.2-alpha, `wp_enqueue_media` started using a function defined in a file
+	// which is only included in admin. Unfortunately there's no safe/reliable way to conditionally
+	// load this other than checking the WP version.
+	if ( version_compare( $GLOBALS['wp_version'], '5.2-alpha-44947', '>=' ) ) {
+		require_once( ABSPATH . 'wp-admin/includes/post.php' );
+	}
 	wp_enqueue_media();
 
 	// Setup Builder Media Library
@@ -58,16 +64,6 @@ function et_fb_enqueue_main_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'et_fb_enqueue_main_assets' );
 
-function et_fb_enqueue_open_sans() {
-	$protocol = is_ssl() ? 'https' : 'http';
-	$query_args = array(
-		'family' => 'Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800',
-		'subset' => 'latin,latin-ext',
-	);
-
-	wp_enqueue_style( 'et-fb-fonts', esc_url_raw( add_query_arg( $query_args, "$protocol://fonts.googleapis.com/css" ) ), array(), null );
-}
-
 function et_fb_enqueue_google_maps_dependency( $dependencies ) {
 
 	if ( et_pb_enqueue_google_maps_script() ) {
@@ -97,14 +93,14 @@ function et_fb_get_dynamic_asset( $prefix, $post_type = false, $update = false )
 		$post_type = isset( $post->post_type ) ? $post->post_type : 'post';
 	}
 
-	$post_type = sanitize_text_field( $post_type );
+	$post_type = sanitize_file_name( $post_type );
 
 	if ( ! in_array( $prefix, array( 'helpers', 'definitions' ) ) ) {
 		$prefix = '';
 	}
 
 	// Per language Cache due to definitions/helpers being localized.
-	$lang   = get_user_locale();
+	$lang   = sanitize_file_name( get_user_locale() );
 	$cache  = sprintf( '%s/%s', ET_Core_PageResource::get_cache_directory(), $lang );
 	$files  = glob( sprintf( '%s/%s-%s-*.js', $cache, $prefix, $post_type ) );
 	$exists = is_array( $files ) && count( $files ) > 0;
@@ -246,6 +242,12 @@ function et_fb_enqueue_assets() {
 		'react-tiny-mce',
 		$builder_modules_script_handle,
 	);
+
+	if ( ! wp_script_is( 'wp-hooks', 'registered' ) ) {
+		// Use bundled wp-hooks script when WP < 5.0
+		wp_register_script( 'wp-hooks', "{$assets}/backports/hooks.js" );
+		$dependencies_list[] = 'wp-hooks';
+	}
 
 	// Add dependency on et-shortcode-js only if Divi Theme is used or ET Shortcodes plugin activated
 	if ( ! et_is_builder_plugin_active() || et_is_shortcodes_plugin_active() ) {

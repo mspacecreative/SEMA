@@ -54,6 +54,7 @@ button.hamburger:hover {
 	visibility: hidden;
 	background: url(../img/dust_scratches.png) left top;
 	z-index: 99;
+	overflow: auto;
 }
 
 .sub-toggle .fa {

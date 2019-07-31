@@ -1,8 +1,4 @@
-(function ($, root, undefined) {
-	
-	$(function () {
-		
-		'use strict';
+jQuery(document).ready(function($) {
 		
 		function googleMapHeight() {
 			$('.google-map iframe').height($('.email-optin').outerHeight());
@@ -15,7 +11,7 @@
 		}
 		
 		// BODY FADE IN/OUT ON NAV CLICK
-		$('a').click( function() {
+		$('#et-top-navigation a').click( function() {
 			var nav = $(this); 
 			if( nav.length > 0 ) {
 				if( nav.attr('href') == '#' ) {
@@ -48,7 +44,7 @@
 		
 		function connectivityTop() {
 			//$('.connectivity-graphic').css('top', $('.et_pb_section_1').outerHeight());
-			$('.alt-row-layout .connectivity-graphic, .single .connectivity-graphic').css('top', - $('header').height());
+			$('.page .connectivity-graphic, .single .connectivity-graphic').css('top', - $('header').height());
 		}
 		
 		function footerHeight() {
@@ -96,22 +92,24 @@
 			checkSize();
 		});
 		
-		$(window).scroll(function() {
-		    if ($(this).scrollTop() > $(window).height() / 2) {
-		        $('.hero .et_pb_column').addClass('fade');
-		    } else {
-		        $('.hero .et_pb_column').removeClass('fade');
-		    }
-		});
-		
-		$(window).scroll(function(){
-		    $('.hero .et_pb_column').css("opacity", 1 - $(window).scrollTop() / 500);
-		    var offsetTop = $('.hero .et_pb_column').offset().top;
-		    $('.hero .et_pb_column').css("opacity", 1 - ($(window).scrollTop() - offsetTop + 250) / 500);
-			if($('#health-check .animated').hasClass('go')) {
-				$('html,body').css('overflow-x', 'inherit');
-			}
-		});
+		if ($(".hero").length) {
+    		$(window).scroll(function() {
+    		    /*
+    		    if ($(this).scrollTop() > $(window).height() / 2) {
+    		        $('.hero .et_pb_column').addClass('fade');
+    		    } else {
+    		        $('.hero .et_pb_column').removeClass('fade');
+    		    }
+    		    
+    		    $('.hero .et_pb_column').css("opacity", 1 - $(window).scrollTop() / 500);
+    		    var offsetTop = $('.hero .et_pb_column').offset().top;
+    		    $('.hero .et_pb_column').css("opacity", 1 - ($(window).scrollTop() - offsetTop + 250) / 500);
+    		    */
+    			if($('#health-check .animated').hasClass('go')) {
+    				$('html,body').css('overflow-x', 'inherit');
+    			}
+    		});
+		}
 		
 		// MOBILE NAVIGATION
 		$('#top-menu-nav li.menu-item-has-children a').after('<span class="sub-toggle"><i class="fa fa-angle-down"></i></span>');
@@ -133,6 +131,8 @@
 			}
 		});
 		
-	});
-	
-})(jQuery, this);
+		$('.hide-on-desktop').on('click touch', function() {
+            $(this).unbind("mouseenter mouseleave");
+        });
+		
+});

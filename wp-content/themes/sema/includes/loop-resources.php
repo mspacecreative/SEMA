@@ -8,11 +8,16 @@
 	        while ( $loop->have_posts() ) : $loop->the_post(); ?>
 			<div class="grid-item">
 				<div class="grid-inner">
-					<?php if ( has_post_thumbnail() ) { ?>
-					<a href="<?php the_permalink(); ?>">
-						<?php echo the_post_thumbnail('resource-thumb'); ?>
-					</a>
-					<?php } ?>
+    					<?php if ( has_post_thumbnail() ) {
+    					    $image = get_field('case_study');
+				            if ( $image ): ?>
+				            <div class="normal-image">
+    					        <?php echo the_post_thumbnail(); ?>
+    					    </div>
+    					    <?php else : ?>
+    					    <?php echo the_post_thumbnail('resource-thumb'); ?>
+    					    <?php endif; ?>
+    					<?php } ?>
 						<div class="card-content">
 							<?php 
 							$terms = get_the_terms( $post->ID, 'categories' );
@@ -34,7 +39,7 @@
 							?>
 							<?php if ( get_field('anchor_link') ): ?>
 							<div>
-								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px; display: inline-block;" href="/solutions-2/#<?php the_field('anchor_link'); ?>"><?php _e('Learn More'); ?></a>
+								<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="color: #ffffff; padding: .3em 2em .3em .7em; background-color: #cc9901; transition: 0.25s ease-in-out; margin-top: 15px; display: inline-block;" href="/solutions/#<?php the_field('anchor_link'); ?>"><?php _e('Learn More'); ?></a>
 							</div>
 							<?php elseif ( get_field('external_link') ): ?>
 							<div>

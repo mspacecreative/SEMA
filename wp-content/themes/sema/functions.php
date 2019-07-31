@@ -75,6 +75,7 @@ function teamLoop() {
 	return ob_get_clean();
 }
 
+// REMOVE EXTRA SIDEBARS
 function remove_FooterArea6() {
 	unregister_sidebar('sidebar-6');
 	unregister_sidebar('sidebar-7');
@@ -115,8 +116,10 @@ add_shortcode( 'page_title', 'pageTitle' );
 add_shortcode( 'page_title_2', 'pageTitle2' );
 add_shortcode( 'careers_list', 'careersLoop' );
 add_shortcode( 'resources_loop', 'resourcesLoop' );
-add_action( 'widgets_init', 'posts_sidebar' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
+
+// SHORTCODES
+//add_shortcode('content_block', 'content_blocks');
 
 // CUSTOM THUMBNAIL IN BACKEND
 add_filter( 'image_size_names_choose', 'my_custom_sizes' );
