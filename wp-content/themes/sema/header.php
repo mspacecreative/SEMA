@@ -322,7 +322,7 @@
 								<div class="header-nav-right">
 									<ul>
 										<li><a href="https://smp.semasoftware.io/" target="_blank">Sign In</a></li>
-										<li><a href="<?php echo home_url('get-a-demo'); ?>">Get a Demo</a></li>
+										<li><a class="et_pb_button" href="<?php echo home_url('get-a-demo'); ?>">Get a Demo</a></li>
 									</ul>
 								</div>
 			</div>
