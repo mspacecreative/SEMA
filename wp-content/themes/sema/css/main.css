@@ -91,3 +91,7 @@ svg {
 	width: 100%!important;
 	height: auto;
 }
+
+.hero-section svg {
+	margin-bottom: -6px;
+}
