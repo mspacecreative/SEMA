@@ -139,9 +139,10 @@ jQuery(document).ready(function($) {
 		$('.chat-now-button').click(function (e) {
 			e.preventDefault();
 			$('body').addClass('open-chat-window');
-			if ( $('body').hasClass('open-chat-window') ) {
-				$('shadow').addClass('active');
-			}
 		});
+		
+		if ( $('body').hasClass('open-chat-window') ) {
+			$('.shadow').addClass('active');
+		}
 		
 });
