@@ -135,6 +135,7 @@ jQuery(document).ready(function($) {
             $(this).unbind("mouseenter mouseleave");
         });
 		
+		// TRIGGER CHAT BOT ON CUSTOM BUTTON CLICK
 		$('.chat-now-button').on('click', () => {
 			// check if Hubspot chat is installed
 			if (window.hubspot_live_messages_running && window.hubspot && window.hubspot.messages) {
