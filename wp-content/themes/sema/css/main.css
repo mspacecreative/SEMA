@@ -103,3 +103,9 @@ svg {
 .hero-section svg {
 	margin-bottom: -6px;
 }
+
+@media (min-width: 981px) {
+	.hide-on-desktop {
+		display: none;
+	}
+}
