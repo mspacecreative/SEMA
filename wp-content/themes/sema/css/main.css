@@ -108,6 +108,13 @@ body.et_pb_svg_logo #logo {
 	margin-bottom: -6px;
 }
 
+.row-items-vert-align-center {
+	display: flex;
+	flex: 1;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
