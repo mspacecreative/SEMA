@@ -132,6 +132,10 @@ body.et_pb_svg_logo #logo {
 	align-items: center;
 }
 
+.max-width-800 {
+	max-width: 800px;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
