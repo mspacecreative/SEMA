@@ -120,7 +120,10 @@ body.et_pb_svg_logo #logo {
 	}
 	
 	.hero-cta-buttons .et_pb_column {
-		width: 50%!important;
+		width: 48%!important;
+	}
+	.hero-cta-buttons .et_pb_column:first-of-type {
+		margin-right: 4%;
 	}
 }
 
