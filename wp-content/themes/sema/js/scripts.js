@@ -138,11 +138,12 @@ jQuery(document).ready(function($) {
 		//Chat Now Button
 		$('.chat-now-button').on('click', function (e) {
 			e.preventDefault();
-			$('body').addClass('open-chat-window');
+			//$('body').addClass('open-chat-window');
+			$('.widget-launcher').trigger("click");
 			
-			if ( $('body').hasClass('open-chat-window') ) {
+			/*if ( $('body').hasClass('open-chat-window') ) {
 				$('.shadow').addClass('active');
 				$('.widget-launcher').trigger("click");
-			}
+			}*/
 		});
 });
