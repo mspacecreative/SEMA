@@ -136,7 +136,7 @@ jQuery(document).ready(function($) {
         });
 		
 		//Chat Now Button
-		$('.chat-now-button').click(function (e) {
+		$('.chat-now-button').on('click', (function (e) {
 			e.preventDefault();
 			$('body').addClass('open-chat-window');
 			
@@ -144,6 +144,6 @@ jQuery(document).ready(function($) {
 				$('.shadow').addClass('active');
 			}
 			
-			$('.widget-launcher').click();
+			$('.widget-launcher').trigger('click');
 		});
 });
