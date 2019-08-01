@@ -105,16 +105,10 @@ body .entry-content .hero-section p {
 	height: 672px;
 	left: 0;
 	top: 0;
+	background: linear-gradient(14.17deg, #FFFFFF 54.07%, rgba(255, 255, 255, 0) 84.54%), rgba(248, 200, 143, 0.3);
+	transform: skew(0, 10deg);
+	content: '';
 }
-
-position: absolute;
-width: 843px;
-height: 672px;
-left: 437px;
-top: 1030px;
-
-background: linear-gradient(14.17deg, #FFFFFF 54.07%, rgba(255, 255, 255, 0) 84.54%), rgba(248, 200, 143, 0.3);
-
 
 svg {
 	width: 100%!important;
