@@ -94,7 +94,7 @@ body .entry-content .hero-section p {
 	height: 672px;
 	left: 0;
 	top: 0;
-	background: linear-gradient(-50deg, #FFFFFF 54.07%, rgba(255, 255, 255, 0) 84.54%), rgba(71, 93, 121, 0.2);
+	background: linear-gradient(-20deg, #FFFFFF 60%, rgba(255, 255, 255, 0) 84.54%), rgba(71, 93, 121, 0.2);
 	transform: skew(0, 10deg);
 	content: '';
 }
@@ -105,7 +105,7 @@ body .entry-content .hero-section p {
 	height: 672px;
 	left: 0;
 	top: 0;
-	background: linear-gradient(14.17deg, #FFFFFF 54.07%, rgba(255, 255, 255, 0) 84.54%), rgba(248, 200, 143, 0.3);
+	background: linear-gradient(20deg, #FFFFFF 60%, rgba(255, 255, 255, 0) 84.54%), rgba(248, 200, 143, 0.3);
 	transform: skew(0, -10deg);
 	content: '';
 }
