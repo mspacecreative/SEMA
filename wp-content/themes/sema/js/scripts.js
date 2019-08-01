@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
 		$('.chat-now-button').on('click', function (e) {
 			e.preventDefault();
 			//$('body').addClass('open-chat-window');
-			$(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().siblings('#hubspot-messages-iframe-container').find('button').trigger("click");
+			$('.chat-now-button').parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().siblings('#hubspot-messages-iframe-container').children('.widget-launcher').trigger("click");
 			
 			/*if ( $('body').hasClass('open-chat-window') ) {
 				$('.shadow').addClass('active');
