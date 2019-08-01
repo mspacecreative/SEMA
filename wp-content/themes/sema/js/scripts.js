@@ -135,4 +135,13 @@ jQuery(document).ready(function($) {
             $(this).unbind("mouseenter mouseleave");
         });
 		
+		//Chat Now Button
+		$('.chat-now-button').click(function (e) {
+			e.preventDefault();
+			$('body').addClass('open-chat-window');
+			if ( $('body').hasClass('open-chat-window') ) {
+				$('shadow').addClass('active');
+			}
+		});
+		
 });
