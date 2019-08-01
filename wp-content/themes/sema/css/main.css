@@ -85,7 +85,7 @@ body .entry-content .hero-section p {
 .hero-section:before {
 	background-image: url(../img/backgrounds/sema-circles.jpg);
 	background-size: 100%;
-	background-position: top 200px center;
+	background-position: top 300px center;
 	background-repeat: no-repeat;
 	content: '';
 	width: 100%;
