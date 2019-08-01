@@ -144,6 +144,6 @@ jQuery(document).ready(function($) {
 				$('.shadow').addClass('active');
 			}
 			
-			$('.widget-launcher').click();
+			$('.widget-launcher').trigger('click');
 		});
 });
