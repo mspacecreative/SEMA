@@ -95,6 +95,23 @@ body .entry-content .hero-section p {
 	content: '';
 }
 
+.skewed_yellow_linear_grad_right:before {
+	position: absolute;
+	width: 100%;
+	height: 672px;
+	left: 0;
+	top: 0;
+}
+
+position: absolute;
+width: 843px;
+height: 672px;
+left: 437px;
+top: 1030px;
+
+background: linear-gradient(14.17deg, #FFFFFF 54.07%, rgba(255, 255, 255, 0) 84.54%), rgba(248, 200, 143, 0.3);
+
+
 svg {
 	width: 100%!important;
 	height: auto;
@@ -162,6 +179,6 @@ body.et_pb_svg_logo #logo {
 	}
 }
 
-body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2, .et_pb_gutters2.et_pb_row .et_pb_column_1_2 {
+body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	width: auto;
 }
