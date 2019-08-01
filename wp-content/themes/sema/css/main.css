@@ -105,7 +105,7 @@ svg {
 }
 
 @media (min-width: 981px) {
-	.hide-on-desktop {
+	#top-menu .hide-on-desktop {
 		display: none;
 	}
 }
