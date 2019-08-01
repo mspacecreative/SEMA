@@ -74,6 +74,10 @@ body .entry-content .hero-section h1 {
 	letter-spacing: -.02em;
 }
 
+body .entry-content .hero-section h2 {
+	font-size: 32px;
+}
+
 body .entry-content .hero-section p {
 	font-size: 20px;
 }
