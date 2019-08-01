@@ -128,11 +128,19 @@ body.et_pb_svg_logo #logo {
 	body .entry-content .hero-section h1 {
 		font-size: 25px;
 	}
+	
+	body .entry-content .hero-section p {
+		font-size: 15px;
+	}
 }
 
 @media (max-width: 450px) {
 	body .entry-content .hero-section h1 {
 		font-size: 25px;
+	}
+	
+	body .entry-content .hero-section p {
+		font-size: 15px;
 	}
 	
 	.hero-cta-buttons .et_pb_button {
