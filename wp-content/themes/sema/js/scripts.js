@@ -136,8 +136,8 @@ jQuery(document).ready(function($) {
         });
 		
 		//Chat Now Button
-		$('.chat-now-button').click(function (e) {
-			e.preventDefault();
+		$('.chat-now-button').click(function () {
+			
 			$('body').addClass('open-chat-window');
 			
 			if ( $('body').hasClass('open-chat-window') ) {
