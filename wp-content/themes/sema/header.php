@@ -319,7 +319,7 @@
 									?>
 								</div> <!-- #et-top-navigation -->
 								
-								<div class="header-nav-right">
+								<div class="header-nav-right hide-on-mobile">
 									<ul>
 										<li><a href="https://smp.semasoftware.io/" target="_blank">Sign In</a></li>
 										<li><a class="et_pb_button" href="<?php echo home_url('get-a-demo'); ?>">Get a Demo</a></li>

@@ -109,3 +109,9 @@ svg {
 		display: none;
 	}
 }
+
+@media (max-width: 980px) {
+	.hide-on-mobile {
+		display: none;
+	}
+}
