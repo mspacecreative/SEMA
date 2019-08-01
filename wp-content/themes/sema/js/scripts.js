@@ -135,15 +135,12 @@ jQuery(document).ready(function($) {
             $(this).unbind("mouseenter mouseleave");
         });
 		
-		//Chat Now Button
-		$('.chat-now-button').on('click', function (e) {
-			e.preventDefault();
-			//$('body').addClass('open-chat-window');
-			$('.chat-now-button').parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().siblings('#hubspot-messages-iframe-container').children('.widget-launcher').trigger("click");
-			
-			/*if ( $('body').hasClass('open-chat-window') ) {
-				$('.shadow').addClass('active');
-				$('.widget-launcher').trigger("click");
-			}*/
+		$('.chat-now-button').on('click', () => {
+			// check if Hubspot chat is installed
+			if (window.hubspot_live_messages_running && window.hubspot && window.hubspot.messages) {
+				window.hubspot.messages.EXPERIMENTAL_API.requestWidgetOpen();
+			} else {
+				console.log('Please install HubSpot WordPress plugin');
+			}
 		});
 });
