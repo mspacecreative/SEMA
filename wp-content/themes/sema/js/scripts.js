@@ -142,8 +142,7 @@ jQuery(document).ready(function($) {
 			
 			if ( $('body').hasClass('open-chat-window') ) {
 				$('.shadow').addClass('active');
+				$('.widget-launcher').trigger("click");
 			}
-			
-			$('.widget-launcher').trigger("click");
 		});
 });
