@@ -1,5 +1,13 @@
 #et-top-navigation {
 	float: left;
+	left: 180px;
+	position: relative;
+	padding-left: 0!important;
+}
+
+.et-fixed-header #et-top-navigation {
+	left: 110px;
+	transition: all .4s ease-in-out;
 }
 
 .header-nav-right {
