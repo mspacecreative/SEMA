@@ -82,7 +82,7 @@ body .entry-content .hero-section p {
 	font-size: 20px;
 }
 
-.hero-section:before {
+.home .hero-section:before {
 	background-image: url(../img/backgrounds/sema-circles.jpg);
 	background-size: 100%;
 	background-position: top 200px center;
@@ -93,6 +93,7 @@ body .entry-content .hero-section p {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	opacity: .65;
 }
 
 .chart-bg-graphic {
