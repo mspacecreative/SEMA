@@ -144,6 +144,6 @@ jQuery(document).ready(function($) {
 				$('.shadow').addClass('active');
 			}
 			
-			$('.fade-slide-transition-container div').html('<p>Hello</p>');
+			$('.widget-launcher').click();
 		});
 });
