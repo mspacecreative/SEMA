@@ -139,7 +139,7 @@ jQuery(document).ready(function($) {
 		$('.chat-now-button').on('click', function (e) {
 			e.preventDefault();
 			//$('body').addClass('open-chat-window');
-			$('#hubspot-messages-iframe-container button').trigger("click");
+			$('#hubspot-messages-iframe-container').find('button').trigger("click");
 			
 			/*if ( $('body').hasClass('open-chat-window') ) {
 				$('.shadow').addClass('active');
