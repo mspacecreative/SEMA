@@ -136,14 +136,14 @@ jQuery(document).ready(function($) {
         });
 		
 		//Chat Now Button
-		$('.chat-now-button').click(function () {
-			
+		$('.chat-now-button').click(function (e) {
+			e.preventDefault();
 			$('body').addClass('open-chat-window');
 			
 			if ( $('body').hasClass('open-chat-window') ) {
 				$('.shadow').addClass('active');
 			}
 			
-			$('.widget-launcher').trigger('click');
+			$('.widget-launcher').click();
 		});
 });
