@@ -148,7 +148,7 @@ body.et_pb_svg_logo #logo {
 	max-width: 800px;
 }
 
-.solutions_grid et_pb_column {
+.solutions_grid .et_pb_column {
 	border: 2px solid #666;
 }
 
