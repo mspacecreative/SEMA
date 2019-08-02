@@ -148,6 +148,10 @@ body.et_pb_svg_logo #logo {
 	max-width: 800px;
 }
 
+.solutions_grid et_pb_column {
+	border: 2px solid #666;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
