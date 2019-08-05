@@ -26,7 +26,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 	
 	<div class="solutions_blurbs">
 		<div class="blurb">
-			<h1><?php the_title(); ?></h1>
+			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
 		</div>
 	</div>
