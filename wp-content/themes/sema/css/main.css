@@ -164,6 +164,9 @@ body.et_pb_svg_logo #logo {
 	border: 2px solid #000;
 	padding: 20px;
 	margin-bottom: 3%;
+	display: flex;
+	flex-flow: column nowrap;
+	align-items: flex-start;
 }
 
 .solutions_grid {
@@ -171,6 +174,7 @@ body.et_pb_svg_logo #logo {
 	flex-wrap: wrap;
 	justify-content: center;
 	flex-direction: row;
+	flex-flow: row wrap;
 }
 
 .solutions_grid_box:nth-child(3n) {
@@ -178,7 +182,7 @@ body.et_pb_svg_logo #logo {
 }
 
 .solutions_grid a {
-	margin-top: 15px;
+	margin-top: auto;
 	display: inline-block;
 }
 
