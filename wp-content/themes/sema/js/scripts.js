@@ -152,11 +152,11 @@ jQuery(document).ready(function($) {
 			var maxHeight = -1;
 			
 			$('.solutions_grid .et_pb_module').each(function() {
-				maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+				maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
 			});
 			
 			$('.solutions_grid .et_pb_module').each(function() {
-				$(this).height(maxHeight);
+				$(this).outerHeight(maxHeight);
 			});
 		}
 });
