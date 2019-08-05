@@ -150,7 +150,7 @@ jQuery(document).ready(function($) {
 		function solutionsGrid() {
 			// GET TALLEST MODULE FOR SOLUTIONS GRID
 			var maxHeight = 0;
-			$('.solutions_grid .et_pb_module').each(function () {
+			$('.solutions_grid').each(function () {
 				maxHeight = Math.max($(this).height(), maxHeight);
 			});
 		}
