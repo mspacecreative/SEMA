@@ -110,6 +110,13 @@ function resourcesLoop() {
 	return ob_get_clean();
 }
 
+// SOLUTIONS LOOP SHORTCODE
+function solutionsLoop() {
+	ob_start();
+		get_template_part('includes/loop-solutions');
+	return ob_get_clean();
+}
+
 // ACTIONS, OPTIONS AND FILTERS
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 add_action('init', 'footer_scripts');
@@ -119,6 +126,7 @@ add_shortcode( 'page_title', 'pageTitle' );
 add_shortcode( 'page_title_2', 'pageTitle2' );
 add_shortcode( 'careers_list', 'careersLoop' );
 add_shortcode( 'resources_loop', 'resourcesLoop' );
+add_shortcode( 'solutions_loop', 'solutionsLoop' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 
 // SHORTCODES
