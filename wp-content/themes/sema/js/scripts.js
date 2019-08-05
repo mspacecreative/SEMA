@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 		
 		// Get an array of all element heights
 		var elementHeights = $('.solutions_grid_box').map(function() {
-			return $(this).outerHeight();
+			return $(this).height();
 		}).get();
 		
 		// Math.max takes a variable number of arguments
@@ -155,5 +155,5 @@ jQuery(document).ready(function($) {
 		var maxHeight = Math.max.apply(null, elementHeights);
 		
 		// Set each height to the max height
-		$('.solutions_grid_box').outerHeight(maxHeight);
+		$('.solutions_grid_box').height(maxHeight);
 });
