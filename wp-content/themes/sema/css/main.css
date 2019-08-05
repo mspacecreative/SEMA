@@ -152,8 +152,8 @@ body.et_pb_svg_logo #logo {
 	border: 2px solid #666;
 }
 
-.solutions_grid {
-	padding: 0;
+.solutions_grid.et_pb_row {
+	padding-bottom: 0;
 }
 
 @media (min-width: 981px) {
