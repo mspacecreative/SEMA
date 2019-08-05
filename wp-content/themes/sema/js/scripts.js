@@ -147,7 +147,7 @@ jQuery(document).ready(function($) {
 		
 		// Get an array of all element heights
 		var elementHeights = $('.solutions_grid > .et_pb_module').map(function() {
-			return $(this).height();
+			return $(this).outerHeight();
 		}).get();
 		
 		// Math.max takes a variable number of arguments
