@@ -199,6 +199,12 @@ body.et_pb_svg_logo #logo {
 	}
 }
 
+@media (min-width: 1025px) {
+	.solutions_grid.et_pb_gutters2 .et_pb_column, .solutions_grid.et_pb_gutters2.et_pb_row .et_pb_column {
+		width: 33.666%;
+	}
+}
+
 body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	width: auto;
 }
