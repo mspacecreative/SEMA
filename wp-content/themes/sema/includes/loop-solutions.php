@@ -1,5 +1,5 @@
 <?php
-$loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1, 'order' => 'DESC' ) );
+$loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1, 'order' => 'ASC' ) );
     if ( $loop->have_posts() ) : ?>
     <div class="solutions_grid clearfix">
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
