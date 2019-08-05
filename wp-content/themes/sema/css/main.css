@@ -163,6 +163,11 @@ body.et_pb_svg_logo #logo {
 	flex-basis: 31.333%;
 	border: 2px solid #000;
 	padding: 20px;
+	margin-bottom: 3%;
+}
+
+.solutions_grid_box:nth-child(3n) {
+	margin-right: 0;
 }
 
 @media (min-width: 981px) {
