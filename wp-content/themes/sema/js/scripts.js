@@ -145,13 +145,13 @@ jQuery(document).ready(function($) {
 			}
 		});
 		
-		var t=0; // the height of the highest element (after the function runs)
-		var t_elem;  // the highest element (after the function runs)
-		$(".solutions_grid_box",elem).each(function () {
-		    $this = $(this);
-		    if ( $this.outerHeight() > t ) {
-		        t_elem=this;
-		        t=$this.outerHeight();
-		    }
+		var maxHeight = 0;
+		var gridItems = $('.solutions_grid_box');
+		
+		gridItems.each(function(){
+		   var thisH = $(this).outerHeight();
+		   if (thisH > maxHeight) { maxHeight = thisH; }
 		});
+		
+		gridItems.outerHeight(maxHeight);
 });
