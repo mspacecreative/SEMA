@@ -22,11 +22,15 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
         <?php endwhile; ?>
 	</div>
 	
+	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
+	
 	<div class="solutions_blurbs">
 		<div class="blurb">
 			<?php the_content(); ?>
 		</div>
 	</div>
+	
+	<?php endwhile; ?>
 	
     <?php endif;
 wp_reset_postdata(); ?>
