@@ -3,7 +3,8 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
     if ( $loop->have_posts() ) : ?>
     <div class="solutions_grid clearfix">
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
-        <div class="solutions_grid_box">
+        
+		<div class="solutions_grid_box">
 			<h3><?php the_title(); ?></h3>
 			<span><strong>BEST FOR</strong></span>
 			
@@ -18,12 +19,14 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			
 		</div><!-- end solutions_grid_box -->
 		
-		<div class="solutions_blurbs">
-			<div class="blurb">
-				<?php the_content(); ?>
-			</div>
-		</div>
         <?php endwhile; ?>
 	</div>
+	
+	<div class="solutions_blurbs">
+		<div class="blurb">
+			<?php the_content(); ?>
+		</div>
+	</div>
+	
     <?php endif;
 wp_reset_postdata(); ?>
