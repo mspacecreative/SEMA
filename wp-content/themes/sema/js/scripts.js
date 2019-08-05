@@ -144,15 +144,4 @@ jQuery(document).ready(function($) {
 				console.log('Please install HubSpot WordPress plugin');
 			}
 		});
-		
-		// GET TALLEST MODULE FOR SOLUTIONS GRID
-		var maxHeight = -1;
-		
-		$('.solutions_grid .et_pb_module').each(function() {
-			maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
-		});
-		
-		$('.solutions_grid .et_pb_module').each(function() {
-			$(this).outerHeight(maxHeight);
-		});
 });
