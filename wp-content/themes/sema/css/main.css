@@ -205,7 +205,8 @@ body.et_pb_svg_logo #logo {
 
 @media (min-width: 981px) {
 	.solutions_grid.et_pb_gutters2 .et_pb_column, .solutions_grid.et_pb_gutters2.et_pb_row .et_pb_column {
-		width: 32.666%;
+		width: 31.666%;
+		margin-right: 2.5%;
 	}
 }
 
