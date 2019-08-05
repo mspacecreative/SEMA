@@ -144,14 +144,4 @@ jQuery(document).ready(function($) {
 				console.log('Please install HubSpot WordPress plugin');
 			}
 		});
-		
-		var maxHeight = 0;
-		var gridItems = $('.solutions_grid_box');
-		
-		gridItems.each(function(){
-		   var thisH = $(this).height();
-		   if (thisH > maxHeight) { maxHeight = thisH; }
-		});
-		
-		gridItems.height(maxHeight);
 });
