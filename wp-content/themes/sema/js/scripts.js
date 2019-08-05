@@ -151,7 +151,7 @@ jQuery(document).ready(function($) {
 			// GET TALLEST MODULE FOR SOLUTIONS GRID
 			var maxHeight = 0;
 			$('.solutions_grid').each(function () {
-				maxHeight = Math.max($(this).height(), maxHeight);
+				maxHeight = $(this).height() > maxHeight ? $(this).height() : maxHeight;
 			});
 		}
 });
