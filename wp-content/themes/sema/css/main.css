@@ -156,6 +156,15 @@ body.et_pb_svg_logo #logo {
 	padding-bottom: 0;
 }
 
+.solutions_grid_box {
+	float: left;
+	width: 31.333%;
+	margin-right: 3%;
+	flex-basis: 31.333%;
+	border: 2px solid #000;
+	padding: 20px;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
