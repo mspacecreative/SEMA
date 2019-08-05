@@ -204,9 +204,9 @@ body.et_pb_svg_logo #logo {
 }
 
 @media (min-width: 981px) {
-	.et_builder_inner_content .solutions_grid .et_pb_module {
-		width: 100%;
-		margin-right: 0%;
+	.et_builder_inner_content .solutions_grid.et_pb_column_1_3 {
+		width: 31.333%;
+		margin-right: 3%;
 	}
 }
 
