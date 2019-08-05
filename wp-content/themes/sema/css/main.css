@@ -169,6 +169,10 @@ body.et_pb_svg_logo #logo {
 	align-items: flex-start;
 }
 
+.solutions_grid_box p {
+	margin-bottom: 15px;
+}
+
 .solutions_grid {
 	display: flex;
 	flex-wrap: wrap;
