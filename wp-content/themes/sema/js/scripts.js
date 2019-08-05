@@ -65,6 +65,7 @@ jQuery(document).ready(function($) {
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
+			solutionsGrid();
 			
 			$('body').fadeIn('slow');
 			
@@ -90,6 +91,7 @@ jQuery(document).ready(function($) {
 			connectivityTop();
 			googleMapHeight();
 			checkSize();
+			solutionsGrid();
 		});
 		
 		if ($(".hero").length) {
@@ -145,9 +147,11 @@ jQuery(document).ready(function($) {
 			}
 		});
 		
-		// GET TALLEST MODULE FOR SOLUTIONS GRID
-		var maxHeight = 0;
-		$('.solutions_grid .et_pb_module').each(function () {
-			maxHeight = Math.max($(this).height(), maxHeight);
-		});
+		function solutionsGrid() {
+			// GET TALLEST MODULE FOR SOLUTIONS GRID
+			var maxHeight = 0;
+			$('.solutions_grid .et_pb_module').each(function () {
+				maxHeight = Math.max($(this).height(), maxHeight);
+			});
+		}
 });
