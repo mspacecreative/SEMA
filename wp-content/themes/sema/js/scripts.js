@@ -155,5 +155,5 @@ jQuery(document).ready(function($) {
 		var maxHeight = Math.max.apply(null, elementHeights);
 		
 		// Set each height to the max height
-		$('.solutions_grid > .et_pb_module').height(maxHeight);
+		$('.solutions_grid > .et_pb_module').outerHeight(maxHeight);
 });
