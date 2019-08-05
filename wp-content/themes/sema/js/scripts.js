@@ -65,7 +65,6 @@ jQuery(document).ready(function($) {
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
-			solutionsGrid();
 			
 			$('body').fadeIn('slow');
 			
@@ -91,7 +90,6 @@ jQuery(document).ready(function($) {
 			connectivityTop();
 			googleMapHeight();
 			checkSize();
-			solutionsGrid();
 		});
 		
 		if ($(".hero").length) {
@@ -147,16 +145,14 @@ jQuery(document).ready(function($) {
 			}
 		});
 		
-		function solutionsGrid() {
-			// GET TALLEST MODULE FOR SOLUTIONS GRID
-			var maxHeight = -1;
-			
-			$('.solutions_grid .et_pb_module').each(function() {
-				maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
-			});
-			
-			$('.solutions_grid .et_pb_module').each(function() {
-				$(this).outerHeight(maxHeight);
-			});
-		}
+		// GET TALLEST MODULE FOR SOLUTIONS GRID
+		var maxHeight = -1;
+		
+		$('.solutions_grid .et_pb_module').each(function() {
+			maxHeight = maxHeight > $(this).outerHeight() ? maxHeight : $(this).outerHeight();
+		});
+		
+		$('.solutions_grid .et_pb_module').each(function() {
+			$(this).outerHeight(maxHeight);
+		});
 });
