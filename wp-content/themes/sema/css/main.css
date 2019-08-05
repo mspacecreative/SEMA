@@ -166,6 +166,13 @@ body.et_pb_svg_logo #logo {
 	margin-bottom: 3%;
 }
 
+.solutions_grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	flex-direction: row;
+}
+
 .solutions_grid_box:nth-child(3n) {
 	margin-right: 0;
 }
