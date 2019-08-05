@@ -4,7 +4,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1 
     <div class="solutions_grid clearfix">
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
         <div class="solutions_grid_box">
-			<h4><?php the_title(); ?></h4>
+			<h3><?php the_title(); ?></h3>
 			<span><strong>BEST FOR</strong></span><br />
 			
 			<?php if( have_rows('grid_content_box') ): 
