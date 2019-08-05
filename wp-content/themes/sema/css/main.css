@@ -170,6 +170,11 @@ body.et_pb_svg_logo #logo {
 	margin-right: 0;
 }
 
+.solutions_grid a {
+	margin-top: 15px;
+	display: inline-block;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
