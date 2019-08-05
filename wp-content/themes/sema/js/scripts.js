@@ -149,9 +149,9 @@ jQuery(document).ready(function($) {
 		var gridItems = $('.solutions_grid_box');
 		
 		gridItems.each(function(){
-		   var thisH = $(this).outerHeight();
+		   var thisH = $(this).height();
 		   if (thisH > maxHeight) { maxHeight = thisH; }
 		});
 		
-		gridItems.outerHeight(maxHeight);
+		gridItems.height(maxHeight);
 });
