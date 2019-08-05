@@ -149,9 +149,14 @@ jQuery(document).ready(function($) {
 		
 		function solutionsGrid() {
 			// GET TALLEST MODULE FOR SOLUTIONS GRID
-			var maxHeight = 0;
-			$('.solutions_grid .et_pb_module').each(function () {
-				maxHeight = $(this).height() > maxHeight ? $(this).height() : maxHeight;
+			var maxHeight = -1;
+			
+			$('.solutions_grid .et_pb_module').each(function() {
+				maxHeight = maxHeight > $(this).height() ? maxHeight : $(this).height();
+			});
+			
+			$('.solutions_grid .et_pb_module').each(function() {
+				$(this).height(maxHeight);
 			});
 		}
 });
