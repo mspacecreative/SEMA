@@ -267,7 +267,6 @@ h4 {
 	padding: 0;
 	margin: 0 0 20px;
 	line-height: 1.5em;
-	letter-spacing: -0.02em;
 }
 
 .entry-content h3, .tax-categories h3 {
@@ -275,7 +274,6 @@ h4 {
 	margin: 0 0 20px;
 	line-height: 1.5em;
 	font-size: 22px;
-	letter-spacing: -0.01em;
 }
 
 .hero > .et_pb_row {
