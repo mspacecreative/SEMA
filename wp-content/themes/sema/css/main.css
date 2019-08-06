@@ -273,7 +273,7 @@ body.et_pb_svg_logo #logo {
 	body.et_header_style_left #et-top-navigation, body.et_header_style_left .et-fixed-header #et-top-navigation {
 		padding-top: 28px;
 	}
-	.et_header_style_left #et-top-navigation nav>ul>li>a, .et_header_style_left .et-fixed-header #et-top-navigation nav>ul>li>a {
+	body.et_header_style_left #et-top-navigation nav>ul>li>a, body.et_header_style_left .et-fixed-header #et-top-navigation nav>ul>li>a {
 		padding-bottom: 28px;
 	}
 }
