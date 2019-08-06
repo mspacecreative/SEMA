@@ -12,7 +12,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			
 				while( have_rows('grid_content_box') ): the_row(); ?>
 				<p><?php the_sub_field('best_for_content'); ?></p>
-				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#<?php the_sub_field('learn_more_button'); ?>">LEARN MORE</a>
+				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">LEARN MORE</a>
 				<?php endwhile; ?>
 				
 			<?php endif; ?>
@@ -25,7 +25,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 	<div class="solutions_blurbs">
 	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	
-		<div  id="post-<?php the_ID(); ?>" <?php post_class( 'blurb' ); ?>>
+		<div id="post-<?php the_ID(); ?>" <?php post_class( 'blurb' ); ?>>
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
 			
