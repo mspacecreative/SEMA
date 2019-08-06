@@ -194,6 +194,10 @@ body.et_pb_svg_logo #logo {
 	display: inline-block;
 }
 
+.blurb {
+	margin: 0 0 50px;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
