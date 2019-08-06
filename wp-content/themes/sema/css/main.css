@@ -261,13 +261,11 @@ body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	width: auto;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 850px) {
 	.solutions_grid_box {
 		width: 49%;
 		margin-right: 2%;
 		flex-basis: 49%;
-		border: 2px solid #000;
-		padding: 20px;
 		margin-bottom: 2%;
 	}
 	.solutions_grid_box:nth-child(3n) {
@@ -275,5 +273,17 @@ body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	}
 	.solutions_grid_box:nth-child(2n) {
 		margin-right: 0;
+	}
+}
+
+@media (max-width: 450px) {
+	.solutions_grid_box {
+		width: 100%;
+		margin-right: 0%;
+		flex-basis: 100%;
+		margin-bottom: 5%;
+	}
+	.solutions_grid_box:nth-child(3n), .solutions_grid_box:nth-child(2n) {
+		margin-right: 0%;
 	}
 }
