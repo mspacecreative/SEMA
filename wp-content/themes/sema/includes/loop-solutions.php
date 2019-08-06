@@ -28,6 +28,19 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 		<div class="blurb">
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
+			
+			<?php if( have_rows('external_link') ): 
+			while( have_rows('external_link') ): the_row(); ?>
+			
+			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('external_link_button'); ?>"><?php the_sub_field('external_link_label'); ?></a>
+			
+			<?php else : ?>
+			
+			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('external_link_button'); ?>">LEARN MORE</a>
+			
+			<?php endwhile;
+			endif; ?>
+			
 		</div>
 	</div>
 	
