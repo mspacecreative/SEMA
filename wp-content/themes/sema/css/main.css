@@ -276,6 +276,9 @@ body.et_pb_svg_logo #logo {
 	body.et_header_style_left #et-top-navigation nav>ul>li>a, body.et_header_style_left .et-fixed-header #et-top-navigation nav>ul>li>a {
 		padding-bottom: 28px;
 	}
+	body .et-fixed-header #top-menu li a {
+		font-size: inherit;
+	}
 }
 
 body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
