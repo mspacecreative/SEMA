@@ -5,7 +5,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #et-top-navigation {
 	float: left;
-	left: 180px;
+	left: 150px;
 	position: relative;
 	padding-left: 0!important;
 }
@@ -269,6 +269,12 @@ body.et_pb_svg_logo #logo {
 	}
 	.blurb {
 		max-width: 65%;
+	}
+	.et_header_style_left #et-top-navigation, .et_header_style_left .et-fixed-header #et-top-navigation {
+		padding-top: 28px;
+	}
+	.et_header_style_left #et-top-navigation nav>ul>li>a, .et_header_style_left .et-fixed-header #et-top-navigation nav>ul>li>a {
+		padding-bottom: 28px;
 	}
 }
 
