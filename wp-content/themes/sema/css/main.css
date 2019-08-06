@@ -59,6 +59,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 */
 
+body.et_pb_svg_logo #logo, body.et_pb_svg_logo .et-fixed-header #logo {
+	max-height: 65%;
+}
+
 body .nav .sub-menu li {
 	text-align: left;
 }
