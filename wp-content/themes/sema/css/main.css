@@ -10,11 +10,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding-left: 0!important;
 }
 
-.et-fixed-header #et-top-navigation {
-	left: 110px;
-	transition: all .4s ease-in-out;
-}
-
 .header-nav-right {
 	float: right;
 	padding-top: 33px;
@@ -47,6 +42,12 @@ h1, h2, h3, h4, h5, h6 {
 	display: none;
 }
 
+/*
+.et-fixed-header #et-top-navigation {
+	left: 110px;
+	transition: all .4s ease-in-out;
+}
+
 .et-fixed-header .header-nav-right {
 	padding-top: 10px;
 	transition: all .4s ease-in-out;
@@ -56,6 +57,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 14px;
 	transition: all .4s ease-in-out;
 }
+*/
 
 body .nav .sub-menu li {
 	text-align: left;
