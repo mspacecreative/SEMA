@@ -18,7 +18,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php if( have_rows('external_link_button') ): 
 				while( have_rows('external_link_button') ): the_row(); ?>
 				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
+				<a class="et_pb_button hide-on-desktop" style="font-size: 15px; text-transform: uppercase;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
 				
 				<?php endwhile;
 				endif; ?>
