@@ -256,6 +256,9 @@ body.et_pb_svg_logo #logo {
 		width: 31.333%;
 		margin-right: 3%;
 	}
+	.blurb {
+		max-width: 65%;
+	}
 }
 
 body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
