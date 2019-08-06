@@ -40,9 +40,10 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php else : ?>
-			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">LEARN MORE</a>
+			<?php endif; ?>
 			
+			<?php if ( get_field('learn_more_button') == 'default' ): ?>
+			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">LEARN MORE</a>
 			<?php endif; ?>
 			
 		</div>
