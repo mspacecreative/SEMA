@@ -9,7 +9,6 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 ?>
 
 <div id="main-content">
-<div class="connectivity-graphic"></div>
 	<?php
 		if ( et_builder_is_product_tour_enabled() ):
 			// load fullwidth page in Product Tour mode

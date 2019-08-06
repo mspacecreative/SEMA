@@ -42,6 +42,10 @@ h1, h2, h3, h4, h5, h6 {
 	display: none;
 }
 
+#main-content .container {
+	padding-bottom: 58px;
+}
+
 /*
 .et-fixed-header #et-top-navigation {
 	left: 110px;
