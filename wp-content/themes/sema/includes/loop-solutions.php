@@ -22,9 +22,9 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
         <?php endwhile; ?>
 	</div>
 	
+	<div class="solutions_blurbs">
 	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	
-	<div class="solutions_blurbs">
 		<div class="blurb">
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
@@ -46,9 +46,8 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			endif; ?>
 			
 		</div>
-	</div>
-	
 	<?php endwhile; ?>
+	</div>
 	
     <?php endif;
 wp_reset_postdata(); ?>
