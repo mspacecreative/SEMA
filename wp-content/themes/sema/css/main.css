@@ -62,7 +62,7 @@ body .nav .sub-menu li {
 	text-align: left;
 }
 
-body .nav .sub-menu {
+body #et-top-navigation li:first-child .sub-menu, body #et-top-navigation li .sub-menu {
 	right: auto;
 	left: inherit;
 	width: auto;
