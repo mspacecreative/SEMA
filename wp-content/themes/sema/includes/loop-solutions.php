@@ -55,7 +55,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php else : ?>
+			<?php elseif ( get_sub_field('solution_cta_button') == 'default' ): ?>
 			
 			<?php if( have_rows('internal_cta_button') ): 
 			while( have_rows('internal_cta_button') ): the_row(); ?>
