@@ -45,22 +45,16 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
 			
-			<?php if ( get_sub_field('solution_cta_button') == 'external' ): ?>
+			<?php if ( get_sub_field('cta_button_type') == 'external' ): ?>
 			
-			<?php if( have_rows('external_cta_button') ): 
-			while( have_rows('external_cta_button') ): the_row(); ?>
+			<?php if( have_rows('cta_button_content') ): 
+			while( have_rows('cta_button_content') ): the_row(); ?>
 			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('external_link_url'); ?>" target="_blank"><?php the_sub_field('external_link_label'); ?></a>
-			
-			<?php endwhile;
-			endif; ?>
+			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
 			
 			<?php else : ?>
 			
-			<?php if( have_rows('internal_cta_button') ): 
-			while( have_rows('internal_cta_button') ): the_row(); ?>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('internal_page_url'); ?>"><?php the_sub_field('internal_link_label'); ?></a>
+			<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
 			
 			<?php endwhile;
 			endif; ?>
