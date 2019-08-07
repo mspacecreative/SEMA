@@ -612,50 +612,6 @@ h4 {
 	margin-bottom: 1%;
 }
 
-/* OLD STYLE
-.hover-overlay {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	opacity: 0;
-	background: #000;
-	left: 0;
-	top: 0;
-	transition: 0.5s ease-in-out;
-	visibility: hidden;
-}
-.member-name {
-	position: absolute;
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.5s ease-in-out;
-	bottom: 20px;
-	left: 20px;
-	color: #fff;
-	width: 75%;
-}
-.team-member a {
-	color: #fff;
-	position: absolute;
-	bottom: 20px;
-	right: 20px;
-	z-index: 11;
-	opacity: 0;
-	visibility: hidden;
-	transition: 0.5s ease-in-out;
-}
-.team-member:hover > .hover-overlay {
-	visibility: visible;
-	transition: 0.5s ease-in-out;
-	opacity: .75;
-}
-
-.team-member:hover > .member-name, .team-member:hover > a, .team-member:hover .read-bio, .bio-overlay.show {
-	opacity: 1;
-	transition: 0.5s ease-in-out;
-	visibility: visible;
-}*/
-
 .hover-overlay {
 	position: absolute;
 	height: 40%;
@@ -806,17 +762,6 @@ span.sub-toggle {
 	box-shadow: none;
 }
 
-/*.entry-content .et_pb_section:nth-child(2):after {
-	content: '';
-	background: url(img/backgrounds/bottom-shadow.png) repeat-x;
-	position: absolute;
-	left: 0;
-	top: -15px;
-	width: 100%;
-	z-index: 0;
-	height: 15px;
-}*/
-
 .et_pb_title_container .entry-title .shadow-cover {
 	top: 100%;
 	position: absolute;
@@ -843,11 +788,6 @@ div.et_pb_section.et_pb_section_2.two-thirds-one-third-w-bg {
 .large-list-items ul li li {
 	margin-bottom: 0;
 	text-indent: -22px;
-}
-
-.nav li.menu-item-1494 ul.sub-menu {
-	width: 150px;
-	right: 0;
 }
 
 .entry-content .icon-row h3 {
@@ -896,19 +836,6 @@ img.alignright.half-width-img {
 footer .hbspt-form, .page-id-1585 .hbspt-form {
 	margin-top: 0;
 }
-
-/*footer .hbspt-form input[type=email], .page-id-1585 .hbspt-form input[type=email] {
-	width: 100%!important;
-	border: 1px solid #e9e9e9!important;
-	border-radius: none!important;
-	box-shadow: none!important;
-	padding: 10px!important;
-	box-sizing: border-box!important;
-	height: auto!important;
-	line-height: inherit!important;
-	font-family: inherit!important;
-	font-size: 14px!important;
-}*/
 
 footer .hbspt-form input {
     width: 100%!important;
@@ -962,7 +889,6 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 .nav .sub-menu li {
 	text-align: right;
 }
-
 
 /* HUBSPOT STYLES */
 
