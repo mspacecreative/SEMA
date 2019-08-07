@@ -46,8 +46,8 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom: 58px;
 }
 
-body .hs-form-fca66b34-b38d-4308-871a-86d304452572_b8301ce0-dd44-4f8c-bb81-7ee0c0889215 {
-	margin-bottom: 0;
+.hbspt-form form {
+	margin-bottom: 0!important;
 }
 
 #footer-widgets {
@@ -231,8 +231,7 @@ body.et_pb_svg_logo #logo {
 	#top-menu .hide-on-desktop {
 		display: none;
 	}
-	body .et_pb_gutters3 .footer-widget {
-	    margin-right: 5.5%;
+	body.et_pb_gutters3 .footer-widget {
 	    margin-bottom: 50px;
 	}
 }
