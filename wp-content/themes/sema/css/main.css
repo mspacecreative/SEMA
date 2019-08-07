@@ -213,6 +213,10 @@ body.et_pb_svg_logo #logo {
 	margin: 30px 0 0;
 }
 
+body.alt-row-layout .et_pb_row.max-width-800 {
+	max-width: 1000px;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
