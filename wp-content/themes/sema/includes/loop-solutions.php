@@ -24,7 +24,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				endif; ?>
 				
 				<?php else : ?>
-				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">LEARN MORE</a>
+				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">Learn More</a>
 				
 				<?php endif; ?>
 				
