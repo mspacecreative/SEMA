@@ -236,11 +236,19 @@ body.et_pb_svg_logo #logo {
 .blurb {
 	margin: 0 0 50px;
 	padding-top: 50px;
+	position: relative;
 }
 
 .blurb a {
 	display: inline-block;
 	margin: 30px 0 0;
+}
+
+.solution-thumb {
+	position: absolute;
+	width: 25%;
+	right: 0;
+	bottom: 0;
 }
 
 body.alt-row-layout .et_pb_row.max-width-800 {
