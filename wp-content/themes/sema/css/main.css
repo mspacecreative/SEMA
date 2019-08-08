@@ -63,17 +63,6 @@ body .nav .sub-menu li {
 	text-align: left;
 }
 
-body .uiButton.initial-message-bubble .initial-message-close-button {
-	width: 20px;
-	height: 20px;
-	top: 10px;
-	right: 10px;
-}
-
-.private-icon span {
-	font-size: 20px!important;
-}
-
 body #et-top-navigation li:first-child .sub-menu, body #et-top-navigation li .sub-menu {
 	right: auto;
 	left: inherit;
