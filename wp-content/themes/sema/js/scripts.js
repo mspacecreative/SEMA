@@ -147,6 +147,10 @@ jQuery(document).ready(function($) {
 		
 		// TRIGGER YOUTUBE VIDEO ON HOMEPAGE
 		$('.open-explainer').click(function () {
-			$('.video-overlay').fadeIn();
+			$('body').toggleClass('show');
+			
+			if ( $('body').hasClass('show') ) {
+				$('.video-overlay').fadeIn();
+			}
 		});
 });
