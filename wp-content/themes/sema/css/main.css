@@ -63,6 +63,10 @@ body .nav .sub-menu li {
 	text-align: left;
 }
 
+.inline-buttons {
+	text-align: center;
+}
+
 .inline-buttons .et_pb_column div {
 	display: inline-block;
 	padding: 0 15px;
