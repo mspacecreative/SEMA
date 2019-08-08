@@ -144,13 +144,4 @@ jQuery(document).ready(function($) {
 				console.log('Please install HubSpot WordPress plugin');
 			}
 		});
-		
-		// TRIGGER YOUTUBE VIDEO ON HOMEPAGE
-		$('.open-explainer').click(function () {
-			$('body').toggleClass('show');
-			
-			if ( $('body').hasClass('show') ) {
-				$('.video-overlay').fadeIn();
-			}
-		});
 });

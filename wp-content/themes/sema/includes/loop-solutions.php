@@ -65,7 +65,13 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php endif; ?>
+			<?php endif;
+			
+			if ( has_post_thumbnail() ) { ?>
+				<div class="solution-thumb-container">
+					<?php the_post_thumbnail('medium', array('class' => 'solution-thumb')); ?>
+				</div>
+			} 
 			
 		</div>
 		<?php endif; ?>
