@@ -202,6 +202,7 @@ body.et_pb_svg_logo #logo {
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: flex-start;
+	position: relative;
 }
 
 .solutions_grid_box p {

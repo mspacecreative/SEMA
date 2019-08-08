@@ -5,6 +5,11 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
         
 		<div class="solutions_grid_box">
+			<?php
+			if ( has_post_thumbnail() ) { 
+				the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+			}
+			?>
 			<h3><?php the_title(); ?></h3>
 			<span style="color: #000;"><strong>BEST FOR</strong></span>
 			
