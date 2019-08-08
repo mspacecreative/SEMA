@@ -18,13 +18,13 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php if( have_rows('external_link_button') ): 
 				while( have_rows('external_link_button') ): the_row(); ?>
 				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 15px; text-transform: uppercase;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
 				
 				<?php endwhile;
 				endif; ?>
 				
 				<?php else : ?>
-				<a class="et_pb_button hide-on-desktop" style="font-size: 15px;" href="#post-<?php the_ID(); ?>">Learn More</a>
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#post-<?php the_ID(); ?>">Learn More</a>
 				
 				<?php endif; ?>
 				
@@ -50,7 +50,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
 			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 15px; text-transform: uppercase;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
+			<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
 			
 			<?php endwhile;
 			endif; ?>
@@ -60,7 +60,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
 			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 15px; text-transform: uppercase;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
+			<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
 			
 			<?php endwhile;
 			endif; ?>
