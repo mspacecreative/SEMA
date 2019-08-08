@@ -63,6 +63,11 @@ body .nav .sub-menu li {
 	text-align: left;
 }
 
+.inline-buttons .et_pb_column div {
+	display: inline-block;
+	padding: 0 15px;
+}
+
 body #et-top-navigation li:first-child .sub-menu, body #et-top-navigation li .sub-menu {
 	right: auto;
 	left: inherit;
