@@ -83,7 +83,8 @@ body .nav .sub-menu li {
 	height: 100%;
 	background: rgba(0,0,0,.75);
 	z-index: 99999;
-	display: none;
+	visibility: hidden;
+	opacity: 0;
 }
 
 .video-container {
