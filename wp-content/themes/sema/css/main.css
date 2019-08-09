@@ -291,6 +291,10 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 		margin-right: 4%;
 	}
 	
+	#sidebar {
+		margin-top: 50px;
+	}
+	
 	.border-left-and-top {
 		padding-left: 0;
 		border-left: none;
