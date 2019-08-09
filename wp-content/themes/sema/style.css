@@ -1125,9 +1125,6 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 }
 
 @media (min-width: 1101px) {
-	.single #left-area {
-		max-width: 60%;
-	}
 	.single-resources #left-area {
 		max-width: none;
 	}

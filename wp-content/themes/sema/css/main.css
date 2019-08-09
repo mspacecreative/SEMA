@@ -275,6 +275,12 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 		padding-left: 30px;
 		border-left: 3px solid #0072d6;
 	}
+	.single #left-area {
+		width: 65.5%;
+	}
+	.single #sidebar {
+		width: 34.5%;
+	}
 }
 
 @media (max-width: 980px) {
