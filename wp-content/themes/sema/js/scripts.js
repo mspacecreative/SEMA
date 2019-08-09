@@ -148,5 +148,6 @@ jQuery(document).ready(function($) {
 		// CLOSE VIDEO OVERLAY BUTTON
 		$('.close-video').click(function () {
 			$(this).parent().parent().prev().parent().fadeOut();
+			player.stopVideo();
 		});
 });
