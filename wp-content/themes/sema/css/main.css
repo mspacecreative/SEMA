@@ -264,6 +264,10 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	body.et_pb_gutters3 .footer-widget {
 	    margin-bottom: 50px;
 	}
+	.border-left-and-top {
+		padding-left: 30px;
+		border-left: 3px solid #0072d6;
+	}
 }
 
 @media (max-width: 980px) {
@@ -272,6 +276,13 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	}
 	.hero-cta-buttons .et_pb_column:first-of-type {
 		margin-right: 4%;
+	}
+	
+	.border-left-and-top {
+		padding-left: 0;
+		border-left: none;
+		padding-top: 30px;
+		border-top: 3px solid #0072d6;
 	}
 }
 
