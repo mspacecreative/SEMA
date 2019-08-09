@@ -1,4 +1,4 @@
-<h3 style="margin-top: 30px;border-bottom: 1px solid #e9e9e9; padding-bottom: 10px;">Current career opportunities</h3>
+<h3 style="border-bottom: 1px solid #e9e9e9; padding-bottom: 10px;">Current career opportunities</h3>
 <?php 
 $args = array(
 	'numberposts'	=> -1,
