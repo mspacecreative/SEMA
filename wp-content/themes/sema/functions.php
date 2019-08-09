@@ -117,6 +117,18 @@ function solutionsLoop() {
 	return ob_get_clean();
 }
 
+// CAREERS SIDEBAR
+function careersSidebar() {
+	register_sidebar( array(
+		'name' => esc_html__( 'Careers Sidebar', 'BlackBay' ),
+		'id' => 'sidebar-careers',
+		'before_widget' => '<div id="%1$s" class="et_pb_widget %2$s">',
+		'after_widget' => '</div> <!-- end .et_pb_widget -->',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+}
+
 // ACTIONS, OPTIONS AND FILTERS
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 add_action('init', 'footer_scripts');
@@ -128,6 +140,7 @@ add_shortcode( 'careers_list', 'careersLoop' );
 add_shortcode( 'resources_loop', 'resourcesLoop' );
 add_shortcode( 'solutions_loop', 'solutionsLoop' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
+add_action( 'widgets_init', 'careersSidebar' );
 
 // SHORTCODES
 //add_shortcode('content_block', 'content_blocks');
