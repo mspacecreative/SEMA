@@ -149,5 +149,16 @@ jQuery(document).ready(function($) {
 		$('.close-video').click(function () {
 			$(this).parent().parent().prev().parent().fadeOut();
 			player.stopVideo();
+			
+			$('body').removeClass('move');
+		});
+		
+		// RE-POSITION HEADER ON CLICK
+		$('.open-explainer').click(function () {
+			$('body').addClass('move');
+		});
+		
+		$('.open-explainer').click(function () {
+			$('body').addClass('move');
 		});
 });
