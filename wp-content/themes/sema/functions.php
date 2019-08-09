@@ -122,7 +122,7 @@ function careersSidebar() {
 	register_sidebar( array(
 		'name' => esc_html__( 'Careers Sidebar', 'BlackBay' ),
 		'id' => 'sidebar-careers',
-		'before_widget' => '<div id="%1$s" class="et_pb_widget %2$s">',
+		'before_widget' => '<div id="%1$s" class="et_pb_widget border-left-and-top %2$s">',
 		'after_widget' => '</div> <!-- end .et_pb_widget -->',
 		'before_title' => '<h2>',
 		'after_title' => '</h2>',
