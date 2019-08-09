@@ -7,6 +7,10 @@ h1.entry-title {
 	padding-bottom: 0;
 }
 
+#left-area .post-meta {
+	margin-top: 15px;
+}
+
 #et-top-navigation {
 	float: left;
 	left: 130px;
