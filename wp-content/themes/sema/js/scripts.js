@@ -146,30 +146,6 @@ jQuery(document).ready(function($) {
 			}
 		});
 		
-		// YOUTUBE MODAL
-		var player;
-		
-		function onYouTubeIframeAPIReady() {
-		    player = new YT.Player('video-placeholder', {
-		        videoId: 'vNMXUznxQTk',
-				playerVars: {
-		        	modestbranding: 1,
-					rel: 0
-		        },
-		        events: {
-		        	onStateChange: onPlayerStateChange
-		        }
-		    });
-		}
-			
-		function onPlayerStateChange(event) {        
-			if(event.data === 0) {   
-				(function($) {
-					$(".video-overlay").fadeIn();
-				})( jQuery );
-			}
-		}
-		
 		// CLOSE VIDEO OVERLAY BUTTON
 		$('.close-video').click(function () {
 			$(this).parent().parent().prev().parent().fadeOut();
