@@ -169,7 +169,7 @@ jQuery(document).ready(function($) {
 		
 		// AUDIO EMBED ON CLICK
 		function play() {
-			var audio = document.getElementById("audio-1025-1_html5");
+			var audio = document.getElementsByClassName("wp-audio-shortcode");
 		    $('.play-audio').click(function () {
 				audio.play();
 			});
