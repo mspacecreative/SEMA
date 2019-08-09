@@ -65,6 +65,7 @@ jQuery(document).ready(function($) {
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
+			play();
 			
 			$('body').fadeIn('slow');
 			
@@ -165,4 +166,12 @@ jQuery(document).ready(function($) {
 		$('.video-overlay').click(function() {
 			$('body').removeClass('move');
 		});
+		
+		// AUDIO EMBED ON CLICK
+		function play() {
+			var audio = document.getElementById("audio-1025-1_html5");
+		    $('.play-audio').click(function () {
+				audio.play();
+			});
+		}
 });
