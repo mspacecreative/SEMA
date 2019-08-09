@@ -1,4 +1,8 @@
 <?php
+$post_object = get_field('featured_resource', $post_object->ID);
+
+if( $post_object ):
+
 $args = array(
     'post_type' => 'resources',
     'post_status' => 'publish',
@@ -25,4 +29,6 @@ if ( $arr_posts->have_posts() ) :
         
     <?php endwhile;
     
-endif; wp_reset_query(); ?>
+endif; wp_reset_query();
+
+endif; ?>

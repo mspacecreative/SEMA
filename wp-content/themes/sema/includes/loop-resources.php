@@ -1,3 +1,4 @@
+<?php get_template_part('resource-featured'); ?>
 <div id="instafeed">
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
