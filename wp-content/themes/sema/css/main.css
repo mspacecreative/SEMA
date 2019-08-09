@@ -83,7 +83,7 @@ body .nav .sub-menu li {
 }
 
 .move #main-header, body.move .hamburger, .move .et_pb_row {
-	z-index: 999;
+	z-index: 11;
 }
 
 .move .et_pb_row.video-modal {
