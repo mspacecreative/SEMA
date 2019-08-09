@@ -159,12 +159,16 @@ jQuery(document).ready(function($) {
 			$('body').addClass('move');
 		});
 		
-		$('.open-explainer').click(function () {
+		$('#view-video, .open-explainer').click(function () {
 			$('body').addClass('move');
+			$('.video-overlay').fadeIn();
+			player.playVideo();
 		});
 		
 		$('.video-overlay').click(function() {
 			$('body').removeClass('move');
+			$(this).fadeOut();
+			player.stopVideo();
 		});
 		
 		// AUDIO EMBED ON CLICK
@@ -173,5 +177,29 @@ jQuery(document).ready(function($) {
 		    $('.play-audio').click(function () {
 				audio.play();
 			});
+		}
+		
+		// YOUTUBE MODAL
+		var player;
+		
+		function onYouTubeIframeAPIReady() {
+		    player = new YT.Player('video-placeholder', {
+		        videoId: 'vNMXUznxQTk',
+				playerVars: {
+		        	modestbranding: 1,
+					rel: 0
+		        },
+		        events: {
+		        	onStateChange: onPlayerStateChange
+		        }
+		    });
+		}
+			
+		function onPlayerStateChange(event) {        
+			if(event.data === 0) {   
+				(function($) {
+					$(".video-overlay").fadeIn();
+				})( jQuery );
+			}
 		}
 });
