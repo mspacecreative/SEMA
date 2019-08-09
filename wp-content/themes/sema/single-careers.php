@@ -170,7 +170,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php endwhile; ?>
 			</div> <!-- #left-area -->
 
-			<?php get_sidebar('sidebar-careers'); ?>
+			<?php get_sidebar('careers'); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>
