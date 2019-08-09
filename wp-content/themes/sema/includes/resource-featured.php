@@ -1,13 +1,9 @@
 <?php
-$post_object = get_field('featured_resource', $post_object->ID);
-
-if( $post_object ):
-
 $args = array(
-    'post_type' => 'resources',
-    'post_status' => 'publish',
-    'category_name' => 'featured',
-    'posts_per_page' => 1,
+    'numberposts'	=> -1,
+    'post_type'		=> 'resources',
+    'meta_key'		=> 'featured_resource',
+    'meta_value'	=> 'true'
 );
 $arr_posts = new WP_Query( $args );
  
@@ -29,6 +25,4 @@ if ( $arr_posts->have_posts() ) :
         
     <?php endwhile;
     
-endif; wp_reset_query();
-
-endif; ?>
+endif; wp_reset_query(); ?>
