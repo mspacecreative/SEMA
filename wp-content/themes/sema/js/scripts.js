@@ -161,4 +161,8 @@ jQuery(document).ready(function($) {
 		$('.open-explainer').click(function () {
 			$('body').addClass('move');
 		});
+		
+		$('.video-overlay').click(function() {
+			$('body').removeClass('move');
+		});
 });
