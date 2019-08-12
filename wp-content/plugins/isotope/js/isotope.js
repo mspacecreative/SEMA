@@ -21,7 +21,7 @@
             $('.filters-button-group, .mobile-filter').addClass('fixed');
             $('#stick-here').css('height', $('#main-header').height() - 10);
             $('#stick-here-mobile').css('height', $('#stick-here-mobile').siblings('.mobile-filter').outerHeight() -10);
-            $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
+            $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height() -10);
             if ( $('.mobile-filter').css('display') == 'block' ) {
                 $('.filters-button-group').css('top', $('#main-header').height() + $('.mobile-filter').outerHeight());
             }
