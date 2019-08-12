@@ -86,6 +86,10 @@ body .nav .sub-menu li {
 	z-index: 11;
 }
 
+.featured-resource-container img {
+	display: block;
+}
+
 .move .et_pb_row.video-modal {
 	z-index: 999999;
 }
