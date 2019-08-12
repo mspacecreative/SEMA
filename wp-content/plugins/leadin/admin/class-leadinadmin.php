@@ -142,7 +142,7 @@ class LeadinAdmin {
 			add_submenu_page( 'leadin', __( 'Settings', 'leadin' ), __( 'Settings', 'leadin' ), 'read', 'leadin_settings', array( $this, 'leadin_build_app' ) );
 			remove_submenu_page( 'leadin', 'leadin' );
 		} else {
-			add_menu_page( __( 'HubSpot', 'leadin' ), __( 'HubSpot', 'leadin' ) . $notification_icon, 'activate_plugins', 'leadin', array( $this, 'leadin_build_app' ), 'dashicons-sprocket', '25.100713' );
+			add_menu_page( __( 'HubSpot', 'leadin' ), __( 'HubSpot', 'leadin' ) . $notification_icon, 'manage_options', 'leadin', array( $this, 'leadin_build_app' ), 'dashicons-sprocket', '25.100713' );
 		}
 	}
 
@@ -251,7 +251,7 @@ class LeadinAdmin {
 		);
 
 		wp_register_style( 'leadin-bridge-css', LEADIN_PATH . '/style/leadin-bridge.css?', array(), LEADIN_PLUGIN_VERSION );
-		wp_register_script( 'leadin-js', LEADIN_PATH . '/scripts/leadin.js', false, true, true );
+		wp_register_script( 'leadin-js', LEADIN_JS_PATH, false, true, true );
 		wp_localize_script( 'leadin-js', 'leadinConfig', $leadin_config );
 		wp_localize_script( 'leadin-js', 'leadinI18n', $leadin_i18n );
 		wp_enqueue_script( 'leadin-js' );

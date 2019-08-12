@@ -64,6 +64,11 @@ function leadin_parse_version( $version ) {
 	return $match[0];
 }
 
+function leadin_is_valid_static_version( $version ) {
+	preg_match( '/static-\d+\.\d+/', $version, $match );
+	return ! empty( $match );
+}
+
 /**
  * Return array of query parameters to add to the iframe src
  */
@@ -79,7 +84,7 @@ function leadin_get_query_params() {
 		'admin' => leadin_is_admin(),
 	);
 
-	if ( LEADIN_STATIC_BUNDLE_VERSION !== 'latest-version' ) {
+	if ( leadin_is_valid_static_version( LEADIN_STATIC_BUNDLE_VERSION ) ) {
 		$query_param_array['s'] = LEADIN_STATIC_BUNDLE_VERSION;
 	}
 
@@ -207,18 +212,28 @@ function leadin_get_form_shortcode( $form_id ) {
 }
 
 /**
- * Return true if the current user has the `activate_plugins` capability
+ * Return true if the current user has the `manage_options` capability
  */
 function leadin_is_admin() {
-	return current_user_can( 'activate_plugins' );
+	return current_user_can( 'manage_options' );
 }
 
 /**
- * Return 403 if the current user does not have the `activate_plugins` capability
+ * Return 403 if the current user does not have the `manage_options` capability
  */
-function leadin_activate_plugins_or_403() {
+function leadin_manage_options_or_403() {
 	if ( ! leadin_is_admin() ) {
-		wp_die( '{ "error": "Forbidden" }', '', 403 );
+		wp_die( '{ "error": "Insufficient permissions" }', '', 403 );
+	}
+}
+
+/**
+ * Validate nonce sent with ajax
+ */
+function leadin_validate_nonce() {
+	$valid = check_ajax_referer( 'hubspot-ajax', false, false );
+	if ( ! $valid ) {
+		wp_die( '{ "error": "CSRF token missing or invalid" }', 403 );
 	}
 }
 

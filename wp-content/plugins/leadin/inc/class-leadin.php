@@ -11,10 +11,8 @@ class Leadin {
 	public function __construct() {
 		global $pagenow;
 
-		add_action( 'login_head', array( $this, 'add_page_analytics' ) );
 		add_action( 'wp_head', array( $this, 'add_page_analytics' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'add_common_frontend_scripts' ) );
-		add_action( 'login_enqueue_scripts', array( $this, 'add_leadin_frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'add_leadin_frontend_scripts' ) );
 
 		if ( is_admin() ) {
@@ -49,8 +47,6 @@ class Leadin {
 			$page_type = 'home';
 		} elseif ( is_archive() ) {
 			$page_type = 'archive';
-		} elseif ( $this->leadin_is_login_or_register_page() ) {
-			$page_type = 'login';
 		} elseif ( is_page() ) {
 			$page_type = 'page';
 		} else {
@@ -116,13 +112,6 @@ class Leadin {
 		} else {
 			return $tag;
 		}
-	}
-
-	/**
-	 * Return true if the current page is login or register
-	 */
-	public static function leadin_is_login_or_register_page() {
-		return in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ), true );
 	}
 }
 
