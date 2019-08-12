@@ -18,7 +18,7 @@ if ( $arr_posts->have_posts() ) :
 			</div>
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="et_pb_column_1_2">
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?>
+				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 			</div>
 			<?php } ?>
 		</div>
