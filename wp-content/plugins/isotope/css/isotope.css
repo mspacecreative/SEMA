@@ -202,7 +202,6 @@ button {
 .filters-button-group {
 	font-size: 0;
 	z-index: 999;
-	padding-top: 10px;
 }
 
 .filters-button-group.fixed {
