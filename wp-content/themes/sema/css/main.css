@@ -99,6 +99,7 @@ body .nav .sub-menu li {
 
 .featured-resource-container img {
 	display: block;
+	margin-top: 10px;
 }
 
 .featured-resource-container h3 {
