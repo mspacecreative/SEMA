@@ -19,7 +19,7 @@
         var top = $('#stick-here, #stick-here-mobile').offset().top;
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
-            $('#stick-here').css('height', $('#main-header').height());
+            $('#stick-here').css('height', $('#main-header').height() -10);
             $('#stick-here-mobile').css('height', $('#stick-here-mobile').siblings('.mobile-filter').outerHeight());
             $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
             if ( $('.mobile-filter').css('display') == 'block' ) {
