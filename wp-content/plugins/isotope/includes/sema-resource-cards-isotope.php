@@ -26,7 +26,7 @@ if ( $arr_posts->have_posts() ) :
 			</div>
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="one_third last">
-				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?>
+				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?></a>
 			</div>
 			<?php } ?>
 		</div>
