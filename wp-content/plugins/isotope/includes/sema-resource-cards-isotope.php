@@ -1,3 +1,40 @@
+<?php
+$args = array(
+    'post_type' => 'resources',
+    'posts_per_page' => 1,
+    'meta_query' => array( 
+      array(
+        'key' => '_thumbnail_id'
+      ),
+      array(
+        'key' => 'featured_resource',
+        'value' => '1'
+      )
+    )
+);
+$arr_posts = new WP_Query( $args );
+ 
+if ( $arr_posts->have_posts() ) :
+ 
+    while ( $arr_posts->have_posts() ) :
+        $arr_posts->the_post(); ?>
+        
+        <div class="featured-resource-container clearfix max-width-800">
+			<h3><?php esc_html_e('Featured Resource: '); ?><?php the_title(); ?></h3>
+			<div class="two_third">
+				<?php the_excerpt(); ?>
+			</div>
+			<?php if ( has_post_thumbnail() ) { ?>
+			<div class="one_third last">
+				<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail(); ?>
+			</div>
+			<?php } ?>
+		</div>
+        
+    <?php endwhile;
+    
+endif; wp_reset_query(); ?>
+
 <div id="stick-here-mobile"></div>
 <div class="mobile-filter">
     <button>Filter</button>

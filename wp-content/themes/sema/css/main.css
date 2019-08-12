@@ -91,6 +91,7 @@ body .nav .sub-menu li {
 	background-color: #fff;
 	box-shadow: 0 3px 10px #d9d9d9;
 	margin: 0 auto 50px;
+	border-radius: 4px;
 }
 
 .last {
