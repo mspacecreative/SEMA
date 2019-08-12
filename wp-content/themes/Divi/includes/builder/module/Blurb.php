@@ -61,6 +61,7 @@ class ET_Builder_Module_Blurb extends ET_Builder_Module {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 						'css'               => array(
 							'main' => "{$this->main_css_element} .et_pb_blurb_description",
 						),

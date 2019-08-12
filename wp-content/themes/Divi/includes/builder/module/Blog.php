@@ -61,6 +61,7 @@ class ET_Builder_Module_Blog extends ET_Builder_Module_Type_PostBased {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 						'css'               => array(
 							'link'  => "{$this->main_css_element} .post-content a, %%order_class%%.et_pb_bg_layout_light .et_pb_post .post-content a, %%order_class%%.et_pb_bg_layout_dark .et_pb_post .post-content a",
 							'ul'    => "{$this->main_css_element} .post-content ul, %%order_class%%.et_pb_bg_layout_light .et_pb_post .post-content ul, %%order_class%%.et_pb_bg_layout_dark .et_pb_post .post-content ul",

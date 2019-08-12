@@ -47,10 +47,10 @@ class ET_Builder_Module_CTA extends ET_Builder_Module {
 						'line_height'    => "{$this->main_css_element} p",
 						'limited_main'   => "{$this->main_css_element} p",
 						'text_shadow'    => "{$this->main_css_element} p",
-						'block_elements' => "{$this->main_css_element}",
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 						'css'               => array(
 							'main' => "{$this->main_css_element}",
 						),

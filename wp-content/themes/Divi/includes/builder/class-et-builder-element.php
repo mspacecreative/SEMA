@@ -2524,42 +2524,7 @@ class ET_Builder_Element {
 		$module_custom_defaults = self::$custom_defaults_manager->get_module_custom_defaults( $module_slug );
 
 		foreach( $this->props as $shortcode_attr_key => $shortcode_attr_value ) {
-			if ( isset( $fields[ $shortcode_attr_key ]['type'] ) && 'computed' === $fields[ $shortcode_attr_key ]['type'] ) {
-
-				$field = $fields[ $shortcode_attr_key ];
-				$depends_on = array();
-
-				if ( isset( $field['computed_depends_on'] ) ) {
-					foreach ( $field['computed_depends_on'] as $depends_on_field ) {
-						if ( ! isset( $atts[ $depends_on_field ] ) && isset( $module_custom_defaults[ $depends_on_field ] ) ) {
-							$dependency_value = $module_custom_defaults[ $depends_on_field ];
-						} else {
-							// Need to check if depended field is exist to avoid error.
-							$dependency_value = isset( $this->props[ $depends_on_field ] ) ? $this->props[ $depends_on_field ] : '';
-
-							if ( '' === $dependency_value ) {
-								if ( isset( $this->fields_unprocessed[ $depends_on_field]['default'] ) ) {
-									$dependency_value = $this->fields_unprocessed[ $depends_on_field ]['default'];
-								}
-							}
-						}
-
-						$depends_on[ $depends_on_field ] = $dependency_value;
-					}
-				}
-
-				if ( isset( $field['computed_variables'] ) ) {
-					$depends_on['computed_variables'] = $field['computed_variables'];
-				}
-
-				if ( ! is_callable( $field['computed_callback'] ) ) {
-					wp_die( esc_html( $shortcode_attr_key . ' Callback:' . $field['computed_callback'] . ' is not callable.... ' ) );
-				}
-
-				$value = call_user_func( $field['computed_callback'], $depends_on );
-			} else {
-				$value = $shortcode_attr_value;
-			}
+			$value = $shortcode_attr_value;
 
 			// don't set the default, unless, lol, the value is literally 'default'
 			if ( 'default' !== $value ) {
@@ -3563,10 +3528,11 @@ class ET_Builder_Element {
 					),
 				);
 
-				// Tabbed toggles status.
+				// Tabbed toggle & BB icons support status.
 				$tabbed_subtoggles = isset( $option_settings['block_elements']['tabbed_subtoggles'] ) ? $option_settings['block_elements']['tabbed_subtoggles'] : false;
+				$bb_icons_support  = isset( $option_settings['block_elements']['bb_icons_support'] ) ? $option_settings['block_elements']['bb_icons_support'] : false;
 
-				$this->_add_settings_modal_sub_toggles( $tab_slug, $toggle_slug, $block_elements, $tabbed_subtoggles );
+				$this->_add_settings_modal_sub_toggles( $tab_slug, $toggle_slug, $block_elements, $tabbed_subtoggles, $bb_icons_support );
 
 				// Block Elements - 3. Set additional options for ul/ol/qoute sub toggles.
 				// a. UL - Type, Position, and Indent.
@@ -6752,13 +6718,15 @@ class ET_Builder_Element {
 	 * Add settings under sub toggles.
 	 *
 	 * @since 3.23
+	 * @since ?? Add support to set custom icons on sub toggles.
 	 *
 	 * @param string  $tab_slug          Current tab slug.
 	 * @param string  $toggle_slug       Current toggle slug.
 	 * @param array   $sub_toggle_items  Sub toggles settings need to be added.
 	 * @param boolean $tabbed_subtoggles Tabbed sub toggle status.
+	 * @param boolean $bb_icons_support  BB icons support status.
 	 */
-	protected function _add_settings_modal_sub_toggles( $tab_slug, $toggle_slug, $sub_toggle_items, $tabbed_subtoggles = false ) {
+	protected function _add_settings_modal_sub_toggles( $tab_slug, $toggle_slug, $sub_toggle_items, $tabbed_subtoggles = false, $bb_icons_support = false ) {
 		// Ensure tab slug is exist.
 		if ( ! isset( $this->settings_modal_toggles[ $tab_slug ] ) ) {
 			$this->settings_modal_toggles[ $tab_slug ] = array();
@@ -6788,6 +6756,11 @@ class ET_Builder_Element {
 		// Set tabbed sub toggles status.
 		if ( $tabbed_subtoggles ) {
 			$this->settings_modal_toggles[ $tab_slug ]['toggles'][ $toggle_slug ]['tabbed_subtoggles'] = $tabbed_subtoggles;
+		}
+
+		// Set BB icons support status.
+		if ( $bb_icons_support ) {
+			$this->settings_modal_toggles[ $tab_slug ]['toggles'][ $toggle_slug ]['bb_icons_support'] = $bb_icons_support;
 		}
 	}
 
@@ -13423,7 +13396,7 @@ class ET_Builder_Element {
 
 			// 3.a.2. Field Background Hover Color.
 			$field_bg_color_hover = $this->get_hover_value("{$option_name}_background_color" );
-			if ( '' !== $field_bg_color_hover ) {
+			if ( ! empty( $field_bg_color_hover ) ) {
 				self::set_style( $function_name, array(
 					'selector'    => $bg_color_hover_selector,
 					'declaration' => sprintf( 'background-color:%1$s%2$s;', $field_bg_color_hover, $field_bg_color_important ),
@@ -13444,7 +13417,7 @@ class ET_Builder_Element {
 
 			// 3.b.2. Field Focus Background Hover Color.
 			$field_focus_bg_color_hover = $this->get_hover_value("{$option_name}_focus_background_color" );
-			if ( '' !== $field_focus_bg_color_hover ) {
+			if ( ! empty( $field_focus_bg_color_hover ) ) {
 				self::set_style( $function_name, array(
 					'selector'    => $bg_color_focus_hover_selector,
 					'declaration' => sprintf( 'background-color:%1$s%2$s;', $field_focus_bg_color_hover, $field_focus_bg_color_important ),
@@ -13466,7 +13439,7 @@ class ET_Builder_Element {
 
 			// 3.c.2. Field Text Color.
 			$field_text_color_hover = $this->get_hover_value("{$option_name}_text_color" );
-			if ( '' !== $field_text_color_hover ) {
+			if ( ! empty( $field_text_color_hover ) ) {
 				$text_color_hover_selector = $placeholder_option ? "{$text_color_hover_selector}, {$placeholder_hover_selector}" : $text_color_hover_selector;
 				self::set_style( $function_name, array(
 					'selector'    => $text_color_hover_selector,
@@ -13489,7 +13462,7 @@ class ET_Builder_Element {
 
 			// 3.d.2. Field Focus Text Hover Color.
 			$field_focus_text_color_hover = $this->get_hover_value("{$option_name}_focus_text_color" );
-			if ( '' !== $field_focus_text_color_hover ) {
+			if ( ! empty( $field_focus_text_color_hover ) ) {
 				$text_color_focus_hover_selector = $placeholder_option ? "{$text_color_focus_hover_selector}, {$placeholder_focus_hover_selector}" : $text_color_focus_hover_selector;
 				self::set_style( $function_name, array(
 					'selector'    => $text_color_focus_hover_selector,

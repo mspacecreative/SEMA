@@ -158,7 +158,7 @@ class ET_Core_Portability {
 			$success['postContent'] = reset( $data );
 			do_shortcode( $success['postContent'] );
 			$success['migrations']  = ET_Builder_Module_Settings_Migration::$migrated;
-			$success['defaults']    = isset( $import['defaults'] ) ? $import['defaults'] : array();
+			$success['defaults']    = isset( $import['defaults'] ) && is_array( $import['defaults'] ) ? $import['defaults'] : (object) array();
 		}
 
 		if ( 'post_type' === $this->instance->type ) {

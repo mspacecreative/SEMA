@@ -45,6 +45,7 @@ class ET_Builder_Module_Testimonial extends ET_Builder_Module {
 					'hide_text_shadow' => true,
 					'block_elements'   => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 					),
 				),
 				'author'   => array(

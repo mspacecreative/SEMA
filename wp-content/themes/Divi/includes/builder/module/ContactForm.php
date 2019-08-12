@@ -112,9 +112,15 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 						'main'                   => '%%order_class%% .input',
 						'background_color'       => '%%order_class%% .input, %%order_class%% .input[type="checkbox"] + label i, %%order_class%% .input[type="radio"] + label i',
 						'background_color_hover' => '%%order_class%% .input:hover, %%order_class%% .input[type="checkbox"]:hover + label i, %%order_class%% .input[type="radio"]:hover + label i',
+						'focus_background_color' => '%%order_class%% .input:focus, %%order_class%% .input[type="checkbox"]:active + label i, %%order_class%% .input[type="radio"]:active + label i',
+						'focus_background_color_hover' => '%%order_class%% .input:focus:hover, %%order_class%% .input[type="checkbox"]:active:hover + label i, %%order_class%% .input[type="radio"]:active:hover + label i',
 						'placeholder_focus'      => '%%order_class%% p .input:focus::-webkit-input-placeholder, %%order_class%% p .input:focus::-moz-placeholder, %%order_class%% p .input:focus:-ms-input-placeholder, %%order_class%% p textarea:focus::-webkit-input-placeholder, %%order_class%% p textarea:focus::-moz-placeholder, %%order_class%% p textarea:focus:-ms-input-placeholder',
 						'padding'                => '%%order_class%% .et_pb_contact_field .input',
 						'margin'                 => '%%order_class%% .et_pb_contact_field',
+						'form_text_color'        => '%%order_class%% .input, %%order_class%% .input[type="checkbox"] + label, %%order_class%% .input[type="radio"] + label, %%order_class%% .input[type="checkbox"]:checked + label i:before',
+						'form_text_color_hover'  => '%%order_class%% .input:hover, %%order_class%% .input[type="checkbox"]:hover + label, %%order_class%% .input[type="radio"]:hover + label, %%order_class%% .input[type="checkbox"]:checked:hover + label i:before',
+						'focus_text_color'       => '%%order_class%% .input:focus, %%order_class%% .input[type="checkbox"]:active + label, %%order_class%% .input[type="radio"]:active + label, %%order_class%% .input[type="checkbox"]:checked:active + label i:before',
+						'focus_text_color_hover' => '%%order_class%% .input:focus:hover, %%order_class%% .input[type="checkbox"]:active:hover + label, %%order_class%% .input[type="radio"]:active:hover + label, %%order_class%% .input[type="checkbox"]:checked:active:hover + label i:before',
 					),
 					'box_shadow'    => false,
 					'border_styles' => false,
@@ -188,35 +194,6 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 	}
 
 	/**
-	 * Get form salt
-	 *
-	 * @since 3.26.5
-	 *
-	 * @return string
-	 */
-	function get_form_salt() {
-		static $salt = null;
-
-		if ( null === $salt ) {
-			// Get saved salt from database
-			$option_name = 'contact_form_module_salt';
-			$salt        = et_get_option( $option_name );
-
-			if ( ! $salt ) {
-				// Simple random character will do as salt. Thus: random number between 1,000,000 -
-				// 6,000,000 being hashed using sha256 against uniqid prefixed by random number
-				// between 1,000,000 - 6,000,000 will do. This means to be done only once. If new
-				// salt is needed, simply remove $option_name option from database.
-				$salt  = hash_hmac( 'sha256', rand( 1000000, 6000000 ), uniqid( rand( 1000000, 6000000 ), true ), false );
-
-				et_update_option( $option_name, $salt );
-			}
-		}
-
-		return $salt;
-	}
-
-	/**
 	 * Get form map containing essential info (form number, field id/type/required) based on
 	 * et_pb_contact_field's shortcode layout
 	 *
@@ -224,6 +201,7 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 	 *
 	 * @param string $content_shortcode
 	 * @param int    $contact_form_number
+	 * @param array  $hidden_form_fields
 	 *
 	 * @return mixed[] {
 	 *     Form Map
@@ -238,7 +216,7 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 	 *     }
 	 * }
 	 */
-	function get_form_map( $content_shortcode = '', $contact_form_number = 0 ) {
+	function get_form_map( $content_shortcode = '', $contact_form_number = 0, $hidden_form_fields = array() ) {
 		$pattern = get_shortcode_regex( array( 'et_pb_contact_field' ) );
 		$map     = array(
 			'form_number' => (int) $contact_form_number,
@@ -249,41 +227,22 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 
 		foreach( $contact_fields as $contact_field ) {
 			$contact_field_attrs = shortcode_parse_atts( $contact_field[3] );
+			$field_id            = strtolower( self::$_->array_get( $contact_field_attrs, 'field_id' ) );
+			$conditional_logic   = self::$_->array_get( $contact_field_attrs, 'conditional_logic', 'off' );
+
+			// Only allow to disable fields for which conditional logic has been enabled
+			if ( 'on' === $conditional_logic && in_array( $field_id, $hidden_form_fields ) ) {
+				continue;
+			}
 
 			$map['fields'][] = array(
 				'field_type'    => self::$_->array_get( $contact_field_attrs, 'field_type', 'input' ),
-				'field_id'      => strtolower( self::$_->array_get( $contact_field_attrs, 'field_id' ) ),
+				'field_id'      => $field_id,
 				'required_mark' => self::$_->array_get( $contact_field_attrs, 'required_mark', 'on' ),
 			);
 		}
 
 		return $map;
-	}
-
-	/**
-	 * Get form hash based on given form map
-	 *
-	 * @since 3.26.5
-	 *
-	 * @param mixed[] $map {
-	 *     Form Map
-	 *
-	 *     @type int      $form_number Contact form number.
-	 *     @type string[] $fields      {
-	 *         Form Field
-	 *
-	 *         @type string $field_type    Field type
-	 *         @type string $field_id      Field id
-	 *         @type string $required_mark Required field status. Accepts 'on', 'off'.
-	 *     }
-	 * }
-	 *
-	 * @return string
-	 */
-	function get_form_hash( $map = array() ) {
-		// Form hash is used for input value attribute. Escape here so all form hash value is
-		// escaped for consistency
-		return esc_attr( hash_hmac( 'sha256', serialize( $map ), $this->get_form_salt(), false ) );
 	}
 
 	function get_fields() {
@@ -403,7 +362,6 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 		$captcha                     = $this->props['captcha'];
 		$email                       = $this->props['email'];
 		$title                       = $this->_esc_attr( 'title' );
-		$form_field_text_color       = $this->props['form_field_text_color'];
 		$button_custom               = $this->props['custom_button'];
 		$submit_button_text          = $this->props['submit_button_text'];
 		$custom_message              = $this->props['custom_message'];
@@ -411,6 +369,11 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 		$redirect_url                = $this->props['redirect_url'];
 		$success_message             = $this->_esc_attr( 'success_message' );
 		$header_level                = $this->props['title_level'];
+
+		$field_text_color_hover        = $this->get_hover_value( 'form_field_text_color' );
+		$field_text_color_values       = et_pb_responsive_options()->get_property_values( $this->props, 'form_field_text_color' );
+		$field_focus_text_color_hover  = $this->get_hover_value( 'form_field_focus_text_color' );
+		$field_focus_text_color_values = et_pb_responsive_options()->get_property_values( $this->props, 'form_field_focus_text_color' );
 
 		$custom_icon_values          = et_pb_responsive_options()->get_property_values( $this->props, 'button_icon' );
 		$custom_icon                 = isset( $custom_icon_values['desktop'] ) ? $custom_icon_values['desktop'] : '';
@@ -420,22 +383,31 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 		$video_background          = $this->video_background();
 		$parallax_image_background = $this->get_parallax_image_background();
 
-		if ( '' !== $form_field_text_color ) {
-			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .input[type="checkbox"]:checked + label i:before',
-				'declaration' => sprintf(
-					'color: %1$s%2$s;',
-					esc_html( $form_field_text_color ),
-					et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : ''
-				),
-			) );
+		// Form Field Text Color - Radio Checked.
+		$field_text_color_important = et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : '';
+		et_pb_responsive_options()->generate_responsive_css( $field_text_color_values, '%%order_class%% .input[type="radio"]:checked + label i:before', 'background-color', $render_slug, $field_text_color_important, 'color' );
 
+		if ( et_builder_is_hover_enabled( 'form_field_text_color', $this->props ) ) {
 			ET_Builder_Element::set_style( $render_slug, array(
-				'selector'    => '%%order_class%% .input[type="radio"]:checked + label i:before',
+				'selector'    => '%%order_class%% .input[type="radio"]:checked:hover + label i:before',
 				'declaration' => sprintf(
 					'background-color: %1$s%2$s;',
-					esc_html( $form_field_text_color ),
-					et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : ''
+					esc_html( $field_text_color_hover ),
+					$field_text_color_important
+				),
+			) );
+		}
+
+		// Form Field Text Color on Focus - Radio Checked.
+		et_pb_responsive_options()->generate_responsive_css( $field_focus_text_color_values, '%%order_class%% .input[type="radio"]:checked:active + label i:before', 'background-color', $render_slug, $field_text_color_important, 'color' );
+
+		if ( et_builder_is_hover_enabled( 'form_field_focus_text_color', $this->props ) ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => '%%order_class%% .input[type="radio"]:checked:active:hover + label i:before',
+				'declaration' => sprintf(
+					'background-color: %1$s%2$s;',
+					esc_html( $field_focus_text_color_hover ),
+					$field_text_color_important
 				),
 			) );
 		}
@@ -444,17 +416,20 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 
 		$et_pb_contact_form_num      = $this->render_count();
 		$et_pb_contact_form_item_num = self::get_module($this->child_slug, $this->get_post_type())->render_count();
+		$hidden_form_fields_key      = "et_pb_contact_email_hidden_fields_{$et_pb_contact_form_num}";
+		$hidden_form_fields          = self::$_->array_get( $_POST, $hidden_form_fields_key, array() );
+		$shortcode_content           = $content;
 
-		// Get form hash based on form fields' map
-		$form_map  = $this->get_form_map( $content, $et_pb_contact_form_num );
-		$form_hash = $this->get_form_hash( $form_map );
+		if ( ! empty( $hidden_form_fields ) ) {
+			$hidden_form_fields = str_replace( '\\', '', $hidden_form_fields );
+			$hidden_form_fields = json_decode( $hidden_form_fields );
+		}
 
 		$content = $this->content;
 
 		$et_error_message = '';
 		$et_contact_error = false;
 		$current_form_fields = isset( $_POST['et_pb_contact_email_fields_' . $et_pb_contact_form_num] ) ? $_POST['et_pb_contact_email_fields_' . $et_pb_contact_form_num] : '';
-		$hidden_form_fields = isset( $_POST['et_pb_contact_email_hidden_fields_' . $et_pb_contact_form_num] ) ? $_POST['et_pb_contact_email_hidden_fields_' . $et_pb_contact_form_num] : false;
 		$contact_email = '';
 		$processed_fields_values = array();
 
@@ -519,15 +494,12 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 						}
 					}
 
-					// Check submitted form's integrity by comparing submitted form hash against
-					// form hash generated based on submitted fields data. Fields structure (
-					// used for required fields check, etc) is generated on the front end thus
-					// its value needs to be checked upon submission to prevent field structure
-					// data being altered by modifying form markup
-					$input_hash_name = 'et_pb_contactform_hash_' . $et_pb_contact_form_num;
-					$submitted_hash  = self::$_->array_get( $_POST, $input_hash_name, '' );
+					// Check form's integrity by comparing fields structure (used for required fields check, etc)
+					// stored in the shortcode against submitted value generated using JS on the front end
+					// to prevent data being altered by modifying form markup.
+					$form_map = $this->get_form_map( $shortcode_content, $et_pb_contact_form_num, $hidden_form_fields );
 
-					if ( $submitted_hash !== $this->get_form_hash( $submitted_form_map ) ) {
+					if ( serialize( $submitted_form_map ) !== serialize( $form_map ) ) {
 						$et_error_message .= sprintf(
 							'<p class="et_pb_contact_error_text">%1$s</p>',
 							esc_html__( 'Invalid submission. Please refresh the page and try again.', 'et_builder' )
@@ -569,14 +541,9 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 					$message_pattern = str_ireplace( "%%{$key}%%", wp_strip_all_tags( $value['value'] ), $message_pattern );
 				}
 
-				if ( false !== $hidden_form_fields ) {
-					$hidden_form_fields = str_replace( '\\', '' ,  $hidden_form_fields );
-					$hidden_form_fields = json_decode( $hidden_form_fields );
-
-					if ( is_array( $hidden_form_fields ) ) {
-						foreach ( $hidden_form_fields as $hidden_field_label ) {
-							$message_pattern = str_ireplace( "%%{$hidden_field_label}%%", '', $message_pattern );
-						}
+				if ( is_array( $hidden_form_fields ) ) {
+					foreach ( $hidden_form_fields as $hidden_field_label ) {
+						$message_pattern = str_ireplace( "%%{$hidden_field_label}%%", '', $message_pattern );
 					}
 				}
 			} else {
@@ -666,7 +633,6 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 							<input type="text" id="et_pb_contact_et_number_%7$s" class="input" value="" name="et_pb_contact_et_number_%7$s" data-required_mark="required" data-field_type="input" data-original_id="et_number" placeholder="Number" tabindex="-1">
 						</p>
 						<input type="hidden" value="et_contact_proccess" name="et_pb_contactform_submit_%7$s"/>
-						<input type="hidden" value="%12$s" name="et_pb_contactform_hash_%7$s" />
 						<div class="et_contact_bottom_container">
 							%2$s
 							<button type="submit" class="et_pb_contact_submit et_pb_button%6$s"%5$s%9$s%10$s>%3$s</button>
@@ -687,8 +653,7 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				$content,
 				'' !== $custom_icon_tablet && 'on' === $button_custom ? sprintf( ' data-icon-tablet="%1$s"', esc_attr( et_pb_process_font_icon( $custom_icon_tablet ) ) ) : '',
 				'' !== $custom_icon_phone && 'on' === $button_custom ? sprintf( ' data-icon-phone="%1$s"', esc_attr( et_pb_process_font_icon( $custom_icon_phone ) ) ) : '', // #10
-				esc_attr( $et_pb_contact_form_item_num ),
-				et_core_esc_previously( $form_hash ) // #12
+				esc_attr( $et_pb_contact_form_item_num )
 			);
 		}
 

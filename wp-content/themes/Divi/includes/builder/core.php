@@ -2096,6 +2096,7 @@ function et_fb_get_nonces() {
 		'saveCustomDefaultsHistory'       => wp_create_nonce( 'et_builder_save_custom_defaults_history' ),
 		'retrieveCustomDefaultsHistory'   => wp_create_nonce( 'et_builder_retrieve_custom_defaults_history' ),
 		'migrateModuleCustomizerPhaseTwo' => wp_create_nonce( 'et_builder_migrate_module_customizer_phase_two' ),
+		'searchPosts'                     => wp_create_nonce( 'et_builder_search_posts' ),
 	);
 
 	return array_merge( $nonces, $fb_nonces );
@@ -5520,3 +5521,51 @@ function et_builder_portability_link( $context, $attributes = array() ) {
 
 	return et_core_portability_link( $context, $attributes );
 }
+
+/**
+ * Get the list of all public post types.
+ *
+ * @since ??
+ *
+ * @return array<string, WP_Post_Type>
+ */
+function et_builder_get_public_post_types() {
+	$cache_key = 'et_builder_get_public_post_types';
+
+	if ( ! et_core_cache_has( $cache_key ) ) {
+		$blacklist      = array(
+			'et_pb_layout',
+		);
+		$all_post_types = get_post_types( array(), 'objects' );
+		$post_types     = array();
+
+		foreach ( $all_post_types as $post_type ) {
+			if ( ! in_array( $post_type->name, $blacklist, true ) && et_builder_is_post_type_public( $post_type->name ) ) {
+				$post_types[ $post_type->name ] = $post_type;
+			}
+		}
+
+		et_core_cache_add( $cache_key, $post_types );
+	}
+
+	/**
+	 * Filter array of public post types.
+	 *
+	 * @since ??
+	 *
+	 * @param array<string, WP_Post_Type>
+	 */
+	return apply_filters( 'et_builder_get_public_post_types', et_core_cache_get( $cache_key ) );
+}
+
+/**
+ * Clear public post type cache whenever a custom post type is registered.
+ *
+ * @since ??
+ *
+ * @return void
+ */
+function et_builder_clear_get_public_post_types_cache() {
+	et_core_cache_delete( 'et_builder_get_public_post_types' );
+}
+add_action( 'registered_post_type', 'et_builder_clear_get_public_post_types_cache' );

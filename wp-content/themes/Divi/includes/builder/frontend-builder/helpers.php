@@ -1595,6 +1595,10 @@ function et_fb_get_static_backend_helpers($post_type) {
 				'recent'   => esc_html__( 'Recent', 'et_builder' ),
 				'uploaded' => esc_html__( 'Custom Fonts', 'et_builder' ),
 			),
+			'noResults'  => esc_html__( 'No results found', 'et_builder' ),
+			'noTitle'    => esc_html__( '(no title)', 'et_builder' ),
+			// Translators: Used for pagination: %1$s = current page; %2$s = total pages.
+			'pagination' => esc_html__( '%1$s of %2$s', 'et_builder' ),
 		),
 		'history' => array(
 			'modal' => array(
@@ -1834,7 +1838,7 @@ function et_fb_get_static_backend_helpers($post_type) {
 			'section_only_row_dragged_away'            => esc_html__( 'The section should have at least one row.', 'et_builder' ),
 			'global_module_alert'                      => esc_html__( 'You cannot add global modules into global sections or rows', 'et_builder' ),
 			'cannot_move_module_goal_out_from_subject' => esc_html__( 'Once set, a goal that has been placed inside a split testing subject cannot be moved outside the split testing subject. You can end your split test and start a new one if you would like to make this change.', 'et_builder' ),
-			'stop_dropping_3_col_row'                  => esc_html__( "This number of columns can't be used on this row.", 'et_builder' ),
+			'stop_dropping_3_col_row'                  => esc_html__( 'This number of columns cannot be used on this row.', 'et_builder' ),
 		),
 		'tooltip' => array(
 			'pageSettingsBar' => array(

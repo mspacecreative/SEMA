@@ -1,3 +1,61 @@
+version 3.26.7 ( updated 08-09-2019 )
+- Fixed resetting an option while hover mode enabled not resetting desktop, tablet, and phone values.
+- Fixed the issue when the Blog module was disappearing using the grid layout in Divi Builder.
+- Fixed the issue when some content options excluded from the Global Defaults Editor that became default globally after invoking the Making Styles Default action.
+- Fixed background settings and preview not working on Specialty Column.
+- Added Support of Rows moving between Specialty and Regular sections.
+- Fixed inability to copy and paste title text options group to heading text options group in Text module.
+- Add BB icons support for Body Text with block elements.
+- Fixed active tab text color not working on the FE.
+- Fixed Classic Divi Builder loading after theme update and plugins activation/deactivation.
+- Fixed fail saving notices that pops up on New Builder Experience if current user with contributor / no publish permission save the post.
+- Fixed child's settings modal getting opened after pasting item styles.
+- Fixed incorrect reset individual option behaviour on background control.
+- Set custom default padding for Search module.
+- Fixed missing captcha on contact form module in visual builder.
+- Fixed field text color not working on radio & checkbox of Contact Form module.
+- Fixed no-animation grid layout still being animated in the blog module.
+- Fixed not being able to submit Contact Forms using conditional logic.
+- Fixed trailing vertical bar separator showing up in the Visual Builder for Post Title and Fullwidth Post Title modules' meta area.
+- Renamed "Post Link" Dynamic Content option to "Current Post Link".
+- Added new Post Link, Product Link etc. Dynamic Content options for every public post type allowing you to link to any post of that type.
+- Fixed an error that occurred while importing a premade layout.
+- Added 'et_fb_ignore' CSS class that can be used to ignore JavaScript scripts in the Visual Builder.
+	* core/components/Portability.php
+	* core/ui/utils/utils.js
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/core.php
+	* includes/builder/feature/custom-defaults/Settings.php
+	* includes/builder/feature/dynamic-content.php
+	* includes/builder/feature/search-posts.php
+	* includes/builder/framework.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/frontend-builder/helpers.php
+	* includes/builder/module/Accordion.php
+	* includes/builder/module/AccordionItem.php
+	* includes/builder/module/Blog.php
+	* includes/builder/module/Blurb.php
+	* includes/builder/module/ContactForm.php
+	* includes/builder/module/ContactFormItem.php
+	* includes/builder/module/Cta.php
+	* includes/builder/module/FullwidthHeader.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/FullwidthSlider.php
+	* includes/builder/module/Login.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/PricingTables.php
+	* includes/builder/module/PricingTablesItem.php
+	* includes/builder/module/Search.php
+	* includes/builder/module/Signup.php
+	* includes/builder/module/Slider.php
+	* includes/builder/module/SliderItem.php
+	* includes/builder/module/Tabs.php
+	* includes/builder/module/TabsItem.php
+	* includes/builder/module/TeamMember.php
+	* includes/builder/module/Testimonial.php
+	* includes/builder/module/Toggle.php
+	* includes/builder/scripts/builder.js
+
 version 3.26.6 ( updated 07-30-2019 )
 - Fixed an error that would sometimes be triggered when editing a Text element in the Visual Builder.
 - Fixed the issue when computed module settings were not fetched correctly for 3rd party modules.

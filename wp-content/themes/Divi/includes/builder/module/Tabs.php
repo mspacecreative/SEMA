@@ -39,6 +39,7 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 					),
 				),
 				'tab'  => array(
@@ -186,7 +187,7 @@ class ET_Builder_Module_Tabs extends ET_Builder_Module {
 		}
 
 		// Active Text Color
-		et_pb_responsive_options()->generate_responsive_css( $active_tab_text_color_values, '%%order_class%% .et_pb_tabs_controls li.et_pb_tab_active a', 'color', $render_slug, ' !important;', 'color' );
+		et_pb_responsive_options()->generate_responsive_css( $active_tab_text_color_values, '%%order_class%%.et_pb_tabs .et_pb_tabs_controls li.et_pb_tab_active a', 'color', $render_slug, ' !important;', 'color' );
 
 		if ( et_builder_is_hover_enabled( 'active_tab_text_color', $this->props ) ) {
 			ET_Builder_Element::set_style( $render_slug, array(

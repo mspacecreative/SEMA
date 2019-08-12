@@ -86,6 +86,7 @@ class ET_Builder_Module_Slider_Item extends ET_Builder_Module {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 					),
 				),
 			),

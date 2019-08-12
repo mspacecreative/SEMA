@@ -82,6 +82,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 						'css'               => array(
 							'link'  => "{$this->main_css_element} .et_pb_newsletter_description a, {$this->main_css_element} .et_pb_newsletter_form a",
 							'ul'    => "{$this->main_css_element} .et_pb_newsletter_description ul, {$this->main_css_element} .et_pb_newsletter_form ul",

@@ -59,7 +59,14 @@ class ET_Builder_Custom_Defaults_Settings {
 	protected $_settings;
 
 	protected function __construct() {
-		$this->_settings = et_get_option( self::CUSTOM_DEFAULTS_OPTION, (object) array() );
+		$custom_defaults = et_get_option( self::CUSTOM_DEFAULTS_OPTION, (object) array() );
+
+		foreach ( $custom_defaults as $module => $defaults ) {
+			$defaults_filtered        = array_filter( (array) $defaults, array( $this, '_filter_custom_defaults' ) );
+			$custom_defaults->$module = (object) $defaults_filtered;
+		}
+
+		$this->_settings = $custom_defaults;
 
 		$this->_register_hooks();
 	}
@@ -276,6 +283,19 @@ class ET_Builder_Custom_Defaults_Settings {
 		}
 
 		return 'et_pb_column';
+	}
+
+	/**
+	 * Filters custom defaults to avoid non plain values like arrays or objects
+	 *
+	 * @param $value - The custom defaults value
+	 *
+	 * @since ?? This function has been reproduce to avoid unexpected values. See https://github.com/elegantthemes/Divi/issues/16082
+	 *
+	 * @return bool
+	 */
+	protected static function _filter_custom_defaults( $value ) {
+		return ! is_object( $value ) && ! is_array( $value );
 	}
 }
 

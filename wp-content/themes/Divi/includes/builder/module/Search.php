@@ -51,9 +51,12 @@ class ET_Builder_Module_Search extends ET_Builder_Module {
 				),
 			),
 			'margin_padding' => array(
-				'css' => array(
+				'css'            => array(
 					'main'      => "{$this->main_css_element} input.et_pb_s",
 					'important' => 'all',
+				),
+				'custom_padding' => array(
+					'default' => '0.715em|0.715em|0.715em|0.715em|false|false',
 				),
 			),
 			'background'            => array(

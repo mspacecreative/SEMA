@@ -67,6 +67,7 @@ class ET_Builder_Module_Post_Slider extends ET_Builder_Module_Type_PostBased {
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
+						'bb_icons_support'  => true,
 						'css'               => array(
 							'link'  => "{$this->main_css_element} .et_pb_slide_content a",
 							'ul'    => "{$this->main_css_element} .et_pb_slide_content ul",

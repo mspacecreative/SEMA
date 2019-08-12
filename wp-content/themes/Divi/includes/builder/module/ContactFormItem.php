@@ -90,11 +90,20 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 				'form_field' => array(
 					'label'          => esc_html__( 'Field', 'et_builder' ),
 					'css'            => array(
+						'background_color'       => '%%order_class%% .input, %%order_class%% .input[type="checkbox"] + label i, %%order_class%% .input[type="radio"] + label i',
+
 						'main'                         => '%%order_class%%.et_pb_contact_field .input',
-						'background_color'             => '%%order_class%%.et_pb_contact_field .input, %%order_class%%.et_pb_contact_field .input + label i',
-						'background_color_hover'       => '%%order_class%%.et_pb_contact_field .input:hover, %%order_class%%.et_pb_contact_field .input + label:hover i',
-						'focus_background_color'       => '%%order_class%%.et_pb_contact_field .input:focus, %%order_class%%.et_pb_contact_field .input:focus + label i',
-						'focus_background_color_hover' => '%%order_class%%.et_pb_contact_field .input:focus:hover, %%order_class%%.et_pb_contact_field .input:focus + label:hover i',
+						'background_color'             => '%%order_class%%.et_pb_contact_field .input, %%order_class%%.et_pb_contact_field .input[type="checkbox"] + label i, %%order_class%%.et_pb_contact_field .input[type="radio"] + label i',
+						'background_color_hover'       => '%%order_class%%.et_pb_contact_field .input:hover, %%order_class%%.et_pb_contact_field .input[type="checkbox"] + label:hover i,  %%order_class%%.et_pb_contact_field .input[type="radio"] + label:hover i',
+						'focus_background_color'       => '%%order_class%%.et_pb_contact_field .input:focus, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:active + label i, %%order_class%%.et_pb_contact_field .input[type="radio"]:active + label i',
+						'focus_background_color_hover' => '%%order_class%%.et_pb_contact_field .input:focus:hover, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:active:hover + label i, %%order_class%%.et_pb_contact_field .input[type="radio"]:active:hover + label i',
+						'form_text_color'              => '%%order_class%%.et_pb_contact_field .input, %%order_class%%.et_pb_contact_field .input[type="checkbox"] + label, %%order_class%%.et_pb_contact_field .input[type="radio"] + label, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:checked + label i:before',
+						'form_text_color_hover'        => '%%order_class%%.et_pb_contact_field .input:hover, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:hover + label,
+						%%order_class%%.et_pb_contact_field .input[type="radio"]:hover + label, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:checked:hover + label i:before',
+						'focus_text_color'             => '%%order_class%%.et_pb_contact_field .input:focus, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:active + label,
+						%%order_class%%.et_pb_contact_field .input[type="radio"]:active + label, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:checked:active + label i:before',
+						'focus_text_color_hover'       => '%%order_class%%.et_pb_contact_field .input:focus:hover, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:active:hover + label,
+						%%order_class%%.et_pb_contact_field .input[type="radio"]:active:hover + label, %%order_class%%.et_pb_contact_field .input[type="checkbox"]:checked:active:hover + label i:before',
 					),
 					'margin_padding' => false,
 					'box_shadow'     => false,
@@ -368,6 +377,11 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 		$render_count               = $this->render_count();
 		$current_module_num         = null === $et_pb_contact_form_num ? 0 : intval( $et_pb_contact_form_num ) + 1;
 
+		$field_text_color_hover        = $this->get_hover_value( 'form_field_text_color' );
+		$field_text_color_values       = et_pb_responsive_options()->get_property_values( $this->props, 'form_field_text_color' );
+		$field_focus_text_color_hover  = $this->get_hover_value( 'form_field_focus_text_color' );
+		$field_focus_text_color_values = et_pb_responsive_options()->get_property_values( $this->props, 'form_field_focus_text_color' );
+
 		// set a field ID.
 		if ( '' === $field_id ) {
 			$field_id = sprintf( 'field_%d_%d', $et_pb_contact_form_num, $render_count );
@@ -393,34 +407,33 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 
 		$input_field = '';
 
-		if ( '' !== $form_field_text_color ) {
-			if ( 'checkbox' === $field_type ) {
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '%%order_class%% .input + label, %%order_class%% .input + label i:before',
-					'declaration' => sprintf(
-						'color: %1$s !important;',
-						esc_html( $form_field_text_color )
-					),
-				) );
-			}
+		// Form Field Text Color - Radio Checked.
+		$field_text_color_important = et_builder_has_limitation( 'force_use_global_important' ) ? ' !important' : '';
+		et_pb_responsive_options()->generate_responsive_css( $field_text_color_values, '%%order_class%%.et_pb_contact_field .input[type="radio"]:checked + label i:before', 'background-color', $render_slug, $field_text_color_important, 'color' );
 
-			if ( 'radio' === $field_type ) {
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '%%order_class%% .input + label',
-					'declaration' => sprintf(
-						'color: %1$s !important;',
-						esc_html( $form_field_text_color )
-					),
-				) );
+		if ( et_builder_is_hover_enabled( 'form_field_text_color', $this->props ) ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => '%%order_class%%.et_pb_contact_field .input[type="radio"]:checked:hover + label i:before',
+				'declaration' => sprintf(
+					'background-color: %1$s%2$s;',
+					esc_html( $field_text_color_hover ),
+					$field_text_color_important
+				),
+			) );
+		}
 
-				ET_Builder_Element::set_style( $render_slug, array(
-					'selector'    => '%%order_class%% .input + label i:before',
-					'declaration' => sprintf(
-						'background-color: %1$s !important;',
-						esc_html( $form_field_text_color )
-					),
-				) );
-			}
+		// Form Field Text Color on Focus - Radio Checked.
+		et_pb_responsive_options()->generate_responsive_css( $field_focus_text_color_values, '%%order_class%%.et_pb_contact_field .input[type="radio"]:checked:active + label i:before', 'background-color', $render_slug, $field_text_color_important, 'color' );
+
+		if ( et_builder_is_hover_enabled( 'form_field_focus_text_color', $this->props ) ) {
+			ET_Builder_Element::set_style( $render_slug, array(
+				'selector'    => '%%order_class%%.et_pb_contact_field .input[type="radio"]:checked:active:hover + label i:before',
+				'declaration' => sprintf(
+					'background-color: %1$s%2$s;',
+					esc_html( $field_focus_text_color_hover ),
+					$field_text_color_important
+				),
+			) );
 		}
 
 		$pattern         = '';
