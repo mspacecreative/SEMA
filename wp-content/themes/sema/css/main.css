@@ -90,6 +90,7 @@ body .nav .sub-menu li {
 	padding: 35px;
 	background-color: #fff;
 	box-shadow: 0 3px 10px #d9d9d9;
+	margin-bottom: 50px;
 }
 
 .last {
@@ -98,6 +99,10 @@ body .nav .sub-menu li {
 
 .featured-resource-container img {
 	display: block;
+}
+
+.featured-resource-container h3 {
+	font-weight: bold;
 }
 
 .move .et_pb_row.video-modal {
