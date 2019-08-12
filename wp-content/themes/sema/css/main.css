@@ -90,7 +90,7 @@ body .nav .sub-menu li {
 	padding: 35px;
 	background-color: #fff;
 	box-shadow: 0 3px 10px #d9d9d9;
-	margin-bottom: 50px;
+	margin: 0 auto 50px;
 }
 
 .last {
