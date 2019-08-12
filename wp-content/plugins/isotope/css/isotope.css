@@ -251,12 +251,8 @@ button {
     box-shadow: none!important;
 }
 
-#stick-here-mobile {
-	display: none;
-}
-
 @media (max-width: 400px) {
-    .mobile-filter, #stick-here-mobile {
+    .mobile-filter {
         display: block;
     }
     .filters-button-group, #stick-here {
@@ -264,7 +260,7 @@ button {
     }
 }
 @media (max-width: 812px) and (orientation: landscape) {
-    .mobile-filter, #stick-here-mobile {
+    .mobile-filter {
         display: block;
     }
     .filters-button-group, #stick-here {
