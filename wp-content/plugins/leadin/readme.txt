@@ -6,7 +6,7 @@ Tags: hubspot, crm, forms, popup, live chat, email, contact form, newsletter, ma
 Requires at least: 4.0
 Tested up to: 5.2
 Requires PHP: 5.6
-Stable tag: 7.6.0
+Stable tag: 7.8.0
 
 HubSpot All-In-One Marketing, is a free all-in-one marketing plugin that allows you to easily use HubSpot forms, popups, and live chat on your WordPress site and create and send email campaigns. If you’re already a HubSpot user, the plugin lets you connect your HubSpot account to your website without any code.
 
@@ -173,23 +173,14 @@ Please <a href="https://community.hubspot.com?utm_source=wordpress-plugin-listin
 
 == Changelog ==
 
-- Current version: 7.6.0
-- Current version release: 2019-07-19
+- Current version: 7.8.0
+- Current version release: 2019-08-08
 
-= 7.6.0 (2019.07.19) =
-- Remove echo from enqueue_scripts hooks
-- Update url on forms dashboard
-- Add nonce checks on connect/disconnect APIs
-- Sanitize portal id on connect APIs
-- Remove queries to DB
-- Update plugin permissions
-- Update `leadin_route` query parameter
-- Remove HTML from translations
-- Remove notice for outdated plugin
-- Remove unused options
-- Escape variables
-- Avoid phpcs errors on file_get_contents
-- Fix mispelled WordPress
+= 7.8.0 (2019.08.08) =
+- Replace activate_plugins with manage_options
+- Upgrade wordpress-scripts
+- Remove tracking code from login page
+- Added Logo svg for banner
 
 = 7.0.0 (2018.10.03) =
 - Add deeper integration with HubSpot. Starts a new release of a new forms integration within WordPress. Released progressively for some users.
