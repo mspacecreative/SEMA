@@ -140,6 +140,10 @@ body .nav .sub-menu li {
 	padding: 0 15px;
 }
 
+.inline-buttons.flush-left .et_pb_column div {
+	padding: 0;
+}
+
 body #et-top-navigation li:first-child .sub-menu, body #et-top-navigation li .sub-menu {
 	right: auto;
 	left: inherit;
