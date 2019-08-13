@@ -11,8 +11,8 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			}
 			?>
 			<h3><?php the_title(); ?></h3>
-			<?php if ( get_sub_field('subtitle') ): ?>
-			<span style="color: #000;"><strong><?php the_sub_field('subtitle'); ?></span>
+			<?php if ( get_field('subtitle') ): ?>
+			<span style="color: #000;"><strong><?php the_field('subtitle'); ?></span>
 			<?php else : ?>
 			<span style="color: #000;"><strong>BEST FOR</strong></span>
 			<?php endif; ?>
