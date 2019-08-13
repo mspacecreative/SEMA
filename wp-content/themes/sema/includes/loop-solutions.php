@@ -11,34 +11,34 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			}
 			?>
 			<h3><?php the_title(); ?></h3>
-			<?php if ( get_field('subtitle') ): ?>
-			<span style="color: #000;"><strong><?php the_field('subtitle'); ?></span>
-			<?php else : ?>
-			<span style="color: #000;"><strong>BEST FOR</strong></span>
-			<?php endif; ?>
 			
-			<?php if( have_rows('grid_content_box') ): 
-			
+			<?php if( have_rows('grid_content_box') ):
 				while( have_rows('grid_content_box') ): the_row(); ?>
-				<p><?php the_sub_field('best_for_content'); ?></p>
-				
-				<?php if ( get_sub_field('learn_more_button') == 'external' ): ?>
-				
-				<?php if( have_rows('external_link_button') ): 
-				while( have_rows('external_link_button') ): the_row(); ?>
-				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
-				
-				<?php endwhile;
-				endif; ?>
-				
-				<?php else : ?>
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#post-<?php the_ID(); ?>">Learn More</a>
-				
-				<?php endif; ?>
-				
+					
+					<?php if ( get_sub_field('subtitle') ): ?>
+					<span style="color: #000;"><strong><?php the_sub_field('subtitle'); ?></span>
+					<?php else : ?>
+					<span style="color: #000;"><strong>BEST FOR</strong></span>
+					<?php endif; ?>
+					
+					<p><?php the_sub_field('best_for_content'); ?></p>
+						
+					<?php if ( get_sub_field('learn_more_button') == 'external' ): ?>
+						
+					<?php if( have_rows('external_link_button') ): 
+						while( have_rows('external_link_button') ): the_row(); ?>
+						
+						<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
+						
+						<?php endwhile;
+					endif; ?>
+						
+						<?php else : ?>
+						<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#post-<?php the_ID(); ?>">Learn More</a>
+						
+					<?php endif; ?>
+						
 				<?php endwhile; ?>
-				
 			<?php endif; ?>
 			
 		</div><!-- end solutions_grid_box -->
