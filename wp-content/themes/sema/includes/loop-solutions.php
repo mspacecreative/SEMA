@@ -16,7 +16,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				while( have_rows('grid_content_box') ): the_row(); ?>
 					
 					<?php if ( get_sub_field('subtitle') ): ?>
-					<span style="color: #000;"><strong><?php the_sub_field('subtitle'); ?></span>
+					<span style="color: #000; text-transform: uppercase;"><strong><?php the_sub_field('subtitle'); ?></span>
 					<?php else : ?>
 					<span style="color: #000;"><strong>BEST FOR</strong></span>
 					<?php endif; ?>
