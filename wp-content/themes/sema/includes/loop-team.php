@@ -34,7 +34,9 @@
 						<?php the_content(); ?>
 					</div>
 				</div>-->
+				<?php if ( get_field('linkedin_link') ): ?>
 				<a href="<?php the_field('linkedin_link'); ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+				<?php endif; ?>
 				<div class="hover-overlay"></div>
 				<div class="member-name">
 					<h4><?php the_title(); ?></h4>
