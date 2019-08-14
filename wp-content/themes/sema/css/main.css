@@ -477,6 +477,11 @@ body #page-container .et_pb_button {
 	padding-right: 1.9em!important;
 }
 
+body #page-container .et_pb_button:hover {
+	padding-top: .3em;
+	padding-bottom: .3em;
+}
+
 @media (min-width: 1025px) {
 	.solutions_grid.et_pb_gutters2.et_pb_row .et_pb_column_1_5:hover {
 		transition: 0.25s ease-in-out;
