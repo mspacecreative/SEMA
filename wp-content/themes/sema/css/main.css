@@ -478,8 +478,8 @@ body #page-container .et_pb_button {
 }
 
 body #page-container .et_pb_button:hover {
-	padding-top: .3em;
-	padding-bottom: .3em;
+	padding-top: .3em!important;
+	padding-bottom: .3em!important;
 }
 
 @media (min-width: 1025px) {
