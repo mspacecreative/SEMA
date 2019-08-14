@@ -526,7 +526,7 @@ body #page-container .et_pb_button:hover {
 	.inline-buttons.centered-buttons .et_pb_column {
 		width: 100%!important;
 	}
-	.inline-buttons.centered-buttons .et_pb_column:first-child div {
+	.inline-buttons.centered-buttons .et_pb_column div:first-child {
 		margin-right: 15px;
 	}
 	.inline-buttons.centered-buttons .et_pb_column div {
