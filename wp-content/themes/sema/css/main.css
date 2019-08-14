@@ -103,8 +103,9 @@ body .nav .sub-menu li {
 	margin-top: 10px;
 }
 
-.featured-resource-container h3 {
+body .entry-content .featured-resource-container h3 {
 	font-weight: bold;
+	margin-bottom: 15px;
 }
 
 .move .et_pb_row.video-modal {
