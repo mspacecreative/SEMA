@@ -695,3 +695,9 @@ body #page-container .et_pb_button {
     	color: #666;
 	}
 }
+
+@media (max-width: 960px) {
+	.featured-resource-container img {
+		margin-top: 25px;
+	}
+}
