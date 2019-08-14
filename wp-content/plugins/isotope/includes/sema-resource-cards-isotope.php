@@ -23,6 +23,7 @@ if ( $arr_posts->have_posts() ) :
 			<h3><?php esc_html_e('Featured Resource: '); ?><a style="color: #0072d6;" href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h3>
 			<div class="two_third">
 				<?php the_excerpt(); ?>
+				<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
 			</div>
 			<?php if ( has_post_thumbnail() ) { ?>
 			<div class="one_third last">
