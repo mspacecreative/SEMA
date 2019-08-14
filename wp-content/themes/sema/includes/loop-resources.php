@@ -20,7 +20,7 @@ if ( $arr_posts->have_posts() ) :
         $arr_posts->the_post(); ?>
         
         <div class="featured-resource-container clearfix max-width-800">
-			<h3><?php esc_html_e('Featured Resource: '); ?><?php the_title(); ?></h3>
+			<h3><?php esc_html_e('Featured Resource: '); ?><a href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h3>
 			<div class="two_third">
 				<?php the_excerpt(); ?>
 			</div>
