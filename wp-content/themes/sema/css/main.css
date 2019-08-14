@@ -462,7 +462,7 @@ body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	padding-bottom: 7px!important;
 }
 
-.hide-on-desktop:after {
+.hide-on-desktop:after, .et_pb_button.et_pb_custom_button_icon:after {
 	line-height: 28px!important;
 	font-size: 18px!important;
 }
