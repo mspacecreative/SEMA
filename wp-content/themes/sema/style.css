@@ -148,7 +148,7 @@ h4 {
 #footer-widgets .footer-widget li:before, .entry-content li:before {
 	font-family: fontAwesome;
 	content: '\f0da';
-	color: #cc9900;
+	color: #0072d6;
 	border: none;
 	top: 1px;
 	margin-right: 10px;
@@ -157,7 +157,7 @@ h4 {
 .entry-content li li:before {
 	font-family: fontAwesome;
 	content: '\f00c';
-	color: #cc9900;
+	color: #0072d6;
 	border: none;
 	font-size: 12px;
 }
@@ -561,7 +561,7 @@ h4 {
 	content: '\f00c';
 	font-family: fontAwesome;
 	margin-right: 10px;
-	color: #cc9900;
+	color: #0072d6;
 }
 
 #diligence-report:after, .blue-overlay:after {
@@ -1373,7 +1373,7 @@ footer .hbspt-form .actions, .page-id-1585 .hbspt-form .actions {
 }
 
 .et-search-form, .et_mobile_menu, .footer-widget li:before, .nav li ul, blockquote {
-    border-color: #cc9900;
+    border-color: #0072d6;
 }
 
 .tax-categories #main-content .container {
