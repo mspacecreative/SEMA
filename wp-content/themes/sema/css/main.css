@@ -189,6 +189,12 @@ body .entry-content .hero-section p {
 	content: '';
 }
 
+@media (max-width: 479px) {
+	.inline-buttons > .et_pb_column {
+	    width: auto!important;
+	}
+}
+
 .skewed_yellow_linear_grad_right:before {
 	position: absolute;
 	width: 100%;
