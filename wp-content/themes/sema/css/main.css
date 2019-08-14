@@ -464,7 +464,7 @@ body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 
 .hide-on-desktop:after {
 	line-height: 28px!important;
-	font-size: 18px;
+	font-size: 18px!important;
 }
 
 @media (min-width: 1025px) {
