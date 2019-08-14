@@ -468,6 +468,10 @@ body .inline-buttons.et_pb_gutters2 .et_pb_column_1_2 {
 	color: #fff;
 }
 
+.et_pb_button.et_pb_custom_button_icon a {
+	color: #fff;
+}
+
 body #page-container .et_pb_button {
 	padding-right: 1.7em!important;
 }
