@@ -367,7 +367,8 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	}
 	
 	.hero-cta-buttons .et_pb_button {
-		font-size: 15px;
+		font-size: 16px;
+		letter-spacing: -0.01em;
 	}
 	
 	.hero-cta-buttons .et_pb_button_module_wrapper.et_pb_button_alignment_right, .hero-cta-buttons .et_pb_button_module_wrapper.et_pb_button_alignment_left {
