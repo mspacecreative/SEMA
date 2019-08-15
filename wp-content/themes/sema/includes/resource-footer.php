@@ -29,7 +29,7 @@ if ( $arr_posts->have_posts() ) :
 			else :
 			the_excerpt();
 			endif; ?>
-			<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
+			<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="display: inline-block;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
 		</div>
         
     <?php endwhile;
