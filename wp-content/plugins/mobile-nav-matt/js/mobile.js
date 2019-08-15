@@ -22,7 +22,7 @@ jQuery(document).ready(function($) {
     });
     
     // CLOSE PANEL UPON LINK CLICK
-    $('.page-id-1967 .mobile-nav .menu li:nth-child(2) ul li > a').click(function() {
+    $('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]').click(function() {
     	$('.hamburger, body, #page-container').toggleClass('is-active');
     });
     
