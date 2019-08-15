@@ -83,7 +83,6 @@ function teamLoop() {
 
 // REMOVE EXTRA SIDEBARS
 function remove_FooterArea6() {
-	unregister_sidebar('sidebar-6');
 	unregister_sidebar('sidebar-7');
 }
 
