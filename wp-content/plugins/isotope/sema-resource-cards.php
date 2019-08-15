@@ -11,7 +11,7 @@
 function isotopeStyles() {
 	wp_enqueue_style( 'isotope-css', plugin_dir_url( __FILE__ ) . 'css/isotope.css', array(), null );
 	wp_enqueue_script( 'isotope-cdn', 'https://unpkg.com/isotope-layout@3.0.6/dist/isotope.pkgd.min.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_script( 'isotope-images', 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'isotope-images', 'https://unpkg.com/imagesloaded@4.1.4/imagesloaded.pkgd.min.js', array( 'jquery' ), true );
 }
 
 function load_js_assets() {
