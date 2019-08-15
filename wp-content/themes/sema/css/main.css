@@ -313,6 +313,25 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	#top-menu .hide-on-desktop {
 		display: none;
 	}
+	body #footer-widgets .footer-widget {
+		width: 10%;
+	}
+	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget:nth-child(2) {
+		width: 10%;
+	}
+	
+	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget:nth-child(2) {
+		width: 18%;
+	}
+	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget:nth-child(4) {
+		width: 30%;
+	}
+	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget:nth-child(5) {
+		width: 22%;
+	}
+	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget {
+		margin-right: 2.5%;
+	}
 	.max-width-800.et_pb_gutters4.et_pb_row .et_pb_column_1_2 {
 		width: 42%;
 	}

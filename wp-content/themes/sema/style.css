@@ -244,7 +244,7 @@ h4 {
  #main-footer .container {
  	width: 100%;
  	max-width: none;
- 	padding: 0 10%;
+ 	padding: 0 5%;
  }
  
  .nav li ul {
@@ -332,7 +332,6 @@ h4 {
 }
 
 #main-header {
-	/*background-color: rgba(255, 255, 255, .75);*/
 	box-shadow: none;
 	background: none;
 }
@@ -359,7 +358,6 @@ h4 {
 	background-image: linear-gradient(0deg, rgba(255,255,255,0)5%, rgba(255,255,255,1));
 	position: absolute;
 	z-index: 11;
-	/*display: block;*/
 }
 
 .floating-title {
@@ -397,10 +395,6 @@ h4 {
 	border-radius: 5px;
 	display: inline-block;
 }
-
-/*.header-gradient {
-	display: none;
-}*/
 
 #main-header.et-fixed-header, .single #main-header.et-fixed-header, .home.alt-row-layout #main-header.et-fixed-header  {
 	background-color: rgba(227, 244, 250, .75);
@@ -484,17 +478,6 @@ h4 {
 	max-width: 1280px;
 	width: 90%;
 }
-
-/*.hero:after {
-	position: absolute;
-	left: 0;
-	top: 0;
-	background: #fff;
-	width: 100%;
-	height: 100%;
-	content: '';
-	opacity: .25;
-}*/
 
 .hero:before {
 	background-image:
