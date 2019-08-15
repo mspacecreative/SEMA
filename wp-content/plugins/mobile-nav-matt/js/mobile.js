@@ -26,11 +26,11 @@ jQuery(document).ready(function($) {
     	$('.hamburger, body, #page-container').toggleClass('is-active');
     });*/
 	
-	if ( $('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]') ) {
-		$(this).click(function () {
-			$('.hamburger, body, #page-container').toggleClass('is-active');
-		});
-	}
+	$('.mobile-nav .menu li:nth-child(2) ul li > a').click(function () {
+	   if (this.hash) {
+	      $('.hamburger, body, #page-container').toggleClass('is-active');
+	   }
+	});
     
     // HAMBURGER VERTICAL ALIGN
     function hamburgerIcon() {
