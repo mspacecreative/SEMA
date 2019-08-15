@@ -120,6 +120,13 @@ function solutionsLoop() {
 	return ob_get_clean();
 }
 
+// FEATURED RESOURCE IN FOOTER
+function resourceInFooter() {
+	ob_start();
+		get_template_part('includes/resource-footer');
+	return ob_get_clean();
+}
+
 // CAREERS SIDEBAR
 function careersSidebar() {
 	register_sidebar( array(
@@ -142,6 +149,7 @@ add_shortcode( 'page_title_2', 'pageTitle2' );
 add_shortcode( 'careers_list', 'careersLoop' );
 add_shortcode( 'resources_loop', 'resourcesLoop' );
 add_shortcode( 'solutions_loop', 'solutionsLoop' );
+add_shortcode( 'resource_in_footer', 'resourceInFooter' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 add_action( 'widgets_init', 'careersSidebar' );
 
