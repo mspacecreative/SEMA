@@ -313,6 +313,12 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	#top-menu .hide-on-desktop {
 		display: none;
 	}
+	.max-width-800.et_pb_gutters4.et_pb_row .et_pb_column_1_2 {
+		width: 42%;
+	}
+	.max-width-800.et_pb_gutters4.et_pb_row .et_pb_column {
+		margin-right: 16%;
+	}
 	body.et_pb_gutters3 .footer-widget {
 	    margin-bottom: 50px;
 	}
