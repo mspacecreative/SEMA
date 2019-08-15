@@ -22,9 +22,15 @@ jQuery(document).ready(function($) {
     });
     
     // CLOSE PANEL UPON LINK CLICK
-    $('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]').click(function() {
+    /*$('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]').click(function() {
     	$('.hamburger, body, #page-container').toggleClass('is-active');
-    });
+    });*/
+	
+	if ( $('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]') ) {
+		$(this).click(function () {
+			$('.hamburger, body, #page-container').toggleClass('is-active');
+		});
+	}
     
     // HAMBURGER VERTICAL ALIGN
     function hamburgerIcon() {
