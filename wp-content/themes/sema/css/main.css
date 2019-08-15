@@ -674,7 +674,7 @@ body #page-container .et_pb_button:hover {
 	}
 	
 	#footer-widgets .footer-widget:nth-child(n) {
-		width: auto;
+		width: auto!important;
 		margin: 0 15% 50px 0!important;
 	}
 	
@@ -683,7 +683,7 @@ body #page-container .et_pb_button:hover {
 	}
 	
 	#footer-widgets .footer-widget:nth-child(4), #footer-widgets .footer-widget:nth-child(5) {
-		width: 42.5%;
+		width: 42.5%!important;
 		margin: 0 10% 50px 0!important;
 	}
 	
