@@ -10,8 +10,8 @@
 
 function masonry_css() {
 	wp_enqueue_style( 'masonry', plugin_dir_url( __FILE__ ) . 'css/masonry.css', array(), null );
-	wp_enqueue_script( 'masonry-cdn', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array( 'jquery' ), '1.0', true );
-	wp_enqueue_script( 'masonry-script', plugin_dir_url( __FILE__ ) . 'js/masonry.js', array( 'jquery' ), '1.0', true );
+	wp_enqueue_script( 'masonry-cdn', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array( 'jquery' ),  true );
+	wp_enqueue_script( 'masonry-script', plugin_dir_url( __FILE__ ) . 'js/masonry.js', array( 'jquery' ), true );
 }
 
 function masonry() {
