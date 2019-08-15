@@ -309,6 +309,10 @@ body.alt-row-layout .et_pb_row.max-width-800 {
 	cursor: pointer;
 }
 
+body .footer-widget .title {
+	font-weight: 500;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
