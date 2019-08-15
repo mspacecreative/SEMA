@@ -827,11 +827,11 @@ img.alignright.half-width-img {
 	background: #0072d6!important;
 	border: none!important;
 	font-size: 16px!important;
-	font-family: inherit!important;
+	font-family: 'Roboto',Helvetica,Arial,Lucida,sans-serif!important;
 	padding: 10px 15px!important;
 	text-shadow: none!important;
 	line-height: 20px!important;
-	font-weight: normal!important;
+	font-weight: 500!important;
 	box-shadow: none!important;
 	border-radius: 3px!important;
 }
