@@ -40,11 +40,11 @@ function my_theme_enqueue_styles() {
 	wp_enqueue_style( 'custom-css', get_stylesheet_directory_uri() . '/css/main.css', array(), '1.0', 'all');
 	wp_enqueue_style( 'custom-css');
 	
-	wp_register_style('para-styles', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.css', array(), '1.0', 'all');
+	/*wp_register_style('para-styles', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.css', array(), '1.0', 'all');
 	wp_enqueue_style('para-styles');
 	
 	wp_register_style('animations', get_stylesheet_directory_uri() . '/css/animations.css', array(), '1.0', 'all');
-	wp_enqueue_style('animations');
+	wp_enqueue_style('animations');*/
 }
 
 function footer_scripts() {
@@ -55,14 +55,14 @@ function footer_scripts() {
 	wp_register_script('scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array('jquery'), null, true);
 	wp_enqueue_script('scripts');
 	
-	wp_register_script('animate', get_stylesheet_directory_uri() . '/js/css3-animate-it.js', array('jquery'), null, true);
-	wp_enqueue_script('animate');
-	
 	wp_register_script('fontawesome', 'https://use.fontawesome.com/6ccd600e51.js', array('jquery'), null, true);
 	wp_enqueue_script('fontawesome');
 	
-	wp_register_script('para-script', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.js', array('jquery'), null, true);
+	/*wp_register_script('para-script', get_stylesheet_directory_uri() . '/js/dzsparallaxer/dzsparallaxer.js', array('jquery'), null, true);
 	wp_enqueue_script('para-script');
+	
+	wp_register_script('animate', get_stylesheet_directory_uri() . '/js/css3-animate-it.js', array('jquery'), null, true);
+	wp_enqueue_script('animate');*/
 }
 
 /* ACF OPTIONS PAGE */
