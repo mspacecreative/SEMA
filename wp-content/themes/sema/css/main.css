@@ -729,8 +729,16 @@ body #page-container .et_pb_button:hover {
 		text-align: center;
 	}
 	#footer-widgets .footer-widget:nth-child(n) {
-		width: 30%!important;
 		margin: 0 5% 50px 0!important;
+	}
+	#footer-widgets .footer-widget:nth-child(1), #footer-widgets .footer-widget:nth-child(3) {
+		width: 26%!important;
+	}
+	#footer-widgets .footer-widget:nth-child(1), #footer-widgets .footer-widget:nth-child(2) {
+		margin: 0 7.5% 50px 0!important;
+	}
+	#footer-widgets .footer-widget:nth-child(2) {
+		width: 33%!important;
 	}
 	
 	#footer-widgets .footer-widget:nth-child(3) {
@@ -743,12 +751,12 @@ body #page-container .et_pb_button:hover {
 	}
 	
 	body #footer-widgets .footer-widget a {
-		font-size: 11px;
-		letter-spacing: -0.03em;
+		font-size: 12px
 	}
 	body #footer-widgets .footer-widget li {
 		margin-bottom: 15px;
 		line-height: 15px!important;
+		padding-left: 13px;
 	}
 }
 
