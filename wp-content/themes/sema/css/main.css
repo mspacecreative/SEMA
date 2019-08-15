@@ -673,6 +673,28 @@ body #page-container .et_pb_button:hover {
 		flex-basis: 100%;
 	}
 	
+	#footer-widgets .footer-widget:nth-child(n) {
+		width: auto;
+		margin: 0 15% 50px 0!important;
+	}
+	
+	#footer-widgets .footer-widget:nth-child(3) {
+		margin-right: 0!important;
+	}
+	
+	#footer-widgets .footer-widget:nth-child(4), #footer-widgets .footer-widget:nth-child(5) {
+		width: 42.5%;
+		margin: 0 10% 50px 0!important;
+	}
+	
+	#footer-widgets .footer-widget:nth-child(4) {
+		margin: 0 10% 50px 0!important;
+	}
+	
+	#footer-widgets .footer-widget:nth-child(5) {
+		margin-right: 0!important;
+	}
+	
 	.hero {
 		height: auto!important;
 		max-height: none;
