@@ -313,6 +313,10 @@ body .footer-widget .title {
 	font-weight: 500;
 }
 
+#footer-widgets .footer-widget li, #footer-widgets .footer-widget p {
+	font-weight: normal;
+}
+
 @media (min-width: 981px) {
 	#top-menu .hide-on-desktop {
 		display: none;
