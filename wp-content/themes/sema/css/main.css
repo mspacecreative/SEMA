@@ -614,6 +614,10 @@ body #page-container .et_pb_button:hover {
 	opacity: .25;
 }
 
+.solutions_grid_box .et_pb_button:after {
+	content: 'C';
+}
+
 @media (max-width: 1024px) {
 	.home .hero h1 {
     	font-size: 32px;
