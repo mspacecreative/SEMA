@@ -123,7 +123,7 @@ endif; wp_reset_query(); ?>
 						<?php } ?>
 							<div class="card-content">
 								<?php 
-								$terms = get_the_terms( $post->ID, 'categories' );
+								$terms = get_the_terms( $post->ID, 'types' );
 								if ( $terms ) { ?>
 								<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
 								<?php 
