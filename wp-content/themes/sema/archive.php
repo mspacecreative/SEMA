@@ -5,11 +5,11 @@
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
 				<div class="et_pb_title_container">
-				    <h1 class="entry-title version-2">
-				    <span style="color: #00a3d6;" class="parent-title">
+				    <h1 class="entry-title">
+				    <span style="color: #0072d6;" class="parent-title">
 				    <?php echo esc_html_e('Resource Type'); ?>
 				    </span>
-				    <span class="title-spacer"><?php _e(' &nbsp;'); ?></span><span class="child-title" style="text-transform: uppercase;">
+				    <span class="title-spacer"><?php _e(' &nbsp;'); ?></span><span class="child-title"">
 				    <?php echo single_term_title( '', false ); ?>
 				    </span>
 				    </h1>
