@@ -15,7 +15,7 @@
 				    </h1>
 				</div>
 				<div style="padding: 50px 0 0;">
-				    <?php get_template_part('includes/loop-taxonomy-categories-data-sheet'); ?>
+				    <?php get_template_part('includes/loop-archive-resources'); ?>
 				</div>
 			</div>
 			<?php get_sidebar('resources'); ?>
