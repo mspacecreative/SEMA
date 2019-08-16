@@ -65,7 +65,7 @@ endif; wp_reset_query(); ?>
 	$loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
 	    if ( $loop->have_posts() ) :
 	        while ( $loop->have_posts() ) : $loop->the_post();
-	        $terms = get_the_terms( $post->ID, 'categories' );
+	        $terms = get_the_terms( $post->ID, 'types' );
 			if ( $terms ) {
 				foreach ( $terms as $term ) { ?>
 				<div class="resource-item grid-item <?php echo $term->slug ?>">
@@ -82,7 +82,7 @@ endif; wp_reset_query(); ?>
 						</div>
 							<div class="card-content">
 								<?php 
-								$terms = get_the_terms( $post->ID, 'categories' );
+								$terms = get_the_terms( $post->ID, 'types' );
 								if ( $terms ) { ?>
 								<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
 								<?php 
