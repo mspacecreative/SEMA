@@ -129,8 +129,20 @@ function resourceInFooter() {
 // CAREERS SIDEBAR
 function careersSidebar() {
 	register_sidebar( array(
-		'name' => esc_html__( 'Careers Sidebar', 'BlackBay' ),
+		'name' => esc_html__( 'Careers Sidebar', 'sema' ),
 		'id' => 'sidebar-careers',
+		'before_widget' => '<div id="%1$s" class="et_pb_widget border-left-and-top %2$s">',
+		'after_widget' => '</div> <!-- end .et_pb_widget -->',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+}
+
+// RESOURCES SIDEBAR
+function resourcesSidebar() {
+	register_sidebar( array(
+		'name' => esc_html__( 'Resources Sidebar', 'sema' ),
+		'id' => 'sidebar-resources',
 		'before_widget' => '<div id="%1$s" class="et_pb_widget border-left-and-top %2$s">',
 		'after_widget' => '</div> <!-- end .et_pb_widget -->',
 		'before_title' => '<h2>',
@@ -151,6 +163,7 @@ add_shortcode( 'solutions_loop', 'solutionsLoop' );
 add_shortcode( 'resource_in_footer', 'resourceInFooter' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 add_action( 'widgets_init', 'careersSidebar' );
+add_action( 'widgets_init', 'resourcesSidebar' );
 
 // SHORTCODES
 //add_shortcode('content_block', 'content_blocks');

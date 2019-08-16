@@ -89,7 +89,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 			<?php endwhile; ?>
 			</div> <!-- #left-area -->
 
-			<?php get_sidebar(); ?>
+			<?php get_sidebar('resources'); ?>
 		</div> <!-- #content-area -->
 	</div> <!-- .container -->
 	<?php endif; ?>
