@@ -631,6 +631,10 @@ body #page-container .et_pb_button:hover {
 	display: none;
 }
 
+#sidebar h2 {
+	font-size: 22px;
+}
+
 @media (max-width: 1024px) {
 	.home .hero h1 {
     	font-size: 32px;
