@@ -45,7 +45,7 @@ endif; wp_reset_query(); ?>
 	<button class="button is-checked">All Types</button>
 	<?php
 	// your taxonomy name
-	$tax = 'categories';
+	$tax = 'types';
 
 	// get the terms of taxonomy
 	$terms = get_terms( $tax, $args = array(
