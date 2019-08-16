@@ -15,16 +15,6 @@
 						    <?php } ?>
 						</div>
 							<div class="card-content">
-								<?php 
-								$terms = get_the_terms( $post->ID, 'types' );
-								if ( $terms ) { ?>
-								<p style="padding: 0; margin-bottom: 15px; font-size: 14px; display: block;">
-								<?php 
-									foreach ( $terms as $term ) {
-										echo esc_html_e('Resource Type: '); echo '<a href="'.get_term_link($term).'">' . $term->name . '</a>';
-									} ?>
-								</p>
-								<?php } ?>
 								<h3><?php the_title(); ?></h3>
 								<?php
 								if( has_excerpt() ) { 
