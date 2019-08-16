@@ -6,10 +6,10 @@
 			<div id="left-area">
 				<div class="et_pb_title_container">
 				    <h1 class="entry-title">
-				    <span style="color: #0072d6;" class="parent-title">
+				    <span class="parent-title">
 				    <?php echo esc_html_e('Resource Type'); ?>
 				    </span>
-				    <span class="title-spacer"><?php _e(' &nbsp;'); ?></span><span class="child-title"">
+				    <span class="title-spacer"><?php _e(' &nbsp;'); ?></span><span class="child-title">
 				    <?php echo single_term_title( '', false ); ?>
 				    </span>
 				    </h1>

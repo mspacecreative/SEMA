@@ -732,7 +732,8 @@ span.sub-toggle {
 }
 
 .child-title {
-	font-size: 25px;
+	font-size: 20px;
+	color: #0072d6;
 }
 
 .nav li li {
