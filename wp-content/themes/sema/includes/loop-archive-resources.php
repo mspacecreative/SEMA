@@ -1,16 +1,10 @@
 <div id="instafeed" class="iso-grid">
 	<div class="grid-sizer"></div>
 	<div class="gutter-sizer"></div>
-	<?php 
-	$loop = new WP_Query( array( 'post_type' => 'resources', 'posts_per_page' => -1 ) );
-	    if ( $loop->have_posts() ) :
-	        while ( $loop->have_posts() ) : $loop->the_post();
-	        $terms = get_the_terms( $post->ID, 'types' );
-			if ( $terms ) {
-				foreach ( $terms as $term ) { ?>
-				<div class="resource-item grid-item <?php echo $term->slug ?>">
-				<?php } ?>
-			<?php } ?>
+	<?php
+	    if ( have_posts() ) :
+	        while ( have_posts() ) : the_post(); ?>
+			<div class="resource-item grid-item <?php echo $term->slug ?>">
 					<?php if ( get_field('case_study') ): ?>
 					<div class="grid-inner">
 						<div class="normal-image">
