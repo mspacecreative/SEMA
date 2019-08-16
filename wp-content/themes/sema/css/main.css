@@ -3,6 +3,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: #000;
 }
 
+body h3 {
+	line-height: 1.35em;
+}
+
 h1.entry-title {
 	padding-bottom: 0;
 }
