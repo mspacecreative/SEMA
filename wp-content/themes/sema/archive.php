@@ -14,7 +14,7 @@
 				    </span>
 				    </h1>
 				</div>
-				<div style="padding: 50px 10% 0;">
+				<div style="padding: 50px 0 0;">
 				    <?php get_template_part('includes/loop-taxonomy-categories-data-sheet'); ?>
 				</div>
 			</div>
