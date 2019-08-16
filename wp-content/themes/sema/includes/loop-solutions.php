@@ -34,7 +34,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 					endif; ?>
 						
 						<?php else : ?>
-						<?php $title = the_title(); ?>
+						<?php $title = get_the_title(); ?>
 						<a data-icon="C" class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#<?php echo sanitize_title_with_dashes( $title ); ?>">Learn More</a>
 						
 					<?php endif; ?>
@@ -51,7 +51,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 	<?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
 	
 		<?php if ( get_field('show_post', $post->ID ) ): ?>
-		<?php $title = the_title(); ?>
+		<?php $title = get_the_title(); ?>
 		<div id="<?php echo sanitize_title_with_dashes( $title ); ?>" <?php post_class( 'blurb' ); ?>>
 			<h2><?php the_title(); ?></h2>
 			<?php the_content(); ?>
