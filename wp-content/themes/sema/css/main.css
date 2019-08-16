@@ -68,6 +68,7 @@ h1.entry-title {
 
 body .et_pb_button, body.et-db #et-boc .et_pb_button {
 	font-size: 16px;
+	color: #fff;
 }
 
 .cta-row .et_pb_column p {
@@ -512,7 +513,7 @@ body #page-container .et_pb_button {
 	padding-right: 1.9em!important;
 }
 
-body #page-container .et_pb_button:hover {
+body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover {
 	padding-top: .3em!important;
 	padding-bottom: .3em!important;
 }
