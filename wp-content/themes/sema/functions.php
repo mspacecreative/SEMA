@@ -150,6 +150,18 @@ function resourcesSidebar() {
 	) );
 }
 
+// SOLUTIONS SIDEBAR
+function solutionsSidebar() {
+	register_sidebar( array(
+		'name' => esc_html__( 'Solutions Sidebar', 'sema' ),
+		'id' => 'sidebar-solutions',
+		'before_widget' => '<div id="%1$s" class="et_pb_widget border-left-and-top %2$s">',
+		'after_widget' => '</div> <!-- end .et_pb_widget -->',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+}
+
 // ACTIONS, OPTIONS AND FILTERS
 add_action('wp_enqueue_scripts', 'my_theme_enqueue_styles');
 add_action('init', 'footer_scripts');
@@ -164,6 +176,7 @@ add_shortcode( 'resource_in_footer', 'resourceInFooter' );
 add_action( 'widgets_init', 'remove_FooterArea6', 11 );
 add_action( 'widgets_init', 'careersSidebar' );
 add_action( 'widgets_init', 'resourcesSidebar' );
+add_action( 'widgets_init', 'solutionsSidebar' );
 
 // SHORTCODES
 //add_shortcode('content_block', 'content_blocks');
