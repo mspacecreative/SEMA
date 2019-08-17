@@ -81,7 +81,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php else : ?>
+			<?php elseif ( get_sub_field('cta_button_type') == 'internal' ): ?>
 			
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
