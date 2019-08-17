@@ -99,11 +99,11 @@ endif; wp_reset_query(); ?>
 									the_content();
 								}
 								?>
-								<?php if ( get_field('anchor_link') ): ?>
+								<?php if ( get_field('resource_button_type') == 'internal' ): ?>
 								<div>
-									<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="/solutions-2/#<?php the_field('anchor_link'); ?>"><?php _e('Learn More'); ?></a>
+									<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_field('internal_page'); ?>"><?php _e('Learn More'); ?></a>
 								</div>
-								<?php elseif ( get_field('external_link') ): ?>
+								<?php elseif ( get_field('resource_button_type') == 'external' ): ?>
 								<div>
 									<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_field('external_link'); ?>" target="_blank"><?php _e('Learn More'); ?></a>
 								</div>
