@@ -340,12 +340,12 @@ h4 {
 	position: relative;
 }
 
-.single #main-content .container, .single #main-header .container {
+/*.single #main-content .container, .single #main-header .container {
 	width: 100%;
 	max-width: none;
 	padding-right: 10%;
 	padding-left: 10%;
-}
+}*/
 
 .single #main-content .container.full-width {
     padding-right: 0;
