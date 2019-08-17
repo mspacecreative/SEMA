@@ -54,6 +54,11 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 		<?php $title = get_the_title(); ?>
 		<div id="<?php echo sanitize_title_with_dashes( $title ); ?>" <?php post_class( 'blurb' ); ?>>
 			<h2><?php the_title(); ?></h2>
+			
+			<?php if ( has_post_thumbnail() ) { 
+				the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+			} ?>
+			
 			<?php the_field('summary_content'); ?>
 			
 			<?php if ( get_sub_field('cta_button_type') == 'external' ): ?>
@@ -88,11 +93,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php endif;
-			
-			if ( has_post_thumbnail() ) { 
-				the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-			} ?>
+			<?php endif; ?>
 			
 		</div>
 		<?php endif; ?>
