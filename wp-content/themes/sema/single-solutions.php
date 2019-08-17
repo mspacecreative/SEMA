@@ -30,6 +30,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	<div class="container full-width">
 	<?php else : ?>
 	<div class="container">
+	<?php endif; ?>
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
 			<?php while ( have_posts() ) : the_post(); ?>
