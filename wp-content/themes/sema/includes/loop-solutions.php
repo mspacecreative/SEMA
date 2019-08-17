@@ -61,7 +61,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			
 			<?php the_field('summary_content'); ?>
 			
-			<?php if ( get_sub_field('cta_button_type') == 'external' ): ?>
+			<?php if ( get_field('cta_button_type') == 'external' ): ?>
 			
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
@@ -73,7 +73,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php elseif ( get_sub_field('cta_button_type') == 'default' ): ?>
+			<?php elseif ( get_field('cta_button_type') == 'default' ): ?>
 			
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
@@ -85,7 +85,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 			<?php endwhile;
 			endif; ?>
 			
-			<?php elseif ( get_sub_field('cta_button_type') == 'internal' ): ?>
+			<?php elseif ( get_field('cta_button_type') == 'internal' ): ?>
 			
 			<?php if( have_rows('cta_button_content') ): 
 			while( have_rows('cta_button_content') ): the_row(); ?>
