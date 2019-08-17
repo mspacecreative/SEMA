@@ -194,6 +194,15 @@ body .entry-content .hero-section p {
 	content: '';
 }
 
+.single-solutions.et-db #et-boc .et_pb_section:first-child {
+	padding-top: 0;
+}
+
+.single-solutions.et-db #et-boc .et_pb_row {
+	max-width: 100%;
+	width: 100%;
+}
+
 @media (max-width: 479px) {
 	.inline-buttons > .et_pb_column {
 	    width: auto!important;
