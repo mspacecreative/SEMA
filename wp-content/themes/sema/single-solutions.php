@@ -26,6 +26,9 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 		<?php endwhile;
 		else:
 	?>
+	<?php if ( get_field('content_width') ): ?>
+	<div class="container full-width">
+	<?php else : ?>
 	<div class="container">
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
