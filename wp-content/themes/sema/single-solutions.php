@@ -33,7 +33,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 	<?php endif; ?>
 		<div id="content-area" class="clearfix">
 			<div id="left-area">
-			<a style="font-weight: 500; display: inline-block; margin: 0 0 50px;" href="<?php echo home_url('solutions'); ?>"><?php esc_html_e('&laquo; Back to Solutions'); ?></a>
+			<a style="font-weight: 500; display: inline-block; margin: 0 0 50px;" href="<?php echo home_url('solutions#rapid-growth'); ?>"><?php esc_html_e('&laquo; Back to Solutions'); ?></a>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php if (et_get_option('divi_integration_single_top') <> '' && et_get_option('divi_integrate_singletop_enable') == 'on') echo(et_get_option('divi_integration_single_top')); ?>
 				<article id="post-<?php the_ID(); ?>" <?php post_class( 'et_pb_post' ); ?>>
@@ -88,7 +88,7 @@ $is_page_builder_used = et_pb_is_pagebuilder_used( get_the_ID() );
 				</article> <!-- .et_pb_post -->
 
 			<?php endwhile; ?>
-			<a style="font-weight: 500;" href="<?php echo home_url('solutions'); ?>"><?php esc_html_e('&laquo; Back to Solutions'); ?></a>
+			<a style="font-weight: 500;" href="<?php echo home_url('solutions#rapid-growth'); ?>"><?php esc_html_e('&laquo; Back to Solutions'); ?></a>
 			</div> <!-- #left-area -->
 
 			<?php get_sidebar('solutions'); ?>
