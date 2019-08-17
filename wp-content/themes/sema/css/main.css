@@ -203,6 +203,12 @@ body .entry-content .hero-section p {
 	width: 100%;
 }
 
+.solutions_blurbs .solution-thumb {
+	position: relative;
+	float: right;
+	margin: 10px 0 20px 20px;
+}
+
 @media (max-width: 479px) {
 	.inline-buttons > .et_pb_column {
 	    width: auto!important;
