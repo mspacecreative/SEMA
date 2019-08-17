@@ -203,12 +203,6 @@ body .entry-content .hero-section p {
 	width: 100%;
 }
 
-.solutions_blurbs .solution-thumb {
-	position: relative;
-	float: right;
-	margin: 10px 0 20px 20px;
-}
-
 @media (max-width: 479px) {
 	.inline-buttons > .et_pb_column {
 	    width: auto!important;
@@ -729,6 +723,12 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	.et_pb_row_5col.solutions_grid>.et_pb_column.et_pb_column_1_5 {
 		margin-right: 0;
 		margin-bottom: 5%;
+	}
+	
+	.solutions_blurbs .solution-thumb {
+		position: relative;
+		float: right;
+		margin: 10px 0 20px 20px;
 	}
 	.solutions_grid_box {
 		width: 100%;
