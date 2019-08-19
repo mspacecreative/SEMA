@@ -3,8 +3,6 @@
 	    $grid.imagesLoaded().progress( function() {
             $grid.isotope('layout');
         });
-		
-		moveSolutionsImage();
 	});
 	
     var $grid = $('.iso-grid').isotope( {
@@ -35,11 +33,9 @@
         }
     }
 	
-	function moveSolutionsImage() {
-		if ( $('.solution-thumb').css('top') == 'auto') {
-				$('body').addClass('sample');
-			});
-		}
+	if ( $('.solution-thumb').css('top') == 'auto' ) {
+			$('body').addClass('sample');
+		});
 	}
     
     $(window).scroll(function() {
