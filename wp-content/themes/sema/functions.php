@@ -20,12 +20,14 @@ if (function_exists('add_theme_support'))
     add_theme_support('post-thumbnails');
     add_image_size( 'headshot', 353, 359, array( 'center', 'center' ) );
     add_image_size( 'resource-thumb', 400, 400, array( 'center', 'top' ) );
+    add_image_size( 'solution-summary', 180, 180, array( 'center', 'center' ) );
 }
  
 function my_custom_sizes( $sizes ) {
     return array_merge( $sizes, array(
         'headshot' => __( 'Head Shot' ),
         'resource-thumb' => __( 'Resource Thumb' ),
+        'solution-summary' => __( 'Solution Summary Image' ),
     ) );
 }
 
