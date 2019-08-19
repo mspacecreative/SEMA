@@ -221,6 +221,7 @@ button {
    display: none;
    padding: 15px 0;
    text-align: center;
+   transition: 0.5s ease-in-out;
 }
 
 .mobile-filter button {
