@@ -63,15 +63,15 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php if( have_rows('cta_button_content') ): 
 				while( have_rows('cta_button_content') ): the_row(); ?>
 				
-				<?php if ( has_post_thumbnail() ) { 
-					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-				} ?>
-				
-				<div style="clear: both;">
+				<div>
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
 					
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
 				</div>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
 				
 				<?php endwhile;
 				endif; ?>
@@ -81,15 +81,15 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php if( have_rows('cta_button_content') ): 
 				while( have_rows('cta_button_content') ): the_row(); ?>
 				
-				<?php if ( has_post_thumbnail() ) { 
-					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-				} ?>
-				
-				<div style="clear: both;">
+				<div>
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_permalink(); ?>"><?php the_sub_field('cta_button_label'); ?></a>
 					
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
 				</div>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
 				
 				<?php endwhile;
 				endif; ?>
@@ -99,15 +99,15 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php if( have_rows('cta_button_content') ): 
 				while( have_rows('cta_button_content') ): the_row(); ?>
 				
-				<?php if ( has_post_thumbnail() ) { 
-					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-				} ?>
-				
-				<div style="clear: both;">
+				<div>
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
 					
 					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
 				</div>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
 				
 				<?php endwhile;
 				endif; ?>
