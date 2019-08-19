@@ -39,7 +39,7 @@
 		var img = $('.solutions_blurbs .solution-thumb');
 		if ( img.css('top') == 'auto') {
 			img.each(function () {
-				$(this).insertBefore('h2');
+				img.insertBefore('h2');
 			}
 		}
 	}
