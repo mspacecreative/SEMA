@@ -38,8 +38,7 @@
 	function moveSolutionsImage() {
 		var img = $('.solution-thumb');
 		if ( img.css('top') == 'auto') {
-			img.each(function () {
-				img.insertBefore('h2');
+				img.addClass('sample');
 			});
 		}
 	}
