@@ -306,11 +306,16 @@ body.et_pb_svg_logo #logo {
 	margin: 30px 0 0;
 }
 
+.blurb ul {
+	float: left;
+}
+
 .solution-thumb {
-	position: absolute;
+	/*position: absolute;*/
 	width: 25%;
 	right: 0;
 	bottom: 0;
+	float: right;
 }
 
 body.alt-row-layout .et_pb_row.max-width-800 {
