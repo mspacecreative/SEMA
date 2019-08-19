@@ -59,7 +59,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 				<?php the_field('summary_content'); ?>
 				
 				<?php if ( has_post_thumbnail() ) { 
-					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+					the_post_thumbnail('solution-summary', array('class' => 'solution-thumb'));
 				} ?>
 				
 				<?php if ( get_field('cta_button_type') == 'external' ): ?>
