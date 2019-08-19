@@ -36,7 +36,6 @@ if ( $arr_posts->have_posts() ) :
     
 endif; wp_reset_query(); ?>
 
-<div id="stick-here-mobile"></div>
 <div class="mobile-filter">
     <button>Filter</button>
 </div>
@@ -59,6 +58,7 @@ endif; wp_reset_query(); ?>
 </div>
 
 <div id="stick-here"></div>
+<div id="stick-here-mobile"></div>
 
 <div id="instafeed" class="iso-grid">
 	<div class="grid-sizer"></div>
