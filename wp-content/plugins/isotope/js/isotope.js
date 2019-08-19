@@ -36,12 +36,12 @@
     }
 	
 	function moveSolutionsImage() {
-		var img = $('.solutions_blurbs .solution-thumb');
-		img.each(function () {
-			if ( img.css('top') == 'auto') {
+		var img = $('.solution-thumb');
+		if ( img.css('top') == 'auto') {
+			img.each(function () {
 				img.insertBefore('h2');
-			}
-		});
+			});
+		}
 	}
     
     $(window).scroll(function() {
