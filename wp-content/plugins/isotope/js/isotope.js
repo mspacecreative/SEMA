@@ -15,7 +15,7 @@
 	});
 	
 	function sticktothetop() {
-        var window_top = $(window).scrollTop() + $('header').height();
+        var window_top = $(window).scrollTop();
         var top = $('#stick-here, #stick-here-mobile').offset().top;
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
