@@ -255,7 +255,7 @@ button {
 }
 
 .mobile-filter > button.open:after {
-	content: '\f410';
+	content: '\f00d';
 	font-family: fontAwesome;
 }
 
