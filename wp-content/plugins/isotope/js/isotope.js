@@ -37,11 +37,11 @@
 	
 	function moveSolutionsImage() {
 		var img = $('.solutions_blurbs .solution-thumb');
-		if ( img.css('top') == 'auto') {
-			img.each(function () {
+		img.each(function () {
+			if ( img.css('top') == 'auto') {
 				img.insertBefore('h2');
 			}
-		}
+		});
 	}
     
     $(window).scroll(function() {
