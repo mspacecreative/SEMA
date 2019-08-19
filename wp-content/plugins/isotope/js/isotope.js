@@ -16,7 +16,7 @@
 	
 	function sticktothetop() {
         var window_top = $(window).scrollTop();
-        var top = $('#stick-here, #stick-here-mobile').offset().top;
+        var top = $('.filters-button-group, .mobile-filter').offset().top;
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
             $('#stick-here').css('height', '105px');
