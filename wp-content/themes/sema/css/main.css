@@ -321,7 +321,10 @@ body.et_pb_svg_logo #logo {
 	width: 25%;
 	right: 0;
 	bottom: 0;
-	margin-right: 5%;
+}
+
+.blurb .solution-thumb {
+	margin-left: 5%;
 }
 
 body.alt-row-layout .et_pb_row.max-width-800 {
