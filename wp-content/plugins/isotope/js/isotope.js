@@ -7,6 +7,10 @@
 		moveSolutionsImage();
 	});
 	
+	$(document).ready(function() {
+	    moveSolutionsImage();
+	});
+	
     var $grid = $('.iso-grid').isotope( {
         itemSelector: ".resource-item",
     	percentPosition: true,
