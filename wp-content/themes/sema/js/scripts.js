@@ -207,13 +207,11 @@ jQuery(document).ready(function($) {
 			    // This is necessary so you never see what is "behind" the navbar.
 			    if (st > lastScrollTop && st > navbarHeight){
 			        // Scroll Down
-			        $('header, .hamburger').removeClass('nav-down').addClass('nav-up');
-					$('.filters-button-group').addClass('nav-up');
+			        $('header, .hamburger, .filters-button-group, .mobile-filter').addClass('nav-up').removeClass('nav-down');
 			    } else {
 			        // Scroll Up
 			        if(st + $(window).height() < $(document).height()) {
-			            $('header, .hamburger').removeClass('nav-up').addClass('nav-down');
-						$('.filters-button-group').removeClass('nav-up');
+			            $('header, .hamburger, .filters-button-group, .mobile-filter').removeClass('nav-up').addClass('nav-down');
 			    }
 			}
 			    
