@@ -208,10 +208,12 @@ jQuery(document).ready(function($) {
 			    if (st > lastScrollTop && st > navbarHeight){
 			        // Scroll Down
 			        $('header, .hamburger').removeClass('nav-down').addClass('nav-up');
+					$('.filters-button-group, .mobile-filter').addClass('nav-up');
 			    } else {
 			        // Scroll Up
 			        if(st + $(window).height() < $(document).height()) {
 			            $('header, .hamburger').removeClass('nav-up').addClass('nav-down');
+						$('.filters-button-group, .mobile-filter').removeClass('nav-up');
 			    }
 			}
 			    
