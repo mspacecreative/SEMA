@@ -315,8 +315,8 @@ body.et_pb_svg_logo #logo {
 	width: 75%;
 }
  
-.solution-thumb {
-	/*position: absolute;*/
+.solutions_grid_box .solution-thumb {
+	position: absolute;
 	width: 25%;
 	right: 0;
 	bottom: 0;
