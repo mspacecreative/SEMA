@@ -253,7 +253,7 @@ button {
     box-shadow: none!important;
 }
 
-.filters-button-group.nav-up, .mobile-filter.nav-up {
+.filters-button-group.nav-up {
 	transition: 0.5s ease-in-out;
 }
 
