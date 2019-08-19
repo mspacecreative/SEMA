@@ -669,6 +669,12 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	clear: both;
 }
 
+.solutions_blurbs .solution-thumb:after {
+	clear: both;
+	display: table;
+	content: '';
+}
+
 @media (max-width: 1024px) {
 	.home .hero h1 {
     	font-size: 32px;
