@@ -43,6 +43,7 @@
     
     $('.mobile-filter button').click(function() {
         $(this).parent().siblings('.filters-button-group').slideToggle();
+		$(this).toggleClass('open');
     });
 		
 	// filter functions
