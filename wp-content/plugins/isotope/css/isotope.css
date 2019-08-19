@@ -262,7 +262,7 @@ button {
     .mobile-filter {
         display: block;
     }
-    .filters-button-group, #stick-here {
+    .filters-button-group {
         display: none;
     }
 }
@@ -270,7 +270,7 @@ button {
     .mobile-filter {
         display: block;
     }
-    .filters-button-group, #stick-here {
+    .filters-button-group {
         display: none;
     }
 }
