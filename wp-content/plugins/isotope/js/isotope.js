@@ -38,7 +38,7 @@
 	function moveSolutionsImage() {
 		var img = $('.solutions_blurbs .solution-thumb');
 		if ( img.css('top') == 'auto') {
-			img.appendTo('h2');
+			img.insertAfter($this).parent();
 		}
 	}
     
