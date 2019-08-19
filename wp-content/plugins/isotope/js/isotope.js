@@ -37,7 +37,7 @@
 	
 	function moveSolutionsImage() {
 		var img = $('.solutions_blurbs .solution-thumb');
-		if ( img.css('margin-top') == '0') {
+		if ( img.css('top') == 'auto') {
 			img.insertAfter('h2');
 		}
 	}
