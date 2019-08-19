@@ -55,49 +55,59 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 		<div id="<?php echo sanitize_title_with_dashes( $title ); ?>" <?php post_class( 'blurb' ); ?>>
 			<h2><?php the_title(); ?></h2>
 			
-			<?php if ( has_post_thumbnail() ) { 
-				the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-			} ?>
-			
-			<?php the_field('summary_content'); ?>
-			
-			<?php if ( get_field('cta_button_type') == 'external' ): ?>
-			
-			<?php if( have_rows('cta_button_content') ): 
-			while( have_rows('cta_button_content') ): the_row(); ?>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
-			
-			<?php endwhile;
-			endif; ?>
-			
-			<?php elseif ( get_field('cta_button_type') == 'default' ): ?>
-			
-			<?php if( have_rows('cta_button_content') ): 
-			while( have_rows('cta_button_content') ): the_row(); ?>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_permalink(); ?>"><?php the_sub_field('cta_button_label'); ?></a>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
-			
-			<?php endwhile;
-			endif; ?>
-			
-			<?php elseif ( get_field('cta_button_type') == 'internal' ): ?>
-			
-			<?php if( have_rows('cta_button_content') ): 
-			while( have_rows('cta_button_content') ): the_row(); ?>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
-			
-			<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
-			
-			<?php endwhile;
-			endif; ?>
-			
-			<?php endif; ?>
+			<div class="clearfix">
+				<?php the_field('summary_content'); ?>
+				
+				<?php if ( get_field('cta_button_type') == 'external' ): ?>
+				
+				<?php if( have_rows('cta_button_content') ): 
+				while( have_rows('cta_button_content') ): the_row(); ?>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				
+				<?php endwhile;
+				endif; ?>
+				
+				<?php elseif ( get_field('cta_button_type') == 'default' ): ?>
+				
+				<?php if( have_rows('cta_button_content') ): 
+				while( have_rows('cta_button_content') ): the_row(); ?>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_permalink(); ?>"><?php the_sub_field('cta_button_label'); ?></a>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				
+				<?php endwhile;
+				endif; ?>
+				
+				<?php elseif ( get_field('cta_button_type') == 'internal' ): ?>
+				
+				<?php if( have_rows('cta_button_content') ): 
+				while( have_rows('cta_button_content') ): the_row(); ?>
+				
+				<?php if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				} ?>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
+				
+				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				
+				<?php endwhile;
+				endif; ?>
+				
+				<?php endif; ?>
+			</div>
 			
 		</div>
 		<?php endif; ?>
