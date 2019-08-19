@@ -665,6 +665,10 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	top: 15px;
 }
 
+.cta-button-container {
+	clear: both;
+}
+
 @media (max-width: 1024px) {
 	.home .hero h1 {
     	font-size: 32px;
@@ -741,6 +745,9 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	.et_pb_row_5col.solutions_grid>.et_pb_column.et_pb_column_1_5 {
 		margin-right: 0;
 		margin-bottom: 5%;
+	}
+	.cta-button-container {
+		margin-top: 15px;
 	}
 	
 	.solutions_blurbs .solution-thumb {
