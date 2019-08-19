@@ -96,12 +96,12 @@ button.hamburger:hover {
 }
 
 #main-header {
-	transition: 0.4s ease-in-out!important;
+	transition: 0.5s ease-in-out!important;
 	right: 0;
 }
 .is-active #main-header {
 	transform: translateX(0);
-	transition: 0.4s ease-in-out;
+	transition: 0.5s ease-in-out;
 	visibility: visible;
 	right: 250px;
 }
