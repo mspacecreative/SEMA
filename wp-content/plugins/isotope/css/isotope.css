@@ -245,7 +245,7 @@ button {
     z-index: 999;
 }
 
-.filters-button-group, .mobile-filter {
+.filters-button-group {
 	transition: 0.5s ease-in-out;
 }
 
