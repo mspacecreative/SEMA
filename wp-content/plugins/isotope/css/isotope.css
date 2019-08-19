@@ -257,6 +257,10 @@ button {
 	transition: 0.5s ease-in-out;
 }
 
+.mobile-filter.nav-up {
+	top: 0!important;
+}
+
 @media (max-width: 400px) {
     .mobile-filter {
         display: block;
