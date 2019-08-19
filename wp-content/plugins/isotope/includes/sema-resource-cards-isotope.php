@@ -40,7 +40,7 @@ endif; wp_reset_query(); ?>
 <div class="mobile-filter">
     <button>Filter</button>
 </div>
-<div id="stick-here"></div>
+
 <div class="button-group filters-button-group">
 	<button class="button is-checked">All Types</button>
 	<?php
@@ -57,6 +57,8 @@ endif; wp_reset_query(); ?>
 		echo '<button class="button" data-filter=".' . $term->slug . '">' . $term->name . '</button>';
 	} ?>
 </div>
+
+<div id="stick-here"></div>
 
 <div id="instafeed" class="iso-grid">
 	<div class="grid-sizer"></div>

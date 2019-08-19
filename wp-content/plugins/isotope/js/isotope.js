@@ -19,8 +19,7 @@
         var top = $('#stick-here, #stick-here-mobile').offset().top;
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
-            //$('#stick-here').css('height', $('.button-group').outerHeight() + 100);
-			$('.iso-grid').css('margin-top', '50px');
+            $('#stick-here').css('height', '50px');
             $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
             if ( $('.mobile-filter').css('display') == 'block' ) {
                 $('.filters-button-group').css('top', $('#main-header').height() + $('.mobile-filter').outerHeight());
