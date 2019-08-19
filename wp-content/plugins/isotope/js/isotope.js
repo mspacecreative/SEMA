@@ -20,11 +20,13 @@
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
             $('#stick-here').css('height', '105px');
-            $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
+            $('.mobile-filter').css('top', $('#main-header').height());
             if ( $('.mobile-filter').css('display') == 'block' ) {
                 //$('.filters-button-group').css('top', $('#main-header').height() + $('.mobile-filter').outerHeight());
 				$('#stick-here').css('height', '72px');
-            }
+            } else {
+				$('.filters-button-group').css('top', $('#main-header').height());
+			}
         } else {
             $('.filters-button-group, .mobile-filter').removeClass('fixed');
             $('#stick-here').css('height', '0');
