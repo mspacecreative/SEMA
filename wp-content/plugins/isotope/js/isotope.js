@@ -3,6 +3,8 @@
 	    $grid.imagesLoaded().progress( function() {
             $grid.isotope('layout');
         });
+		
+		moveSolutionsImages();
 	});
 	
     var $grid = $('.iso-grid').isotope( {
@@ -32,6 +34,12 @@
             $('#stick-here-mobile').css('height', '0');
         }
     }
+	
+	function moveSolutionsImages() {
+		if ( $('#et-top-navigation').css('display') == 'none' ) {
+			$('.solutions_blurbs .solution-thumb').remove();
+		}
+	}
     
     $(window).scroll(function() {
         sticktothetop();
