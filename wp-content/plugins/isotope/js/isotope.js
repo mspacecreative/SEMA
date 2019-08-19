@@ -22,8 +22,7 @@
             $('#stick-here').css('height', '105px');
             $('.mobile-filter').css('top', $('#main-header').height());
             if ( $('.mobile-filter').css('display') == 'block' ) {
-                $('header.nav-down .filters-button-group').css('top', '150px');
-				$('#stick-here').css('height', '72px');
+                $('#stick-here').css('height', '72px');
             } else {
 				$('.filters-button-group').css('top', $('#main-header').height());
 			}

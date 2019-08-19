@@ -271,6 +271,15 @@ button {
     }
 }
 
+@media (max-width: 812px) {
+	.filters-button-group.nav-up {
+		top: 72px;
+	}
+	.filters-button-group.nav-down {
+		top: 150px;
+	}
+}
+
 @media (min-width: 813px) {
 	.filters-button-group.nav-up, .mobile-filter.nav-up {
 		top: 0!important;
