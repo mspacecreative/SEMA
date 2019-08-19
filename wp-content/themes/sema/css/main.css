@@ -669,7 +669,7 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	clear: both;
 }
 
-.solutions_blurbs .solution-thumb:after {
+.solutions_blurbs .solution-thumb:after, .blurb ul:after {
 	clear: both;
 	display: table;
 	content: '';
