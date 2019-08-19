@@ -37,7 +37,7 @@
 	
 	function moveSolutionsImages() {
 		if ( $('#et-top-navigation').css('display') == 'none' ) {
-			$('.solutions_blurbs .solution-thumb').remove();
+			$('.solutions_blurbs').remove();
 		}
 	}
     
