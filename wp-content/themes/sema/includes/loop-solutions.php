@@ -67,9 +67,11 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
 				} ?>
 				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
-				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				<div style="clear: both;">
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('external_button_link'); ?>" target="_blank"><?php the_sub_field('cta_button_label'); ?></a>
+					
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				</div>
 				
 				<?php endwhile;
 				endif; ?>
@@ -83,9 +85,11 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
 				} ?>
 				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_permalink(); ?>"><?php the_sub_field('cta_button_label'); ?></a>
-				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				<div style="clear: both;">
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_permalink(); ?>"><?php the_sub_field('cta_button_label'); ?></a>
+					
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				</div>
 				
 				<?php endwhile;
 				endif; ?>
@@ -99,9 +103,11 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
 				} ?>
 				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
-				
-				<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				<div style="clear: both;">
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="<?php the_sub_field('internal_button_link'); ?>"><?php the_sub_field('cta_button_label'); ?></a>
+					
+					<a class="et_pb_button hide-on-desktop" style="font-size: 16px; margin-left: 15px;" href="<?php echo home_url('get-a-demo'); ?>"><?php esc_html_e('Get a Demo'); ?></a>
+				</div>
 				
 				<?php endwhile;
 				endif; ?>
