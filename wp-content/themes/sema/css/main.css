@@ -270,6 +270,11 @@ body.et_pb_svg_logo #logo {
 	margin-bottom: 15px;
 }
 
+#main-header.nav-up, .hamburger.nav-up {
+    transition: 0.5s ease-in-out;
+    transform: translateY(-80px);
+}
+
 .entry-content .solutions_grid_box h3 {
 	font-weight: bold;
 }
