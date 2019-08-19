@@ -33,7 +33,7 @@
         }
     }
 	
-	if ( $('.solution-thumb').css('top') == 'auto' ) {
+	if ( $('.blurb ul').css('width') == '65%' ) {
 			$('body').addClass('sample');
 		});
 	}
