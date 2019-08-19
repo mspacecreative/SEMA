@@ -20,7 +20,7 @@
         if (window_top > top) {
             $('.filters-button-group, .mobile-filter').addClass('fixed');
             $('#stick-here').css('height', $('#main-header').height() + $('.button-group').outerHeight() -20);
-            $('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
+            //$('.filters-button-group, .mobile-filter').css('top', $('#main-header').height());
             if ( $('.mobile-filter').css('display') == 'block' ) {
                 $('.filters-button-group').css('top', $('#main-header').height() + $('.mobile-filter').outerHeight());
 				$('#stick-here-mobile').css('height', $('#stick-here-mobile').siblings('.mobile-filter').outerHeight());
