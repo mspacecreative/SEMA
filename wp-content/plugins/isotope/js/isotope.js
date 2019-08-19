@@ -41,9 +41,7 @@
 	
 	function moveSolutionsImage() {
 		if ( $('#et-top-navigation').css('display') == 'none' ) {
-				$('.solutions_blurbs .solution-thumb').each(function () {
-					$(this).remove();
-				});
+				$('.solutions_blurbs .solution-thumb').remove();
 			});
 		}
 	}
