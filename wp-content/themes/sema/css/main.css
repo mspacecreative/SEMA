@@ -310,12 +310,16 @@ body.et_pb_svg_logo #logo {
 	float: left;
 }
 
+.blurb p:nth-child(2) {
+	float: left;
+	width: 75%;
+}
+ 
 .solution-thumb {
 	/*position: absolute;*/
 	width: 25%;
 	right: 0;
 	bottom: 0;
-	float: right;
 }
 
 body.alt-row-layout .et_pb_row.max-width-800 {
