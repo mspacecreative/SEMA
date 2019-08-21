@@ -55,12 +55,12 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
 		<div id="<?php echo sanitize_title_with_dashes( $title ); ?>" <?php post_class( 'blurb' ); ?>>
 			<h2><?php the_title(); ?></h2>
 			
+			<?php if ( has_post_thumbnail() ) { 
+				the_post_thumbnail('solution-summary', array('class' => 'solution-thumb'));
+			} ?>
+			
 			<div class="clearfix">
 				<?php the_field('summary_content'); ?>
-				
-				<?php if ( has_post_thumbnail() ) { 
-					the_post_thumbnail('solution-summary', array('class' => 'solution-thumb'));
-				} ?>
 				
 				<?php if ( get_field('cta_button_type') == 'external' ): ?>
 				
