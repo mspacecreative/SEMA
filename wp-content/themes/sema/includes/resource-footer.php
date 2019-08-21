@@ -12,6 +12,10 @@ $args = array(
       ),
       array(
         'key' => 'content'
+      ),
+      array(
+        'key' => 'resource_button_type',
+        'value' => 'external'
       )
     )
 );
@@ -23,7 +27,11 @@ if ( $arr_posts->have_posts() ) :
         $arr_posts->the_post(); ?>
         
         <div class="featured-resource-footer clearfix">
+			<?php if ( get_field('resource_button_type') == 'external' ): ?>
+			<h2><?php esc_html_e('Featured Resource: '); ?><a style="color: #0072d6;" href="<?php the_field('external_link'); ?>" target="_blank"><?php the_title(); ?></a></h2>
+			<?php else : ?>
 			<h2><?php esc_html_e('Featured Resource: '); ?><a style="color: #0072d6;" href="<?php echo the_permalink(); ?>"><?php the_title(); ?></a></h2>
+			<?php endif; ?>
 			<?php if ( get_field('content') ):
 			the_field('content');
 			else :
