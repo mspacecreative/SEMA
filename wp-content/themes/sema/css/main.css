@@ -661,7 +661,7 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 }
 
 .cta-button-container {
-	clear: both;
+	margin-top: 25px;
 }
 
 @media (max-width: 1024px) {
