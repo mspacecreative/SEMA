@@ -118,7 +118,11 @@ endif; wp_reset_query(); ?>
 								</div>
 								<?php else : ?>
 								<div>
+									<?php if ( get_field('resource_button_type') == 'external' ): ?>
+									<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_field('external_link'); ?>" target="_blank"><?php _e('Learn More'); ?></a>
+									<?php else : ?>
 									<a class="et_pb_button et_pb_custom_button_icon" data-icon="E" style="margin-top: 15px; display: inline-block;" href="<?php the_permalink(); ?>"><?php _e('Learn More'); ?></a>
+									<?php endif; ?>
 								</div>
 								<?php endif; ?>
 							</div>
