@@ -660,12 +660,6 @@ body #page-container .et_pb_button:hover, body.et-db #et-boc .et_pb_button:hover
 	display: none;
 }
 
-.solutions_blurbs .solution-thumb {
-	position: relative;
-	top: 45px;
-	width: 25%;
-}
-
 .cta-button-container {
 	clear: both;
 }
