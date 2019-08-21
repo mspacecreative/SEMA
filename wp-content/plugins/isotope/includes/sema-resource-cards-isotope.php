@@ -78,9 +78,15 @@ endif; wp_reset_query(); ?>
 					<div class="grid-inner">
 						<div class="normal-image">
 						    <?php if ( has_post_thumbnail() ) { ?>
-						        <a href="<?php the_permalink(); ?>">
+								<?php if ( get_field('resource_button_type') == 'external' ): ?>
+								<a href="<?php the_field('external_link'); ?>" target="_blank">
+								    <?php echo the_post_thumbnail(); ?>
+								</a>
+						        <?php else : ?>
+								<a href="<?php the_permalink(); ?>">
 							        <?php echo the_post_thumbnail(); ?>
 						        </a>
+								<?php endif; ?>
 						    <?php } ?>
 						</div>
 							<div class="card-content">
