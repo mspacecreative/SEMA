@@ -1,5 +1,4 @@
 import {
-  onInterframeReady,
   onConnect,
   onDisconnect,
   onUpgrade,
@@ -23,10 +22,6 @@ import { adminUrl, theme } from './constants/leadinConfig';
 import { initNavigation, disableNavigation, syncRoute } from './navigation';
 import enterFullScreen, { exitFullScreen } from './fullscreen';
 import themes from './constants/themes';
-
-onInterframeReady((message, reply) => {
-  reply('Interframe Ready');
-});
 
 onConnect((portalId, reply) => {
   connect(

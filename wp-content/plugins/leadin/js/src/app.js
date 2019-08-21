@@ -4,6 +4,8 @@ import { portalId } from './constants/leadinConfig';
 import { initInterframe } from './lib/Interframe';
 import { startPortalIdPolling } from './api/wordpressApi';
 import './handlers';
+import loginThroughPopup from './utils/loginThroughPopup';
+import { getAuth } from './api/hubspotPluginApi';
 
 function main() {
   initInterframe();
@@ -15,7 +17,23 @@ function main() {
     }
   }
 
-  jQuery(document).ready(addExternalLinks);
+  jQuery(document).ready(() => {
+    addExternalLinks();
+    jQuery('#loginLink').click(() => {
+      loginThroughPopup(() => {
+        window.location.href = './admin.php?page=leadin';
+      });
+    });
+  });
+
+  getAuth(isAuthenticated => {
+    if (isAuthenticated) {
+      jQuery('#hubspot-dashboard-banner-connect').show();
+    } else {
+      jQuery('#hubspot-dashboard-banner-login').show();
+    }
+    jQuery('#disconnectedBanner').show();
+  });
 }
 
 configureRaven();

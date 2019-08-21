@@ -15,35 +15,89 @@ if ( ! defined( 'LEADIN_ADMIN_PATH' ) ) {
 // Include Needed Files
 // =============================================
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
+/**
+ * general function which can be used to get the treatment for an experiment
+ * arg1 => the name of the experiment e.g leadin_banner_experiment. this will be used as the name of the option in the wordpress DB
+ * arg2 => number of possible variations
+ * returns => a number between 1-number of possible variations for that experiment
+ */
+function leadin_get_experiment_treatment( $experiment_name, $number_of_variations=2 ) {
+	$treatment = (int) get_option( $experiment_name );
+	if ( empty( $treatment ) ) {
+		$treatment = rand(1,$number_of_variations);
+		add_option( $experiment_name, $treatment);
+	}
+	return $treatment;
+}
+function leadin_render_disconnected_banner( ) {
+	$experiment_treatment_value= leadin_get_experiment_treatment( 'leadin_banner_experiment' );
+	if ( LEADIN_NEW_BANNER_GATE  && $experiment_treatment_value === 2 ) {
+		?>
+
+			<div id = "disconnectedBanner" class="notice notice-warning is-dismissible banner-wrapper">
+				<div class="logo-wrapper">
+					<img src="<?php echo esc_attr( LEADIN_PATH . '/images/hubspot-wordmark.svg' ); ?>" class="logo-style"  />
+				</div>
+				<div class="title-wrapper">
+					<p class="heading-text"><?php echo(__('Grow your list. Manage your contacts. Send beautiful email','leadin')) ?></p>
+				</div>
+
+				<div id= "hubspot-dashboard-banner-login"  class="content-wrapper">
+					<p class="banner-description"><?php echo (__('Power up your site for free with the ultimate all-in-one marketing plugin for Wordpress','leadin'))?>
+						<br class="mobile-spacing"/>
+							<a  id="loginLink" href ="#" class="signup-link"><?php echo (__( 'Log in', 'leadin' )) ?></a>
+							or
+							<a href="./admin.php?page=leadin">
+								<button class="signup-button">
+									<p class="button-text"><?php echo (__( 'Sign up now', 'leadin' )) ?></p>
+								</button>
+							</a>
+						</p>
+				</div>
+
+				<div  id="hubspot-dashboard-banner-connect" class="content-wrapper">
+					<p class="banner-description"><?php echo (__('Power up your site for free with the ultimate all-in-one marketing plugin for Wordpress','leadin'))?>
+						<br class="mobile-spacing"/>
+						<a href="./admin.php?page=leadin">
+							<button class="signup-button">
+								<p class="button-text"><?php echo (__( 'Connect my account', 'leadin' )) ?></p>
+							</button>
+						</a>
+					</p>
+				</div>
+			</div>
+
+		<?php
+	} else {
+
+		?>
+			<div id="hubspot-dashboard-banner" class="notice notice-warning is-dismissible">
+				<p>
+					<img src="<?php echo esc_attr( LEADIN_PATH . '/images/sprocket.svg' ); ?>" height="16" style="margin-bottom: -3px" />
+					&nbsp;
+					<?php echo sprintf(
+						esc_html(__( 'The HubSpot plugin isn’t connected right now. To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s.', 'leadin' ))
+						,'<a href="admin.php?page=leadin">',
+						'</a>'); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</p>
+			</div>
+		<?php
+	}
+}
 
 /**
  * Find what notice (if any) needs to be rendered
  */
 function leadin_action_required_notice() {
 	$current_screen = get_current_screen();
+	$messageType = "";
 	if ( 'leadin' !== $current_screen->parent_base ) {
-		$leadin_icon = LEADIN_PATH . '/images/sprocket.svg';
 		if ( ! get_option( 'leadin_portalId' ) && leadin_is_admin() ) {
-			$message = sprintf(
-				esc_html(
-					__( 'The HubSpot plugin isn’t connected right now. To use HubSpot tools on your WordPress site, %1$sconnect the plugin now%2$s.', 'leadin' )
-				),
-				'<a href="admin.php?page=leadin">',
-				'</a>'
-			);
+			$messageType = "DISCONNECTED_MESSAGE";
 		}
 	}
-
-	if ( isset( $message ) ) {
-		?>
-			<div class="notice notice-warning is-dismissible">
-				<p>
-					<img src="<?php echo esc_attr( LEADIN_PATH . '/images/sprocket.svg' ); ?>" height="16" style="margin-bottom: -3px" />
-					&nbsp;
-					<?php echo $message; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-				</p>
-			</div>
-		<?php
+	if ( $messageType === "DISCONNECTED_MESSAGE" ) {
+		leadin_render_disconnected_banner();
 	}
 }
 
@@ -213,7 +267,7 @@ class LeadinAdmin {
 	 */
 	public function leadin_add_background_iframe() {
 		$screen = get_current_screen();
-		if ( 'dashboard' === $screen->id ) {
+		if ( 'dashboard' === $screen->id || 'post' === $screen->id || 'page' === $screen->id ) {
 			$background_iframe_url = leadin_get_background_iframe_src();
 			?>
 				<iframe class="leadin-background-iframe" style="display: none" id="leadin-iframe" src="<?php echo esc_attr( $background_iframe_url ); ?>"></iframe>
@@ -228,32 +282,10 @@ class LeadinAdmin {
 	 * Adds admin javascript
 	 */
 	public function add_leadin_admin_scripts() {
-		global $wp_version;
-
-		$leadin_config = array(
-			'adminUrl'            => admin_url(),
-			'ajaxUrl'             => leadin_get_ajax_url(),
-			'env'                 => constant( 'LEADIN_ENV' ),
-			'hubspotBaseUrl'      => constant( 'LEADIN_BASE_URL' ),
-			'leadinPluginVersion' => constant( 'LEADIN_PLUGIN_VERSION' ),
-			'locale'              => get_locale(),
-			'nonce'               => wp_create_nonce( 'hubspot-ajax' ),
-			'phpVersion'          => leadin_parse_version( phpversion() ),
-			'plugins'             => get_plugins(),
-			'portalId'            => get_option( 'leadin_portalId' ),
-			'theme'               => get_option( 'stylesheet' ),
-			'wpVersion'           => leadin_parse_version( $wp_version ),
-		);
-
-		$leadin_i18n = array(
-			'chatflows' => __( 'Live Chat', 'leadin' ),
-			'email'     => __( 'Email', 'leadin' ),
-		);
-
 		wp_register_style( 'leadin-bridge-css', LEADIN_PATH . '/style/leadin-bridge.css?', array(), LEADIN_PLUGIN_VERSION );
-		wp_register_script( 'leadin-js', LEADIN_JS_PATH, false, true, true );
-		wp_localize_script( 'leadin-js', 'leadinConfig', $leadin_config );
-		wp_localize_script( 'leadin-js', 'leadinI18n', $leadin_i18n );
+		wp_register_script( 'leadin-js', LEADIN_JS_BASE_PATH . '/leadin.js', array(), LEADIN_PLUGIN_VERSION, true );
+		wp_localize_script( 'leadin-js', 'leadinConfig', leadin_get_leadin_config() );
+		wp_localize_script( 'leadin-js', 'leadinI18n', leadin_get_leadin_i18n() );
 		wp_enqueue_script( 'leadin-js' );
 	}
 }

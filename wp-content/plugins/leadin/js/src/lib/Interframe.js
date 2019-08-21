@@ -6,6 +6,8 @@ import Raven from './Raven';
 
 const eventBus = new EventBus();
 const callbacks = [];
+const postMessageBuffer = [];
+let interframeReady = false;
 
 function postMessageObject(message) {
   log('Posting message');
@@ -26,14 +28,14 @@ function reply(message, response) {
 }
 
 function handleResponse(message) {
-  callbacks[message._callbackId - 1](message.response);
+  callbacks[message._leadinCallbackId - 1](message.response);
 }
 
 function handleMessage(message) {
   log('Received message');
   log(JSON.stringify(message));
 
-  if (message.response && message._callbackId) {
+  if (message.hasOwnProperty('response') && message._leadinCallbackId) {
     handleResponse(message);
   } else {
     Object.keys(message).forEach(key => {
@@ -53,27 +55,42 @@ function handleMessageEvent(event) {
   }
 }
 
-export function postMessage(key, payload, onResponse, onTimeout, timeout) {
-  if (!timeout) {
-    timeout = 500;
+function setInterframeReady() {
+  interframeReady = true;
+  while (postMessageBuffer.length > 0) {
+    postMessageObject(postMessageBuffer.pop());
   }
+}
 
+export function postMessage(
+  key,
+  payload,
+  onResponse,
+  onTimeout,
+  timeout = 500
+) {
   const timeoutCallback = function() {
     const errorMessage = `LeadinWordpressPlugin postMessage response timeout on message key: ${key}`;
     log(errorMessage);
     Raven.captureMessage(errorMessage);
-    onTimeout();
+    if (onTimeout) {
+      onTimeout();
+    }
   };
 
   const timeoutId = setTimeout(Raven.wrap(timeoutCallback), timeout);
 
   const message = {};
   message[key] = payload;
-  message._callbackId = callbacks.push((...args) => {
+  message._leadinCallbackId = callbacks.push((...args) => {
     clearTimeout(timeoutId);
     onResponse(...args);
   });
-  postMessageObject(message);
+  if (interframeReady) {
+    postMessageObject(message);
+  } else {
+    postMessageBuffer.push(message);
+  }
 }
 
 export function onMessage(key, callback) {
@@ -83,5 +100,9 @@ export function onMessage(key, callback) {
 }
 
 export function initInterframe() {
+  onMessage('interframe_ready', (message, sendReply) => {
+    sendReply();
+    setInterframeReady();
+  });
   window.addEventListener('message', handleMessageEvent);
 }

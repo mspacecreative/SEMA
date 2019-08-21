@@ -42,6 +42,14 @@ function leadin_get_user_role() {
 }
 
 /**
+ * Returns if a portal is connected to the plugin.
+ */
+function leadin_is_portal_connected() {
+	$portal_id = get_option( 'leadin_portalId' );
+	return ! empty( $portal_id );
+}
+
+/**
  * Return query string from object
  *
  * @param array $arr query parameters to stringify.
@@ -177,7 +185,7 @@ function leadin_get_iframe_src() {
 	$regex      = '/^hubspot_page_leadin(_|$)/';
 	$page       = get_current_screen()->id;
 
-	if ( empty( $portal_id ) ) {
+	if ( ! leadin_is_portal_connected() ) {
 		return leadin_get_signup_url();
 	}
 
@@ -194,7 +202,7 @@ function leadin_get_background_iframe_src() {
 	$portal_id     = get_option( 'leadin_portalId' );
 	$portal_id_url = '';
 
-	if ( ! empty( $portal_id ) ) {
+	if ( leadin_is_portal_connected() ) {
 		$portal_id_url = "/$portal_id";
 	}
 
@@ -209,6 +217,46 @@ function leadin_get_background_iframe_src() {
 function leadin_get_form_shortcode( $form_id ) {
 	$portal_id = get_option( 'leadin_portalId' );
 	return "[hubspot type=form portal=$portal_id id=$form_id]";
+}
+
+/**
+ * Get the leadinConfig
+ */
+function leadin_get_leadin_config() {
+	global $wp_version;
+
+	return array(
+		'adminUrl'            => admin_url(),
+		'ajaxUrl'             => leadin_get_ajax_url(),
+		'env'                 => constant( 'LEADIN_ENV' ),
+		'formsScript'		  => constant( 'LEADIN_FORMS_SCRIPT_URL' ),
+		'formsScriptPayload'  => constant( 'LEADIN_FORMS_PAYLOAD' ),
+		'hubspotBaseUrl'      => constant( 'LEADIN_BASE_URL' ),
+		'leadinPluginVersion' => constant( 'LEADIN_PLUGIN_VERSION' ),
+		'locale'              => get_locale(),
+		'nonce'               => wp_create_nonce( 'hubspot-ajax' ),
+		'phpVersion'          => leadin_parse_version( phpversion() ),
+		'pluginPath'          => constant( 'LEADIN_PATH' ),
+		'plugins'             => get_plugins(),
+		'portalId'            => get_option( 'leadin_portalId' ),
+		'theme'               => get_option( 'stylesheet' ),
+		'wpVersion'           => leadin_parse_version( $wp_version ),
+	);
+}
+
+/**
+ * Get leadinI18n
+ */
+function leadin_get_leadin_i18n() {
+	return array(
+		'chatflows'             => __( 'Live Chat', 'leadin' ),
+		'email'                 => __( 'Email', 'leadin' ),
+		'signIn'	            => __( 'Sign In', 'leadin' ),
+		'selectExistingForm'    => __( 'Select an existing form', 'leadin' ),
+		'selectForm'            => __('Select a form', 'leadin' ),
+		'formBlockTitle'        => __('HubSpot Form', 'leadin' ),
+		'formBlockDescription'	=> __('Select and embed a HubSpot form', 'leadin' )
+	);
 }
 
 /**

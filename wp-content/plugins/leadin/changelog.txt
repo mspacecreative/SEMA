@@ -1,3 +1,14 @@
+= 7.9.2 (2019.08.20) =
+- Fix infinite loading in pages editor for Gutenberg Forms block
+- Updated translations
+
+= 7.9.1 (2019.08.15) =
+- Fix register_block_type does not exist error.
+- [leadin-plugin] New translations completed.
+
+= 7.9.0 (2019.08.14) =
+- Add HubSpot Form Gutenberg Block
+
 = 7.8.0 (2019.08.08) =
 - Replace activate_plugins with manage_options
 - Upgrade wordpress-scripts
