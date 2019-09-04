@@ -98,15 +98,15 @@
 									<?php if ( has_post_thumbnail() ) { ?>
 										<?php if ( get_field('resource_button_type') == 'external' ): ?>
 										<a href="<?php the_field('external_link'); ?>" target="_blank">
-										    <?php echo the_post_thumbnail(); ?>
+										    <?php echo the_post_thumbnail('resource-thumb'); ?>
 										</a>
 										<?php elseif ( get_field('resource_button_type') == 'internal' ): ?>
 										<a href="<?php the_field('internal_page'); ?>">
-										    <?php echo the_post_thumbnail(); ?>
+										    <?php echo the_post_thumbnail('resource-thumb'); ?>
 										</a>
 									    <?php else : ?>
 										<a href="<?php the_permalink(); ?>">
-									        <?php echo the_post_thumbnail(); ?>
+									        <?php echo the_post_thumbnail('resource-thumb'); ?>
 									    </a>
 										<?php endif; ?>
 									<?php } ?>
