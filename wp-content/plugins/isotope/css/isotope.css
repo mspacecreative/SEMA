@@ -38,6 +38,13 @@ button {
     box-shadow: none;
 }
 
+#instafeed .resource-bg-img img {
+	width: 100%;
+	transform: none;
+	top: auto;
+	box-shadow: none;
+}
+
 #instafeed {
 	width: 100%;
 	margin: auto;
