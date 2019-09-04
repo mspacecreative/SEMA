@@ -45,6 +45,12 @@ button {
 	box-shadow: none;
 }
 
+#instafeed .ebook-cover img {
+	width: 250px;
+	top: auto;
+	margin: 20px auto;
+}
+
 #instafeed {
 	width: 100%;
 	margin: auto;
