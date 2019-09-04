@@ -112,13 +112,6 @@
 
 /* ---- .grid-item ---- */
 
-.card-content {
-	background-color: #f5f5f5;
-	padding: 20px;
-	text-align: left;
-	position: relative;
-}
-
 .entry-content .card-content h3, .tax-categories .card-content h3 {
 	font-weight: 900;
 	font-size: 24px;
