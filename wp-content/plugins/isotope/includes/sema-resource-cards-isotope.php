@@ -236,9 +236,19 @@ endif; wp_reset_query(); ?>
 					<?php elseif ( get_field('resource_image_type') == 'datasheet' ): ?>
 					<div class="grid-inner">
 						<?php if ( has_post_thumbnail() ) { ?>
-						<a href="<?php the_permalink(); ?>">
-							<?php echo the_post_thumbnail('resource-thumb'); ?>
-						</a>
+							<?php if ( get_field('resource_button_type') == 'external' ): ?>
+							<a href="<?php the_field('external_link'); ?>" target="_blank">
+							    <?php echo the_post_thumbnail(); ?>
+							</a>
+							<?php elseif ( get_field('resource_button_type') == 'internal' ): ?>
+							<a href="<?php the_field('internal_page'); ?>">
+							    <?php echo the_post_thumbnail(); ?>
+							</a>
+						    <?php else : ?>
+							<a href="<?php the_permalink(); ?>">
+						        <?php echo the_post_thumbnail(); ?>
+						    </a>
+							<?php endif; ?>
 						<?php } ?>
 						<div class="card-content">
 							<?php 
