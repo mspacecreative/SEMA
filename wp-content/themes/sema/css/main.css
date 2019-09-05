@@ -358,6 +358,9 @@ body .footer-widget .title {
 	.single-solutions.et_pb_gutters3.et-db #et-boc .et_pb_column_1_3 {
 	    width: 49.667%;
 	}
+	.single-solutions.et_pb_gutters3.et-db #et-boc .et_pb_column_2_5 {
+	    width: 56.7%;
+	}
 	body.et_pb_gutters3.et_pb_footer_columns5 .footer-widget {
 		width: 10%;
 	}
