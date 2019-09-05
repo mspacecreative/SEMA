@@ -347,11 +347,11 @@ body .footer-widget .title {
 		align-items: center;
 	}
 	
-	.single-solutions.et-db #et-boc .et_pb_row:nth-child(even) .et_pb_column_2_3:last-child, .single-solutions.et-db #et-boc .et_pb_row .et_pb_column_2_3:last-child {
+	.single-solutions.et-db #et-boc .et_pb_row:nth-child(even) .et_pb_column_2_3:last-child, .single-solutions.et-db #et-boc .et_pb_row .et_pb_column_2_3:last-child, .single-solutions.et-db #et-boc .et_pb_row:nth-child(even) .et_pb_column_3_5:last-child, .single-solutions.et-db #et-boc .et_pb_row .et_pb_column_3_5:last-child {
 		margin-right: -20%!important;
 	}
 	
-	.single-solutions.et-db #et-boc .et_pb_row:nth-child(odd) .et_pb_column_2_3 {
+	.single-solutions.et-db #et-boc .et_pb_row:nth-child(odd) .et_pb_column_2_3, .single-solutions.et-db #et-boc .et_pb_row:nth-child(odd) .et_pb_column_3_5 {
 		margin-left: -20%!important;
 	}
 	
