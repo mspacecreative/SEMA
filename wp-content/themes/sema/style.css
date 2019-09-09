@@ -8,12 +8,7 @@
  Version:      1.0
 */
 
-html,body {
-	overflow-x: hidden;
-}
-
 body {
-	display: none;
 	font-weight: normal;
 }
 

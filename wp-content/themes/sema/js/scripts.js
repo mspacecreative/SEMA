@@ -65,8 +65,6 @@
 			connectivityTop();
 			checkSize();
 			
-			$('body').fadeIn('slow');
-			
 			$('span.sub-toggle').click(function (){
 			  $(this).next().toggleClass('show');
 			  $(this).children().toggleClass('fa-angle-down fa-angle-up');
