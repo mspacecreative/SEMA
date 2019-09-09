@@ -23,6 +23,8 @@
 	<script type="text/javascript">
 		document.documentElement.className = 'js';
 	</script>
+	
+	<?php get_template_part('includes/fb-pixel/fb-pixel'); ?>
 
 	<?php wp_head(); ?>
 	
