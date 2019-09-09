@@ -116,7 +116,7 @@
 		return !$.cookie(key);
 	};
 
-})(jQuery);
+}));
 
 /* -------------------------------------------
       FUNCTIONS FOR PROMO POPUP WINDOW

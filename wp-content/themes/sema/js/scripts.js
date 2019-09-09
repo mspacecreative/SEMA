@@ -63,7 +63,6 @@
 			footerHeight();
 			shadowCoverWidth();
 			connectivityTop();
-			checkSize();
 			
 			$('span.sub-toggle').click(function (){
 			  $(this).next().toggleClass('show');
@@ -86,7 +85,6 @@
 			shadowCoverWidth();
 			connectivityTop();
 			googleMapHeight();
-			checkSize();
 		});
 		
 		// MOBILE NAVIGATION
