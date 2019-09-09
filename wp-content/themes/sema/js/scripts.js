@@ -65,7 +65,6 @@ jQuery(document).ready(function($) {
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
-			play();
 			
 			$('body').fadeIn('slow');
 			
