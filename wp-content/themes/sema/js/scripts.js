@@ -65,6 +65,7 @@ jQuery(document).ready(function($) {
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
+			play();
 			
 			$('body').fadeIn('slow');
 			
@@ -170,13 +171,13 @@ jQuery(document).ready(function($) {
 			player.stopVideo();
 		});
 		
-		/*// AUDIO EMBED ON CLICK
+		// AUDIO EMBED ON CLICK
 		function play() {
-			var audio = document.getElementById("the-who");
+			var audio = document.getElementByClassName("wp-audio-shortcode");
 		    $('.play-audio').click(function () {
 				audio.play();
 			});
-		}*/
+		}
 		
 		// HIDE/SHOW HEADER ON SCROLL
 		var didScroll;
