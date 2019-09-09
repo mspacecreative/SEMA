@@ -43,7 +43,6 @@
 		});
 		
 		function connectivityTop() {
-			//$('.connectivity-graphic').css('top', $('.et_pb_section_1').outerHeight());
 			$('.page .connectivity-graphic, .single .connectivity-graphic').css('top', - $('header').height());
 		}
 		
@@ -65,7 +64,6 @@
 			shadowCoverWidth();
 			connectivityTop();
 			checkSize();
-			play();
 			
 			$('body').fadeIn('slow');
 			
@@ -92,14 +90,6 @@
 			googleMapHeight();
 			checkSize();
 		});
-		
-		if ($(".hero").length) {
-    		$(window).scroll(function() {
-    		    if($('#health-check .animated').hasClass('go')) {
-    				$('html,body').css('overflow-x', 'inherit');
-    			}
-    		});
-		}
 		
 		// MOBILE NAVIGATION
 		$('#top-menu-nav li.menu-item-has-children a').after('<span class="sub-toggle"><i class="fa fa-angle-down"></i></span>');
@@ -159,14 +149,6 @@
 			$(this).fadeOut();
 			player.stopVideo();
 		});
-		
-		// AUDIO EMBED ON CLICK
-		function play() {
-			var audio = document.getElementByClassName("wp-audio-shortcode");
-		    $('.play-audio').click(function () {
-				audio.play();
-			});
-		}
 		
 		// HIDE/SHOW HEADER ON SCROLL
 		var didScroll;
