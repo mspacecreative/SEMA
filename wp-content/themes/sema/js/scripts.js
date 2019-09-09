@@ -171,13 +171,13 @@ jQuery(document).ready(function($) {
 			player.stopVideo();
 		});
 		
-		// AUDIO EMBED ON CLICK
+		/*// AUDIO EMBED ON CLICK
 		function play() {
 			var audio = document.getElementById("the-who");
 		    $('.play-audio').click(function () {
 				audio.play();
 			});
-		}
+		}*/
 		
 		// HIDE/SHOW HEADER ON SCROLL
 		var didScroll;
