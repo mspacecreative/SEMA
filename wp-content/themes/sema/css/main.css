@@ -203,6 +203,11 @@ body .entry-content .hero-section p {
 	width: 100%;
 }
 
+.top-bottom-border {
+	border-top: 5px solid #0072d6;
+	border-bottom: 5px solid #0072d6;
+}
+
 @media (max-width: 479px) {
 	.inline-buttons > .et_pb_column {
 	    width: auto!important;
