@@ -16,7 +16,9 @@
 		// Browser globals
 		factory(jQuery);
 	}
-}(function ($) {
+}
+
+(function ($) {
 
 	var pluses = /\+/g;
 
@@ -114,13 +116,13 @@
 		return !$.cookie(key);
 	};
 
-}));
+})(jQuery);
 
 /* -------------------------------------------
       FUNCTIONS FOR PROMO POPUP WINDOW
 -------------------------------------------*/
 
-jQuery(document).ready(function($) {
+(function($) {
     
     // Show or hide on load depending on cookie
     if ($.cookie('notice') == 'closed') {
@@ -141,11 +143,4 @@ jQuery(document).ready(function($) {
     	$(this).parent().parent().parent().fadeOut();
     });
     
-    /*Opener link to show the notice again
-    $('a.open').click(function(e) {
-      e.preventDefault();
-      $.cookie('notice','open');
-      $('.notice').show();
-    });*/
-    
-});
+})(jQuery);
