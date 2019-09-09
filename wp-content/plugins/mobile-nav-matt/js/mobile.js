@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+(function($) {
 
     // MOBILE NAVIGATION
     $('.mobile-nav li.menu-item-has-children').prepend('<span class="sub-toggle"><i class="fa fa-angle-down"></i></span>').removeClass('menu-item-has-children');
@@ -6,11 +6,6 @@ jQuery(document).ready(function($) {
       $(this).siblings('.sub-menu').slideToggle();
       $(this).children().toggleClass('fa-angle-down fa-angle-up');
     });
-    
-    // BODY OVERLAY HEIGHT
-    /*function bodyOverlayHeight() {
-    	$('.body-overlay').height($('#page-container').outerHeight());
-    }*/
     
     // HAMBURGER ICON ANIMATION
     $('.hamburger').click(function() {
@@ -20,11 +15,6 @@ jQuery(document).ready(function($) {
     $('.body-overlay').click(function() {
     	$('.hamburger, body, #page-container').toggleClass('is-active');
     });
-    
-    // CLOSE PANEL UPON LINK CLICK
-    /*$('.mobile-nav .menu li:nth-child(2) ul li > a[href^="#"]').click(function() {
-    	$('.hamburger, body, #page-container').toggleClass('is-active');
-    });*/
 	
 	$('.mobile-nav .menu ul li > a').click(function () {
 	   if (this.hash) {
@@ -39,11 +29,10 @@ jQuery(document).ready(function($) {
     
     $(document).ready(function () {
     	hamburgerIcon();
-    	//bodyOverlayHeight();
     });
     
     $(window).resize(function () {
     	hamburgerIcon();
-    	//bodyOverlayHeight();
     });
-});
+	
+})(jQuery);

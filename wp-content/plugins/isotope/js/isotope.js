@@ -1,4 +1,5 @@
 (function ($) {
+	
 	$(window).load(function() {
 	    $grid.imagesLoaded().progress( function() {
             $grid.isotope('layout');
@@ -74,4 +75,5 @@
     		event.target.classList.add("is-checked");
 		});
 	}
+	
 })(jQuery);
