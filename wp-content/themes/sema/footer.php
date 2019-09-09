@@ -55,16 +55,16 @@ if ( ! is_page_template( 'page-template-blank.php' ) ) : ?>
 <?php endif; // ! is_page_template( 'page-template-blank.php' ) ?>
 
 	</div> <!-- #page-container -->
-
-	<?php wp_footer(); ?>
 	
 	<!-- Start of HubSpot Embed Code -->
-	<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4143673.js"></script>
+	<script type="text/javascript" id="hs-script-loader" async defer src="https://js.hs-scripts.com/4143673.js"></script>
 	<!-- End of HubSpot Embed Code -->
 	
 	<!-- LINKEDIN TAG -->
 	<?php get_template_part('includes/linkedin-tag'); ?>
 	<!-- / LINKEDIN TAG -->
+	
+	<?php wp_footer(); ?>
 	
 </body>
 </html>
