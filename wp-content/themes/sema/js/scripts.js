@@ -64,7 +64,7 @@
 			shadowCoverWidth();
 			connectivityTop();
 			
-			$('body').fadeOut('slow');
+			$('body').fadeIn('slow');
 			
 			$('span.sub-toggle').click(function (){
 			  $(this).next().toggleClass('show');
