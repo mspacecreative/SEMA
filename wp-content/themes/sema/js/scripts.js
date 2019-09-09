@@ -4,7 +4,7 @@ jQuery(document).ready(function($) {
 			$('.google-map iframe').height($('.email-optin').outerHeight());
 		}
 		
-		function checkSize() {
+		function checkSizes() {
 		    if (window.matchMedia('(min-width: 1600px)').matches) {
 		        $('#main-header .container').wrap('<div class="wide-header-container"></div>');
 		    }
@@ -173,7 +173,7 @@ jQuery(document).ready(function($) {
 		
 		// AUDIO EMBED ON CLICK
 		function play() {
-			var audio = document.getElementsByClassName("wp-audio-shortcode");
+			var audio = document.getElementById("the-who");
 		    $('.play-audio').click(function () {
 				audio.play();
 			});
