@@ -354,6 +354,10 @@ body .footer-widget .title {
 		margin-right: 0%!important;
 	}
 	
+	.single-solutions.et-db #et-boc .et_pb_row.ignore-layout:nth-child(odd) .et_pb_column_2_3, .single-solutions.et-db #et-boc .et_pb_row.ignore-layout:nth-child(odd) .et_pb_column_3_5 {
+		margin-left: 0%!important;
+	}
+	
 	.single-solutions.et-db #et-boc .et_pb_row:nth-child(odd) .et_pb_column_2_3, .single-solutions.et-db #et-boc .et_pb_row:nth-child(odd) .et_pb_column_3_5 {
 		margin-left: -20%!important;
 	}
