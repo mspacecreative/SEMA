@@ -229,10 +229,6 @@ svg {
 	height: auto;
 }
 
-body.et_pb_svg_logo #logo {
-	height: auto;
-}
-
 .hero-section svg {
 	margin-bottom: -6px;
 }
@@ -271,6 +267,10 @@ body.et_pb_svg_logo #logo {
 	box-shadow: 0 3px 10px #c9c9c9;
 }
 
+.solutions_grid_box span {
+	width: 100%;
+}
+
 .solutions_grid_box p {
 	margin-bottom: 15px;
 }
@@ -290,6 +290,7 @@ body.et_pb_svg_logo #logo {
 	justify-content: center;
 	flex-direction: row;
 	flex-flow: row wrap;
+	flex: 1;
 }
 
 #top-menu li li a {
