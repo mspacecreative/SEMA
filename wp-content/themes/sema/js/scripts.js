@@ -113,7 +113,7 @@
             $(this).unbind("mouseenter mouseleave");
         });
 		
-		// TRIGGER CHAT BOT ON CUSTOM BUTTON CLICK
+		/*// TRIGGER CHAT BOT ON CUSTOM BUTTON CLICK
 		$('.chat-now-button').on('click', () => {
 			// check if Hubspot chat is installed
 			if (window.hubspot_live_messages_running && window.hubspot && window.hubspot.messages) {
@@ -121,7 +121,7 @@
 			} else {
 				console.log('Please install HubSpot WordPress plugin');
 			}
-		});
+		});*/
 		
 		// CLOSE VIDEO OVERLAY BUTTON
 		$('.close-video').click(function () {
