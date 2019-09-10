@@ -860,7 +860,28 @@ class ET_Core_Portability {
 	 * @return array
 	 */
 	protected function get_data_images( $data, $force = false ) {
-		$images = array();
+		$images     = array();
+		$images_src = array();
+		$basenames  = array(
+			'src',
+			'image_url',
+			'background_image',
+			'image',
+			'url',
+			'bg_img_?\d?',
+		);
+		$suffixes  = array(
+			'__hover',
+			'_tablet',
+			'_phone'
+		);
+
+		foreach ( $basenames as $basename ) {
+			$images_src[] = $basename;
+			foreach ( $suffixes as $suffix ) {
+				$images_src[] = $basename . $suffix;
+			}
+		}
 
 		foreach ( $data as $value ) {
 			if ( is_array( $value ) || is_object( $value ) ) {
@@ -869,7 +890,7 @@ class ET_Core_Portability {
 			}
 
 			// Extract images from html or shortcodes.
-			if ( preg_match_all( '/(src|image_url|background_image|image|url|bg_img_?\d?)="(?P<src>\w+[^"]*)"/i', $value, $matches ) ) {
+			if ( preg_match_all( '/(' . implode( '|', $images_src ) . ')="(?P<src>\w+[^"]*)"/i', $value, $matches ) ) {
 				foreach ( array_unique( $matches['src'] ) as $key => $src ) {
 					$images = array_merge( $images, $this->get_data_images( array( $key => $src ) ) );
 				}
@@ -1153,23 +1174,28 @@ class ET_Core_Portability {
 	 * @return array|mixed|object
 	 */
 	protected function replace_images_urls( $images, $data ) {
-		$data = wp_json_encode( $data );
+		$data_replaced = array();
 
-		foreach ( $images as $image ) {
-			if ( isset( $image['replacement_id'] ) && isset( $image['id'] ) ) {
-				$search = $image['id'];
-				$replacement = $image['replacement_id'];
-				$data = preg_replace( "/(gallery_ids=.*){$search}(.*\")/", "\${1}{$replacement}\${2}", $data );
+		foreach ( $data as $key => $value ) {
+			foreach ( $images as $image ) {
+				if ( isset( $image['replacement_id'] ) && isset( $image['id'] ) ) {
+					$search      = $image['id'];
+					$replacement = $image['replacement_id'];
+					$value       = preg_replace( "/(gallery_ids=.*){$search}(.*\")/", "\${1}{$replacement}\${2}", $value );
+				}
+
+				if ( isset( $image['url'] ) && isset( $image['replacement_url'] ) && $image['url'] !== $image['replacement_url'] ) {
+					$search      = $image['url'];
+					$replacement = $image['replacement_url'];
+					$value       = str_replace( $search, $replacement, $value );
+				}
+
 			}
 
-			if ( isset( $image['replacement_url'] ) && $image['url'] !== $image['replacement_url'] ) {
-				$search = str_replace( '/', '\/', $image['url'] );
-				$replacement = str_replace( '/', '\/', $image['replacement_url'] );
-				$data = str_replace( $search, $replacement, $data );
-			}
+			$data_replaced[ $key ] = $value;
 		}
 
-		return json_decode( $data, true );
+		return $data_replaced;
 	}
 
 	/**

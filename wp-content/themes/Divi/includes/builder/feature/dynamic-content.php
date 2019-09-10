@@ -337,7 +337,7 @@ function et_builder_get_built_in_dynamic_content_fields( $post_id ) {
 /**
  * Clear dynamic content fields cache whenever a custom post type is registered.
  *
- * @since ??
+ * @since 3.26.7
  *
  * @return void
  */

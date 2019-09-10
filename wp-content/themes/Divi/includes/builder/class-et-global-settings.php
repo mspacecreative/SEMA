@@ -635,15 +635,20 @@ class ET_Global_Settings {
 				'default' => $default_value,
 			);
 
-			if ( $custom_defaults_unmigrated && ! et_is_builder_plugin_active() ) {
-				$setting_array       = explode( '-', $setting_name );
-				$module_setting_name = empty( $setting_array[1] ) ? '' : $setting_array[1];
+			if ( ! et_is_builder_plugin_active() ) {
+				$actual_value  = et_get_option( $setting_name, '', '', true );
+				$add_as_actual = false;
 
-				if ( in_array( $module_setting_name, ET_Builder_Custom_Defaults_Settings::$phase_two_settings ) ) {
-					$actual_value = et_get_option( $setting_name, '', '', true );
-					if ( '' !== $actual_value ) {
-						$defaults[ $setting_name ]['actual']  = $actual_value;
-					}
+				// Pass Theme Customizer non module specific settings
+				$setting_array = explode( '-', $setting_name );
+				$module_name   = $setting_array[0];
+
+				if ( empty( $setting_array[1] ) || ! empty( $custom_defaults_unmigrated->$module_name ) && in_array( $setting_array[1], ET_Builder_Custom_Defaults_Settings::$phase_two_settings ) ) {
+					$add_as_actual = true;
+				}
+
+				if ( $add_as_actual && '' !== $actual_value ) {
+					$defaults[ $setting_name ]['actual'] = $actual_value;
 				}
 			}
 		}

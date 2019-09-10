@@ -289,8 +289,13 @@ class ET_Module_Customizer_Migrations {
 				$customizer_value = et_get_option( $setting, '', '', true );
 				if ( '' !== $customizer_value && $value !== $customizer_value && false !== $customizer_value ) {
 					$module_setting = explode( '-', $setting );
+
+					if ( ! isset( $module_setting[1] ) ) {
+						continue;
+					}
+
 					$module_name    = $module_setting[0];
-					$setting_name   = isset( $module_setting[1] ) ? $module_setting[1] : '';
+					$setting_name   = $module_setting[1];
 
 					if ( in_array( $setting_name, ET_Builder_Custom_Defaults_Settings::$phase_two_settings ) ) {
 						$active_array = &$custom_defaults_unmigrated;

@@ -1,7 +1,7 @@
 <?php
 
 class ET_Builder_Custom_Defaults_Settings {
-	const CUSTOM_DEFAULTS_OPTION            = 'builder_custom_defaults';
+	const CUSTOM_DEFAULTS_OPTION = 'builder_custom_defaults';
 	const CUSTOM_DEFAULTS_UNMIGRATED_OPTION = 'builder_custom_defaults_unmigrated';
 	const CUSTOMIZER_SETTINGS_MIGRATED_FLAG = 'customizer_settings_migrated_flag';
 
@@ -43,7 +43,7 @@ class ET_Builder_Custom_Defaults_Settings {
 		'et_pb_slide'   => array(
 			'et_pb_slide_fullwidth',
 		),
-		'et_pb_column' => array(
+		'et_pb_column'  => array(
 			'et_pb_column_specialty',
 		),
 	);
@@ -61,12 +61,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	protected function __construct() {
 		$custom_defaults = et_get_option( self::CUSTOM_DEFAULTS_OPTION, (object) array() );
 
-		foreach ( $custom_defaults as $module => $defaults ) {
-			$defaults_filtered        = array_filter( (array) $defaults, array( $this, '_filter_custom_defaults' ) );
-			$custom_defaults->$module = (object) $defaults_filtered;
-		}
-
-		$this->_settings = $custom_defaults;
+		$this->_settings = $this->_normalize_custom_defaults( $custom_defaults );
 
 		$this->_register_hooks();
 	}
@@ -116,17 +111,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	 * @return object
 	 */
 	public function get_custom_defaults() {
-		$result = (object) array();
-
-		foreach ( $this->_settings as $module => $settings) {
-			$result->$module = (object) array();
-
-			foreach ( $settings as $setting_name => $value ) {
-				$result->$module->$setting_name = $value;
-			}
-		}
-
-		return $result;
+		return $this->_settings;
 	}
 
 	/**
@@ -157,7 +142,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	 *
 	 * @since 3.26
 	 *
-	 * @param array $defaults                   - The list of modules default settings
+	 * @param array $defaults - The list of modules default settings
 	 *
 	 */
 	public function migrate_customizer_settings( $defaults ) {
@@ -170,7 +155,7 @@ class ET_Builder_Custom_Defaults_Settings {
 		list (
 			$custom_defaults,
 			$custom_defaults_unmigrated,
-		) = $migrations->migrate( $defaults );
+			) = $migrations->migrate( $defaults );
 
 		et_update_option( self::CUSTOM_DEFAULTS_OPTION, (object) $custom_defaults );
 		et_update_option( self::CUSTOMIZER_SETTINGS_MIGRATED_FLAG, true );
@@ -278,7 +263,7 @@ class ET_Builder_Custom_Defaults_Settings {
 		}
 
 		if ( 'et_pb_specialty_section' === $et_pb_parent_section_type
-			 || ( isset( $attrs['specialty_columns'] ) && '' !== $attrs['specialty_columns'] ) ) {
+		     || ( isset( $attrs['specialty_columns'] ) && '' !== $attrs['specialty_columns'] ) ) {
 			return 'et_pb_column_specialty';
 		}
 
@@ -288,14 +273,46 @@ class ET_Builder_Custom_Defaults_Settings {
 	/**
 	 * Filters custom defaults to avoid non plain values like arrays or objects
 	 *
-	 * @param $value - The custom defaults value
+	 * @since 3.26.7 This function has been added to avoid unexpected values. See https://github.com/elegantthemes/Divi/issues/16082
 	 *
-	 * @since ?? This function has been reproduce to avoid unexpected values. See https://github.com/elegantthemes/Divi/issues/16082
+	 * @param $value - The custom defaults value
 	 *
 	 * @return bool
 	 */
 	protected static function _filter_custom_defaults( $value ) {
 		return ! is_object( $value ) && ! is_array( $value );
+	}
+
+	/**
+	 * Performs custom defaults format normalization.
+	 * Usually used to cast format from array to object
+	 *
+	 * @since ??
+	 *
+	 * @param $defaults - The list of custom defaults needs to be normalized
+	 *
+	 * @return object
+	 */
+	protected function _normalize_custom_defaults( $defaults ) {
+		$result = (object) array();
+
+		foreach ( $defaults as $module => $settings ) {
+			$settings_filtered = array_filter( (array) $settings, array( $this, '_filter_custom_defaults' ) );
+
+			// Since we still support PHP 5.2 we can't use `array_filter` with array keys
+			// So check if defaults have empty key
+			if ( isset( $settings_filtered[''] ) ) {
+				continue;
+			}
+
+			$result->$module = (object) array();
+
+			foreach ( $settings_filtered as $setting_name => $value ) {
+				$result->$module->$setting_name = $value;
+			}
+		}
+
+		return $result;
 	}
 }
 

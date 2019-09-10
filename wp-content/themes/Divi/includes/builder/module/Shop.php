@@ -207,7 +207,7 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 
 		$toggle_filter( 'woocommerce_shortcode_products_query', array( $this, 'shortcode_products_query_cb' ), 10 );
 
-		$toggle_action( 'woocommerce_shortcode_after_' . $shortcode_type . '_loop', array( __CLASS__, 'add_pagination' ), 10 );
+		$toggle_action( 'woocommerce_shortcode_after_' . $shortcode_type . '_loop', array( $this, 'add_pagination' ), 10 );
 
 		// reset et_pb_shop_pages when removing pagintaion to avoid conflicts with other shop modules on page.
 		if ( 'remove' === $verb ) {
@@ -245,32 +245,39 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 	 *
 	 * @param array $atts
 	 */
-	public static function add_pagination( $atts ) {
-		$query_var = is_front_page() ? 'page' : 'paged';
-		$paged     = get_query_var( $query_var ) ? get_query_var( $query_var ) : 1;
+	public function add_pagination( $atts ) {
+		$query_var  = is_front_page() ? 'page' : 'paged';
+		$paged      = get_query_var( $query_var ) ? get_query_var( $query_var ) : 1;
+		$multi_view = et_pb_multi_view_options( $this );
 
 		// no need to display pagination if all the products appear on 1 page.
 		if ( ! isset( $GLOBALS['et_pb_shop_pages'] ) || $GLOBALS['et_pb_shop_pages'] < 1 ) {
 			return;
 		}
-		?>
-		<nav class="woocommerce-pagination">
-			<?php
-			echo paginate_links( apply_filters( 'woocommerce_pagination_args', array(
-				'base'      => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
-				'format'    => '',
-				'add_args'  => false,
-				'current'   => max( 1, $paged ),
-				'total'     => $GLOBALS['et_pb_shop_pages'],
-				'prev_text' => '&larr;',
-				'next_text' => '&rarr;',
-				'type'      => 'list',
-				'end_size'  => 3,
-				'mid_size'  => 3,
-			) ) );
-			?>
-		</nav>
-		<?php
+
+		$paginate_links = paginate_links( apply_filters( 'woocommerce_pagination_args', array(
+			'base'      => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
+			'format'    => '',
+			'add_args'  => false,
+			'current'   => max( 1, $paged ),
+			'total'     => $GLOBALS['et_pb_shop_pages'],
+			'prev_text' => '&larr;',
+			'next_text' => '&rarr;',
+			'type'      => 'list',
+			'end_size'  => 3,
+			'mid_size'  => 3,
+		) ) );
+
+		$multi_view->render_element( array(
+			'tag'     => 'nav',
+			'content' => $paginate_links,
+			'attrs'   => array(
+				'class' => 'woocommerce-pagination',
+			),
+			'visibility' => array(
+				'show_pagination' => 'on',
+			),
+		), true );
 	}
 
 	function get_fields() {
@@ -322,6 +329,8 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 					'__shop',
 				),
 				'toggle_slug'      => 'elements',
+				'mobile_options'   => true,
+				'hover'            => 'tabs',
 			),
 			'include_categories'   => array(
 				'label'            => esc_html__( 'Included Categories', 'et_builder' ),
@@ -493,13 +502,14 @@ class ET_Builder_Module_Shop extends ET_Builder_Module_Type_PostBased {
 			$this->props[ $arg ] = $value;
 		}
 
+		$multi_view              = et_pb_multi_view_options( $this );
 		$post_id                 = isset( $current_page['id'] ) ? (int) $current_page['id'] : 0;
 		$type                    = $this->props['type'];
 		$posts_number            = $this->props['posts_number'];
 		$orderby                 = $this->props['orderby'];
 		$order                   = 'ASC'; // Default to ascending order
 		$columns                 = $this->props['columns_number'];
-		$pagination              = 'on' === $this->props['show_pagination'];
+		$pagination              = $multi_view->has_value( 'show_pagination', 'on' );
 		$product_categories      = array();
 
 		if ('product_category' === $type) {

@@ -7,7 +7,7 @@
 /*!
 Theme Name: Divi
 Theme URI: http://www.elegantthemes.com/gallery/divi/
-Version: 3.26.7
+Version: 3.27.4
 Description: Smart. Flexible. Beautiful. Divi is the most powerful theme in our collection.
 Author: Elegant Themes
 Author URI: http://www.elegantthemes.com
@@ -14693,11 +14693,11 @@ p.et_pb_gallery_caption {
 /* Reset Position Left & Right - Tablet */
 	.et_pb_blurb_position_top_tablet .et_pb_main_blurb_image {
 		display: inline-block;
-		width: inherit;
+		width: initial;
 	}
 
 	.et_pb_blurb_position_top_tablet .et-pb-icon {
-		display: inherit;
+		display: initial;
 		font-size: 96px;
 	}
 
@@ -14707,12 +14707,12 @@ p.et_pb_gallery_caption {
 	}
 
 	.et_pb_blurb_position_top_tablet .et_pb_blurb_container {
-		padding-right: inherit;
-		padding-left: inherit;
+		padding-right: initial;
+		padding-left: initial;
 	}
 
 	.et_pb_blurb_position_top_tablet .et_pb_blurb_content {
-		padding-right: inherit;
+		padding-right: initial;
 		text-align: center;
 	}
 }
@@ -14784,11 +14784,11 @@ p.et_pb_gallery_caption {
 /* Reset Position Left & Right of Tablet - Phone */
 	.et_pb_blurb_position_top_phone .et_pb_main_blurb_image {
 		display: inline-block;
-		width: inherit;
+		width: initial;
 	}
 
 	.et_pb_blurb_position_top_phone .et-pb-icon {
-		display: inherit;
+		display: initial;
 		font-size: 96px;
 	}
 
@@ -14798,12 +14798,12 @@ p.et_pb_gallery_caption {
 	}
 
 	.et_pb_blurb_position_top_phone .et_pb_blurb_container {
-		padding-right: inherit;
-		padding-left: inherit;
+		padding-right: initial;
+		padding-left: initial;
 	}
 
 	.et_pb_blurb_position_top_phone .et_pb_blurb_content {
-		padding-right: inherit;
+		padding-right: initial;
 		text-align: center;
 	}
 }
@@ -15007,6 +15007,10 @@ p.et_pb_gallery_caption {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	content: "";
+}
+
+.et_pb_pricing.et_pb_pricing_no_bullet li span:before {
+	display: none !important;
 }
 
 .et_pb_pricing li.et_pb_not_available {
@@ -16124,6 +16128,28 @@ p.et_pb_gallery_caption {
 	padding: 0 !important;
 }
 
+/* Call To Action - Use background color */
+.et_pb_has_bg_hover.et_pb_promo:hover {
+	padding: 40px 60px !important;
+	-webkit-transition: padding 0.4s ease-in-out;
+	-moz-transition: padding 0.4s ease-in-out;
+	transition: padding 0.4s ease-in-out;
+}
+
+.et_pb_column_1_2 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_3_5 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_1_3 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_2_5 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_1_4 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_1_5 .et_pb_has_bg_hover.et_pb_promo:hover,
+.et_pb_column_1_6 .et_pb_has_bg_hover.et_pb_promo:hover {
+	padding: 40px !important;
+}
+
+.et_pb_no_bg_hover.et_pb_promo:hover {
+	padding: 0 !important;
+}
+
 .et_pb_newsletter .et_pb_contact_field_last + .et_pb_newsletter_field {
 	padding-left: 0;
 }
@@ -16597,12 +16623,7 @@ h1.et_pb_contact_main_title {
 	text-align: right;
 }
 
-.et_pb_contact_right p {
-	display: inline-table;
-	vertical-align: middle;
-}
-
-.et_pb_contact_right p .et_pb_contact_captcha_question {
+.et_pb_contact_right .et_pb_contact_captcha_question {
 	vertical-align: middle;
 }
 
@@ -16821,7 +16842,7 @@ h1.et_pb_contact_main_title {
 .et_pb_contact_submit,
 .et_pb_contact_reset {
 	display: inline-block;
-	margin: 0 0 0 15px;
+	margin: 0 0 0 18px;
 	font-family: inherit;
 	cursor: pointer;
 }
@@ -16837,6 +16858,10 @@ h1.et_pb_contact_main_title {
 }
 
 .et_contact_bottom_container {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: flex;
 	float: right;
 	margin-top: -1.5%;
 	text-align: right;
@@ -16845,6 +16870,11 @@ h1.et_pb_contact_main_title {
 .et_pb_contact_form p[data-id="et_number"] {
 	position: absolute !important;
 	transform: scale(0.01, 0.01) !important;
+}
+
+.et_pb_contact_form p[data-id="et_number"] input {
+	border: none !important;
+	background: transparent !important;
 }
 
 .et_pb_contact_field.et_pb_text_align_center .et_pb_contact_field_radio_title,
@@ -19846,6 +19876,10 @@ p.et_pb_title_meta_container {
 	padding-bottom: 1em;
 }
 
+p.et_pb_title_meta_container .et_pb_title_meta_item--visible + .et_pb_title_meta_item--visible:before {
+	content: " | ";
+}
+
 .et_pb_post_title.et_pb_featured_bg .et_pb_title_meta_container {
 	padding-bottom: 0;
 }
@@ -22835,6 +22869,15 @@ article.et_pb_has_overlay {
 		padding-right: 0.715em;
 		padding-left: 0.715em;
 	}
+
+/* Call To Action - Use background color */
+	.et_pb_has_bg_tablet.et_pb_promo {
+		padding: 40px !important;
+	}
+
+	.et_pb_no_bg_tablet.et_pb_promo {
+		padding: 0 !important;
+	}
 }
 
 /* fix for the Login Module in Customizer */
@@ -24006,6 +24049,15 @@ article.et_pb_has_overlay {
 	.et_pb_search.et_pb_text_align_center-tablet input.et_pb_s {
 		padding-right: 0.715em;
 		padding-left: 0.715em;
+	}
+
+/* Call To Action - Use background color */
+	.et_pb_has_bg_phone.et_pb_promo {
+		padding: 40px !important;
+	}
+
+	.et_pb_no_bg_phone.et_pb_promo {
+		padding: 0 !important;
 	}
 }
 
@@ -25493,6 +25545,17 @@ article.et_pb_has_overlay {
 	word-wrap: normal !important;
 
 	clip-path: inset(50%);
+}
+
+.et_multi_view_hidden {
+	display: none !important;
+}
+
+@media all and (max-width: 980px) {
+	[data-et-multi-view-load-tablet-hidden="true"]:not(.et_multi_view_swapped),
+	[data-et-multi-view-load-phone-hidden="true"]:not(.et_multi_view_swapped) {
+		display: none !important;
+	}
 }
 
 /**

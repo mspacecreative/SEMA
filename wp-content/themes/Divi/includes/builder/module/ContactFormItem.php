@@ -166,6 +166,8 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 				'toggle_slug' => 'main_content',
 				'default_on_front' => esc_html__( 'New Field', 'et_builder' ),
 				'option_category'  => 'basic_option',
+				'mobile_options'   => true,
+				'hover'            => 'tabs',
 			),
 			'field_type' => array(
 				'label'       => esc_html__( 'Type', 'et_builder' ),
@@ -358,6 +360,7 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 
 		et_core_nonce_verified_previously();
 
+		$multi_view                 = et_pb_multi_view_options( $this );
 		$field_title                = $this->props['field_title'];
 		$field_type                 = $this->props['field_type'];
 		$field_id                   = $this->props['field_id'];
@@ -548,13 +551,18 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 			case 'text':
 			case 'textarea':
 				$input_field = sprintf(
-					'<textarea name="et_pb_contact_%3$s_%2$s" id="et_pb_contact_%3$s_%2$s" class="et_pb_contact_message input" data-required_mark="%6$s" data-field_type="%4$s" data-original_id="%3$s" placeholder="%5$s">%1$s</textarea>',
+					'<textarea name="et_pb_contact_%3$s_%2$s" id="et_pb_contact_%3$s_%2$s" class="et_pb_contact_message input" data-required_mark="%6$s" data-field_type="%4$s" data-original_id="%3$s" placeholder="%5$s"%7$s>%1$s</textarea>',
 					( isset( $_POST['et_pb_contact_' . $field_id . '_' . $current_module_num] ) ? esc_html( sanitize_text_field( $_POST['et_pb_contact_' . $field_id . '_' . $current_module_num] ) ) : '' ),
 					esc_attr( $current_module_num ),
 					esc_attr( $field_id ),
 					esc_attr( $field_type ),
 					esc_attr( $field_title ),
-					'off' === $required_mark ? 'not_required' : 'required'
+					'off' === $required_mark ? 'not_required' : 'required',
+					$multi_view->render_attrs( array(
+						'attrs' => array(
+							'placeholder' => '{{field_title}}',
+						),
+					) )
 				);
 				break;
 			case 'input' :
@@ -564,7 +572,7 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 				}
 
 				$input_field = sprintf(
-					'<input type="text" id="et_pb_contact_%3$s_%2$s" class="input" value="%1$s" name="et_pb_contact_%3$s_%2$s" data-required_mark="%6$s" data-field_type="%4$s" data-original_id="%3$s" placeholder="%5$s"%7$s%8$s%9$s>',
+					'<input type="text" id="et_pb_contact_%3$s_%2$s" class="input" value="%1$s" name="et_pb_contact_%3$s_%2$s" data-required_mark="%6$s" data-field_type="%4$s" data-original_id="%3$s" placeholder="%5$s"%7$s%8$s%9$s%10$s>',
 					( isset( $_POST['et_pb_contact_' . $field_id . '_' . $current_module_num] ) ? esc_attr( sanitize_text_field( $_POST['et_pb_contact_' . $field_id . '_' . $current_module_num] ) ) : '' ),
 					esc_attr( $current_module_num ),
 					esc_attr( $field_id ),
@@ -573,7 +581,12 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 					'off' === $required_mark ? 'not_required' : 'required',
 					$pattern,
 					$title,
-					$max_length_attr
+					$max_length_attr,
+					$multi_view->render_attrs( array(
+						'attrs' => array(
+							'placeholder' => '{{field_title}}',
+						),
+					) )
 				);
 				break;
 			case 'checkbox' :
@@ -625,7 +638,7 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 				$input_field = sprintf(
 					'<input class="et_pb_checkbox_handle" type="hidden" name="et_pb_contact_%1$s_%4$s" data-required_mark="%3$s" data-field_type="%2$s" data-original_id="%1$s">
 					<span class="et_pb_contact_field_options_wrapper">
-						<span class="et_pb_contact_field_options_title">%5$s</span>
+						<span class="et_pb_contact_field_options_title"%7$s>%5$s</span>
 						<span class="et_pb_contact_field_options_list">%6$s</span>
 					</span>',
 					esc_attr( $field_id ),
@@ -633,7 +646,10 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 					'off' === $required_mark ? 'not_required' : 'required',
 					esc_attr( $current_module_num ),
 					esc_html( $field_title ),
-					$input_field
+					$input_field,
+					$multi_view->render_attrs( array(
+						'content' => '{{field_title}}',
+					) )
 				);
 
 				break;
@@ -683,18 +699,24 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 
 				$input_field = sprintf(
 					'<span class="et_pb_contact_field_options_wrapper">
-						<span class="et_pb_contact_field_options_title">%1$s</span>
+						<span class="et_pb_contact_field_options_title"%3$s>%1$s</span>
 						<span class="et_pb_contact_field_options_list">%2$s</span>
 					</span>',
 					esc_html( $field_title ),
-					$input_field
+					$input_field,
+					$multi_view->render_attrs( array(
+						'content' => '{{field_title}}',
+					) )
 				);
 
 				break;
 			case 'select' :
 				$options = sprintf(
-					'<option value="">%1$s</option>',
-					esc_attr( $field_title )
+					'<option value=""%2$s>%1$s</option>',
+					esc_html( $field_title ),
+					$multi_view->render_attrs( array(
+						'content' => '{{field_title}}',
+					) )
 				);
 
 				if ( $select_options ) {
@@ -754,7 +776,7 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 			'<p class="%5$s"%6$s data-id="%3$s" data-type="%7$s">
 				%9$s
 				%8$s
-				<label for="et_pb_contact_%3$s_%2$s" class="et_pb_contact_form_label">%1$s</label>
+				<label for="et_pb_contact_%3$s_%2$s" class="et_pb_contact_form_label"%10$s>%1$s</label>
 				%4$s
 			</p>',
 			esc_html( $field_title ),
@@ -765,7 +787,10 @@ class ET_Builder_Module_Contact_Form_Item extends ET_Builder_Module {
 			$conditional_logic_attr,
 			$field_type,
 			$video_background,
-			$parallax_image_background
+			$parallax_image_background,
+			$multi_view->render_attrs( array(
+				'content' => '{{field_title}}',
+			) )
 		);
 
 		return $output;

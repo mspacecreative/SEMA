@@ -248,6 +248,8 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 				'default_on_front' => 'on',
 				'toggle_slug'     => 'elements',
 				'description'     => esc_html__( 'This setting will turn on and off the navigation arrows.', 'et_builder' ),
+				'mobile_options'   => true,
+				'hover'            => 'tabs',
 			),
 			'show_pagination' => array(
 				'label'             => esc_html__( 'Show Controls', 'et_builder' ),
@@ -260,6 +262,8 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 				'default_on_front' => 'on',
 				'toggle_slug'       => 'elements',
 				'description'       => esc_html__( 'This setting will turn on and off the circle buttons at the bottom of the slider.', 'et_builder' ),
+				'mobile_options'   => true,
+				'hover'            => 'tabs',
 			),
 			'show_content_on_mobile' => array(
 				'label'           => esc_html__( 'Show Content On Mobile', 'et_builder' ),
@@ -530,6 +534,7 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
+		$multi_view              = et_pb_multi_view_options( $this );
 		$show_arrows             = $this->props['show_arrows'];
 		$show_pagination         = $this->props['show_pagination'];
 		$parallax                = $this->props['parallax'];
@@ -579,11 +584,11 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 		// Module classnames
 		$this->add_classname( 'et_pb_slider_fullwidth_off' );
 
-		if ( 'off' === $show_arrows ) {
+		if ( ! $multi_view->has_value( 'show_arrows', 'on' ) ) {
 			$this->add_classname( 'et_pb_slider_no_arrows' );
 		}
 
-		if ( 'off' === $show_pagination ) {
+		if ( ! $multi_view->has_value( 'show_pagination', 'on' ) ) {
 			$this->add_classname( 'et_pb_slider_no_pagination' );
 		}
 
@@ -609,8 +614,19 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 		$this->generate_responsive_hover_style( 'arrows_custom_color', et_pb_slider_options()->get_arrows_selector(), 'color' );
 		$this->generate_responsive_hover_style( 'dot_nav_custom_color', et_pb_slider_options()->get_dots_selector(), 'background-color' );
 
+		$multi_view_data_attr = $multi_view->render_attrs( array(
+			'classes' => array(
+				'et_pb_slider_no_arrows' => array(
+					'show_arrows' => 'off',
+				),
+				'et_pb_slider_no_pagination' => array(
+					'show_pagination' => 'off',
+				),
+			),
+		) );
+
 		$output = sprintf(
-			'<div%3$s class="%1$s">
+			'<div%3$s class="%1$s"%5$s>
 				<div class="et_pb_slides">
 					%2$s
 				</div> <!-- .et_pb_slides -->
@@ -620,7 +636,8 @@ class ET_Builder_Module_Slider extends ET_Builder_Module {
 			$this->module_classname( $render_slug ),
 			$content,
 			$this->module_id(),
-			$this->inner_shadow_back_compatibility( $render_slug )
+			$this->inner_shadow_back_compatibility( $render_slug ),
+			$multi_view_data_attr
 		);
 
 		// Reset passed slider item value

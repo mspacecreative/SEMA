@@ -277,6 +277,8 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				'description'     => esc_html__( 'Define a title for your contact form.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 			'custom_message' => array(
 				'label'           => esc_html__( 'Message Pattern', 'et_builder' ),
@@ -323,6 +325,8 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				'description'     => esc_html__( 'Define the text of the form submit button.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 		);
 
@@ -359,9 +363,19 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 
 		$et_pb_half_width_counter = 0;
 
+		$multi_view = et_pb_multi_view_options( $this );
+		$multi_view->set_default_value( 'submit_button_text', __( 'Submit', 'et_builder' ) );
+
 		$captcha                     = $this->props['captcha'];
 		$email                       = $this->props['email'];
-		$title                       = $this->_esc_attr( 'title' );
+		$title                       = $multi_view->render_element( array(
+			'tag'     => et_pb_process_header_level( $this->props['title_level'], 'h1' ),
+			'content' => '{{title}}',
+			'attrs'   => array(
+				'class' => 'et_pb_contact_main_title',
+			),
+		) );
+		$form_field_text_color       = $this->props['form_field_text_color'];
 		$button_custom               = $this->props['custom_button'];
 		$submit_button_text          = $this->props['submit_button_text'];
 		$custom_message              = $this->props['custom_message'];
@@ -622,7 +636,12 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 			// an error on old(er) PHP versions
 			if ( empty( $submit_button_text ) ) {
 				$submit_button_text = __( 'Submit', 'et_builder' );
+				$multi_view->set_default_value( 'submit_button_text', $submit_button_text );
 			}
+
+			$multi_view_data_attr = $multi_view->render_attrs( array(
+				'content' => '{{submit_button_text}}',
+			) );
 
 			$form = sprintf( '
 				<div class="et_pb_contact">
@@ -635,7 +654,7 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 						<input type="hidden" value="et_contact_proccess" name="et_pb_contactform_submit_%7$s"/>
 						<div class="et_contact_bottom_container">
 							%2$s
-							<button type="submit" class="et_pb_contact_submit et_pb_button%6$s"%5$s%9$s%10$s>%3$s</button>
+							<button type="submit" class="et_pb_contact_submit et_pb_button%6$s"%5$s%9$s%10$s%11$s%12$s>%3$s</button>
 						</div>
 						%4$s
 					</form>
@@ -653,7 +672,8 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				$content,
 				'' !== $custom_icon_tablet && 'on' === $button_custom ? sprintf( ' data-icon-tablet="%1$s"', esc_attr( et_pb_process_font_icon( $custom_icon_tablet ) ) ) : '',
 				'' !== $custom_icon_phone && 'on' === $button_custom ? sprintf( ' data-icon-phone="%1$s"', esc_attr( et_pb_process_font_icon( $custom_icon_phone ) ) ) : '', // #10
-				esc_attr( $et_pb_contact_form_item_num )
+				esc_attr( $et_pb_contact_form_item_num ),
+				$multi_view_data_attr
 			);
 		}
 
@@ -679,7 +699,7 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 				%3$s
 			</div> <!-- .et_pb_contact_form_container -->
 			',
-			( '' !== $title ? sprintf( '<%2$s class="et_pb_contact_main_title">%1$s</%2$s>', et_core_esc_previously( $title ), et_pb_process_header_level( $header_level, 'h1' ) ) : '' ),
+			$title,
 			$et_error_message,
 			$form,
 			esc_attr( $module_id ),
@@ -691,6 +711,42 @@ class ET_Builder_Module_Contact_Form extends ET_Builder_Module {
 		);
 
 		return $output;
+	}
+
+	/**
+	 * Filter multi view value.
+	 *
+	 * @since 3.27.1
+	 * 
+	 * @see ET_Builder_Module_Helper_MultiViewOptions::filter_value
+	 *
+	 * @param mixed $raw_value Props raw value.
+	 * @param array $args {
+	 *     Context data.
+	 *
+	 *     @type string $context      Context param: content, attrs, visibility, classes.
+	 *     @type string $name         Module options props name.
+	 *     @type string $mode         Current data mode: desktop, hover, tablet, phone.
+	 *     @type string $attr_key     Attribute key for attrs context data. Example: src, class, etc.
+	 *     @type string $attr_sub_key Attribute sub key that availabe when passing attrs value as array such as styes. Example: padding-top, margin-botton, etc.
+	 * }
+	 * @param ET_Builder_Module_Helper_MultiViewOptions $multi_view Multiview object instance.
+	 *
+	 * @return mixed
+	 */
+	public function multi_view_filter_value( $raw_value, $args, $multi_view ) {
+		$name = isset( $args['name'] ) ? $args['name'] : '';
+		$mode = isset( $args['mode'] ) ? $args['mode'] : '';
+
+		$fields_need_escape = array(
+			'title',
+		);
+
+		if ( $raw_value && in_array( $name, $fields_need_escape, true ) ) {
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+		}
+
+		return $raw_value;
 	}
 }
 

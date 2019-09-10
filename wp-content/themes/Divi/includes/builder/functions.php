@@ -4,7 +4,7 @@ require_once 'module/helpers/Overflow.php';
 
 if ( ! defined( 'ET_BUILDER_PRODUCT_VERSION' ) ) {
 	// Note, this will be updated automatically during grunt release task.
-	define( 'ET_BUILDER_PRODUCT_VERSION', '3.26.7' );
+	define( 'ET_BUILDER_PRODUCT_VERSION', '3.27.4' );
 }
 
 if ( ! defined( 'ET_BUILDER_VERSION' ) ) {
@@ -1084,9 +1084,14 @@ function et_pb_process_computed_property() {
 	// $_POST['depends_on'] is a single dimensional assoc array created by jQuery.ajax data param, sanitize each key and value, they will both be strings
 	foreach ( $depends_on as $key => $value ) {
 
-		// correctly sanitize the strings with %date variable. sanitize_text_field will strip the '%da' and '%date' will be saved as 'te'.
-		$prepared_value = str_replace( '%date', '___et-fb-date___', $value );
-		$sanitized_value = str_replace( '___et-fb-date___', '%date', sanitize_text_field( $prepared_value ) );
+		if ( et_()->includes( $value, '%' ) ) {
+			// `sanitize_text_fields` removes octets `%[a-f0-9]{2}` and would zap icon values / `%date`
+			// so we prefix octets with `_` to protected them and remove the prefix after sanitization.
+			$prepared_value  = preg_replace( '/%([a-f0-9]{2})/', '%_$1', $value );
+			$sanitized_value = preg_replace( '/%_([a-f0-9]{2})/', '%$1', sanitize_text_field( $prepared_value ) );
+		} else {
+			$sanitized_value = sanitize_text_field( $value );
+		}
 
 		$depends_on[ sanitize_text_field( $key ) ] = $sanitized_value;
 
@@ -1610,8 +1615,14 @@ function et_fb_prepare_shortcode() {
 		die( -1 );
 	}
 
-	$content = isset( $_POST['et_page_content'] ) ? json_decode( stripslashes( $_POST['et_page_content'] ), true ) : '';
-	$result  = $content ? et_fb_process_to_shortcode( $content, array(), '', false ) : '';
+	$content               = isset( $_POST['et_page_content'] ) ? json_decode( stripslashes( $_POST['et_page_content'] ), true ) : '';
+	$apply_custom_defaults = isset( $_POST['apply_custom_defaults'] ) ? wp_validate_boolean( $_POST['apply_custom_defaults'] ) : false;
+
+	$options = array(
+		'apply_custom_defaults' => $apply_custom_defaults,
+	);
+
+	$result  = $content ? et_fb_process_to_shortcode( $content, $options, '', false ) : '';
 
 	die( json_encode( array( 'shortcode' => $result ) ) );
 }
@@ -9133,6 +9144,25 @@ function et_fb_process_shortcode( $content, $parent_address = '', $global_parent
 			$global_parent_type = $tag;
 		}
 
+		// As responsive content attributes value might be has been encoded before saving to database,
+		// so we need to decode it before passing back to builder.
+		if ( $attr ) {
+			$decoded_content_fields = array(
+				'content__hover',
+				'content_tablet',
+				'content_phone',
+				'raw_content__hover',
+				'raw_content_tablet',
+				'raw_content_phone',
+			);
+
+			foreach( $decoded_content_fields as $decoded_content_field ) {
+				if ( array_key_exists( $decoded_content_field, $attr ) ) {
+					$attr[ $decoded_content_field ] = str_replace( array( '%22', '%92', '%91', '%93' ), array( '"', '\\', '&#91;', '&#93;' ), $attr[ $decoded_content_field ] );
+				}
+			}
+		}
+
 		$attr['_i'] = $index;
 		$attr['_address'] = $address;
 
@@ -10274,3 +10304,259 @@ if ( ! function_exists( 'et_pb_get_column_svg' ) ) {
 		return $svg;
 	}
 }
+
+/**
+ * Get image metadata responsive sizes
+ *
+ * @since 3.27.3
+ *
+ * @param string $image_src     The 'src' of the image.
+ * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
+ * @param array  $size          Array of width and height values in pixels (in that order).
+ *
+ * @return array|bool
+ */
+function et_builder_responsive_image_metadata( $image_src, $image_meta = null, $size = null ) {
+	$cache = ET_Core_Cache_File::get( 'image_responsive_metadata' );
+
+	if ( isset( $cache[ $image_src ] ) ) {
+		return $cache[ $image_src ];
+	}
+
+	$responsive_sizes = array();
+
+	$image_id = is_numeric( $image_src ) ? intval( $image_src ) : et_get_attachment_id_by_url( $image_src );
+
+	if ( ! $image_id ) {
+		return $responsive_sizes;
+	}
+
+	if ( is_null( $image_meta ) ) {
+		$image_meta = wp_get_attachment_metadata( $image_id );
+	}
+
+	if ( ! $image_meta || empty( $image_meta['sizes'] ) )  {
+		return $responsive_sizes;
+	}
+
+	if ( is_null( $size ) ) {
+		$size = et_get_attachment_size_by_url( $image_src );
+	}
+
+	if ( 'full' === $size && isset( $image_meta['width'] ) && isset( $image_meta['height'] ) ) {
+		$size = array(
+			absint( $image_meta['width'] ),
+			absint( $image_meta['height'] ),
+		);
+	} else if ( is_string( $size ) && ! empty( $image_meta['sizes'][ $size ] ) ) {
+		$size = array(
+			absint( $image_meta['sizes'][ $size ]['width'] ),
+			absint( $image_meta['sizes'][ $size ]['height'] ),
+		);
+	}
+
+	if ( ! $size || ! is_array( $size ) )  {
+		return $responsive_sizes;
+	}
+
+	foreach ( $image_meta['sizes'] as $size_key => $size_data ) {
+		if ( strpos( $size_key, 'et-pb-image--responsive--' ) !== 0 ) {
+			continue;
+		}
+
+		if ( is_array( $size ) && $size[0] < $size_data['width'] ) {
+			$responsive_sizes[ $size_data['width'] ] = false;
+		} else {
+			$responsive_sizes[ $size_data['width'] ] = $size_data;
+		}
+	}
+
+	if ( $responsive_sizes ) {
+		ksort( $responsive_sizes );
+	}
+
+	$cache[ $image_src ] = $responsive_sizes;
+
+	ET_Core_Cache_File::set( 'image_responsive_metadata', $cache );
+
+	return $responsive_sizes;
+}
+
+/**
+ * Filters an image's 'srcset' sources.
+ *
+ * @since 3.27
+ *
+ * @param array  $sources {
+ *     One or more arrays of source data to include in the 'srcset'.
+ *
+ *     @type array $width {
+ *         @type string $url        The URL of an image source.
+ *         @type string $descriptor The descriptor type used in the image candidate string,
+ *                                  either 'w' or 'x'.
+ *         @type int    $value      The source width if paired with a 'w' descriptor, or a
+ *                                  pixel density value if paired with an 'x' descriptor.
+ *     }
+ * }
+ * @param array  $size_array    Array of width and height values in pixels (in that order).
+ * @param string $image_src     The 'src' of the image.
+ * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
+ *
+ * @return array
+ */
+if ( ! function_exists( 'et_filter_wp_calculate_image_srcset' ) ):
+function et_filter_wp_calculate_image_srcset( $sources, $size_array, $image_src, $image_meta ) {
+	// Do not filter when in wp-admin area.
+	if ( is_admin() ) {
+		return $sources;
+	}
+
+	$responsive_sources = array();
+
+	if ( ! et_is_responsive_images_enabled() ) {
+		return $responsive_sources;
+	}
+
+	if ( is_string( $size_array ) ) {
+		$size_array = et_get_attachment_size_by_url( $image_src );
+	}
+
+	if ( is_string( $size_array ) && $image_meta ) {
+		if ( $size_array === 'full' ) {
+			$size_array = array(
+				absint( $image_meta['width'] ),
+				absint( $image_meta['height'] ),
+			);
+		} else if ( ! empty( $image_meta['sizes'][ $size_array ] ) ) {
+			$size_array = array(
+				absint( $image_meta['sizes'][ $size_array ]['width'] ),
+				absint( $image_meta['sizes'][ $size_array ]['height'] ),
+			);
+		}
+	}
+
+	if ( ! is_array( $size_array ) ) {
+		return $responsive_sources;
+	}
+
+	$responsive_metadata = et_builder_responsive_image_metadata( $image_src, $image_meta, $size_array );
+
+	if ( $responsive_metadata ) {
+		foreach ( $responsive_metadata as $max_width => $size_data ) {
+			if ( ! $size_data ) {
+				continue;
+			}
+
+			$responsive_sources[ $max_width ] = array(
+				'url'        => str_replace( basename( $image_src ),  $size_data['file'], $image_src ),
+				'descriptor' => 'w',
+				'value'      => $max_width,
+			);
+		}
+
+		if ( $responsive_sources && $size_array[0] > $max_width ) {
+			$responsive_sources[ $size_array[0] ] = array(
+				'url'        => $image_src,
+				'descriptor' => 'w',
+				'value'      => $size_array[0],
+			);
+		}
+
+		if ( $responsive_sources ) {
+			krsort( $responsive_sources );
+		}
+	} else {
+		$responsive_sources = $sources;
+	}
+
+	return $responsive_sources;
+}
+endif;
+add_filter( 'wp_calculate_image_srcset', 'et_filter_wp_calculate_image_srcset', 10, 4 );
+
+/**
+ * Filters the output of 'wp_calculate_image_sizes()'.
+ *
+ * @since 3.27.3
+ *
+ * @param string       $sizes         A source size value for use in a 'sizes' attribute.
+ * @param array|string $size          Requested size. Image size or array of width and height values
+ *                                    in pixels (in that order).
+ * @param string|null  $image_src     The URL to the image file or null.
+ * @param array|null   $image_meta    The image meta data as returned by wp_get_attachment_metadata() or null.
+ *
+ * @return string|bool A valid source size value for use in a 'sizes' attribute or false.
+ */
+if ( ! function_exists( 'et_filter_wp_calculate_image_sizes' ) ):
+function et_filter_wp_calculate_image_sizes( $sizes, $size, $image_src, $image_meta ) {
+	// Do not filter when in wp-admin area.
+	if ( is_admin() ) {
+		return $sizes;
+	}
+
+	$responsive_sizes = '';
+
+	if ( ! et_is_responsive_images_enabled() ) {
+		return $responsive_sizes;
+	}
+
+	if ( is_string( $size ) ) {
+		$size = et_get_attachment_size_by_url( $image_src );
+	}
+
+	if ( is_string( $size ) && $image_meta ) {
+		if ( $size === 'full' ) {
+			$size = array(
+				absint( $image_meta['width'] ),
+				absint( $image_meta['height'] ),
+			);
+		} else if ( ! empty( $image_meta['sizes'][ $size ] ) ) {
+			$size = array(
+				absint( $image_meta['sizes'][ $size ]['width'] ),
+				absint( $image_meta['sizes'][ $size ]['height'] ),
+			);
+		}
+	}
+
+	if ( ! is_array( $size ) ) {
+		return $responsive_sizes;
+	}
+
+	$responsive_metadata = et_builder_responsive_image_metadata( $image_src, $image_meta, $size );
+
+	if ( $responsive_metadata ) {
+		$max_width  = 0;
+		$prev_width = 0;
+		$sizes_temp = array();
+
+		foreach ( $responsive_metadata as $max_width => $size_data ) {
+			if ( ! $size_data ) {
+				continue;
+			}
+
+			if ( $prev_width ) {
+				$sizes_temp[$max_width] = sprintf( '((min-width: %2$dpx) and (max-width: %1$dpx)) %1$dpx', $max_width, ( $prev_width + 1 ) );
+			} else {
+				$sizes_temp[$max_width] = sprintf( '((min-width: %2$dpx) and (max-width: %1$dpx)) %1$dpx', $max_width, $prev_width );
+			}
+
+			$prev_width = $max_width;
+		}
+
+		if ( $sizes_temp && $size[0] > $prev_width ) {
+			$sizes_temp[$size[0]] = sprintf( '(min-width: %2$dpx) %1$dpx', $size[0], ( $prev_width + 1 ) );
+		}
+
+		if ( $sizes_temp ) {
+			$sizes_temp[] = '100vw';
+		}
+
+		$responsive_sizes = implode( ', ', $sizes_temp );
+	} else {
+		$responsive_sizes = $sizes;
+	}
+
+	return $responsive_sizes;
+}
+endif;
+add_filter( 'wp_calculate_image_sizes', 'et_filter_wp_calculate_image_sizes', 10, 4 );

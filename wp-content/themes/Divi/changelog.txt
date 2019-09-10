@@ -1,3 +1,188 @@
+version 3.27.4 ( updated 08-29-2019 )
+- Fixed the first embedded video for Video slider module not being rendered in the builder.
+- Fixed wrong method used while sync the image metadata cache.
+- Fixed inability to extend button options to other modules.
+- Fixed module text alignment issue in FE when video in slider is used.
+- Removed Text Text Alignment option, then migrate Text Text Alignment value into Text Alignment.
+- Fixed too much spacing below responsive tabs for custom spacing options.
+- Fixed third party extension child modules not receiving their dynamic prop in the Visual Builder.
+- Fixed the issue when Theme Customizer Buttons settings were not retained after updating to a new theme version.
+- Fixed missing separator when date is disabled for post title module.
+- Removed inherit property value on padding, width, and display of Blurb content & image container when user set different image & icon position on mobile.
+- Fixed the issue when Global Defaults settings became incorrect after importing Theme Customizer settings.
+- Fixed the issue when image inner shadow assigned globally wasn't applied within the Visual Builder in some situations.
+- Fixed alignment issue between contact form captcha and submit button.
+- Fixed default title font size not being rendered as placeholder.
+- Fixed unwanted empty paragraph tag added into responsive/hover content.
+- Fixed PHP warning on FE due to incorrect Grunt translation.
+- Fixed the "Use Background Color" field on the CTA module not working on tablet and phone.
+- Fixed issue displaying images when using relative URL.
+- Fixed background color rendering issue on bar counter module.
+- Fixed JS error when we are editing background gradient then we close settings modal with ESC button.
+- Fixed the issue when it was possible to paste unsupported elements on library items.
+- Fixed the issue when copying styles between the modules under the global section/row did not get saved correctly.
+- Fixed issue with Quick Access being unable to open Fields options group on Contact Form, Email Optin, Search, Comments, and Login.
+- Fixed issue where image URL was not replaced when importing layout having images with unicode characters in file name.
+	* core/components/Portability.php
+	* core/components/cache/File.php
+	* core/functions.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/class-et-global-settings.php
+	* includes/builder/core.php
+	* includes/builder/feature/custom-defaults/Settings.php
+	* includes/builder/feature/search-posts.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/frontend-builder/helpers.php
+	* includes/builder/functions.php
+	* includes/builder/languages/sr_RS.po
+	* includes/builder/module/BarCounters.php
+	* includes/builder/module/BarCountersItem.php
+	* includes/builder/module/Cta.php
+	* includes/builder/module/PostTitle.php
+	* includes/builder/module/SliderItem.php
+	* includes/builder/module/Text.php
+	* includes/builder/module/helpers/MultiViewOptions.php
+	* includes/builder/module/helpers/ResponsiveOptions.php
+	* includes/builder/module/settings/Migration.php
+	* includes/builder/module/settings/migration/TextAlignment.php
+	* includes/builder/scripts/frontend-builder-scripts.js
+
+version 3.27.3 ( updated 08-21-2019 )
+- Fixed infinite loop when blog module showing content that has blog based module.
+- Fixed slow loading issue for blog module.
+- Fixed Visual Builder getting stuck in click mode after leaving and entering the page while pressing CTRL/CMD key.
+- Fixed the spinner sometimes showing twice when loading Visual Builder on slow servers.
+- Fixed first section and first module controls being offset to the bottom in certain cases.
+- Fixed view mode always set to desktop when closing setting modal.
+- Fixed Media Link Dynamic Content option not returning any results.
+- Fixed SRCSET not showing full size when image size above 1280px resolution.
+	* core/components/cache/File.php
+	* core/functions.php
+	* includes/builder/core.php
+	* includes/builder/feature/search-posts.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/functions.php
+	* includes/builder/module/Blog.php
+	* includes/builder/module/Blurb.php
+	* includes/builder/module/CircleCounter.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/NumberCounter.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/TabsItem.php
+	* includes/builder/module/Video.php
+	* includes/builder/module/VideoSliderItem.php
+	* includes/builder/module/helpers/MultiViewOptions.php
+	* includes/builder/scripts/frontend-builder-scripts.js
+
+version 3.27.2 ( updated 08-19-2019 )
+- Fixed posts having incorrect post excerpt in the Blog module.
+- Fixed posts having extra top padding than intended while editing in the Visual Builder.
+- Stripped empty dynamic content shortcode attributes on save.
+- Added support for copy & pasting nested options.
+- The default image size in the WordPress Media popup will now be Full when the Builder is used.
+- Added support for links using the SMS protocol.
+- Removed the PHP warning appeared when some Theme Customizer's options were incorrectly migrated into Global Defaults system.
+	* core/functions.php
+	* includes/builder/feature/custom-defaults/Settings.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/functions.php
+	* includes/builder/module/helpers/MultiViewOptions.php
+	* includes/module-customizer/migrations.php
+
+version 3.27.1 ( updated 08-16-2019 )
+- Fixed error that broke body content controls in 3rd party modules.
+- Reset additional CSS on the contact form honeypot field.
+- Fixed issue where window resize was triggered in a recursive loop for full screen sliders.
+- Fixed PHP warning that could occur when all meta fields were enabled for the blog module.
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* includes/builder/module/Blog.php
+
+version 3.27 ( updated 08-15-2019 )
+- Added new feature to enable different content on hover or tablet/phone devices.
+- Added SRCSET support for responsive images.
+- Improved builder loading times significantly for websites using many global defaults.
+	* core/components/Portability.php
+	* core/components/data/init.php
+	* core/functions.php
+	* epanel/custom_functions.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/core.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/frontend-builder/helpers.php
+	* includes/builder/functions.php
+	* includes/builder/module/AccordionItem.php
+	* includes/builder/module/Audio.php
+	* includes/builder/module/BarCounters.php
+	* includes/builder/module/BarCountersItem.php
+	* includes/builder/module/Blog.php
+	* includes/builder/module/Blurb.php
+	* includes/builder/module/Button.php
+	* includes/builder/module/CircleCounter.php
+	* includes/builder/module/Code.php
+	* includes/builder/module/Comments.php
+	* includes/builder/module/ContactForm.php
+	* includes/builder/module/ContactFormItem.php
+	* includes/builder/module/CountdownTimer.php
+	* includes/builder/module/Cta.php
+	* includes/builder/module/Divider.php
+	* includes/builder/module/FilterablePortfolio.php
+	* includes/builder/module/FullwidthCode.php
+	* includes/builder/module/FullwidthHeader.php
+	* includes/builder/module/FullwidthImage.php
+	* includes/builder/module/FullwidthPortfolio.php
+	* includes/builder/module/FullwidthPostSlider.php
+	* includes/builder/module/FullwidthPostTitle.php
+	* includes/builder/module/FullwidthSlider.php
+	* includes/builder/module/Gallery.php
+	* includes/builder/module/Image.php
+	* includes/builder/module/Login.php
+	* includes/builder/module/MapItem.php
+	* includes/builder/module/NumberCounter.php
+	* includes/builder/module/Portfolio.php
+	* includes/builder/module/PostSlider.php
+	* includes/builder/module/PostTitle.php
+	* includes/builder/module/PostsNavigation.php
+	* includes/builder/module/PricingTables.php
+	* includes/builder/module/PricingTablesItem.php
+	* includes/builder/module/Search.php
+	* includes/builder/module/Shop.php
+	* includes/builder/module/Signup.php
+	* includes/builder/module/Slider.php
+	* includes/builder/module/SliderItem.php
+	* includes/builder/module/SocialMediaFollow.php
+	* includes/builder/module/SocialMediaFollowItem.php
+	* includes/builder/module/Tabs.php
+	* includes/builder/module/TabsItem.php
+	* includes/builder/module/TeamMember.php
+	* includes/builder/module/Testimonial.php
+	* includes/builder/module/Text.php
+	* includes/builder/module/Toggle.php
+	* includes/builder/module/Video.php
+	* includes/builder/module/VideoSlider.php
+	* includes/builder/module/VideoSliderItem.php
+	* includes/builder/module/helpers/HoverOptions.php
+	* includes/builder/module/helpers/MultiViewOptions.php
+	* includes/builder/scripts/frontend-builder-scripts.js
+	* options_divi.php
+	* post_thumbnails_divi.php
+
+version 3.26.8 ( updated 08-14-2019 )
+- Fixed Modules Drag and Drop issue in Wireframe mode.
+- Fixed box shadow options not being included when copy and pasting button options group between modules.
+- Fixed horizontal scrollbar when settings modal is snapped into right side on latest Divi Builder Experience.
+- Fixed incorrect selector for Icon Text Color of Social Follow module.
+- Fixes clearing WP Rocket plugin cache when Static files cache is cleared.
+	* core/components/PageResource.php
+	* includes/builder/class-et-builder-element.php
+	* includes/builder/core.php
+	* includes/builder/feature/custom-defaults/Settings.php
+	* includes/builder/feature/dynamic-content.php
+	* includes/builder/feature/search-posts.php
+	* includes/builder/frontend-builder/assets.php
+	* includes/builder/frontend-builder/bundle.js
+	* includes/builder/module/SocialMediaFollow.php
+	* includes/builder/module/SocialMediaFollowItem.php
+
 version 3.26.7 ( updated 08-09-2019 )
 - Fixed resetting an option while hover mode enabled not resetting desktop, tablet, and phone values.
 - Fixed the issue when the Blog module was disappearing using the grid layout in Divi Builder.

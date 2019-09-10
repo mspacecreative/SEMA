@@ -464,8 +464,8 @@ function et_fb_get_static_backend_helpers($post_type) {
 		'searchFilterItems'            => array(
 			'show_only' => array(
 				'styles_modified'   => esc_html__( 'Modified Styles', 'et_builder' ),
-				'styles_responsive' => esc_html__( 'Responsive Styles', 'et_builder' ),
-				'styles_hover'   => esc_html__( 'Hover Styles', 'et_builder' ),
+				'styles_responsive' => esc_html__( 'Responsive Styles/Content', 'et_builder' ),
+				'styles_hover'      => esc_html__( 'Hover Styles/Content', 'et_builder' ),
 				'active_content'    => esc_html__( 'Active Content', 'et_builder' ),
 			),
 		),
@@ -1505,6 +1505,9 @@ function et_fb_get_static_backend_helpers($post_type) {
 					'importBackUp'          => esc_html__( 'Download backup before importing', 'et_builder' ),
 					'addToLibrary'          => esc_html__( 'Add to Library', 'et_builder' ),
 					'includeCustomDefaults' => esc_html__( 'Apply Layout\'s Defaults To This Website', 'et_builder' ),
+				),
+				'export' => array(
+					'applyCustomDefaults' => esc_html__( 'Apply Global Defaults To Exported Layout' ),
 				),
 			),
 		),

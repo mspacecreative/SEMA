@@ -5475,6 +5475,9 @@ function et_fb_delete_builder_assets() {
 	foreach ( array_merge( $old_files, $new_files, $modules_files ) as $file ) {
 		@unlink( $file );
 	}
+
+	// Responsive Content MultiViews cache
+	@unlink( sprintf( '%s/%s', $cache , 'multiviews.data' ) );
 }
 endif;
 
@@ -5525,7 +5528,7 @@ function et_builder_portability_link( $context, $attributes = array() ) {
 /**
  * Get the list of all public post types.
  *
- * @since ??
+ * @since 3.26.7
  *
  * @return array<string, WP_Post_Type>
  */
@@ -5551,7 +5554,7 @@ function et_builder_get_public_post_types() {
 	/**
 	 * Filter array of public post types.
 	 *
-	 * @since ??
+	 * @since 3.26.7
 	 *
 	 * @param array<string, WP_Post_Type>
 	 */
@@ -5561,7 +5564,7 @@ function et_builder_get_public_post_types() {
 /**
  * Clear public post type cache whenever a custom post type is registered.
  *
- * @since ??
+ * @since 3.26.7
  *
  * @return void
  */
@@ -5569,3 +5572,124 @@ function et_builder_clear_get_public_post_types_cache() {
 	et_core_cache_delete( 'et_builder_get_public_post_types' );
 }
 add_action( 'registered_post_type', 'et_builder_clear_get_public_post_types_cache' );
+
+if ( ! function_exists( 'et_filter_intermediate_image_sizes_advanced' ) ):
+/**
+ * Filters the image sizes to calculate responsive image height.
+ *
+ * @param array $sizes    An associative array of image sizes.
+ * @param array $metadata An associative array of image metadata: width, height, file.
+ *
+ * @return array
+ */
+function et_filter_intermediate_image_sizes_advanced( $sizes, $metadata ) {
+	foreach ( array_keys( $sizes ) as $size_key ) {
+		if ( strpos( $size_key, 'et-pb-image--responsive--' ) !== 0 ) {
+			continue;
+		}
+
+		$breakpoint      = str_replace( 'et-pb-image--responsive--', '', $size_key );
+		$responsive_size = et_image_get_responsive_size( $metadata['width'], $metadata['height'], $breakpoint );
+
+		if ( $responsive_size && isset( $responsive_size['width'] ) && isset( $responsive_size['height'] ) ) {
+			$sizes[ $size_key ]['width']  = $responsive_size['width'];
+			$sizes[ $size_key ]['height'] = $responsive_size['height'];
+		} else {
+			unset( $sizes[ $size_key ] );
+		}
+	}
+
+	return $sizes;
+}
+endif;
+add_filter( 'intermediate_image_sizes_advanced', 'et_filter_intermediate_image_sizes_advanced', 10, 2 );
+
+if ( ! function_exists( 'et_filter_wp_generate_attachment_metadata' ) ):
+/**
+ * Sync the cached srcset data when attachment meta data generated/updated.
+ *
+ * @since 3.27.1
+ *
+ * @param array $metadata      An array of attachment meta data.
+ * @param int   $attachment_id Current attachment ID.
+ *
+ * @return array
+ */
+function et_filter_wp_generate_attachment_metadata( $metadata, $attachment_id ) {
+	if ( ! class_exists( 'ET_Builder_Module_Helper_MultiViewOptions' ) ) {
+		require_once 'module/helpers/MultiViewOptions.php';
+	}
+
+	$cache                      = ET_Builder_Module_Helper_MultiViewOptions::get_cache_data();
+	$cache_responsive_metadata  = ET_Core_Cache_File::get( 'responsive_metadata' );
+	$cache_attachment_id_by_url = ET_Core_Cache_File::get( 'attachment_id_by_url' );
+
+	if ( ! $cache && ! $cache_responsive_metadata && $cache_attachment_id_by_url ) {
+		return $metadata;
+	}
+
+	$save_cache                      = false;
+	$save_cache_responsive_metadata  = false;
+	$save_cache_attachment_id_by_url = false;
+	$attachment_url                  = wp_get_attachment_url( $attachment_id );
+
+	if ( isset( $cache[ $attachment_url ] ) ) {
+		unset( $cache[ $attachment_url ] );
+		$save_cache = true;
+	}
+
+	if ( isset( $cache_responsive_metadata[ $attachment_url ] ) ) {
+		unset( $cache_responsive_metadata[ $attachment_url ] );
+		$save_cache_responsive_metadata = true;
+	}
+
+	if ( isset( $cache_attachment_id_by_url[ $attachment_url ] ) ) {
+		unset( $cache_attachment_id_by_url[ $attachment_url ] );
+		$save_cache_attachment_id_by_url = true;
+	}
+
+	if ( isset( $metadata['sizes'] ) ) {
+		$attachment_url_basename = basename( $attachment_url );
+
+		foreach ( $metadata['sizes'] as $image_size ) {
+			$image_size_url = str_replace( $attachment_url_basename, $image_size['file'], $attachment_url );
+
+			if ( isset( $cache[ $image_size_url ] ) ) {
+				unset( $cache[ $image_size_url ] );
+
+				$save_cache = true;
+			}
+
+			if ( isset( $cache_responsive_metadata[ $image_size_url ] ) ) {
+				unset( $cache_responsive_metadata[ $image_size_url ] );
+	
+				$save_cache_responsive_metadata = true;
+			}
+
+			if ( isset( $cache_attachment_id_by_url[ $image_size_url ] ) ) {
+				unset( $cache_attachment_id_by_url[ $image_size_url ] );
+	
+				$save_cache_attachment_id_by_url = true;
+			}
+		}
+	}
+
+	if ( $save_cache ) {
+		ET_Builder_Module_Helper_MultiViewOptions::set_cache_data( $cache );
+		ET_Builder_Module_Helper_MultiViewOptions::save_cache( true );
+	}
+
+	if ( $save_cache_responsive_metadata ) {
+		ET_Core_Cache_File::set( 'responsive_metadata', $cache_responsive_metadata );
+		ET_Core_Cache_File::save_cache( true );
+	}
+
+	if ( $save_cache_attachment_id_by_url ) {
+		ET_Core_Cache_File::set( 'attachment_id_by_url', $cache_attachment_id_by_url );
+		ET_Core_Cache_File::save_cache( true );
+	}
+
+	return $metadata;
+}
+endif;
+add_filter( 'wp_generate_attachment_metadata', 'et_filter_wp_generate_attachment_metadata', 10, 2 );

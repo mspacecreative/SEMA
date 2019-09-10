@@ -87,19 +87,20 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'                 => array(
 				'text'   => array(
-					'label'    => esc_html__( 'Text', 'et_builder' ),
-					'css'      => array(
+					'label'           => esc_html__( 'Text', 'et_builder' ),
+					'css'             => array(
 						'line_height' => "{$this->main_css_element} p",
-						'color' => "{$this->main_css_element}.et_pb_text",
+						'color'       => "{$this->main_css_element}.et_pb_text",
 					),
-					'line_height' => array(
+					'line_height'     => array(
 						'default' => floatval( et_get_option( 'body_font_height', '1.7' ) ) . 'em',
 					),
-					'font_size' => array(
+					'font_size'       => array(
 						'default' => absint( et_get_option( 'body_font_size', '14' ) ) . 'px',
 					),
-					'toggle_slug' => 'text',
-					'sub_toggle'  => 'p',
+					'toggle_slug'     => 'text',
+					'sub_toggle'      => 'p',
+					'hide_text_align' => true,
 				),
 				'link'   => array(
 					'label'    => esc_html__( 'Link', 'et_builder' ),
@@ -292,6 +293,8 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 				'description'     => esc_html__( 'Here you can create the content that will be used within the module.', 'et_builder' ),
 				'toggle_slug'     => 'main_content',
 				'dynamic_content' => 'text',
+				'mobile_options'  => true,
+				'hover'           => 'tabs',
 			),
 			'ul_type' => array(
 				'label'             => esc_html__( 'Unordered List Style Type', 'et_builder' ),
@@ -486,6 +489,7 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
+		$multi_view                      = et_pb_multi_view_options( $this );
 		$ul_type_values                  = et_pb_responsive_options()->get_property_values( $this->props, 'ul_type' );
 		$ul_position_values              = et_pb_responsive_options()->get_property_values( $this->props, 'ul_position' );
 		$ul_item_indent_values           = et_pb_responsive_options()->get_property_values( $this->props, 'ul_item_indent' );
@@ -581,15 +585,21 @@ class ET_Builder_Module_Text extends ET_Builder_Module {
 			);
 		}
 
+		$content = $multi_view->render_element( array(
+			'tag'     => 'div',
+			'content' => '{{content}}',
+			'attrs'   => array(
+				'class' => 'et_pb_text_inner',
+			),
+		) );
+
 		$output = sprintf(
 			'<div%3$s class="%2$s"%6$s%7$s>
 				%5$s
 				%4$s
-				<div class="et_pb_text_inner">
-					%1$s
-				</div>
+				%1$s
 			</div> <!-- .et_pb_text -->',
-			$this->content,
+			$content,
 			$this->module_classname( $render_slug ),
 			$this->module_id(),
 			$video_background,

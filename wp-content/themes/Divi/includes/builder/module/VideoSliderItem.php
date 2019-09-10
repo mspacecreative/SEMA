@@ -86,6 +86,8 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 					'__oembed_thumbnail',
 					'__is_oembed',
 				),
+				'mobile_options' => true,
+				'hover'          => 'tabs',
 			),
 			'src_webm' => array(
 				'label'              => esc_html__( 'Video Webm', 'et_builder' ),
@@ -97,6 +99,8 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 				'update_text'        => esc_attr__( 'Set As Video', 'et_builder' ),
 				'description'        => esc_html__( 'Upload the .WEBM version of your video here. All uploaded videos should be in both .MP4 .WEBM formats to ensure maximum compatibility in all browsers.', 'et_builder' ),
 				'toggle_slug'        => 'main_content',
+				'mobile_options'     => true,
+				'hover'              => 'tabs',
 			),
 			'image_src' => array(
 				'label'              => esc_html__( 'Image Overlay URL', 'et_builder' ),
@@ -117,6 +121,8 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 				'description'        => esc_html__( 'Upload your desired image, or type in the URL to the image you would like to display over your video. You can also generate a still image from your video.', 'et_builder' ),
 				'toggle_slug'        => 'overlay',
 				'dynamic_content'    => 'image',
+				'mobile_options'     => true,
+				'hover'              => 'tabs',
 			),
 			'__oembed_thumbnail' => array(
 				'type' => 'computed',
@@ -276,7 +282,41 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 		return $thumbnail_track_output;
  	}
 
+	 static function get_video( $args = array(), $conditional_tags = array(), $current_page = array() ) {
+		 $defaults = array(
+			 'src' => '',
+			 'src_webm' => '',
+		 );
+ 
+		 $args = wp_parse_args( $args, $defaults );
+ 
+		 $video_src = '';
+ 
+		 if ( false !== et_pb_check_oembed_provider( esc_url( $args['src'] ) ) ) {
+			 $video_src = wp_oembed_get( esc_url( $args['src'] ) );
+		 } else {
+			 $video_src = sprintf( '
+				 <video controls>
+					 %1$s
+					 %2$s
+				 </video>',
+				 ( '' !== $args['src'] ? sprintf( '<source type="video/mp4" src="%1$s" />', esc_url( $args['src'] ) ) : '' ),
+				 ( '' !== $args['src_webm'] ? sprintf( '<source type="video/webm" src="%1$s" />', esc_url( $args['src_webm'] ) ) : '' )
+			 );
+ 
+			 wp_enqueue_style( 'wp-mediaelement' );
+			 wp_enqueue_script( 'wp-mediaelement' );
+		 }
+ 
+		 return $video_src;
+	 }
+
 	function render( $attrs, $content = null, $render_slug ) {
+		global $et_pb_slider_image_overlay;
+
+		$multi_view = et_pb_multi_view_options( $this );
+		$multi_view->set_custom_prop( 'show_image_overlay', $et_pb_slider_image_overlay );
+
 		$src                             = $this->props['src'];
 		$src_webm                        = $this->props['src_webm'];
 		$image_src                       = $this->props['image_src'];
@@ -370,6 +410,68 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 
 		global $et_pb_slider_image_overlay;
 
+		$video_srcs = array();
+		$image_srcs = array();
+
+		foreach ( $multi_view->get_modes() as $mode ) {
+			$src       = $multi_view->get_value( 'src', $mode );
+			$src_webm  = $multi_view->get_value( 'src_webm', $mode );
+			$image_src = $multi_view->get_value( 'image_src', $mode );
+
+			if ( $src || $src_webm ) {
+				$video_srcs[ $mode ] = self::get_video( array(
+					'src' => $src,
+					'src_webm' =>$src_webm,
+				) );
+			}
+
+			if ( $src || $image_src ) {
+				$image_srcs[ $mode ] = self::get_oembed_thumbnail( array(
+					'src' => $src,
+					'image_src' => $image_src,
+				) );
+			}
+		}
+
+		if ( $video_srcs ) {
+			$multi_view->set_custom_prop( 'video_srcs', $video_srcs );
+		}
+
+		if ( $image_srcs ) {
+			$multi_view->set_custom_prop( 'image_srcs', $image_srcs );
+		}
+
+		$video_src = $multi_view->render_element( array(
+			'tag'     => 'div',
+			'content' => '{{video_srcs}}',
+			'attrs' => array(
+				'class' => 'et_pb_video_box',
+			),
+		) );
+
+		$video_overlay = $multi_view->render_element( array(
+			'tag'     => 'div',
+			'content' => '<div class="et_pb_video_overlay_hover"><a href="#" class="et_pb_video_play"></a></div>',
+			'attrs'   => array(
+				'class' => 'et_pb_video_overlay',
+			),
+			'styles' => array(
+				'background-image' => 'url({{image_srcs}})',
+			),
+			'visibility' => array(
+				'show_image_overlay' => 'on',
+			),
+		) );
+
+		$video_output = $multi_view->render_element( array(
+			'tag'     => 'div',
+			'content' => "{$video_src}{$video_overlay}",
+			'attrs' => array(
+				'class' => 'et_pb_video_wrap',
+			),
+			'required' => 'video_srcs'
+		) );
+
 		if ( '' !== $image_src ) {
 			$image_overlay_output = et_pb_set_video_oembed_thumbnail_resolution( $image_src, 'high' );
 			$thumbnail_track_output = $image_src;
@@ -386,46 +488,6 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 				$thumbnail_track_output = '';
 			}
 		}
-
-		if ( '' !== $src ) {
-			if ( false !== et_pb_check_oembed_provider( esc_url( $src ) ) ) {
-				$video_src = wp_oembed_get( esc_url( $src ) );
-			} else {
-				$video_src = sprintf( '
-					<video controls>
-						%1$s
-						%2$s
-					</video>',
-					( '' !== $src ? sprintf( '<source type="video/mp4" src="%s" />', esc_url( $src ) ) : '' ),
-					( '' !== $src_webm ? sprintf( '<source type="video/webm" src="%s" />', esc_url( $src_webm ) ) : '' )
-				);
-
-				wp_enqueue_style( 'wp-mediaelement' );
-				wp_enqueue_script( 'wp-mediaelement' );
-			}
-		}
-
-		$video_output = sprintf(
-			'<div class="et_pb_video_wrap">
-				<div class="et_pb_video_box">
-					%1$s
-				</div>
-				%2$s
-			</div>',
-			( '' !== $video_src ? $video_src : '' ),
-			(
-				( '' !== $image_overlay_output && $et_pb_slider_image_overlay === 'on' )
-					? sprintf(
-						'<div class="et_pb_video_overlay" style="background-image: url(%1$s);">
-							<div class="et_pb_video_overlay_hover">
-								<a href="#" class="et_pb_video_play"></a>
-							</div>
-						</div>',
-						esc_attr( $image_overlay_output )
-					)
-					: ''
-			)
-		);
 
 		// Module classnames
 		$this->add_classname( array(
@@ -460,16 +522,23 @@ class ET_Builder_Module_Video_Slider_Item extends ET_Builder_Module {
 			);
 		}
 
+		$multi_view_image_srcs_data_attr = $multi_view->render_attrs( array(
+			'attrs' => array(
+				'data-image' => '{{image_srcs}}',
+			),
+		) );
+
 		$output = sprintf(
-			'<div class="%1$s"%3$s%4$s%5$s>
+			'<div class="%1$s"%3$s%4$s%5$s%6$s>
 				%2$s
 			</div> <!-- .et_pb_slide -->
 			',
 			$this->module_classname( $render_slug ),
 			( '' !== $video_output ? $video_output : '' ),
-			( '' !== $thumbnail_track_output ? sprintf( ' data-image="%1$s"', esc_attr( $thumbnail_track_output ) ) : '' ),
+			( '' !== $multi_view->get_value('image_srcs') ? sprintf( ' data-image="%1$s"', esc_attr( $multi_view->get_value('image_srcs') ) ) : '' ),
 			et_core_esc_previously( $data_background_layout ),
-			et_core_esc_previously( $data_background_layout_hover ) // #5
+			et_core_esc_previously( $data_background_layout_hover ), // #5
+			$multi_view_image_srcs_data_attr
 		);
 
 		return $output;
