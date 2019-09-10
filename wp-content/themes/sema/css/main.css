@@ -256,7 +256,6 @@ svg {
 	float: left;
 	width: 31.333%;
 	margin-right: 3%;
-	flex-basis: 31.333%;
 	padding: 3em;
 	margin-bottom: 3%;
 	flex-flow: column nowrap;
