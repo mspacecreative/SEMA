@@ -5,7 +5,7 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
         
 		<div class="solutions_grid_box">
-			<div style="padding: 3em;">
+			<div style="padding: 3em; height: 100%; display: flex; flex-direction: column; align-items: flex-start;">
 				<?php
 				if ( has_post_thumbnail() ) { 
 					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
