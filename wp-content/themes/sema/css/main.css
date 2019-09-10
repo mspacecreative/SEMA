@@ -255,8 +255,9 @@ svg {
 .solutions_grid_box {
 	float: left;
 	width: 31.333%;
+	flex-basis: 31.333%;
+	display: flex;
 	margin-right: 3%;
-	padding: 3em;
 	margin-bottom: 3%;
 	flex-flow: column nowrap;
 	align-items: flex-start;

@@ -5,42 +5,44 @@ $loop = new WP_Query( array( 'post_type' => 'solutions', 'posts_per_page' => -1,
         <?php while ( $loop->have_posts() ) : $loop->the_post(); ?>
         
 		<div class="solutions_grid_box">
-			<?php
-			if ( has_post_thumbnail() ) { 
-				the_post_thumbnail('medium', array('class' => 'solution-thumb'));
-			}
-			?>
-			<h3><?php the_title(); ?></h3>
-			
-			<?php if( have_rows('grid_content_box') ):
-				while( have_rows('grid_content_box') ): the_row(); ?>
-					
-					<?php if ( get_sub_field('subtitle') ): ?>
-					<span style="color: #000; text-transform: uppercase;"><strong><?php the_sub_field('subtitle'); ?></span>
-					<?php else : ?>
-					<span style="color: #000;"><strong>BEST FOR</strong></span>
-					<?php endif; ?>
-					
-					<p><?php the_sub_field('best_for_content'); ?></p>
+			<div style="padding: 3em;">
+				<?php
+				if ( has_post_thumbnail() ) { 
+					the_post_thumbnail('medium', array('class' => 'solution-thumb'));
+				}
+				?>
+				<h3><?php the_title(); ?></h3>
+				
+				<?php if( have_rows('grid_content_box') ):
+					while( have_rows('grid_content_box') ): the_row(); ?>
 						
-					<?php if ( get_sub_field('learn_more_button') == 'external' ): ?>
-						
-					<?php if( have_rows('external_link_button') ): 
-						while( have_rows('external_link_button') ): the_row(); ?>
-						
-						<a class="et_pb_button hide-on-desktop alt" style="font-size: 16px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
-						
-						<?php endwhile;
-					endif; ?>
-						
+						<?php if ( get_sub_field('subtitle') ): ?>
+						<span style="color: #000; text-transform: uppercase;"><strong><?php the_sub_field('subtitle'); ?></span>
 						<?php else : ?>
-						<?php $title = get_the_title(); ?>
-						<a data-icon="C" class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#<?php echo sanitize_title_with_dashes( $title ); ?>">Learn More</a>
+						<span style="color: #000;"><strong>BEST FOR</strong></span>
+						<?php endif; ?>
 						
-					<?php endif; ?>
-						
-				<?php endwhile; ?>
-			<?php endif; ?>
+						<p><?php the_sub_field('best_for_content'); ?></p>
+							
+						<?php if ( get_sub_field('learn_more_button') == 'external' ): ?>
+							
+						<?php if( have_rows('external_link_button') ): 
+							while( have_rows('external_link_button') ): the_row(); ?>
+							
+							<a class="et_pb_button hide-on-desktop alt" style="font-size: 16px;" href="<?php the_sub_field('link_url'); ?>"><?php the_sub_field('link_label'); ?></a>
+							
+							<?php endwhile;
+						endif; ?>
+							
+							<?php else : ?>
+							<?php $title = get_the_title(); ?>
+							<a data-icon="C" class="et_pb_button hide-on-desktop" style="font-size: 16px;" href="#<?php echo sanitize_title_with_dashes( $title ); ?>">Learn More</a>
+							
+						<?php endif; ?>
+							
+					<?php endwhile; ?>
+				<?php endif; ?>
+			</div>
 			
 		</div><!-- end solutions_grid_box -->
 		
