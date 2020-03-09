@@ -5,11 +5,21 @@
 	SetEnvIF X-FORWARDED-FOR "^120\.24\.190\.242$" DenyAccess
 	SetEnvIF X-CLUSTER-CLIENT-IP "^120\.24\.190\.242$" DenyAccess
 
+	SetEnvIF REMOTE_ADDR "^115\.28\.240\.215$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^115\.28\.240\.215$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^115\.28\.240\.215$" DenyAccess
+
+	SetEnvIF REMOTE_ADDR "^120\.76\.176\.146$" DenyAccess
+	SetEnvIF X-FORWARDED-FOR "^120\.76\.176\.146$" DenyAccess
+	SetEnvIF X-CLUSTER-CLIENT-IP "^120\.76\.176\.146$" DenyAccess
+
 	<IfModule mod_authz_core.c>
 		<RequireAll>
 			Require all granted
 			Require not env DenyAccess
 			Require not ip 120.24.190.242
+			Require not ip 115.28.240.215
+			Require not ip 120.76.176.146
 		</RequireAll>
 	</IfModule>
 	<IfModule !mod_authz_core.c>
@@ -17,19 +27,22 @@
 		Allow from all
 		Deny from env=DenyAccess
 		Deny from 120.24.190.242
+		Deny from 115.28.240.215
+		Deny from 120.76.176.146
 	</IfModule>
 # END iThemes Security - Do not modify or remove this line
 
-
-
 # BEGIN WordPress
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /sema/
+RewriteBase /
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /sema/index.php [L]
+RewriteRule . /index.php [L]
 </IfModule>
 
 # END WordPress

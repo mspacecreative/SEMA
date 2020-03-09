@@ -1,6 +1,7 @@
 const {
   adminUrl,
   ajaxUrl,
+  didDisconnect,
   env,
   formsScript,
   formsScriptPayload,
@@ -11,9 +12,14 @@ const {
   plugins,
   phpVersion,
   portalId,
+  portalEmail,
+  accountName,
+  routes,
   theme,
   wpVersion,
+  signupUrl,
   portalDomain,
+  pricingQuery,
 } = window.leadinConfig;
 
 const i18n = window.leadinI18n;
@@ -21,6 +27,7 @@ const i18n = window.leadinI18n;
 export {
   adminUrl,
   ajaxUrl,
+  didDisconnect,
   env,
   formsScript,
   formsScriptPayload,
@@ -32,7 +39,12 @@ export {
   plugins,
   phpVersion,
   portalId,
+  portalEmail,
+  accountName,
+  routes,
   theme,
   wpVersion,
+  signupUrl,
   portalDomain,
+  pricingQuery,
 };

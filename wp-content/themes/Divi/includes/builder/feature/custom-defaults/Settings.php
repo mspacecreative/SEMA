@@ -59,7 +59,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	protected $_settings;
 
 	protected function __construct() {
-		$custom_defaults = et_get_option( self::CUSTOM_DEFAULTS_OPTION, (object) array() );
+		$custom_defaults = et_get_option( self::CUSTOM_DEFAULTS_OPTION, (object) array(), '', true );
 
 		$this->_settings = $this->_normalize_custom_defaults( $custom_defaults );
 
@@ -201,6 +201,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	 */
 	public function maybe_convert_module_type( $type, $attrs ) {
 		if ( isset( self::$_module_types_conversion_map[ $type ] ) ) {
+			// @phpcs:ignore Generic.PHP.ForbiddenFunctions.Found
 			$type = call_user_func_array(
 				array( $this, self::$_module_types_conversion_map[ $type ] ),
 				array( $attrs, $type )
@@ -287,7 +288,7 @@ class ET_Builder_Custom_Defaults_Settings {
 	 * Performs custom defaults format normalization.
 	 * Usually used to cast format from array to object
 	 *
-	 * @since ??
+	 * @since 3.27.4
 	 *
 	 * @param $defaults - The list of custom defaults needs to be normalized
 	 *

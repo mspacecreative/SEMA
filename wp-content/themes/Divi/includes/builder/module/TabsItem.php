@@ -82,6 +82,7 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 			'max_width'             => false,
 			'height'                => false,
 			'button'                => false,
+			'scroll_effects'        => false,
 		);
 
 		$this->custom_css_fields = array(
@@ -116,6 +117,42 @@ class ET_Builder_Module_Tabs_Item extends ET_Builder_Module {
 			),
 		);
 		return $fields;
+	}
+
+	/**
+	 * Set the `product` prop on TabItem.
+	 *
+	 * `product` prop is only available w/ the Parents' Tab module and not w/ TabsItem module.
+	 *
+	 * The global $et_pb_wc_tabs variable is set
+	 */
+	function maybe_inherit_values() {
+		// Inheriting Tabs attribute.
+		global $et_pb_wc_tabs;
+
+		if ( isset( $et_pb_wc_tabs ) && ! empty( $et_pb_wc_tabs['product'] ) ) {
+			$this->props['product'] = $et_pb_wc_tabs['product'];
+		}
+
+	}
+
+	/**
+	 * Return the Product ID when set. Otherwise return parent::get_the_ID()
+	 *
+	 * $this->props['product'] is set using
+	 * @see ET_Builder_Module_Tabs_Item->maybe_inherit_values()
+	 *
+	 * @return bool|int
+	 */
+	function get_the_ID() {
+		if ( ! isset( $this->props['product'] ) ) {
+			return parent::get_the_ID();
+		}
+
+		$product = wc_get_product( absint( $this->props['product'] ) );
+		if ( $product instanceof WC_Product ) {
+			return $product->get_id();
+		}
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {

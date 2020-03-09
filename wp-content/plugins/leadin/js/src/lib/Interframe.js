@@ -1,108 +1,91 @@
-import EventBus from './EventBus';
-import { log } from '../utils';
-import { domElements } from '../constants/selectors';
-import { hubspotBaseUrl } from '../constants/leadinConfig';
+import connectToChild from 'penpal/lib/connectToChild';
 import Raven from './Raven';
+import { syncRoute, leadinPageReload, leadinPageRedirect } from '../navigation';
+import * as leadinConfig from '../constants/leadinConfig';
+import { leadinClearQueryParam, getQueryParam } from '../utils/queryParams';
+import { leadinGetPortalInfo } from '../utils/portalInfo';
+import {
+  leadinConnectPortal,
+  leadinDisconnectPortal,
+} from '../api/wordpressApi';
 
-const eventBus = new EventBus();
-const callbacks = [];
-const postMessageBuffer = [];
-let interframeReady = false;
+const methods = {
+  leadinClearQueryParam,
+  leadinPageReload,
+  leadinPageRedirect,
+  leadinGetPortalInfo,
+  leadinConnectPortal,
+  leadinDisconnectPortal,
+  getLeadinConfig: () => leadinConfig,
+};
 
-function postMessageObject(message) {
-  log('Posting message');
-  log(JSON.stringify(message));
-  jQuery(domElements.iframe)[0].contentWindow.postMessage(
-    JSON.stringify(message),
-    hubspotBaseUrl
-  );
+const hubspotBaseUrl = leadinConfig.hubspotBaseUrl;
+
+function createConnectionToiFrame(iframe) {
+  return connectToChild({
+    // The iframe to which a connection should be made
+    iframe,
+    childOrigin: hubspotBaseUrl, // the plugin will reject all connections not coming from the iframe
+    // Methods the parent is exposing to the child
+    methods,
+  });
 }
 
-function reply(message, response) {
-  if (!response) {
-    response = 'Message Received';
-  }
-  const newMessage = Object.assign({}, message);
-  newMessage.response = response;
-  postMessageObject(newMessage);
-}
+export function initInterframe(iframe) {
+  if (!iframe) return;
 
-function handleResponse(message) {
-  callbacks[message._leadinCallbackId - 1](message.response);
-}
-
-function handleMessage(message) {
-  log('Received message');
-  log(JSON.stringify(message));
-
-  if (message.hasOwnProperty('response') && message._leadinCallbackId) {
-    handleResponse(message);
-  } else {
-    Object.keys(message).forEach(key => {
-      eventBus.trigger(key, [message[key], reply.bind(null, message)]);
-    });
-  }
-}
-
-function handleMessageEvent(event) {
-  if (event.origin === hubspotBaseUrl) {
-    try {
-      const data = JSON.parse(event.data);
-      handleMessage(data);
-    } catch (e) {
-      // Error in parsing message
-    }
-  }
-}
-
-function setInterframeReady() {
-  interframeReady = true;
-  while (postMessageBuffer.length > 0) {
-    postMessageObject(postMessageBuffer.pop());
-  }
-}
-
-export function postMessage(
-  key,
-  payload,
-  onResponse,
-  onTimeout,
-  timeout = 500
-) {
-  const timeoutCallback = function() {
-    const errorMessage = `LeadinWordpressPlugin postMessage response timeout on message key: ${key}`;
-    log(errorMessage);
-    Raven.captureMessage(errorMessage);
-    if (onTimeout) {
-      onTimeout();
+  const redirectToLogin = event => {
+    if (event.data === 'unauthorized') {
+      window.removeEventListener('message', redirectToLogin);
+      iframe.src = `${hubspotBaseUrl}/wordpress-plugin-ui/${leadinConfig.portalId}/login`;
     }
   };
 
-  const timeoutId = setTimeout(Raven.wrap(timeoutCallback), timeout);
+  const initPenPal = event => {
+    if (event.origin !== hubspotBaseUrl) return;
 
-  const message = {};
-  message[key] = payload;
-  message._leadinCallbackId = callbacks.push((...args) => {
-    clearTimeout(timeoutId);
-    onResponse(...args);
-  });
-  if (interframeReady) {
-    postMessageObject(message);
-  } else {
-    postMessageBuffer.push(message);
+    try {
+      const data = JSON.parse(event.data);
+      if (data['interframe_ready']) {
+        window.removeEventListener('message', redirectToLogin);
+        if (!window.childFrameConnection) {
+          window.childFrameConnection = createConnectionToiFrame(iframe);
+          window.childFrameConnection.promise.catch(error =>
+            Raven.captureException(error, {
+              fingerprint: ['INTERFRAME_CONNECTION_ERROR'],
+            })
+          );
+        }
+
+        // Complete the handshake with the iframe
+        iframe.contentWindow.postMessage(
+          JSON.stringify({ iframe_connection_ready: true }),
+          hubspotBaseUrl
+        );
+      }
+    } catch (e) {
+      //
+    }
+  };
+
+  const handleSyncRoute = event => {
+    if (event.origin !== hubspotBaseUrl) return;
+    try {
+      const data = JSON.parse(event.data);
+      if (data['leadin_sync_route']) {
+        const route = data['leadin_sync_route'];
+        syncRoute(route);
+      }
+    } catch (e) {
+      // Error in parsing message
+    }
+  };
+
+  const currentPage = getQueryParam('page');
+  if (currentPage !== 'leadin_settings' && currentPage !== 'leadin') {
+    window.addEventListener('message', redirectToLogin);
   }
-}
 
-export function onMessage(key, callback) {
-  eventBus.on(key, (...args) => {
-    callback.apply(null, args.slice(1));
-  });
-}
-
-export function initInterframe() {
-  onMessage('interframe_ready', (message, sendReply) => {
-    sendReply();
-    setInterframeReady();
-  });
-  window.addEventListener('message', handleMessageEvent);
+  window.addEventListener('message', initPenPal);
+  window.addEventListener('message', handleSyncRoute);
 }

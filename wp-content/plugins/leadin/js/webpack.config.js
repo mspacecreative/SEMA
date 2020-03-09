@@ -1,7 +1,11 @@
 const path = require('path');
 
 module.exports = {
-  entry: { leadin: './src/app.js', gutenberg: './src/gutenberg/gutenberg.js' },
+  entry: {
+    leadin: './src/app.js',
+    gutenberg: './src/gutenberg/gutenberg.js',
+    feedback: './src/feedback/feedback.js',
+  },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
@@ -10,6 +14,7 @@ module.exports = {
   },
   externals: [
     {
+      jquery: 'jQuery',
       lodash: 'lodash',
       react: 'React',
       'react-dom': 'ReactDOM',
