@@ -46,6 +46,11 @@ h1.entry-title {
 	font-weight: bold;
 }
 
+body.et_pb_svg_logo #logo, body.et_pb_svg_logo .et-fixed-header #logo {
+	max-height: none;
+	height: auto;
+}
+
 .header-nav-right li:last-child a {
 	background-color: #0072d6;
 	border-radius: 3px;
