@@ -97,7 +97,7 @@ body .nav .sub-menu li {
 }
 
 .move #main-header, body.move .hamburger, .move .et_pb_row {
-	z-index: 11;
+	z-index: 1;
 }
 
 .featured-resource-container {
