@@ -30,6 +30,10 @@ h1.entry-title {
 	line-height: 0;
 }
 
+#main-content {
+	overflow: hidden;
+}
+
 .header-nav-right li {
 	display: inline-block;
 	line-height: 1em;
