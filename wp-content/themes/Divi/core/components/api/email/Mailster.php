@@ -199,7 +199,7 @@ class ET_Core_API_Email_Mailster extends ET_Core_API_Email_Provider {
 		$subscriber_id = mailster( 'subscribers' )->merge( $params );
 
 		if ( is_wp_error( $subscriber_id ) ) {
-			$result = $subscriber_id->get_error_message();
+			$result = htmlspecialchars_decode( $subscriber_id->get_error_message() );
 		} else if ( mailster( 'subscribers' )->assign_lists( $subscriber_id, $args['list_id'], false ) ) {
 			$result = 'success';
 		} else {

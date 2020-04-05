@@ -6,7 +6,7 @@ Tags: CRM, Email Marketing, Live Chat, Forms, Analytics, Popups, Newsletter
 Requires at least: 4.0
 Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 7.22.6
+Stable tag: 7.27.48
 
 Capture, organize and engage web visitors with free forms, live chat, CRM (contact management), email marketing, and analytics. Easy to use, no coding.
 
@@ -18,9 +18,9 @@ THE MOST POWERFUL & EASY TO USE CONTACT MANAGEMENT (CRM), EMAIL MARKETING, LIVE 
 
 With HubSpot’s free plugin you can easily:
 
-- Engage visitors with <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">live chat and chatbots</a>, and convert leads with forms & popups. 
-- Build beautiful, responsive <a href="https://www.hubspot.com/products/marketing/email?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">email newsletters</a> and nurture your leads with marketing automation campaigns. 
-- Manage your entire contact database with HubSpot’s free <a href="https://www.hubspot.com/products/crm?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">CRM</a>, and group contacts together with the built-in list builder. 
+- Engage visitors with <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">live chat and chatbots</a>, and convert leads with forms & popups.
+- Build beautiful, responsive <a href="https://www.hubspot.com/products/marketing/email?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">email newsletters</a> and nurture your leads with marketing automation campaigns.
+- Manage your entire contact database with HubSpot’s free <a href="https://www.hubspot.com/products/crm?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">CRM</a>, and group contacts together with the built-in list builder.
 - Measure your business growth with analytic dashboards.
 
 What’s included in HubSpot’s free WordPress plugin:
@@ -31,21 +31,21 @@ Your website forms will automatically sync with your HubSpot CRM so you can easi
 
 **EMAIL NEWSLETTER & MARKETING AUTOMATION**
 
-Build beautiful, responsive newsletters to send to your contact database with HubSpot’s easy-to-use, <a href="https://www.hubspot.com/products/marketing/email?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">drag and drop email builder</a>. Send an automated email anytime someone fills out a form or engages with your live chat & chatbots. 
- 
+Build beautiful, responsive newsletters to send to your contact database with HubSpot’s easy-to-use, <a href="https://www.hubspot.com/products/marketing/email?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">drag and drop email builder</a>. Send an automated email anytime someone fills out a form or engages with your live chat & chatbots.
+
 Don’t want to have to design emails yourself? HubSpot comes with 20+ pre-designed templates so all you have to do is add your content and press send.
- 
+
 All emails are automatically logged in your CRM and include reporting for opens and clicks so you can measure each email’s engagement.
 
 **FORMS & POPUPS**
 
 Create beautiful <a href="https://www.hubspot.com/products/marketing/forms?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">forms and popups</a> on your website in minutes using the intuitive drag and drop builder. Choose which pages you want your popups displayed on with HubSpot’s advanced filtering based on your visitors’ behaviors.
- 
-Rather stick with your existing forms and popup tools? That’s fine too! HubSpot integrates with most WordPress form and popup builders out-of-the-box so you don’t have to worry about a thing. 
+
+Rather stick with your existing forms and popup tools? That’s fine too! HubSpot integrates with most WordPress form and popup builders out-of-the-box so you don’t have to worry about a thing.
 
 **LIVE CHAT & CHATBOTS**
 
-Add <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">live chat</a> to your website and easily engage & help your site visitors. Add 24/7 <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">chatbots</a> to your website to help automate lead capture and support. Now you can help your visitors while you sleep! 
+Add <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">live chat</a> to your website and easily engage & help your site visitors. Add 24/7 <a href="https://www.hubspot.com/products/crm/live-chat?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">chatbots</a> to your website to help automate lead capture and support. Now you can help your visitors while you sleep!
 
 **BUILT-IN ANALYTICS & DASHBOARDS**
 
@@ -53,7 +53,7 @@ Built-in analytics makes it easy to understand which sales and marketing actions
 
 **SEAMLESS INTEGRATIONS**
 
-Happy with the tools you’re using? Now you can easily integrate HubSpot with over <a href="https://ecosystem.hubspot.com/marketplace/apps?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">300 native integrations</a> including Gravity Forms, WooCommerce, Stripe, and more. HubSpot also works great with Zapier, so you can easily connect your tools together. 
+Happy with the tools you’re using? Now you can easily integrate HubSpot with over <a href="https://ecosystem.hubspot.com/marketplace/apps?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">300 native integrations</a> including Gravity Forms, WooCommerce, Stripe, and more. HubSpot also works great with Zapier, so you can easily connect your tools together.
 
 **WHAT PEOPLE ARE SAYING ABOUT HUBSPOT - CRM, EMAIL MARKETING, LIVE CHAT, FORMS & ANALYTICS?**
 
@@ -103,11 +103,11 @@ HubSpot's WordPress plugin allows you to use HubSpot email marketing, CRM, forms
 
 = What is HubSpot? =
 
-<a href="https://hubspot.com/?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">HubSpot</a> is an all-in-one growth platform that provides a free CRM, marketing, sales, and customer service products to help you grow your business. 
+<a href="https://hubspot.com/?utm_source=wordpress-plugin-listing&utm_campaign=wordpress&utm_medium=marketplaces" target="_blank">HubSpot</a> is an all-in-one growth platform that provides a free CRM, marketing, sales, and customer service products to help you grow your business.
 
 = Who should use HubSpot? =
 
-HubSpot is perfect for agencies, business owners, small businesses, bloggers, designers, anyone with a WordPress website and wants to use seamless CRM and marketing tools. 100,000+ websites in 100+ countries already use HubSpot to grow their businesses. 
+HubSpot is perfect for agencies, business owners, small businesses, bloggers, designers, anyone with a WordPress website and wants to use seamless CRM and marketing tools. 100,000+ websites in 100+ countries already use HubSpot to grow their businesses.
 
 = Are coding skills needed to use the HubSpot WordPress plugin? =
 
@@ -136,8 +136,7 @@ Please visit the <a href="https://community.hubspot.com/?utm_source=wordpress-pl
 
 <a href="http://plugins.svn.wordpress.org/leadin/trunk/changelog.txt" target="_blank">Full changelog here</a>
 
-- Current version: 7.22.6
-- Current version release: 2020-03-02
+- Current version: 7.27.48
+- Current version release: 2020-04-01
 
-= 7.22.6 (2020.03.02) =
-- Update iframe static version
+= 7.27.48 (2020.04.01) = - Disable review notice

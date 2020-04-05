@@ -231,7 +231,7 @@ class ET_Builder_Block_Editor_Integration {
 			'urls' => array(
 				'adminAjax'   => admin_url( 'admin-ajax.php' ),
 				'diviLibrary' => ET_BUILDER_DIVI_LIBRARY_URL,
-				'home'        => home_url(),
+				'home'        => home_url('/'),
 			),
 			/**
 			 * Make DOM selectors list filterable so third party can modified it if needed

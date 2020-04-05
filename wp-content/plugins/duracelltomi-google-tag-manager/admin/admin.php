@@ -1246,7 +1246,7 @@ function gtm4wp_admin_init() {
 			'description' => '<strong>Thomas Geiger</strong><br />
 				Website: <a href="https://gtm4wp.com/" target="_blank">gtm4wp.com</a><br />
 				<a href="https://www.linkedin.com/in/duracelltomi" target="_blank">Me on LinkedIn</a><br />
-				<a href="http://www.linkedin.com/company/jabjab-online-marketing-ltd-" target="_blank">JabJab Online Marketing on LinkedIn</a>',
+				<a href="http://www.linkedin.com/company/jabjab-online-marketing-ltd" target="_blank">JabJab Online Marketing on LinkedIn</a>',
 		)
 	);
 
@@ -1310,7 +1310,7 @@ function gtm4wp_add_admin_js( $hook ) {
 		);
 		wp_localize_script( 'admin-subtabs', 'gtm4wp', $subtabtexts );
 
-		wp_enqueue_script( 'admin-subtabs', array(), GTM4WP_VERSION );
+		wp_enqueue_script( 'admin-subtabs' );
 		wp_enqueue_script( 'admin-tabcreator', $gtp4wp_plugin_url . 'js/admin-tabcreator.js', array( 'jquery-core' ), GTM4WP_VERSION );
 
 		wp_enqueue_style( 'gtm4wp-validate', $gtp4wp_plugin_url . 'css/admin-gtm4wp.css', array(), GTM4WP_VERSION );

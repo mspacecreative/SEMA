@@ -32,9 +32,9 @@ class ET_Builder_Module_CTA extends ET_Builder_Module {
 		$this->advanced_fields = array(
 			'fonts'                 => array(
 				'header' => array(
-					'label'    => esc_html__( 'Title', 'et_builder' ),
-					'css'      => array(
-						'main' => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
+					'label'        => esc_html__( 'Title', 'et_builder' ),
+					'css'          => array(
+						'main'      => "{$this->main_css_element} h2, {$this->main_css_element} h1.et_pb_module_header, {$this->main_css_element} h3.et_pb_module_header, {$this->main_css_element} h4.et_pb_module_header, {$this->main_css_element} h5.et_pb_module_header, {$this->main_css_element} h6.et_pb_module_header",
 						'important' => 'all',
 					),
 					'header_level' => array(
@@ -44,9 +44,7 @@ class ET_Builder_Module_CTA extends ET_Builder_Module {
 				'body'   => array(
 					'label'          => esc_html__( 'Body', 'et_builder' ),
 					'css'            => array(
-						'line_height'    => "{$this->main_css_element} p",
-						'limited_main'   => "{$this->main_css_element} p",
-						'text_shadow'    => "{$this->main_css_element} p",
+						'main' => "{$this->main_css_element} .et_pb_promo_description div",
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,

@@ -957,6 +957,9 @@ class ET_Builder_Module_Signup extends ET_Builder_Module_Type_WithSpamProtection
 						esc_attr( $ip_address )
 					);
 				}
+
+				$html .= sprintf( '<input type="hidden" value="%1$d" name="et_pb_signup_post_id" />', self::get_layout_id() );
+
 				break;
 		}
 
@@ -1241,7 +1244,7 @@ class ET_Builder_Module_Signup extends ET_Builder_Module_Type_WithSpamProtection
 		);
 
 		if ( 'content' === $context && $raw_value && in_array( $name, $fields_need_escape, true ) ) {
-			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'none', $raw_value );
 		}
 
 		if ( $raw_value && in_array( $name, array( 'description', 'footer_content' ), true ) ) {

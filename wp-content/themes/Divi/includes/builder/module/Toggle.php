@@ -541,7 +541,7 @@ class ET_Builder_Module_Toggle extends ET_Builder_Module {
 		$mode = isset( $args['mode'] ) ? $args['mode'] : '';
 
 		if ( $raw_value && 'title' === $name ) {
-			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'none', $raw_value );
 		}
 
 		return $raw_value;

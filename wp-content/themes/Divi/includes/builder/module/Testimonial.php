@@ -771,7 +771,7 @@ class ET_Builder_Module_Testimonial extends ET_Builder_Module {
 		}
 
 		if ( $raw_value && 'content' === $context && in_array( $name, $fields_need_escape, true ) ) {
-			$raw_value = $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ) );
+			$raw_value = $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'none', $raw_value );
 
 			if ( $url && $raw_value ) {
 				if ( 'author' === $name && ! $this->_esc_attr( $multi_view->get_name_by_mode( 'company_name', $mode ) ) ) {

@@ -6,7 +6,7 @@ namespace Leadin;
  * Plugin Name: HubSpot All-In-One Marketing - Forms, Popups, Live Chat
  * Plugin URI: http://www.hubspot.com/integrations/wordpress
  * Description: HubSpot’s official WordPress plugin allows you to add forms, popups, and live chat to your website and integrate with the best WordPress CRM.
- * Version: 7.22.6
+ * Version: 7.27.48
  * Author: HubSpot
  * Author URI: http://hubspot.com/products/wordpress
  * License: GPL v3
@@ -63,7 +63,7 @@ if ( ! defined( 'LEADIN_DB_VERSION' ) ) {
 }
 
 if ( ! defined( 'LEADIN_PLUGIN_VERSION' ) ) {
-	define( 'LEADIN_PLUGIN_VERSION', '7.22.6' );
+	define( 'LEADIN_PLUGIN_VERSION', '7.27.48' );
 }
 
 if ( ! defined( 'LEADIN_SOURCE' ) ) {
@@ -99,7 +99,7 @@ if ( ! defined( 'LEADIN_JS_BASE_PATH' ) ) {
 }
 
 if ( ! defined( 'LEADIN_STATIC_BUNDLE_VERSION' ) ) {
-	define( 'LEADIN_STATIC_BUNDLE_VERSION', 'static-1.294' );
+	define( 'LEADIN_STATIC_BUNDLE_VERSION', 'static-1.444' );
 }
 
 // =============================================

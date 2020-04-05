@@ -2188,6 +2188,7 @@ function et_fb_get_nonces() {
 		'retrieveCustomDefaultsHistory'   => wp_create_nonce( 'et_builder_retrieve_custom_defaults_history' ),
 		'migrateModuleCustomizerPhaseTwo' => wp_create_nonce( 'et_builder_migrate_module_customizer_phase_two' ),
 		'searchPosts'                     => wp_create_nonce( 'et_builder_search_posts' ),
+		'getWoocommerceTabs'              => wp_create_nonce( 'et_builder_get_woocommerce_tabs' ),
 	);
 
 	return array_merge( $nonces, $fb_nonces );
@@ -2581,11 +2582,17 @@ function et_pb_submit_subscribe_form() {
 	$providers = ET_Core_API_Email_Providers::instance();
 	$utils     = ET_Core_Data_Utils::instance();
 
+	$post_id          = $utils->array_get_sanitized( $_POST, 'et_post_id' );
+	$post             = get_post( $post_id );
+	$has_email_optin  = is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'et_pb_signup' );
+	$use_spam_service = get_post_meta( $post_id, '_et_builder_use_spam_service', true );
+
 	$provider_slug = $utils->array_get_sanitized( $_POST, 'et_provider' );
 	$account_name  = $utils->array_get_sanitized( $_POST, 'et_account' );
 	$custom_fields = $utils->array_get( $_POST, 'et_custom_fields', array() );
+	$provider      = $providers->get( $provider_slug, $account_name, 'builder' );
 
-	if ( ! $provider = $providers->get( $provider_slug, $account_name, 'builder' ) ) {
+	if ( ! $provider || ! $has_email_optin ) {
 		et_core_die( esc_html__( 'Configuration Error: Invalid data.', 'et_builder' ) );
 	}
 
@@ -2608,7 +2615,7 @@ function et_pb_submit_subscribe_form() {
 
 	$signup = ET_Builder_Element::get_module( 'et_pb_signup' );
 
-	if ( $signup && $signup->is_spam_submission() ) {
+	if ( $signup && $use_spam_service && $signup->is_spam_submission() ) {
 		et_core_die( esc_html__( 'You must be a human to submit this form.', 'et_builder' ) );
 	}
 

@@ -34,37 +34,19 @@ function createConnectionToiFrame(iframe) {
 export function initInterframe(iframe) {
   if (!iframe) return;
 
+  if (!window.childFrameConnection) {
+    window.childFrameConnection = createConnectionToiFrame(iframe);
+    window.childFrameConnection.promise.catch(error =>
+      Raven.captureException(error, {
+        fingerprint: ['INTERFRAME_CONNECTION_ERROR'],
+      })
+    );
+  }
+
   const redirectToLogin = event => {
     if (event.data === 'unauthorized') {
       window.removeEventListener('message', redirectToLogin);
-      iframe.src = `${hubspotBaseUrl}/wordpress-plugin-ui/${leadinConfig.portalId}/login`;
-    }
-  };
-
-  const initPenPal = event => {
-    if (event.origin !== hubspotBaseUrl) return;
-
-    try {
-      const data = JSON.parse(event.data);
-      if (data['interframe_ready']) {
-        window.removeEventListener('message', redirectToLogin);
-        if (!window.childFrameConnection) {
-          window.childFrameConnection = createConnectionToiFrame(iframe);
-          window.childFrameConnection.promise.catch(error =>
-            Raven.captureException(error, {
-              fingerprint: ['INTERFRAME_CONNECTION_ERROR'],
-            })
-          );
-        }
-
-        // Complete the handshake with the iframe
-        iframe.contentWindow.postMessage(
-          JSON.stringify({ iframe_connection_ready: true }),
-          hubspotBaseUrl
-        );
-      }
-    } catch (e) {
-      //
+      iframe.src = leadinConfig.loginUrl;
     }
   };
 
@@ -86,6 +68,5 @@ export function initInterframe(iframe) {
     window.addEventListener('message', redirectToLogin);
   }
 
-  window.addEventListener('message', initPenPal);
   window.addEventListener('message', handleSyncRoute);
 }

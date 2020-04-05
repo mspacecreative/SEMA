@@ -4,8 +4,8 @@ Donate link: https://gtm4wp.com/
 Tags: google tag manager, tag manager, gtm, google, adwords, google adwords, google ads, adwords remarketing, google ads remarketing, remarketing, google analytics, analytics, facebook ads, facebook remarketing, facebook pixel, google optimize, personalisation
 Requires at least: 3.4.0
 Requires PHP: 5.6
-Tested up to: 5.2.4
-Stable tag: 1.11.2
+Tested up to: 5.4
+Stable tag: 1.11.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -257,6 +257,20 @@ If you or your social plugin inserts the Facebook buttons using IFRAMEs (like So
 6. Scroll tracking
 
 == Changelog ==
+
+= 1.11.4 =
+
+* Fixed: fire gtm4wp.checkoutStepEEC and gtm4wp.checkoutOptionEEC events if there is only one shipping method available and it is hidden from the user
+* Fixed: decrease checkout step numbers 3 and 4 if shipping destination is set to 'Force shipping to the customer billing address' in WooCommerce. This way there will be no gap in Checkout behaviour report in Google Analytics.
+* Updated: tested version number for WooCommerce
+
+= 1.11.3 =
+
+* Fixed: use var_export instead of var_dump in some debug code,
+* Fixed: apply WooCommerce option for tax inclusion on the order received page as well
+* Fixed: JavaScript errors in Vimeo player
+* Updated: do not add type attribute to script elements if theme suppors HTML5
+* Updated: tested version numbers for WordPress and WooCommerce
 
 = 1.11.2 =
 
@@ -652,9 +666,17 @@ Please report all bugs found in my plugin using the [contact form on my website]
 
 == Upgrade Notice ==
 
+= 1.11.4 =
+
+Bugfix and updated tested version number for WooCommerce
+
+= 1.11.3 =
+
+Some bugfixes and adding support for the latest WordPress and WooCommerce version
+
 = 1.11.2 =
 
-No change in plugin code, WP.org deployment of v1.11.1 included wrong directories
+Replaces v1.11.1
 
 = 1.11.1 =
 

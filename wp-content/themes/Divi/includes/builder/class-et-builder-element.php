@@ -17114,10 +17114,11 @@ class ET_Builder_Element {
 	 *
 	 * @param string $attribute
 	 * @param string $html 'limited', 'full', 'none'
+	 * @param string $predefined_value Predifined value need to escape.
 	 *
 	 * @return string
 	 */
-	protected function _esc_attr( $attribute, $html = 'none' ) {
+	protected function _esc_attr( $attribute, $html = 'none', $predefined_value = null ) {
 		$html               = in_array( $html, array( 'limited', 'full' ), true ) ? $html : 'none';
 		$raw                = isset( $this->attrs_unprocessed[ $attribute ] ) ? $this->attrs_unprocessed[ $attribute ] : '';
 		$formatted          = isset( $this->props[ $attribute ] ) ? $this->props[ $attribute ] : '';
@@ -17127,6 +17128,10 @@ class ET_Builder_Element {
 		if ( 'content' === $attribute && ! isset( $this->attrs_unprocessed[ $attribute ] ) ) {
 			$raw       = $this->content_unprocessed;
 			$formatted = $this->content;
+		}
+
+		if ( ! is_null( $predefined_value ) ) {
+			$formatted = $predefined_value;
 		}
 
 		if ( ! $this->_is_dynamic_value( $attribute, $raw, $dynamic_attributes ) ) {

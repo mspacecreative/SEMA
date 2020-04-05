@@ -958,7 +958,7 @@ class ET_Builder_Module_Fullwidth_Header extends ET_Builder_Module {
 		);
 
 		if ( $raw_value && 'content' === $context && in_array( $name, $fields_need_escape_full, true ) ) {
-			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'full');
+			return $this->_esc_attr( $multi_view->get_name_by_mode( $name, $mode ), 'full', $raw_value );
 		}
 
 		$fields_need_escape_limited = array(
